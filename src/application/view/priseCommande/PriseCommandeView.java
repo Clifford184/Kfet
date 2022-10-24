@@ -3,6 +3,8 @@ package application.view.priseCommande;
 import application.controller.Observable;
 import application.controller.priseCommande.PriseCommandeController;
 import application.view.View;
+import application.view.methodePayement.MethodePayementView;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,6 +22,7 @@ public class PriseCommandeView extends View {
             setController(new PriseCommandeController());
         }
         getController().initialize();
+        getViewController().initializeType();
     }
 
     @Override
@@ -66,5 +69,15 @@ public class PriseCommandeView extends View {
     @Override
     public PriseCommandeViewController getViewController() {
         return (PriseCommandeViewController) super.getViewController();
+    }
+
+    public void changerScene() throws Exception {
+        MethodePayementView methodePayementView = new MethodePayementView();
+        methodePayementView.start(new Stage());
+    }
+
+    public void close() {
+        Stage stage = (Stage) getViewController().payementIcone.getScene().getWindow();
+        stage.close();
     }
 }

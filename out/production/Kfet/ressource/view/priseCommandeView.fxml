@@ -9,69 +9,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
    <center>
-      <AnchorPane prefHeight="540.0" prefWidth="866.0">
+      <VBox>
          <children>
-            <AnchorPane fx:id="sliderPanier" layoutX="259.0" layoutY="383.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="348.0" style="-fx-background-color: #808080;">
+            <AnchorPane prefHeight="272.0" prefWidth="866.0">
                <children>
-                  <HBox layoutX="138.0" layoutY="66.0" prefHeight="25.0" prefWidth="72.0">
+                  <AnchorPane prefHeight="321.0" prefWidth="486.0">
                      <children>
-                        <Label text="Plat1">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="10€" />
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="321.0" prefWidth="486.0">
-               <children>
-                  <VBox layoutX="6.0" prefHeight="385.0" prefWidth="860.0">
-                     <children>
-                        <HBox prefHeight="110.0" prefWidth="374.0">
+                        <VBox layoutX="6.0" prefHeight="385.0" prefWidth="860.0">
                            <children>
-                              <Pane prefHeight="110.0" prefWidth="110.0">
-                                 <children>
-                                    <Label layoutX="26.0" layoutY="47.0" text="Categorie1" />
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="110.0" prefWidth="110.0">
-                                 <children>
-                                    <Label fx:id="PageMenu" layoutX="36.0" layoutY="47.0" text="Menu1" />
-                                 </children>
-                              </Pane>
+                              <HBox fx:id="box1" prefHeight="110.0" prefWidth="374.0" />
                            </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        </VBox>
                      </children>
-                  </VBox>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
    <top>
       <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="108.0" layoutY="29.0" mnemonicParsing="false" text="Commande en cours" />
-            <CheckBox layoutX="463.0" layoutY="33.0" mnemonicParsing="false" text="Afficher prix K'ftier" />
-            <Label fx:id="Menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
-            <Label fx:id="MenuClose" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
+            <CheckBox layoutX="832.0" layoutY="33.0" mnemonicParsing="false" text="Afficher prix K'ftier" />
+            <Label fx:id="menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
          </children>
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane fx:id="slider" prefHeight="316.0" prefWidth="107.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="sliderMenu" prefHeight="316.0" prefWidth="107.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutY="46.0" prefHeight="270.0" prefWidth="115.0">
+            <VBox layoutY="46.0" prefHeight="270.0" prefWidth="118.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Service">
                      <VBox.margin>
@@ -95,16 +67,27 @@
       </AnchorPane>
    </left>
    <bottom>
-      <AnchorPane prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="256.0" prefWidth="984.0" style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="35.0" fitWidth="32.0" layoutX="60.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="panier" layoutX="530.0" layoutY="144.0" onMouseClicked="#openPanier" text="Up" />
+            <AnchorPane fx:id="sliderPanier" layoutX="364.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="348.0" style="-fx-background-color: #808080;">
+               <children>
+                  <HBox layoutX="138.0" layoutY="66.0" prefHeight="25.0" prefWidth="72.0" />
+                  <ImageView fx:id="payementIcone" fitHeight="38.0" fitWidth="36.0" layoutX="298.0" layoutY="61.0" onMouseClicked="#redirectionMethodePayement" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/valide.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="112.0" layoutY="17.0" text="Plat1" />
+                  <Label layoutX="183.0" layoutY="16.0" text="10€" />
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="35.0" fitWidth="32.0" layoutX="55.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/panier.png" />
                </image>
             </ImageView>
-            <Label layoutX="101.0" layoutY="37.0" text="Panier" />
-            <Label fx:id="Panier" layoutX="546.0" layoutY="6.0" onMouseClicked="#openPanier" text="Up" />
-            <Label fx:id="PanierClose" layoutX="546.0" layoutY="6.0" onMouseClicked="#openPanier" text="Up" />
+            <Label layoutX="101.0" layoutY="144.0" text="Panier" />
          </children>
       </AnchorPane>
    </bottom>
