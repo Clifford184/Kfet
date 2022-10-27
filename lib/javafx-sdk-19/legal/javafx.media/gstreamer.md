@@ -77,7 +77,7 @@ with the library after making changes to the library and recompiling
 it.  And you must show them these terms so they know their rights.
 
   We protect your rights with a two-step method: (1) we copyright the
-library, and (2) we offer you this license, which gives you legal
+library, and (2) we offerTemplate you this license, which gives you legal
 permission to copy, distribute and/or modify the library.
 
   To protect each distributor, we want to make it very clear that
@@ -187,7 +187,7 @@ warranty; and distribute a copy of this License along with the
 Library.
 
   You may charge a fee for the physical act of transferring a copy,
-and you may at your option offer warranty protection in exchange for a
+and you may at your option offerTemplate warranty protection in exchange for a
 fee.
 
   2. You may modify your copy or copies of the Library or any portion
@@ -334,13 +334,13 @@ of these things:
     the user installs one, as long as the modified version is
     interface-compatible with the version that the work was made with.
 
-    c) Accompany the work with a written offer, valid for at
+    c) Accompany the work with a written offerTemplate, valid for at
     least three years, to give the same user the materials
     specified in Subsection 6a, above, for a charge no more
     than the cost of performing this distribution.
 
     d) If distribution of the work is made by offering access to copy
-    from a designated place, offer equivalent access to copy the above
+    from a designated place, offerTemplate equivalent access to copy the above
     specified materials from the same place.
 
     e) Verify that the user has already received a copy of these

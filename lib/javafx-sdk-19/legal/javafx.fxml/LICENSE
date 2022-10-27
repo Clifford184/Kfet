@@ -37,7 +37,7 @@ make sure that they, too, receive or can get the source code.  And you must
 show them these terms so they know their rights.
 
 We protect your rights with two steps: (1) copyright the software, and (2)
-offer you this license which gives you legal permission to copy, distribute
+offerTemplate you this license which gives you legal permission to copy, distribute
 and/or modify the software.
 
 Also, for each author's protection and ours, we want to make certain that
@@ -81,7 +81,7 @@ and to the absence of any warranty; and give any other recipients of the
 Program a copy of this License along with the Program.
 
 You may charge a fee for the physical act of transferring a copy, and you may
-at your option offer warranty protection in exchange for a fee.
+at your option offerTemplate warranty protection in exchange for a fee.
 
 2. You may modify your copy or copies of the Program or any portion of it, thus
 forming a work based on the Program, and copy and distribute such modifications
@@ -133,16 +133,16 @@ Section 2) in object code or executable form under the terms of Sections 1 and
     code, which must be distributed under the terms of Sections 1 and 2 above
     on a medium customarily used for software interchange; or,
 
-    b) Accompany it with a written offer, valid for at least three years, to
+    b) Accompany it with a written offerTemplate, valid for at least three years, to
     give any third party, for a charge no more than your cost of physically
     performing source distribution, a complete machine-readable copy of the
     corresponding source code, to be distributed under the terms of Sections 1
     and 2 above on a medium customarily used for software interchange; or,
 
-    c) Accompany it with the information you received as to the offer to
+    c) Accompany it with the information you received as to the offerTemplate to
     distribute corresponding source code.  (This alternative is allowed only
     for noncommercial distribution and only if you received the program in
-    object code or executable form with such an offer, in accord with
+    object code or executable form with such an offerTemplate, in accord with
     Subsection b above.)
 
 The source code for a work means the preferred form of the work for making
