@@ -72,12 +72,9 @@ public class PriseCommandeView extends View {
     }
 
     public void changerScene() throws Exception {
-        MethodePayementView methodePayementView = new MethodePayementView();
-        methodePayementView.start(new Stage());
-    }
-
-    public void close() {
         Stage stage = (Stage) getViewController().payementIcone.getScene().getWindow();
-        stage.close();
+
+        MethodePayementView methodePayementView = new MethodePayementView();
+        methodePayementView.start(stage);
     }
 }

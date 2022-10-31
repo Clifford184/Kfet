@@ -155,7 +155,6 @@ public class PriseCommandeViewController extends ViewController {
 
     public void redirectionMethodePayement() throws Exception {
         getView().changerScene();
-        getView().close();
     }
 
     public PriseCommandeViewController() {}
