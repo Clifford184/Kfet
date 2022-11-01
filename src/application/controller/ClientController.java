@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ClientController {
 
     public void addClient(String pName, String pSurname, Promo pPromo){
-        Client c = new Client(pName, pSurname, pPromo,0);
+        Client c = new Client(pName, pSurname, pPromo);
     }
 
     public void addMoney(Client pClient, float pMoney){

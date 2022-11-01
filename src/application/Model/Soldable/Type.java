@@ -1,7 +1,10 @@
-package application.Model.Soldable;
+package Model.Soldable;
 
 import java.util.ArrayList;
 
+/**
+ * Group differents products with common attributes (for example the type Pizza for all the pizza sellable)
+ */
 public class Type {
 
     String name;
@@ -9,6 +12,11 @@ public class Type {
 
     public static ArrayList<Type> typeList = new ArrayList<>();
 
+    /**
+     * Creates a new type
+     * @param pName
+     * @param pCategorie
+     */
     public Type(String pName, Categorie pCategorie){
         name = pName;
         categorie = pCategorie;
@@ -27,17 +35,4 @@ public class Type {
         typeList.remove(pType);
     }
 
-    public static ArrayList<Type> getTypeByCategorie(Categorie pCategorie){
-        ArrayList<Type> toReturn = new ArrayList<>();
-        for(Type t : typeList){
-            if(t.categorie.equals(pCategorie))
-                toReturn.add(t);
-        }
-        return toReturn;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

@@ -1,74 +1,56 @@
-package application.Model;
+package Model;
 
-import application.Model.Soldable.Offer;
-import application.Model.Soldable.OfferTemplate;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Soldable;
+import Model.Soldable.Soldable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Cart of the current order
+ */
 public class Cart {
 
-    ArrayList<Soldable> productList;
+    ArrayList<Soldable> soldableList;
 
+    /**
+     * Create a new empty cart
+     */
     public Cart(){
 
-        productList = new ArrayList<>();
+        soldableList = new ArrayList<>();
 
     }
 
+    /**
+     * Add a soldable to the cart
+     * @param pSoldable
+     */
     public void addSoldable(Soldable pSoldable){
-        productList.add(pSoldable);
-        searchForOffer();
+        soldableList.add(pSoldable);
     }
 
+    /**
+     * Remove a soldable from the cart
+     * @param pSoldable
+     */
     public void removeSoldable(Soldable pSoldable){
-        productList.remove(pSoldable);
+        soldableList.remove(pSoldable);
     }
 
-    public void replaceForOffer(ArrayList<Product> pToReplace, OfferTemplate pOfferTemplate) throws IOException {
-
-        Offer offer = new Offer(pOfferTemplate,pToReplace);
-        productList.removeAll(pToReplace);
-        productList.add(offer);
-
-    }
-
-    public void searchForOffer(){
-
-        //Faire un algo pour déterminer les matchs qui seront a faire
-        //MAtch menu vers menu+, ou juste produits vers menu
-
-        //Priorite pour la formation d'un nouveau menu
-        //Si non, on regarde si on peut faire un menu+
-        //mais dans le cas d'un refus pour x raison, il faudrait que l'interface ne soit pas envahissante ou bloquante.
-
-        Soldable lastAdded = productList.get(productList.size()-1);
-
-        if(lastAdded instanceof Offer){
-            //On regarde si il n'y a pas un produit seul pouvant faire une offre+
-
-
-
-        }else if(lastAdded instanceof Product){
-            //On regarde si il n'y a pas un ensemble de produit ou une offre pour faire une offre+
-
-        }
-
-    }
-
+    /**
+     * Calculate the value of all the soldable in the cart
+     * @return
+     */
     public float cartValue(){
 
         float value=0;
-        for(Soldable s : productList)
+        for(Soldable s : soldableList)
             value+=s.getSellPrice();
 
         return value;
     }
 
-    public ArrayList<Soldable> getProductList(){
-        return productList;
+    public ArrayList<Soldable> getSoldableList(){
+        return soldableList;
     }
 
 }

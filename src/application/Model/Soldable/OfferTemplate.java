@@ -1,19 +1,39 @@
 package application.Model.Soldable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Defines how an offer could be formed
+ */
 public class OfferTemplate{
 
     ArrayList<Categorie> categorieList;
     String name;
     float sellPrice;
 
+    ArrayList<Product> blackList;
+
     public static ArrayList<OfferTemplate> offerTemplateList = new ArrayList<>();
 
-    public OfferTemplate(String pName, float pSellPrice, ArrayList<Categorie> pCategorieList) throws IOException {
+    /**
+     * Create a new template
+     * @param pName the name of the template
+     * @param pSellPrice his price
+     * @param pCategorieList
+     */
+    public OfferTemplate(String pName, float pSellPrice, ArrayList<Categorie> pCategorieList){
+        name = pName;
         sellPrice = pSellPrice;
         categorieList = pCategorieList;
+        blackList = new ArrayList<>();
+    }
+
+    /**
+     * Add a product to the blacklist, it wouldn't be available for the offer
+     * @param pProduct
+     */
+    public void addToBlackList(Product pProduct){
+        blackList.add(pProduct);
     }
 
     public String getName() {
@@ -33,4 +53,7 @@ public class OfferTemplate{
     }
 
 
+    public float getSellPrice() {
+        return sellPrice;
+    }
 }

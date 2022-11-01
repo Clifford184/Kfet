@@ -1,5 +1,8 @@
 package application.Model.Client;
 
+/**
+ * Describes a client who has an account in the application
+ */
 public class Client {
 
     String name;
@@ -7,11 +10,17 @@ public class Client {
     Promo promo;
     float money;
 
-    public Client(String pName, String pFirstname, Promo pPromo, float pMoney){
+    /**
+     * Create a new client
+     * @param pName his name
+     * @param pFirstname his firstname
+     * @param pPromo his promo
+     */
+    public Client(String pName, String pFirstname, Promo pPromo){
         name = pName;
         firstname = pFirstname;
         promo = pPromo;
-        money = pMoney;
+        promo.addClient(this);
     }
 
     public void addMoney(float pMoney){
