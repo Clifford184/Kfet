@@ -25,10 +25,10 @@ public class TakeOrderController {
 
         //Changement d'interface vers le choix du produit en particulier
     }
-
-    public void addProduct(Product pProduct){
-        cart.getProductList().add(pProduct);
-    }
+// TODO methode inexistante ???
+//    public void addProduct(Product pProduct){
+//        cart.getProductList().add(pProduct);
+//    }
 
     public void addOffer(Offer pOffer){
         //Changement d'interface

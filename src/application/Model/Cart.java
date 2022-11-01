@@ -1,6 +1,7 @@
-package Model;
+package application.Model;
 
-import Model.Soldable.Soldable;
+
+import application.Model.Soldable.Soldable;
 
 import java.util.ArrayList;
 

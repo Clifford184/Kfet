@@ -1,6 +1,6 @@
 package application.Model.Soldable;
 
-import Model.Stock;
+import application.Model.Stock;
 
 import java.io.IOException;
 

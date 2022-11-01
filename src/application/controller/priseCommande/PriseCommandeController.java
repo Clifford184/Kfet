@@ -16,7 +16,7 @@ public class PriseCommandeController extends Controller {
     public void initialize()  {
         try {
             // Création de type test pour la prise de commande
-            Categorie platChaud = new Categorie("plat chaud");
+            Categorie platChaud = new Categorie("plat chaud",null);
             Type pizza = new Type("pizza", platChaud);
 
             String[] messages = {"type"};

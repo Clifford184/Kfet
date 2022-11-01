@@ -1,4 +1,4 @@
-package Model.Soldable;
+package application.Model.Soldable;
 
 import java.util.ArrayList;
 

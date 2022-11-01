@@ -67,8 +67,8 @@ public class CompteViewController extends ViewController {
         String[] aurelien = {"DaFonseca","Aurelien","4"};
         String[] charles = {"Caillon","Charles","8"};
         Promo di3 = new Promo("DI3"); //TODO créer une arrayList de promo
-        Client cl1 = new Client("Jean","Bon",di3,5f);
-        Client cl2 = new Client("jh","ok",di3,10f);
+        Client cl1 = new Client("Jean","Bon",di3);
+        Client cl2 = new Client("jh","ok",di3);
 
         for (String promo: listePromo) {
             TableView<Client> tableView = new TableView();

@@ -37,13 +37,14 @@ public class DynamicOfferController {
         if(currentStep >= offerTemplate.getCategorieList().size()){
             end();
         }
-        ArrayList<Type> nextChoice = Type.getTypeByCategorie(offerTemplate.getCategorieList().get(currentStep));
-        if(nextChoice.size()==0){
-            //ERREUR
-        }
-        if(nextChoice.size()==1){
-            //Aller directement sur l'ecran de choix du produit
-        }
+        // TODO methode existe pas dans type ??
+//        ArrayList<Type> nextChoice = Type.getTypeByCategorie(offerTemplate.getCategorieList().get(currentStep));
+//        if(nextChoice.size()==0){
+//            //ERREUR
+//        }
+//        if(nextChoice.size()==1){
+//            //Aller directement sur l'ecran de choix du produit
+//        }
         //Interface avec choix du type
         //Changement d'interface et en envoie une liste de données qui seront link au bouton
         //Les boutons appelerons makeChoice()

@@ -16,9 +16,9 @@ public class CrudProduitController extends Controller {
     @Override
     public void initialize() {
         try {
-            Categorie platChaud = new Categorie("plat chaud");
-            Categorie snackcat = new Categorie("snack");
-            Categorie boissoncat = new Categorie("boisson");
+            Categorie platChaud = new Categorie("plat chaud",null);
+            Categorie snackcat = new Categorie("snack",null);
+            Categorie boissoncat = new Categorie("boisson",null);
             Type pizza = new Type("pizza", platChaud);
             Type snack = new Type("snack", snackcat);
             Type boisson = new Type("boisson", boissoncat);

@@ -1,4 +1,4 @@
-package Model.Soldable;
+package application.Model.Soldable;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
