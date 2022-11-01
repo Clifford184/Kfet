@@ -26,6 +26,10 @@ module Kfet {
     opens application.view.compte;
     exports application.view.compte.argentConfirmation to javafx.fxml;
     opens application.view.compte.argentConfirmation;
+    exports application.view.produit to javafx.fxml;
+    opens application.view.produit;
+    exports application.view.produit.crudProduit to javafx.fxml;
+    opens application.view.produit.crudProduit;
 
     //controller
     exports application.controller to javafx.fxml;
@@ -38,4 +42,8 @@ module Kfet {
     opens application.controller.compte;
     exports application.controller.compte.argentConfirmation to javafx.fxml;
     opens application.controller.compte.argentConfirmation;
+    exports application.controller.produit to javafx.fxml;
+    opens application.controller.produit;
+    exports application.controller.produit.crudProduit to javafx.fxml;
+    opens application.controller.produit.crudProduit;
 }

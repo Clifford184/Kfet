@@ -1,5 +1,10 @@
 package application.view.priseCommande;
 
+import application.Model.Cart;
+import application.Model.Soldable.Soldable;
+import application.view.compte.CompteView;
+import application.view.methodePayement.MethodePayementView;
+import application.view.produit.GestionProduitView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -98,12 +103,12 @@ public class PriseCommandeViewController extends ViewController {
         sliderPanier.setTranslateY(500);
     }
 
-    public void initializeType(){
-        String[] listeType = {"Pizza","Picard","Boisson","Snack","Autres plats chaud", "Menu"};
-        for(int i = 0; i<listeType.length; i++) {
+    // Création de case pour chaque soldable de la carte
+    public void initializeType(Cart cart){
+        for (Soldable soldable :cart.getProductList()){
             Pane pane = new Pane();
             Label label = new Label();
-            label.setText(listeType[i]);
+            label.setText(soldable.getName());
             pane.getChildren().add(label);
             pane.setOnMouseClicked(event -> choixPlat() );
             pane.setPadding( new Insets(50,50,50,50));
@@ -154,7 +159,23 @@ public class PriseCommandeViewController extends ViewController {
     }
 
     public void redirectionMethodePayement() throws Exception {
-        getView().changerScene();
+        MethodePayementView methodePayementView = new MethodePayementView();
+        getView().changerScene(methodePayementView);
+    }
+
+    public void redirectionGestionProduit() throws Exception {
+        GestionProduitView gestionProduitView = new GestionProduitView();
+        getView().changerScene(gestionProduitView);
+    }
+
+    public void redirectionPriseCommande() throws Exception {
+        PriseCommandeView priseCommandeView = new PriseCommandeView();
+        getView().changerScene(priseCommandeView);
+    }
+
+    public void redirectionCompte() throws Exception {
+        CompteView compteView = new CompteView();
+        getView().changerScene(compteView);
     }
 
     public PriseCommandeViewController() {}

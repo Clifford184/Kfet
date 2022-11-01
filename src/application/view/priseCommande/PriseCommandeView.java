@@ -1,5 +1,8 @@
 package application.view.priseCommande;
 
+import application.Model.Cart;
+import application.Model.Soldable.Product;
+import application.Model.Soldable.Soldable;
 import application.controller.Observable;
 import application.controller.priseCommande.PriseCommandeController;
 import application.view.View;
@@ -22,7 +25,7 @@ public class PriseCommandeView extends View {
             setController(new PriseCommandeController());
         }
         getController().initialize();
-        getViewController().initializeType();
+        getViewController().initialPage();
     }
 
     @Override
@@ -49,8 +52,6 @@ public class PriseCommandeView extends View {
         setViewController(fxmlLoader.getController());
         getViewController().setView(this);
 
-        getViewController().initialPage();
-
         // Get the controller of the view.
         initialize();
 
@@ -59,7 +60,21 @@ public class PriseCommandeView extends View {
     }
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "cart" -> {
+                        // Update du menu en fonctions des soldable existant
+                        Cart cart  = getController().getCart();
+                        getViewController().initializeType(cart);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public PriseCommandeController getController() {
@@ -71,10 +86,8 @@ public class PriseCommandeView extends View {
         return (PriseCommandeViewController) super.getViewController();
     }
 
-    public void changerScene() throws Exception {
+    public void changerScene(View view) throws Exception {
         Stage stage = (Stage) getViewController().payementIcone.getScene().getWindow();
-
-        MethodePayementView methodePayementView = new MethodePayementView();
-        methodePayementView.start(stage);
+        view.start(stage);
     }
 }

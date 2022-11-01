@@ -26,7 +26,7 @@ public abstract class Soldable {
             purchasePrice = pPurchasePrice;
         }
 
-        image = ImageIO.read(new File("image/soldable"+name+".png"));
+        //TODO PB image = ImageIO.read(new File("image/soldable"+name+".png"));
     }
 
     public String getName() {

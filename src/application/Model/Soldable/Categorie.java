@@ -15,4 +15,8 @@ public class Categorie {
         name = pName;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

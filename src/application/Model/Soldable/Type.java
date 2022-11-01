@@ -32,4 +32,8 @@ public class Type {
         return toReturn;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
