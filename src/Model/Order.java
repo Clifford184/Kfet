@@ -4,6 +4,9 @@ import Model.Client.Client;
 
 import java.time.LocalDateTime;
 
+/**
+ * Describes an order that has been placed
+ */
 public class Order {
 
     LocalDateTime orderDate;

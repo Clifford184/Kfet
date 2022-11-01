@@ -15,6 +15,18 @@ public class Stock {
 
     }
 
+    public void addNewProduct(Product pProduct){
+        if(stock.get(pProduct)!=null)
+            return; //Gerer l'erreur
+        stock.put(pProduct,0);
+    }
+
+    public void deleteProduct(Product pProduct){
+        if(stock.get(pProduct)==null)
+            return; //Gerer l'erreur
+        stock.put(pProduct,0);
+    }
+
     public void removeFromStock(ArrayList<Product> pProductsList){
         for(Product p : pProductsList){
             Integer number = stock.get(p);

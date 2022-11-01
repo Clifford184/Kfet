@@ -5,7 +5,7 @@ import Model.Soldable.Soldable;
 import java.util.ArrayList;
 
 /**
- * Fais office de carte en Francais
+ * Je ne sais pas ca sera utile, puisqu'on affichera une liste des types
  */
 public class Menu{
 

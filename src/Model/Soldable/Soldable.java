@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Describes a generic offered product
+ */
 public abstract class Soldable {
 
     String name;
@@ -12,6 +15,13 @@ public abstract class Soldable {
     float sellPrice;
     BufferedImage image;
 
+    /**
+     * Create a new offered item
+     * @param pName his name
+     * @param pPurchasePrice his purchase price
+     * @param pSoldPrice his sold price
+     * @throws IOException if there is a problem during the loading of the image
+     */
     public Soldable(String pName, float pPurchasePrice, float pSoldPrice) throws IOException {
 
         name = pName;
@@ -26,6 +36,7 @@ public abstract class Soldable {
             purchasePrice = pPurchasePrice;
         }
 
+        //A revoir
         image = ImageIO.read(new File("image/soldable"+name+".png"));
     }
 
