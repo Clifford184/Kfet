@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
    <center>
       <VBox>
          <children>
@@ -55,12 +55,16 @@
                         <Insets bottom="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Comptes clients">
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionCompte" prefHeight="25.0" prefWidth="203.0" text="Comptes clients">
                      <VBox.margin>
                         <Insets bottom="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Stock" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Stock">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin></Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionGestionProduit" prefHeight="25.0" prefWidth="203.0" text="Produit" />
                </children>
             </VBox>
          </children>

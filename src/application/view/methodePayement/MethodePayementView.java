@@ -3,6 +3,8 @@ package application.view.methodePayement;
 import application.controller.Observable;
 import application.controller.methodePayement.MethodePayementController;
 import application.view.View;
+import application.view.compte.CompteView;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -38,6 +40,8 @@ public class MethodePayementView extends View {
         stage.setResizable(true);
         stage.setMinWidth(880);
         stage.setMinHeight(580);
+        stage.setWidth(880);
+        stage.setHeight(580);
         stage.setScene(scene);
 
         // Get the controller which controls the elements of the view.
@@ -54,10 +58,18 @@ public class MethodePayementView extends View {
     @Override
     public void update(Observable observable, String[] messages) {}
 
+    public void changerScene() throws Exception {
+        Stage stage = (Stage) getViewController().payementCompte.getScene().getWindow();
+
+        CompteView compteView = new CompteView();
+        compteView.start(stage);
+    }
+
     @Override
     public MethodePayementController getController() {
         return (MethodePayementController) super.getController();
     }
+
 
     @Override
     public MethodePayementViewController getViewController() {

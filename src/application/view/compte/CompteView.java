@@ -1,9 +1,11 @@
 package application.view.compte;
 
+import application.Model.Client.Client;
 import application.controller.Observable;
 import application.controller.compte.CompteController;
 import application.controller.methodePayement.MethodePayementController;
 import application.view.View;
+import application.view.compte.argentConfirmation.ArgentConfirmationView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -50,6 +52,14 @@ public class CompteView extends View {
 
         // Show the view.
         stage.show();
+    }
+
+    public void changerScene(Client cl, double somme, boolean ajouterArgent) throws Exception {
+        Stage stage = new Stage();
+
+        ArgentConfirmationView argentConfirmationView = new ArgentConfirmationView();
+        argentConfirmationView.start(stage);
+        argentConfirmationView.getViewController().initialise(cl,somme,ajouterArgent);
     }
 
     @Override
