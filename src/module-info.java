@@ -26,10 +26,16 @@ module Kfet {
     opens application.view.compte;
     exports application.view.compte.argentConfirmation to javafx.fxml;
     opens application.view.compte.argentConfirmation;
-    exports application.view.produit to javafx.fxml;
-    opens application.view.produit;
-    exports application.view.produit.crudProduit to javafx.fxml;
-    opens application.view.produit.crudProduit;
+//    exports application.view.gestionSoldable to javafx.fxml;
+//    opens application.view.gestionSoldable;
+    exports application.view.gestionSoldable.produit to javafx.fxml;
+    opens application.view.gestionSoldable.produit;
+    exports application.view.gestionSoldable.type.crudType to javafx.fxml;
+    opens application.view.gestionSoldable.type.crudType;
+    exports application.view.gestionSoldable.categorie to javafx.fxml;
+    opens application.view.gestionSoldable.categorie;
+    exports application.view.gestionSoldable.type to javafx.fxml;
+    opens application.view.gestionSoldable.type;
 
     //controller
     exports application.controller to javafx.fxml;
@@ -42,8 +48,16 @@ module Kfet {
     opens application.controller.compte;
     exports application.controller.compte.argentConfirmation to javafx.fxml;
     opens application.controller.compte.argentConfirmation;
-    exports application.controller.produit to javafx.fxml;
-    opens application.controller.produit;
-    exports application.controller.produit.crudProduit to javafx.fxml;
-    opens application.controller.produit.crudProduit;
+//    exports application.controller.gestionSoldable to javafx.fxml;
+//    opens application.controller.gestionSoldable;
+    exports application.view.gestionSoldable.produit.crudProduit to javafx.fxml;
+    opens application.view.gestionSoldable.produit.crudProduit;
+    exports application.controller.gestionSoldable.type to javafx.fxml;
+    opens application.controller.gestionSoldable.type;
+    exports application.controller.gestionSoldable.produit to javafx.fxml;
+    opens application.controller.gestionSoldable.produit;
+    exports application.controller.gestionSoldable.categorie to javafx.fxml;
+    opens application.controller.gestionSoldable.categorie;
+    exports application.view.gestionSoldable.categorie.crudCategorie to javafx.fxml;
+    opens application.view.gestionSoldable.categorie.crudCategorie;
 }

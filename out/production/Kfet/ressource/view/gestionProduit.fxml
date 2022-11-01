@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.produit.GestionProduitViewController">
+<BorderPane fx:id="viewGestionProduit" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.produit.GestionProduitViewController">
    <top>
       <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
-            <Label layoutX="244.0" layoutY="28.0" text="Gestion Produit">
+            <Label fx:id="titre" layoutX="244.0" layoutY="28.0" text="Gestion Produit">
                <font>
                   <Font size="18.0" />
                </font>
@@ -56,7 +56,7 @@
    <right>
       <AnchorPane prefHeight="316.0" prefWidth="112.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterProduit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ajouter" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterProduit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/ajouter.png" />
                </image>

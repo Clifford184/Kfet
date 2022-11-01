@@ -19,6 +19,10 @@ public class Type {
         name = pNewName;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static void deleteType(Type pType){
         typeList.remove(pType);
     }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="viewGestionType" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.type.GestionTypeViewController">
+   <top>
+      <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
+            <Label fx:id="titre" layoutX="244.0" layoutY="28.0" text="Gestion Type">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane fx:id="sliderMenu" prefHeight="316.0" prefWidth="107.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutY="46.0" prefHeight="270.0" prefWidth="118.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionPriseCommande" prefHeight="25.0" prefWidth="203.0" text="Service">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Trésorie">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Comptes clients">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Stock" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <TabPane fx:id="tablePromo" prefHeight="316.0" prefWidth="430.0" tabClosingPolicy="UNAVAILABLE" />
+   </center>
+   <right>
+      <AnchorPane prefHeight="316.0" prefWidth="112.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="ajouter" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterType" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/ajouter.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

@@ -54,12 +54,18 @@ public class CompteView extends View {
         stage.show();
     }
 
-    public void changerScene(Client cl, double somme, boolean ajouterArgent) throws Exception {
-        Stage stage = new Stage();
-
-        ArgentConfirmationView argentConfirmationView = new ArgentConfirmationView();
-        argentConfirmationView.start(stage);
-        argentConfirmationView.getViewController().initialise(cl,somme,ajouterArgent);
+    /**
+     * methode pour changer de page
+     * @param pPageDestination vue de destination
+     */
+    public void changerPage(View pPageDestination) {
+        try {
+            Stage stage = new Stage();
+            pPageDestination.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

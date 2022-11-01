@@ -3,19 +3,21 @@ package application.view.compte;
 import application.Model.Client.Client;
 import application.Model.Client.Promo;
 import application.view.ViewController;
+import application.view.compte.argentConfirmation.ArgentConfirmationView;
 import application.view.methodePayement.MethodePayementView;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 public class CompteViewController extends ViewController {
+
+    @FXML
+    private BorderPane viewCompte;
 
     @FXML
     private AnchorPane sliderMenu;
@@ -23,6 +25,9 @@ public class CompteViewController extends ViewController {
     @FXML
     private TabPane tablePromo;
 
+    /**
+     * methode pour animation du menu
+     */
     public void openMenu(){
         if(!sliderMenu.isVisible()){
             TranslateTransition slide = new TranslateTransition();
@@ -50,7 +55,12 @@ public class CompteViewController extends ViewController {
         }
     }
 
-    // Initialise les données pour la vue
+    //
+
+    /**
+     * methode qui initialise les données pour la vue
+     * TODO methode à revoir
+     */
     public void initialize(){
         String[] listePromo = {"DI3","DI4","DI5"};
         String[] listeEntete = {"name","firstname","money"};
@@ -59,7 +69,6 @@ public class CompteViewController extends ViewController {
         Promo di3 = new Promo("DI3"); //TODO créer une arrayList de promo
         Client cl1 = new Client("Jean","Bon",di3,5f);
         Client cl2 = new Client("jh","ok",di3,10f);
-        // TODO pane.setOnMouseClicked(event -> choixPlat() );
 
         for (String promo: listePromo) {
             TableView<Client> tableView = new TableView();
@@ -82,16 +91,36 @@ public class CompteViewController extends ViewController {
         }
     }
 
-    public void debiterClient(Client cl) throws Exception {
-        getView().changerScene(cl,3.1,false);
+    /**
+     * methode pour ouvrir la confirmation du debit pour un client
+     * @param cl client à débiter
+     */
+    public void debiterClient(Client cl) {
+        try {
+            ArgentConfirmationView argentConfirmationView = new ArgentConfirmationView();
+            getView().changerPage(argentConfirmationView);
+            //TODO encore en phase de test
+            argentConfirmationView.getViewController().initialise(cl,3.1,false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void ajouterArgent(){
+    /**
+     * methode pour ajouter de l'argent à un client
+     */
+    public void ajouterArgent(){}
 
-    }
+    /**
+     * constructeur par défaut
+     */
     public CompteViewController(){}
 
     public CompteView getView(){
         return (CompteView) super.getView();
+    }
+
+    public BorderPane getViewCompte() {
+        return viewCompte;
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.type.crudType.CrudTypeViewController">
+   <children>
+      <Label layoutX="139.0" layoutY="123.0" text="Catégorie:" />
+      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/valide.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/annuler.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="137.0" layoutY="172.0" text="Nom Type:" />
+      <ComboBox fx:id="categorie" layoutX="201.0" layoutY="119.0" prefWidth="150.0" />
+      <TextField fx:id="nomType" layoutX="202.0" layoutY="168.0" />
+   </children>
+</AnchorPane>

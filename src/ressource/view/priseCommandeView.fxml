@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
+<BorderPane fx:id="ViewPriseCommande" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
    <center>
       <VBox>
          <children>
@@ -21,7 +21,7 @@
                      <children>
                         <VBox layoutX="6.0" prefHeight="385.0" prefWidth="860.0">
                            <children>
-                              <HBox fx:id="box1" prefHeight="110.0" prefWidth="374.0" />
+                              <HBox fx:id="zoneAffichageType" prefHeight="110.0" prefWidth="374.0" />
                            </children>
                         </VBox>
                      </children>
@@ -43,7 +43,7 @@
    <left>
       <AnchorPane fx:id="sliderMenu" prefHeight="316.0" prefWidth="107.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutY="46.0" prefHeight="270.0" prefWidth="118.0">
+            <VBox layoutY="46.0" prefHeight="339.0" prefWidth="118.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Service">
                      <VBox.margin>
@@ -64,7 +64,16 @@
                      <VBox.margin>
                         <Insets bottom="25.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#redirectionGestionProduit" prefHeight="25.0" prefWidth="203.0" text="Produit" />
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionGestionProduit" prefHeight="25.0" prefWidth="203.0" text="Produit">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin></Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionGestionType" prefHeight="25.0" prefWidth="203.0" text="Type">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionGestionCategorie" prefHeight="25.0" prefWidth="203.0" text="Categorie" />
                </children>
             </VBox>
          </children>

@@ -57,8 +57,11 @@ public class ArgentConfirmationView extends View {
     @Override
     public void update(Observable observable, String[] messages) {}
 
+    /**
+     * methode pour fermer la fenetre de comfirmation
+     */
     public void close() {
-        Stage stage = (Stage)  getViewController().libelle.getScene().getWindow();
+        Stage stage = (Stage)  getViewController().getViewArgentConfimation().getScene().getWindow();
         stage.close();
     }
 

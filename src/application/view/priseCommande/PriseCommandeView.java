@@ -1,23 +1,24 @@
 package application.view.priseCommande;
 
-import application.Model.Cart;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Soldable;
 import application.controller.Observable;
 import application.controller.priseCommande.PriseCommandeController;
 import application.view.View;
-import application.view.methodePayement.MethodePayementView;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class PriseCommandeView extends View {
 
+    /**
+     * constructeur par défaut
+     */
     public PriseCommandeView()  {
         setController(null);
     }
 
+    /**
+     * methode d'initialisation du controller de la vue
+     */
     @Override
     public void initialize() {
         // Initialization of the controller.
@@ -25,18 +26,24 @@ public class PriseCommandeView extends View {
             setController(new PriseCommandeController());
         }
         getController().initialize();
-        getViewController().initialPage();
+        getViewController().initialize();
     }
 
+    /**
+     * methode d'affichage de la vue
+     */
     @Override
     public void show() {
         View.launch();
     }
 
+    /**
+     * methode d'initialisation des paramètres de la vue puis la démarre
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
-        // In the case of the separator for the resources, it's the same for every OS: '/'.
-        // So there is no need to use File.separator.
         String fileName = "/ressource/view/priseCommandeView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(PriseCommandeView.class.getResource(fileName));
 
@@ -59,15 +66,19 @@ public class PriseCommandeView extends View {
         stage.show();
     }
 
+    /**
+     * methode de mise à jour des différents éléments de la vue
+     * @param observable The observable that the observer observes.
+     * @param messages Messages sent by the observer to inform the observer of what to do.
+     */
     @Override
     public void update(Observable observable, String[] messages) {
         try {
             for (String message : messages) {
                 switch (message) {
-                    case "cart" -> {
+                    case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        Cart cart  = getController().getCart();
-                        getViewController().initializeType(cart);
+                        getViewController().initializeType();
                     }
                 }
             }
@@ -76,18 +87,35 @@ public class PriseCommandeView extends View {
         }
     }
 
+    /**
+     * getter du contoller de la vue
+     * @return PriseCommandeController le controller de la vue
+     */
     @Override
     public PriseCommandeController getController() {
         return (PriseCommandeController) super.getController();
     }
 
+    /**
+     * getter du viewContoller de la vue
+     * @return PriseCommandeViewController le viewContoller de la vue
+     */
     @Override
     public PriseCommandeViewController getViewController() {
         return (PriseCommandeViewController) super.getViewController();
     }
 
-    public void changerScene(View view) throws Exception {
-        Stage stage = (Stage) getViewController().payementIcone.getScene().getWindow();
-        view.start(stage);
+    /**
+     * methode pour changer de page
+     * @param pPageDestination vue de destination
+     */
+    public void changerPage(View pPageDestination) {
+        try {
+            Stage stage = (Stage) getViewController().getViewPriseCommande().getScene().getWindow();
+            pPageDestination.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
