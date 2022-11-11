@@ -1,7 +1,7 @@
 package application.view.gestionSoldable.produit.crudProduit;
 
 import application.Model.Soldable.Categorie;
-import application.Model.Soldable.Product;
+import application.Model.Soldable.Produit;
 import application.Model.Soldable.Type;
 import application.view.ViewController;
 import javafx.fxml.FXML;
@@ -36,7 +36,7 @@ public class CrudProduitViewController extends ViewController {
         try {
             float pAchat = Float.parseFloat(prixAchat.getText());
             float pVente = Float.parseFloat(prixVente.getText());
-            Product newProduit = new Product(nomProduit.getText(),pAchat, pVente,type.getValue());
+            Produit newProduit = new Produit(nomProduit.getText(),pAchat, pVente,type.getValue());
 
             getView().close();
         }

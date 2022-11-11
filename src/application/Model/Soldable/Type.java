@@ -3,36 +3,43 @@ package application.Model.Soldable;
 import java.util.ArrayList;
 
 /**
- * Group differents products with common attributes (for example the type Pizza for all the pizza sellable)
+ * Regroupe diffents produits qui ont un attribut commun
+ * Par exemple le Type Pizza peut regrouper Pizza royale, Pizza 4 fromage, ...
+ * Le Type Snack peut regrouper Snickers, Mars, Kinder Bueno, ...
  */
 public class Type {
 
-    String name;
+    String nom;
     Categorie categorie;
+    ArrayList<Produit> produitListe = new ArrayList<>();
 
-    public static ArrayList<Type> typeList = new ArrayList<>();
+    public static ArrayList<Type> typeListe = new ArrayList<>();
 
     /**
-     * Creates a new type
-     * @param pName
-     * @param pCategorie
+     * Cree un nouveau type
+     * @param pNom son nom
+     * @param pCategorie sa categorie associee
      */
-    public Type(String pName, Categorie pCategorie){
-        name = pName;
+    public Type(String pNom, Categorie pCategorie){
+        nom = pNom;
         categorie = pCategorie;
-        typeList.add(this);
+        typeListe.add(this);
+    }
+
+    public ArrayList<Produit> getProduitListe() {
+        return produitListe;
     }
 
     public void setName(String pNewName){
-        name = pNewName;
+        nom = pNewName;
     }
 
     public String getName() {
-        return name;
+        return nom;
     }
 
     public static void deleteType(Type pType){
-        typeList.remove(pType);
+        typeListe.remove(pType);
     }
 
 }

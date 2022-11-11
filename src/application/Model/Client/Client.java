@@ -1,73 +1,73 @@
 package application.Model.Client;
 
 /**
- * Describes a client who has an account in the application
+ * Decrit un client possedant un compte dans l'application
  */
 public class Client {
 
-    String name;
-    String firstname;
-    Promo promo;
-    float money;
+    String nom;
+    String prenom;
+    Groupe groupe;
+    float argent;
 
     /**
-     * Create a new client
-     * @param pName his name
-     * @param pFirstname his firstname
-     * @param pPromo his promo
+     * Cree un nouveau client
+     * @param pNom son nom
+     * @param pPrenom son prenom
+     * @param pGroupe son groupe
      */
-    public Client(String pName, String pFirstname, Promo pPromo){
-        name = pName;
-        firstname = pFirstname;
-        promo = pPromo;
-        promo.addClient(this);
+    public Client(String pNom, String pPrenom, Groupe pGroupe){
+        nom = pNom;
+        prenom = pPrenom;
+        groupe = pGroupe;
+        groupe.ajouterClient(this);
     }
 
-    public void addMoney(float pMoney){
-        money += pMoney;
+    public void ajouterArgent(float pMoney){
+        argent += pMoney;
     }
 
-    public void substractMoney(float pAmount){
-        money -= pAmount;
+    public void retirerArgent(float pAmount){
+        argent -= pAmount;
     }
 
     public void promoUp(){
-        promo = promo.next;
+        groupe = groupe.groupeSuivant;
     }
 
     public void promoDown(){
-        promo = promo.previous;
+        groupe = groupe.groupePrecedent;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public Promo getPromo() {
-        return promo;
+    public Groupe getPromo() {
+        return groupe;
     }
 
-    public void setPromo(Promo promo) {
-        this.promo = promo;
+    public void setPromo(Groupe groupe) {
+        this.groupe = groupe;
     }
 
-    public float getMoney() {
-        return money;
+    public float getArgent() {
+        return argent;
     }
 
-    public void setMoney(float money) {
-        this.money = money;
+    public void setArgent(float argent) {
+        this.argent = argent;
     }
 }

@@ -4,30 +4,33 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Defines a set of type
- * For example the Categorie "Hot dish" could contains the Types "Pizza" and "PlatPicard"
+ * Decrit une categorie de type.
+ * Une categorie permet de regrouper plusieurs types selon la volonte de l'utilisateur.
+ * Un type peut appartenir a plusieurs categorie.
+ * Les categories sont utilisees dans la creation de menus.
+ * Par exemple la categorie Plat_chaud pourrait regrouper les types Pizza et Picard
  */
 public class Categorie {
 
-    String name;
+    String nom;
     Image image;
 
-    ArrayList<Type> linkedTypeList;
+    ArrayList<Type> typeListe;
 
-    public static ArrayList<Categorie> categorieArrayList = new ArrayList<>();
+    public static ArrayList<Categorie> categorieListe = new ArrayList<>();
 
     /**
-     * Create a new categorie
-     * @param pName his name
-     * @param pLinkedTypeList
+     * Cree une nouvelle categorie
+     * @param pNom son nom
+     * @param pTypeLieListe la liste de ses types
      */
-    public Categorie(String pName, ArrayList<Type> pLinkedTypeList){
-        name = pName;
-        linkedTypeList = pLinkedTypeList;
+    public Categorie(String pNom, ArrayList<Type> pTypeLieListe){
+        nom = pNom;
+        typeListe = pTypeLieListe;
     }
 
     @Override
     public String toString() {
-        return name;
+        return nom;
     }
 }

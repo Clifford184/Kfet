@@ -3,6 +3,7 @@ module Kfet {
     requires javafx.controls;
     requires java.desktop;
     requires javafx.fxml;
+    requires java.logging;
 
     opens application to javafx.fxml;
     exports application;
