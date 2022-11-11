@@ -1,7 +1,8 @@
-package application.Model;
+package application.model;
 
-import application.Model.Soldable.Produit;
+import application.model.vendable.Produit;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,14 +10,14 @@ import java.util.HashMap;
  * Permet de gerer le nombre de chaque produit disponible a la vente.
  * Gestion du stock en temps reel.
  */
-public class Stock {
+public class Stock implements Serializable {
 
     HashMap<Produit, Integer> stock;
 
     static Stock singleton;
 
     private void Stock(){
-
+        stock = new HashMap<>();
     }
 
     /**

@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.Model.Commande;
+import application.model.Commande;
 
 public class OrderViewerController {
 

@@ -1,9 +1,9 @@
 package application.controller;
 
-import application.Model.Panier;
-import application.Model.Commande;
-import application.Model.Soldable.Offre;
-import application.Model.Soldable.Type;
+import application.model.Panier;
+import application.model.Commande;
+import application.model.vendable.Offre;
+import application.model.vendable.Type;
 
 public class TakeOrderController {
 

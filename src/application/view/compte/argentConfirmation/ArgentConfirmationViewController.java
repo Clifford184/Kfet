@@ -1,7 +1,7 @@
 package application.view.compte.argentConfirmation;
 
 
-import application.Model.Client.Client;
+import application.model.client.Client;
 import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

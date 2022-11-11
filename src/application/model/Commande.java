@@ -1,12 +1,14 @@
-package application.Model;
+package application.model;
 
-import application.Model.Client.Client;
+import application.model.client.Client;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Decrit une commande qui a ete passee sur l'application
  */
-public class Commande {
+public class Commande implements Serializable {
 
     LocalDateTime date;
     Client client;

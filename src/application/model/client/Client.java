@@ -1,9 +1,11 @@
-package application.Model.Client;
+package application.model.client;
+
+import java.io.Serializable;
 
 /**
  * Decrit un client possedant un compte dans l'application
  */
-public class Client {
+public class Client implements Serializable {
 
     String nom;
     String prenom;

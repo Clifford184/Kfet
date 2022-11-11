@@ -1,5 +1,6 @@
-package application.Model.Client;
+package application.model.client;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -10,7 +11,7 @@ import java.util.Comparator;
  * afin d'avoir la possibilite de faire passer tous les etudiants
  * d'un groupe a l'autre (passage a l'annee suivante par exemple)
  */
-public class Groupe {
+public class Groupe implements Serializable {
 
     String nom;
 

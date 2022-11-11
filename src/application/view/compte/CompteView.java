@@ -1,11 +1,8 @@
 package application.view.compte;
 
-import application.Model.Client.Client;
 import application.controller.Observable;
 import application.controller.compte.CompteController;
-import application.controller.methodePayement.MethodePayementController;
 import application.view.View;
-import application.view.compte.argentConfirmation.ArgentConfirmationView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

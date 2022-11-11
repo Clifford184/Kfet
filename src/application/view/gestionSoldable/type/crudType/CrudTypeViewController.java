@@ -1,6 +1,6 @@
 package application.view.gestionSoldable.type.crudType;
 
-import application.Model.Soldable.Categorie;
+import application.model.vendable.Categorie;
 import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

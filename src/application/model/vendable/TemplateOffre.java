@@ -1,6 +1,12 @@
-package application.Model.Soldable;
+package application.model.vendable;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Permet de definir les offres qui sont disponibles
@@ -12,13 +18,16 @@ import java.util.ArrayList;
  * categorieListe.get(0) = plat_chaud -> la categorie plat_chaud decrit les types picard et pizza
  * categorieListe.get(1) = supplement -> la categorie supplement decrit les types snack et boisson
  */
-public class TemplateOffre {
+public class TemplateOffre implements Serializable {
 
     ArrayList<Categorie> categorieListe;
     String nom;
     float prixVente;
 
     ArrayList<Produit> blackList;
+
+    String cheminImage;
+    transient BufferedImage image;
 
     public static ArrayList<TemplateOffre> templateOffreListe = new ArrayList<>();
 
@@ -33,13 +42,23 @@ public class TemplateOffre {
      * @param pPrixVente son prix de vente
      * @param pCategorieListe la liste de categorie le constituant
      * @param pBlacklist la liste des produits non compatibles avec cet offre
+     * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
     public TemplateOffre(String pNom, float pPrixVente, ArrayList<Categorie> pCategorieListe,
-                         ArrayList<Produit> pBlacklist){
+                         ArrayList<Produit> pBlacklist, String pCheminImage) throws IOException {
         nom = pNom;
         prixVente = pPrixVente;
         categorieListe = pCategorieListe;
         blackList = pBlacklist;
+
+        if(pCheminImage==null){  //Utilisation de l'image par defaut.
+            cheminImage = "asset/image/offre/imageParDefaut.png";
+        }else{
+            cheminImage = "asset/image/offre/"+nom+"-"+ UUID.randomUUID().toString()+".png";
+
+            image = ImageIO.read(new File(pCheminImage));
+            ImageIO.write(image, "png", new File(cheminImage));
+        }
     }
 
     public String getNom() {

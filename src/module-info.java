@@ -9,12 +9,12 @@ module Kfet {
     exports application;
 
     //model
-    exports application.Model to javafx.fxml;
-    opens application.Model;
-    exports application.Model.Client to javafx.fxml;
-    opens application.Model.Client;
-    exports application.Model.Soldable to javafx.fxml;
-    opens application.Model.Soldable;
+    exports application.model to javafx.fxml;
+    opens application.model;
+    exports application.model.client to javafx.fxml;
+    opens application.model.client;
+    exports application.model.vendable to javafx.fxml;
+    opens application.model.vendable;
 
     //view
     exports application.view to javafx.fxml;

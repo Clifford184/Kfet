@@ -1,6 +1,7 @@
-package application.Model.Soldable;
+package application.model.vendable;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,10 +11,9 @@ import java.util.ArrayList;
  * Les categories sont utilisees dans la creation de menus.
  * Par exemple la categorie Plat_chaud pourrait regrouper les types Pizza et Picard
  */
-public class Categorie {
+public class Categorie implements Serializable {
 
     String nom;
-    Image image;
 
     ArrayList<Type> typeListe;
 
@@ -22,15 +22,19 @@ public class Categorie {
     /**
      * Cree une nouvelle categorie
      * @param pNom son nom
-     * @param pTypeLieListe la liste de ses types
      */
-    public Categorie(String pNom, ArrayList<Type> pTypeLieListe){
+    public Categorie(String pNom){
         nom = pNom;
-        typeListe = pTypeLieListe;
+        typeListe = new ArrayList<>();
+    }
+
+    public ArrayList<Type> getTypeListe(){
+        return typeListe;
     }
 
     @Override
     public String toString() {
         return nom;
     }
+
 }

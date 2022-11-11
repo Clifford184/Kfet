@@ -1,7 +1,7 @@
 package application.controller;
 
-import application.Model.Client.Client;
-import application.Model.Client.Groupe;
+import application.model.client.Client;
+import application.model.client.Groupe;
 
 import java.util.ArrayList;
 

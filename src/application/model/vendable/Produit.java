@@ -1,13 +1,14 @@
-package application.Model.Soldable;
+package application.model.vendable;
 
-import application.Model.Stock;
+import application.model.Stock;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Decrit un produit qui est propose a la vente
  */
-public class Produit extends Vendable {
+public class Produit extends Vendable implements Serializable {
 
     Type type;
     boolean enStock;
@@ -18,10 +19,11 @@ public class Produit extends Vendable {
      * @param pPrixAchat son prix d'achat
      * @param pPrixVente son prix de vente
      * @param pType son type
+     * @param pCheminImage le chemin de son image
      * @throws IOException
      */
-    public Produit(String pNom, float pPrixAchat, float pPrixVente, Type pType) throws IOException {
-        super(pNom, pPrixAchat, pPrixVente);
+    public Produit(String pNom, float pPrixAchat, float pPrixVente, Type pType, String pCheminImage) throws IOException {
+        super(pNom, pPrixAchat, pPrixVente, pCheminImage);
         type = pType;
         Stock.getInstance().ajouterNouveauProduit(this);
     }

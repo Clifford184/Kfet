@@ -1,14 +1,15 @@
-package application.Model;
+package application.model;
 
 
-import application.Model.Soldable.Vendable;
+import application.model.vendable.Vendable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Decrit le panier d'une commande
  */
-public class Panier {
+public class Panier implements Serializable {
 
     ArrayList<Vendable> vendableListe;
 

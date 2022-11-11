@@ -1,7 +1,7 @@
 package application.view.compte;
 
-import application.Model.Client.Client;
-import application.Model.Client.Groupe;
+import application.model.client.Client;
+import application.model.client.Groupe;
 import application.view.ViewController;
 import application.view.compte.argentConfirmation.ArgentConfirmationView;
 import javafx.animation.TranslateTransition;

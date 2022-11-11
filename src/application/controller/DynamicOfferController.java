@@ -1,8 +1,8 @@
 package application.controller;
 
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.TemplateOffre;
-import application.Model.Soldable.Produit;
+import application.model.vendable.Categorie;
+import application.model.vendable.TemplateOffre;
+import application.model.vendable.Produit;
 
 import java.util.ArrayList;
 
