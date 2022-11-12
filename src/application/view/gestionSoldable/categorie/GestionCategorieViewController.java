@@ -1,19 +1,24 @@
 package application.view.gestionSoldable.categorie;
 
+import application.Model.Soldable.Categorie;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
 import application.view.gestionSoldable.produit.crudProduit.CrudProduitView;
 import application.view.gestionSoldable.type.crudType.CrudTypeView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 public class GestionCategorieViewController extends ViewController {
 
@@ -24,10 +29,7 @@ public class GestionCategorieViewController extends ViewController {
     private AnchorPane sliderMenu;
 
     @FXML
-    private TabPane tablePromo;
-
-    @FXML
-    private ImageView ajouter;
+    private ListView<Categorie> listeCategorie;
 
     @FXML
     private Label titre;
@@ -65,12 +67,12 @@ public class GestionCategorieViewController extends ViewController {
 
     public void ajouterCategorie() throws Exception {
         CrudCategorieView crudCategorieView = new CrudCategorieView();
-        getView().changerScene(crudCategorieView,true);
+        getView().changerScene(crudCategorieView);
     }
 
     public void redirectionPriseCommande() throws Exception {
         PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView,false);
+        getView().changerScene(priseCommandeView);
     }
 
     public GestionCategorieViewController(){}
@@ -81,5 +83,13 @@ public class GestionCategorieViewController extends ViewController {
 
     public BorderPane getViewGestionCategorie() {
         return viewGestionCategorie;
+    }
+
+    public ListView<Categorie> getListeCategorie() {
+        return listeCategorie;
+    }
+
+    public void setListeCategorie(ArrayList<Categorie> listeCategorie) {
+        this.listeCategorie.getItems().setAll(listeCategorie);
     }
 }

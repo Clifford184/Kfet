@@ -1,5 +1,6 @@
 package application.view.gestionSoldable.categorie;
 
+import application.Model.Soldable.Categorie;
 import application.controller.Observable;
 import application.controller.gestionSoldable.categorie.GestionCategorieController;
 import application.view.View;
@@ -53,17 +54,24 @@ public class GestionCategorieView extends View {
 
 
     @Override
-    public void update(Observable observable, String[] messages) {}
-
-    public void changerScene(View view, boolean nouvelleFenetre)  {
+    public void update(Observable observable, String[] messages) {
         try {
-            Stage stage;
-            if(nouvelleFenetre){
-                stage = new Stage();
+            for (String message : messages) {
+                switch (message) {
+                    case "categorie" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setListeCategorie(Categorie.getCategorieArrayList());
+                    }
+                }
             }
-            else {
-                stage = (Stage) getViewController().getViewGestionCategorie().getScene().getWindow();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changerScene(View view)  {
+        try {
+            Stage stage = (Stage) getViewController().getViewGestionCategorie().getScene().getWindow();
             view.start(stage);
         }
         catch (Exception e){

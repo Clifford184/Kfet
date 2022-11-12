@@ -1,5 +1,6 @@
 package application.view.gestionSoldable.type.crudType;
 
+import application.Model.Soldable.Categorie;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.CrudTypeController;
 import application.view.View;
@@ -51,12 +52,31 @@ public class CrudTypeView extends View {
         stage.show();
     }
 
-    public void changerScene() throws Exception {
-
+    public void changerScene(View view) {
+        try {
+            Stage stage = (Stage) getViewController().getViewCrudType().getScene().getWindow();
+            view.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "categorie" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setListeCategorie(Categorie.getCategorieArrayList());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void close() {
         Stage stage = (Stage)  getViewController().getNomType().getScene().getWindow();

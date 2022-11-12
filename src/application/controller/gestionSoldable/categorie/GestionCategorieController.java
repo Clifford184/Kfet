@@ -1,5 +1,6 @@
 package application.controller.gestionSoldable.categorie;
 
+import application.Model.Soldable.Categorie;
 import application.controller.Controller;
 
 public class GestionCategorieController extends Controller {
@@ -8,5 +9,8 @@ public class GestionCategorieController extends Controller {
      * methode d'initialisation du controller
      */
     @Override
-    public void initialize() {}
+    public void initialize() {
+        String[] messages = {"categorie"};
+        notifyObservers(messages);
+    }
 }

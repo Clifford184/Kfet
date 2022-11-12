@@ -10,7 +10,7 @@ public class Type {
     String name;
     Categorie categorie;
 
-    public static ArrayList<Type> typeList = new ArrayList<>();
+    private static ArrayList<Type> typeList = new ArrayList<>();
 
     /**
      * Creates a new type
@@ -35,4 +35,12 @@ public class Type {
         typeList.remove(pType);
     }
 
+    public static ArrayList<Type> getTypeList() {
+        return typeList;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

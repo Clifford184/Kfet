@@ -14,7 +14,7 @@ public class Categorie {
 
     ArrayList<Type> linkedTypeList;
 
-    public static ArrayList<Categorie> categorieArrayList = new ArrayList<>();
+    private static ArrayList<Categorie> categorieArrayList = new ArrayList<>();
 
     /**
      * Create a new categorie
@@ -24,6 +24,11 @@ public class Categorie {
     public Categorie(String pName, ArrayList<Type> pLinkedTypeList){
         name = pName;
         linkedTypeList = pLinkedTypeList;
+        categorieArrayList.add(this);
+    }
+
+    public static ArrayList<Categorie> getCategorieArrayList() {
+        return categorieArrayList;
     }
 
     @Override

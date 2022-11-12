@@ -2,34 +2,33 @@ package application.view.gestionSoldable.type.crudType;
 
 import application.Model.Soldable.Categorie;
 import application.view.ViewController;
+import application.view.gestionSoldable.categorie.GestionCategorieView;
+import application.view.gestionSoldable.type.GestionTypeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 public class CrudTypeViewController extends ViewController {
 
     @FXML
-    private ComboBox<Categorie> categorie;
+    private AnchorPane viewCrudType;
+    @FXML
+    private ComboBox<Categorie> listeCategorie;
 
     @FXML
     private TextField nomType;
 
     public void annuler(){
-        getView().close();
+        GestionTypeView gestionTypeView = new GestionTypeView();
+        getView().changerScene(gestionTypeView);
     }
 
     public void valider(){
-        // TODO Gerer les exceptions + ou mettre le new produit
-//        try {
-//            float pAchat = Float.parseFloat(prixAchat.getText());
-//            float pVente = Float.parseFloat(prixVente.getText());
-//            Product newProduit = new Product(nomProduit.getText(),pAchat, pVente,type.getValue());
-//
-//            getView().close();
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
+        getView().getController().creationType(nomType.getText(), listeCategorie.getValue());
+        annuler();
     }
 
     public CrudTypeViewController(){}
@@ -38,12 +37,12 @@ public class CrudTypeViewController extends ViewController {
         return (CrudTypeView) super.getView();
     }
 
-    public ComboBox<Categorie> getCategorie() {
-        return categorie;
+    public ComboBox<Categorie> getListeCategorie() {
+        return listeCategorie;
     }
 
-    public void setCategorie(ComboBox<Categorie> categorie) {
-        this.categorie = categorie;
+    public void setListeCategorie(ArrayList<Categorie> listeCategorie) {
+        this.listeCategorie.getItems().setAll(listeCategorie);
     }
 
     public TextField getNomType() {
@@ -52,5 +51,9 @@ public class CrudTypeViewController extends ViewController {
 
     public void setNomType(TextField nomType) {
         this.nomType = nomType;
+    }
+
+    public AnchorPane getViewCrudType() {
+        return viewCrudType;
     }
 }

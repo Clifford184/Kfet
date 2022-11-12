@@ -1,5 +1,7 @@
 package application.view.gestionSoldable.type;
 
+import application.Model.Soldable.Categorie;
+import application.Model.Soldable.Type;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.GestionTypeController;
 import application.view.View;
@@ -53,17 +55,29 @@ public class GestionTypeView extends View {
 
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "type" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setListeType(Type.getTypeList());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void changerScene(View view, boolean nouvelleFenetre) throws Exception {
-        Stage stage;
-        if(nouvelleFenetre){
-            stage = new Stage();
+    public void changerScene(View view)  {
+        try {
+            Stage stage = (Stage) getViewController().getViewGestionType().getScene().getWindow();
+            view.start(stage);
         }
-        else{
-            stage = (Stage) getViewController().getViewGestionType().getScene().getWindow();
+        catch (Exception e){
+            e.printStackTrace();
         }
-        view.start(stage);
     }
 
     @Override

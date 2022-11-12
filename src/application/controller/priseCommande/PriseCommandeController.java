@@ -14,16 +14,7 @@ public class PriseCommandeController extends Controller {
      */
     @Override
     public void initialize()  {
-        try {
-            // Création de type test pour la prise de commande
-            Categorie platChaud = new Categorie("plat chaud",null);
-            Type pizza = new Type("pizza", platChaud);
-
-            String[] messages = {"type"};
-            notifyObservers(messages);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        String[] messages = {"type"};
+        notifyObservers(messages);
     }
 }
