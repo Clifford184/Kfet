@@ -1,11 +1,11 @@
 package application.controller;
 
-import application.Model.Order;
+import application.model.Commande;
 
 public class OrderViewerController {
 
-    public void changeOrderState(Order pOrder, Order.State pState){
-        pOrder.setCurrentState(pState);
+    public void changeOrderState(Commande pCommande, Commande.State pState){
+        pCommande.setEtatActuel(pState);
     }
 
 }

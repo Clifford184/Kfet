@@ -1,19 +1,18 @@
 package application.controller;
 
-import application.Model.Cart;
-import application.Model.Order;
-import application.Model.Soldable.Offer;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Type;
+import application.model.Panier;
+import application.model.Commande;
+import application.model.vendable.Offre;
+import application.model.vendable.Type;
 
 public class TakeOrderController {
 
-    Cart cart;
-    Order order;
+    Panier panier;
+    Commande commande;
 
     public void startOrder(){
-        cart = new Cart();
-        order = new Order(cart);
+        panier = new Panier();
+        commande = new Commande(panier);
     }
 
     public void getTypeToShow(){
@@ -30,7 +29,7 @@ public class TakeOrderController {
 //        cart.getProductList().add(pProduct);
 //    }
 
-    public void addOffer(Offer pOffer){
+    public void addOffer(Offre pOffre){
         //Changement d'interface
         //l'interface pour les offer sera geree dynamiquement puisque seront creer par les administrateurs
     }

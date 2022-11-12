@@ -1,6 +1,6 @@
 package application.view.priseCommande;
 
-import application.Model.Soldable.Type;
+import application.model.vendable.Type;
 import application.view.compte.CompteView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.type.GestionTypeView;

@@ -1,10 +1,7 @@
 package application.controller.priseCommande;
 
-import application.Model.Cart;
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Soldable;
-import application.Model.Soldable.Type;
+import application.model.vendable.Categorie;
+import application.model.vendable.Type;
 import application.controller.Controller;
 
 public class PriseCommandeController extends Controller {

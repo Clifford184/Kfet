@@ -1,8 +1,8 @@
 package application.view.gestionSoldable.produit.crudProduit;
 
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Type;
+import application.model.vendable.Categorie;
+import application.model.vendable.Produit;
+import application.model.vendable.Type;
 import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -36,7 +36,7 @@ public class CrudProduitViewController extends ViewController {
         try {
             float pAchat = Float.parseFloat(prixAchat.getText());
             float pVente = Float.parseFloat(prixVente.getText());
-            Product newProduit = new Product(nomProduit.getText(),pAchat, pVente,type.getValue());
+            Produit newProduit = new Produit(nomProduit.getText(),pAchat, pVente,type.getValue(),"");
 
             getView().close();
         }

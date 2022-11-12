@@ -1,10 +1,9 @@
 package application.view.compte;
 
-import application.Model.Client.Client;
-import application.Model.Client.Promo;
+import application.model.client.Client;
+import application.model.client.Groupe;
 import application.view.ViewController;
 import application.view.compte.argentConfirmation.ArgentConfirmationView;
-import application.view.methodePayement.MethodePayementView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,7 +65,7 @@ public class CompteViewController extends ViewController {
         String[] listeEntete = {"name","firstname","money"};
         String[] aurelien = {"DaFonseca","Aurelien","4"};
         String[] charles = {"Caillon","Charles","8"};
-        Promo di3 = new Promo("DI3"); //TODO créer une arrayList de promo
+        Groupe di3 = new Groupe("DI3"); //TODO créer une arrayList de promo
         Client cl1 = new Client("Jean","Bon",di3);
         Client cl2 = new Client("jh","ok",di3);
 

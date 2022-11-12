@@ -1,26 +1,25 @@
 package application.controller;
 
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.OfferTemplate;
-import application.Model.Soldable.Product;
-import application.Model.Soldable.Type;
+import application.model.vendable.Categorie;
+import application.model.vendable.TemplateOffre;
+import application.model.vendable.Produit;
 
 import java.util.ArrayList;
 
 public class DynamicOfferController {
 
-    OfferTemplate offerTemplate;
+    TemplateOffre templateOffre;
     int currentStep;
 
-    ArrayList<Product> productChoosenList = new ArrayList<>();
+    ArrayList<Produit> produitChoosenList = new ArrayList<>();
 
     public DynamicOfferController(){
 
     }
 
-    public void start(OfferTemplate pOfferTemplate){
+    public void start(TemplateOffre pTemplateOffre){
         currentStep = -1;
-        offerTemplate = pOfferTemplate;
+        templateOffre = pTemplateOffre;
         nextStep();
     }
 
@@ -34,7 +33,7 @@ public class DynamicOfferController {
 
     public void nextStep(){
         currentStep++;
-        if(currentStep >= offerTemplate.getCategorieList().size()){
+        if(currentStep >= templateOffre.getCategorieListe().size()){
             end();
         }
         // TODO methode existe pas dans type ??
