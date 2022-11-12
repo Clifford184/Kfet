@@ -1,8 +1,8 @@
 package application.view.gestionSoldable.categorie;
 
-import application.Model.Soldable.Categorie;
 import application.controller.Observable;
 import application.controller.gestionSoldable.categorie.GestionCategorieController;
+import application.model.vendable.Categorie;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,7 +60,7 @@ public class GestionCategorieView extends View {
                 switch (message) {
                     case "categorie" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().setListeCategorie(Categorie.getCategorieArrayList());
+                        getViewController().setListeCategorie(Categorie.getCategorieListe());
                     }
                 }
             }

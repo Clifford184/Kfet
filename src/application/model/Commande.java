@@ -1,6 +1,6 @@
 package application.model;
 
-import application.model.client.Client;
+import application.model.Client.Client;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

@@ -22,7 +22,7 @@ public class Type implements Serializable {
     String cheminImage;
     transient BufferedImage image;
 
-    public static ArrayList<Type> typeListe = new ArrayList<>();
+    private static ArrayList<Type> typeListe = new ArrayList<>();
 
     /**
      * Cree un nouveau type
@@ -46,6 +46,12 @@ public class Type implements Serializable {
         }
     }
 
+    public Type(String pNom, Categorie pCategorie) {
+        nom = pNom;
+        categorie = pCategorie;
+        typeListe.add(this);
+    }
+
     public ArrayList<Produit> getProduitListe() {
         return produitListe;
     }
@@ -60,6 +66,15 @@ public class Type implements Serializable {
 
     public static void deleteType(Type pType){
         typeListe.remove(pType);
+    }
+
+    public static ArrayList<Type> getTypeListe() {
+        return typeListe;
+    }
+
+    @Override
+    public String toString() {
+        return nom;
     }
 
 }

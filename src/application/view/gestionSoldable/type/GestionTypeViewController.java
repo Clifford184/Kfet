@@ -1,6 +1,6 @@
 package application.view.gestionSoldable.type;
 
-import application.Model.Soldable.Type;
+import application.model.vendable.Type;
 import application.view.ViewController;
 import application.view.gestionSoldable.type.crudType.CrudTypeView;
 import application.view.priseCommande.PriseCommandeView;
@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;

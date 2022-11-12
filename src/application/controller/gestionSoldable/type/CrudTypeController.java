@@ -1,9 +1,8 @@
 package application.controller.gestionSoldable.type;
 
-
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.Type;
 import application.controller.Controller;
+import application.model.vendable.Categorie;
+import application.model.vendable.Type;
 
 public class CrudTypeController extends Controller {
 

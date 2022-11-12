@@ -11,8 +11,8 @@ module Kfet {
     //model
     exports application.model to javafx.fxml;
     opens application.model;
-    exports application.model.client to javafx.fxml;
-    opens application.model.client;
+    exports application.model.Client to javafx.fxml;
+    opens application.model.Client;
     exports application.model.vendable to javafx.fxml;
     opens application.model.vendable;
 

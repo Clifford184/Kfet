@@ -1,8 +1,8 @@
 package application.view.gestionSoldable.type.crudType;
 
-import application.Model.Soldable.Categorie;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.CrudTypeController;
+import application.model.vendable.Categorie;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -69,7 +69,7 @@ public class CrudTypeView extends View {
                 switch (message) {
                     case "categorie" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().setListeCategorie(Categorie.getCategorieArrayList());
+                        getViewController().setListeCategorie(Categorie.getCategorieListe());
                     }
                 }
             }

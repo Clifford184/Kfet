@@ -109,7 +109,7 @@ public class PriseCommandeViewController extends ViewController {
      * methode de création de case pour chaque type existant
      */
     public void initializeType() {
-        for (Type type : Type.getTypeList()) {
+        for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
             Label label = new Label();
             label.setText(type.getName());

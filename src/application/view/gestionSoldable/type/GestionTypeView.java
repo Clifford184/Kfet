@@ -1,9 +1,8 @@
 package application.view.gestionSoldable.type;
 
-import application.Model.Soldable.Categorie;
-import application.Model.Soldable.Type;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.GestionTypeController;
+import application.model.vendable.Type;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -61,7 +60,7 @@ public class GestionTypeView extends View {
                 switch (message) {
                     case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().setListeType(Type.getTypeList());
+                        getViewController().setListeType(Type.getTypeListe());
                     }
                 }
             }

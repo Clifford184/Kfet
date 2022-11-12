@@ -17,7 +17,7 @@ public class Categorie implements Serializable {
 
     ArrayList<Type> typeListe;
 
-    public static ArrayList<Categorie> categorieListe = new ArrayList<>();
+    private static ArrayList<Categorie> categorieListe = new ArrayList<>();
 
     /**
      * Cree une nouvelle categorie
@@ -26,10 +26,15 @@ public class Categorie implements Serializable {
     public Categorie(String pNom){
         nom = pNom;
         typeListe = new ArrayList<>();
+        categorieListe.add(this);
     }
 
     public ArrayList<Type> getTypeListe(){
         return typeListe;
+    }
+
+    public static ArrayList<Categorie> getCategorieListe() {
+        return categorieListe;
     }
 
     @Override

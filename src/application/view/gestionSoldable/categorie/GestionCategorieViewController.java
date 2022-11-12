@@ -1,19 +1,13 @@
 package application.view.gestionSoldable.categorie;
 
-import application.Model.Soldable.Categorie;
+import application.model.vendable.Categorie;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
-import application.view.gestionSoldable.produit.crudProduit.CrudProduitView;
-import application.view.gestionSoldable.type.crudType.CrudTypeView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;

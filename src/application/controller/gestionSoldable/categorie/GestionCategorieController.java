@@ -1,6 +1,5 @@
 package application.controller.gestionSoldable.categorie;
 
-import application.Model.Soldable.Categorie;
 import application.controller.Controller;
 
 public class GestionCategorieController extends Controller {
