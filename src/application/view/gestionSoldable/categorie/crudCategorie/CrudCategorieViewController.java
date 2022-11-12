@@ -6,7 +6,10 @@ import application.view.gestionSoldable.categorie.GestionCategorieView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class CrudCategorieViewController extends ViewController {
 

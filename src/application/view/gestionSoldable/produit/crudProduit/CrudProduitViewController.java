@@ -4,19 +4,24 @@ import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.ViewController;
+import application.view.gestionSoldable.produit.GestionProduitView;
+import application.view.gestionSoldable.type.GestionTypeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CrudProduitViewController extends ViewController {
 
     @FXML
-    private ComboBox<Categorie> categorie;
+    private AnchorPane viewCrudProduit;
 
     @FXML
-    private ComboBox<Type> type;
+    private ComboBox<Type> listeType;
 
     @FXML
     private TextField nomProduit;
@@ -27,18 +32,33 @@ public class CrudProduitViewController extends ViewController {
     @FXML
     private TextField prixVente;
 
+    private String image;
+
+
+    @FXML
+    public void ChoisirImage() {
+        final FileChooser selecteurDeFichier = new FileChooser();
+        selecteurDeFichier.setTitle("choisir une image");
+        File fichier = selecteurDeFichier.showOpenDialog(null);
+        image = fichier.getPath();
+    }
+
     public void annuler(){
-        getView().close();
+        GestionProduitView gestionProduitView = new GestionProduitView();
+        getView().changerScene(gestionProduitView);
     }
 
     public void valider(){
         // TODO Gerer les exceptions + ou mettre le new produit
         try {
-            float pAchat = Float.parseFloat(prixAchat.getText());
-            float pVente = Float.parseFloat(prixVente.getText());
-            Produit newProduit = new Produit(nomProduit.getText(),pAchat, pVente,type.getValue(),"");
+            String nomProduit = this.nomProduit.getText();
+            float prixAchatProduit = Float.parseFloat(prixAchat.getText());
+            float prixVenteProduit = Float.parseFloat(prixVente.getText());
+            Type typeProduit = listeType.getValue();
+            String chemin = image;
+            getView().getController().creationProduit(nomProduit, prixAchatProduit, prixVenteProduit, typeProduit, chemin);
 
-            getView().close();
+            annuler();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -51,43 +71,15 @@ public class CrudProduitViewController extends ViewController {
         return (CrudProduitView) super.getView();
     }
 
-    public ComboBox<Categorie> getCategorie() {
-        return categorie;
+    public ComboBox<Type> getListeType() {
+        return listeType;
     }
 
-    public void setCategorie(ArrayList<Categorie> categorie) {
-        this.categorie.getItems().setAll(categorie);
+    public void setListeType(ArrayList<Type> listeType) {
+        this.listeType.getItems().setAll(listeType);
     }
 
-    public ComboBox<Type> getType() {
-        return type;
-    }
-
-    public void setType(ArrayList<Type> type) {
-        this.type.getItems().setAll(type);
-    }
-
-    public TextField getNomProduit() {
-        return nomProduit;
-    }
-
-    public void setNomProduit(TextField nomProduit) {
-        this.nomProduit = nomProduit;
-    }
-
-    public TextField getPrixAchat() {
-        return prixAchat;
-    }
-
-    public void setPrixAchat(TextField prixAchat) {
-        this.prixAchat = prixAchat;
-    }
-
-    public TextField getPrixVente() {
-        return prixVente;
-    }
-
-    public void setPrixVente(TextField prixVente) {
-        this.prixVente = prixVente;
+    public AnchorPane getViewCrudProduit() {
+        return viewCrudProduit;
     }
 }

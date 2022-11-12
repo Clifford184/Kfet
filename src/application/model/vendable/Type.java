@@ -37,19 +37,12 @@ public class Type implements Serializable {
         typeListe.add(this);
 
         if(pCheminImage==null){  //Utilisation de l'image par defaut.
-            cheminImage = "asset/image/type/imageParDefaut.png";
+            cheminImage = "src/ressource/image/type/imageParDefaut.png";
         }else{
-            cheminImage = "asset/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
-
+            cheminImage = "src/ressource/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
             image = ImageIO.read(new File(pCheminImage));
             ImageIO.write(image, "png", new File(cheminImage));
         }
-    }
-
-    public Type(String pNom, Categorie pCategorie) {
-        nom = pNom;
-        categorie = pCategorie;
-        typeListe.add(this);
     }
 
     public ArrayList<Produit> getProduitListe() {

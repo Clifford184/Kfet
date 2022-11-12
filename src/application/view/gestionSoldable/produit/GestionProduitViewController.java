@@ -1,5 +1,6 @@
 package application.view.gestionSoldable.produit;
 
+import application.model.vendable.Produit;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
 import application.view.gestionSoldable.type.crudType.CrudTypeView;
@@ -14,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 public class GestionProduitViewController extends ViewController {
 
     @FXML
@@ -23,7 +26,7 @@ public class GestionProduitViewController extends ViewController {
     private AnchorPane sliderMenu;
 
     @FXML
-    private TabPane tablePromo;
+    private ListView<Produit> listeProduit;
 
     @FXML
     private ImageView ajouter;
@@ -62,14 +65,14 @@ public class GestionProduitViewController extends ViewController {
         }
     }
 
-    public void ajouterProduit() throws Exception {
+    public void ajouterProduit() {
         CrudProduitView crudProduitView = new CrudProduitView();
-        getView().changerScene(crudProduitView,true);
+        getView().changerScene(crudProduitView);
     }
 
-    public void redirectionPriseCommande() throws Exception {
+    public void redirectionPriseCommande() {
         PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView,false);
+        getView().changerScene(priseCommandeView);
     }
 
     public GestionProduitViewController(){}
@@ -80,5 +83,13 @@ public class GestionProduitViewController extends ViewController {
 
     public BorderPane getViewGestionProduit() {
         return viewGestionProduit;
+    }
+
+    public ListView<Produit> getListeProduit() {
+        return listeProduit;
+    }
+
+    public void setListeProduit(ArrayList<Produit> listeProduit) {
+        this.listeProduit.getItems().setAll(listeProduit);
     }
 }

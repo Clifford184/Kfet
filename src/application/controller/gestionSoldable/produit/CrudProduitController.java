@@ -1,6 +1,7 @@
 package application.controller.gestionSoldable.produit;
 
 import application.model.vendable.Categorie;
+import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.controller.Controller;
 
@@ -8,34 +9,22 @@ import java.util.ArrayList;
 
 public class CrudProduitController extends Controller {
 
-    ArrayList<Type> listeType = new ArrayList<Type>();
-
     /**
      * methode d'initialisation du controller
      */
     @Override
     public void initialize() {
+        String[] messages = {"type"};
+        notifyObservers(messages);
+    }
+
+    public void creationProduit(String pNom, float pAchat, float pVente, Type pType, String pchemin){
         try {
-            Categorie platChaud = new Categorie("plat chaud");
-            Categorie snackcat = new Categorie("snack");
-            Categorie boissoncat = new Categorie("boisson");
-            Type pizza = new Type("pizza", platChaud,"");
-            Type snack = new Type("snack", snackcat,"");
-            Type boisson = new Type("boisson", boissoncat,"");
-
-            listeType.add(pizza);
-            listeType.add(snack);
-            listeType.add(boisson);
-
-            String[] messages = {"type"};
-            notifyObservers(messages);
+            new Produit(pNom, pAchat, pVente, pType, pchemin);
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
-
-    public ArrayList<Type> getListeType() {
-        return listeType;
-    }
 }
+

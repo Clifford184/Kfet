@@ -5,6 +5,7 @@ import application.model.vendable.Produit;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Permet de gerer le nombre de chaque produit disponible a la vente.
@@ -12,13 +13,13 @@ import java.util.HashMap;
  */
 public class Stock implements Serializable {
 
-    HashMap<Produit, Integer> stock;
+    private HashMap<Produit, Integer> stock = new HashMap<>();
 
     static Stock singleton;
 
-    private void Stock(){
-        stock = new HashMap<>();
-    }
+//    private void Stock(){
+//        stock = new HashMap<>();
+//    }
 
     /**
      * Ajoute un nouveau produit disponible a la vente
@@ -80,6 +81,13 @@ public class Stock implements Serializable {
         Integer nombre = stock.get(pProduit);
         nombre += pNombre;
         stock.put(pProduit, nombre);
+    }
+
+    public ArrayList<Produit> afficherListeProduit(){
+        Set<Produit> set =  stock.keySet();
+        ArrayList<Produit> listeProduit = new ArrayList<>();
+        listeProduit.addAll(set);
+        return listeProduit;
     }
 
     /**

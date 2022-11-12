@@ -8,5 +8,8 @@ public class GestionProduitController extends Controller {
      * methode d'initialisation du controller
      */
     @Override
-    public void initialize() {}
+    public void initialize() {
+        String[] messages = {"produit"};
+        notifyObservers(messages);
+    }
 }

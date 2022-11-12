@@ -2,6 +2,8 @@ package application.view.gestionSoldable.produit;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.GestionProduitController;
+import application.model.Stock;
+import application.model.vendable.Type;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,17 +55,28 @@ public class GestionProduitView extends View {
 
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "produit" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setListeProduit(Stock.getInstance().afficherListeProduit());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void changerScene(View view, boolean nouvelleFenetre) throws Exception {
-        Stage stage;
-        if(nouvelleFenetre){
-            stage = new Stage();
+    public void changerScene(View view) {
+        try {
+            Stage stage = (Stage) getViewController().getViewGestionProduit().getScene().getWindow();
+            view.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else{
-            stage = (Stage) getViewController().getViewGestionProduit().getScene().getWindow();
-        }
-        view.start(stage);
     }
 
     @Override

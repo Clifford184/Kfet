@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CrudTypeViewController extends ViewController {
@@ -17,9 +19,18 @@ public class CrudTypeViewController extends ViewController {
     private AnchorPane viewCrudType;
     @FXML
     private ComboBox<Categorie> listeCategorie;
-
     @FXML
     private TextField nomType;
+
+    private String image;
+
+    @FXML
+    public void ChoisirImage() {
+        final FileChooser selecteurDeFichier = new FileChooser();
+        selecteurDeFichier.setTitle("choisir une image");
+        File fichier = selecteurDeFichier.showOpenDialog(null);
+        image = fichier.getPath();
+    }
 
     public void annuler(){
         GestionTypeView gestionTypeView = new GestionTypeView();
@@ -27,7 +38,7 @@ public class CrudTypeViewController extends ViewController {
     }
 
     public void valider(){
-        getView().getController().creationType(nomType.getText(), listeCategorie.getValue());
+        getView().getController().creationType(nomType.getText(), listeCategorie.getValue(), image);
         annuler();
     }
 

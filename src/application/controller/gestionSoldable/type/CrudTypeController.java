@@ -12,7 +12,12 @@ public class CrudTypeController extends Controller {
         notifyObservers(messages);
     }
 
-    public void creationType(String pNewType, Categorie pCategorie){
-        new Type(pNewType, pCategorie);
+    public void creationType(String pNewType, Categorie pCategorie, String pChemin){
+        try {
+            new Type(pNewType, pCategorie, pChemin);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

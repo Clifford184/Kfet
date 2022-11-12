@@ -88,7 +88,7 @@
                   <HBox layoutX="138.0" layoutY="66.0" prefHeight="25.0" prefWidth="72.0" />
                   <ImageView fx:id="payementIcone" fitHeight="38.0" fitWidth="36.0" layoutX="298.0" layoutY="61.0" onMouseClicked="#redirectionMethodePayement" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/valide.png" />
+                        <Image url="@../image/icone/valide.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="112.0" layoutY="17.0" text="Plat1" />
@@ -97,7 +97,7 @@
             </AnchorPane>
             <ImageView fitHeight="35.0" fitWidth="32.0" layoutX="55.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/panier.png" />
+                  <Image url="@../image/icone/panier.png" />
                </image>
             </ImageView>
             <Label layoutX="101.0" layoutY="144.0" text="Panier" />

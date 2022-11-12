@@ -48,4 +48,9 @@ public class Produit extends Vendable implements Serializable {
     public boolean estEnStock() {
         return enStock;
     }
+
+    @Override
+    public String toString() {
+        return nom;
+    }
 }
