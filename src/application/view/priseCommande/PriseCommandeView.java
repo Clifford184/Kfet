@@ -26,7 +26,7 @@ public class PriseCommandeView extends View {
             setController(new PriseCommandeController());
         }
         getController().initialize();
-        getViewController().initialize();
+        getViewController().initialisationMenu();
     }
 
     /**
@@ -78,7 +78,11 @@ public class PriseCommandeView extends View {
                 switch (message) {
                     case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().initializeType();
+                        getViewController().InitialisationType();
+                    }
+                    case "panier" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setArticlePanier(getController().getPanier());
                     }
                 }
             }

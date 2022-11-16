@@ -29,7 +29,7 @@
          <children>
             <VBox layoutY="46.0" prefHeight="270.0" prefWidth="118.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Service">
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionPriseCommande" prefHeight="25.0" prefWidth="203.0" text="Service">
                      <VBox.margin>
                         <Insets bottom="25.0" />
                      </VBox.margin>

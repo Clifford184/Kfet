@@ -1,8 +1,13 @@
 package application.view.priseCommande;
 
+import application.model.Commande;
+import application.model.Panier;
+import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.model.vendable.Vendable;
 import application.view.compte.CompteView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
+import application.view.gestionSoldable.offre.GestionOffreView;
 import application.view.gestionSoldable.type.GestionTypeView;
 import application.view.methodePayement.MethodePayementView;
 import application.view.gestionSoldable.produit.GestionProduitView;
@@ -12,12 +17,12 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import application.view.ViewController;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PriseCommandeViewController extends ViewController {
@@ -35,7 +40,7 @@ public class PriseCommandeViewController extends ViewController {
     private HBox zoneAffichageType;
 
     @FXML
-    private ImageView payementIcone;
+    private VBox panierVBox;
 
     /**
      * methode pour animation du menu
@@ -98,7 +103,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode qui permet de cacher les slider a l'initialisation de la page
      */
-    public void initialize() {
+    public void initialisationMenu() {
         sliderMenu.setVisible(false);
         sliderMenu.setTranslateX(-176);
         sliderPanier.setVisible(false);
@@ -108,59 +113,36 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void initializeType() {
+    public void InitialisationType() {
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
             Label label = new Label();
             label.setText(type.getName());
             pane.getChildren().add(label);
-            // pane.setOnMouseClicked(event -> choixPlat() );
+            pane.setOnMouseClicked(event -> AffichagePlatType(type) );
             pane.setPadding(new Insets(50, 50, 50, 50));
             zoneAffichageType.getChildren().add(pane);
         }
     }
 
-//    public void choixPlat() {
-//        box1.getChildren().clear();
-//        String[] listePlat = {"plat + 1 article","plat + 2 articles","petit déjeuner","goûter"};
-//        //String[] listePlat = {"Pizza Chèvre","Pizza Kebab","Pizza Bolognaise","Pizza Royal","Pizza 3 fromages", "Pizza Chorizo"};
-//        for(int i = 0; i<listePlat.length; i++) {
-//            Pane pane = new Pane();
-//            Label label = new Label();
-//            label.setText(listePlat[i]);
-//            pane.getChildren().add(label);
-//            pane.setOnMouseClicked(event -> selectionMenu1() );
-//            pane.setPadding( new Insets(50,50,50,50));
-//            box1.getChildren().add(pane);
-//        }
-//    }
-//
-//    public void selectionMenu1() {
-//        box1.getChildren().clear();
-//        String[] listePlat = {"Picard", "Pizza"};
-//        for(int i = 0; i<listePlat.length; i++) {
-//            Pane pane = new Pane();
-//            Label label = new Label();
-//            label.setText(listePlat[i]);
-//            pane.getChildren().add(label);
-//            pane.setOnMouseClicked(event -> selectionMenu2() );
-//            pane.setPadding( new Insets(50,50,50,50));
-//            box1.getChildren().add(pane);
-//        }
-//    }
-//
-//    public void selectionMenu2() {
-//        box1.getChildren().clear();
-//        String[] listePlat = {"Snack", "Boison"};
-//        for(int i = 0; i<listePlat.length; i++) {
-//            Pane pane = new Pane();
-//            Label label = new Label();
-//            label.setText(listePlat[i]);
-//            pane.getChildren().add(label);
-//            pane.setPadding( new Insets(50,50,50,50));
-//            box1.getChildren().add(pane);
-//        }
-//    }
+    public void AffichagePlatType(Type pType) {
+        zoneAffichageType.getChildren().clear();
+        ArrayList<Produit> listePlat = getView().getController().getProduitType(pType);
+        for(Produit produit : listePlat) {
+            Pane pane = new Pane();
+            Label label = new Label();
+            label.setText(produit.getNom());
+            pane.getChildren().add(label);
+            pane.setOnMouseClicked(event -> AjouterAuPanier(produit) );
+            pane.setPadding( new Insets(50,50,50,50));
+            zoneAffichageType.getChildren().add(pane);
+        }
+    }
+
+    public void AjouterAuPanier(Produit pProduit) {
+        getView().getController().ajouterAuPanier(pProduit);
+    }
+
 
     /**
      * methode de redirection vers la page de methode de payement
@@ -169,6 +151,7 @@ public class PriseCommandeViewController extends ViewController {
         try {
             MethodePayementView methodePayementView = new MethodePayementView();
             getView().changerPage(methodePayementView);
+            methodePayementView.getController().setCommande(new Commande(getView().getController().getPanier()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -212,6 +195,18 @@ public class PriseCommandeViewController extends ViewController {
     }
 
     /**
+     * methode de redirection vers la page de gestion des offres
+     */
+    public void redirectionGestionOffre() {
+        try {
+            GestionOffreView gestionOffreView = new GestionOffreView();
+            getView().changerPage(gestionOffreView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * methode de redirection vers la page de gestion des comptes
      */
     public void redirectionCompte() {
@@ -244,4 +239,13 @@ public class PriseCommandeViewController extends ViewController {
     public BorderPane getViewPriseCommande() {
         return ViewPriseCommande;
     }
+
+    public void setArticlePanier(Panier pPanier) {
+        Vendable vendable = pPanier.getSoldableList().get(pPanier.getSoldableList().size()-1);
+        Label produitLabel = new Label(vendable.getNom() + "    X1"+"    " +vendable.getPrixVente());
+        produitLabel.setPadding(new Insets(0,2,0,0));
+        panierVBox.getChildren().add(produitLabel);
+    }
 }
+
+

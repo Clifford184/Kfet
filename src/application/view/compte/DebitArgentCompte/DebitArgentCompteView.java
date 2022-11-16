@@ -1,15 +1,15 @@
-package application.view.compte.argentConfirmation;
+package application.view.compte.DebitArgentCompte;
 
 import application.controller.Observable;
-import application.controller.compte.argentConfirmation.ArgentConfirmationController;
+import application.controller.compte.DebitArgentCompte.DebitArgentCompteController;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ArgentConfirmationView extends View {
+public class DebitArgentCompteView extends View {
 
-    public ArgentConfirmationView()  {
+    public DebitArgentCompteView()  {
         setController(null);
     }
 
@@ -17,7 +17,7 @@ public class ArgentConfirmationView extends View {
     public void initialize() {
         // Initialization of the controller.
         if (getController() == null) {
-            setController(new ArgentConfirmationController());
+            setController(new DebitArgentCompteController());
         }
         getController().initialize();
     }
@@ -31,8 +31,8 @@ public class ArgentConfirmationView extends View {
     public void start(Stage stage) throws Exception {
         // In the case of the separator for the resources, it's the same for every OS: '/'.
         // So there is no need to use File.separator.
-        String fileName = "/ressource/view/argentConfirmation.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(ArgentConfirmationView.class.getResource(fileName));
+        String fileName = "/ressource/view/debitArgentCompte.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(DebitArgentCompteView.class.getResource(fileName));
 
         // Creation of the scene.
         Scene scene = new Scene(fxmlLoader.load());
@@ -55,7 +55,24 @@ public class ArgentConfirmationView extends View {
     }
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "commande" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setSomme(getController().getSommeAdebiter());
+                    }
+                    case "client" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setLibelleClient(getController().getClient());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * methode pour fermer la fenetre de comfirmation
@@ -66,13 +83,13 @@ public class ArgentConfirmationView extends View {
     }
 
     @Override
-    public ArgentConfirmationController getController() {
-        return (ArgentConfirmationController) super.getController();
+    public DebitArgentCompteController getController() {
+        return (DebitArgentCompteController) super.getController();
     }
 
     @Override
-    public ArgentConfirmationViewController getViewController() {
-        return (ArgentConfirmationViewController) super.getViewController();
+    public DebitArgentCompteViewController getViewController() {
+        return (DebitArgentCompteViewController) super.getViewController();
     }
 
 }

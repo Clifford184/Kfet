@@ -26,6 +26,9 @@ public class Produit extends Vendable implements Serializable {
         super(pNom, pPrixAchat, pPrixVente, pCheminImage);
         type = pType;
         Stock.getInstance().ajouterNouveauProduit(this);
+        //TODO En parler avec julien
+        int index = Type.getTypeListe().indexOf(pType);
+        Type.getTypeListe().get(index).getProduitListe().add(this);
     }
 
     /**

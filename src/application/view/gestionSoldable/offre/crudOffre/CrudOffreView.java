@@ -1,15 +1,15 @@
-package application.view.compte;
+package application.view.gestionSoldable.offre.crudOffre;
 
 import application.controller.Observable;
-import application.controller.compte.CompteController;
+import application.controller.gestionSoldable.offre.CrudOffreController;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CompteView extends View {
+public class CrudOffreView extends View {
 
-    public CompteView()  {
+    public CrudOffreView()  {
         setController(null);
     }
 
@@ -17,7 +17,7 @@ public class CompteView extends View {
     public void initialize() {
         // Initialization of the controller.
         if (getController() == null) {
-            setController(new CompteController());
+            setController(new CrudOffreController());
         }
         getController().initialize();
     }
@@ -29,8 +29,8 @@ public class CompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/compteView.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(CompteView.class.getResource(fileName));
+        String fileName = "/ressource/view/crudOffre.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(CrudOffreView.class.getResource(fileName));
 
         // Creation of the scene.
         Scene scene = new Scene(fxmlLoader.load());
@@ -51,14 +51,17 @@ public class CompteView extends View {
         stage.show();
     }
 
-    /**
-     * methode pour changer de page
-     * @param pPageDestination vue de destination
-     */
-    public void changerPage(View pPageDestination) {
+    public void changerScene() throws Exception {
+
+    }
+
+    @Override
+    public void update(Observable observable, String[] messages) {}
+
+    public void changerScene(View view)  {
         try {
-            Stage stage = new Stage();
-            pPageDestination.start(stage);
+            Stage stage = (Stage) getViewController().getViewCrudOffre().getScene().getWindow();
+            view.start(stage);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -66,24 +69,12 @@ public class CompteView extends View {
     }
 
     @Override
-    public void update(Observable observable, String[] messages) {}
-
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewCompte().getScene().getWindow();
-            view.start(stage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public CrudOffreController getController() {
+        return (CrudOffreController) super.getController();
     }
 
     @Override
-    public CompteController getController() {
-        return (CompteController) super.getController();
-    }
-
-    @Override
-    public CompteViewController getViewController() {
-        return (CompteViewController) super.getViewController();
+    public CrudOffreViewController getViewController() {
+        return (CrudOffreViewController) super.getViewController();
     }
 }

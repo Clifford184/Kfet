@@ -64,4 +64,12 @@ public class Commande implements Serializable {
     public void setEtatActuel(State etatActuel) {
         this.etatActuel = etatActuel;
     }
+
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
+    }
 }

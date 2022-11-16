@@ -3,7 +3,8 @@ package application.view.compte;
 import application.model.Client.Client;
 import application.model.Client.Groupe;
 import application.view.ViewController;
-import application.view.compte.argentConfirmation.ArgentConfirmationView;
+import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
+import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,7 +63,7 @@ public class CompteViewController extends ViewController {
      */
     public void initialize(){
         String[] listePromo = {"DI3","DI4","DI5"};
-        String[] listeEntete = {"name","firstname","money"};
+        String[] listeEntete = {"nom","prenom","argent"};
         String[] aurelien = {"DaFonseca","Aurelien","4"};
         String[] charles = {"Caillon","Charles","8"};
         Groupe di3 = new Groupe("DI3"); //TODO créer une arrayList de promo
@@ -96,10 +97,11 @@ public class CompteViewController extends ViewController {
      */
     public void debiterClient(Client cl) {
         try {
-            ArgentConfirmationView argentConfirmationView = new ArgentConfirmationView();
-            getView().changerPage(argentConfirmationView);
+            DebitArgentCompteView debitArgentCompteView = new DebitArgentCompteView();
+            getView().changerPage(debitArgentCompteView);
             //TODO encore en phase de test
-            argentConfirmationView.getViewController().initialise(cl,3.1,false);
+            debitArgentCompteView.getController().setCommande(getView().getController().getCommande());
+            debitArgentCompteView.getController().setClient(cl);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,6 +111,11 @@ public class CompteViewController extends ViewController {
      * methode pour ajouter de l'argent à un client
      */
     public void ajouterArgent(){}
+
+    public void redirectionPriseCommande() {
+        PriseCommandeView priseCommandeView = new PriseCommandeView();
+        getView().changerScene(priseCommandeView);
+    }
 
     /**
      * constructeur par défaut
