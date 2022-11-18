@@ -1,8 +1,12 @@
 package application.model.client;
 
+import application.model.vendable.Type;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.UUID;
 
 /**
  * Definie un groupe de client
@@ -13,6 +17,10 @@ import java.util.Comparator;
  */
 public class Groupe implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    UUID id;
     String nom;
 
     ArrayList<Client> clientListe;
@@ -20,7 +28,7 @@ public class Groupe implements Serializable {
     Groupe groupeSuivant;
     Groupe groupePrecedent;
 
-    static ArrayList<Groupe> groupeListe = new ArrayList<>();
+    public static ArrayList<Groupe> groupeListe = new ArrayList<>();
 
     /**
      * Cree un nouveau groupe
@@ -31,6 +39,22 @@ public class Groupe implements Serializable {
         nom = pNom;
 
         groupeListe.add(this);
+    }
+
+    /**
+     * Appele avant la creation de l'objet lors de la deserialization
+     * Verifie que l'objet n'a pas deja ete cree
+     * @return le nouvel objet cree ou sa reference dans la liste statique
+     */
+    @Serial
+    private Object readResolve() {
+
+        for(Groupe p : groupeListe){
+            if(p.id.equals(this.id))
+                return p;
+        }
+        groupeListe.add(this);
+        return this;
     }
 
     /**

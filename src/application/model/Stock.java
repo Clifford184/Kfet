@@ -2,6 +2,7 @@ package application.model;
 
 import application.model.vendable.Produit;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,12 +13,19 @@ import java.util.HashMap;
  */
 public class Stock implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     HashMap<Produit, Integer> stock;
 
     static Stock singleton;
 
     private void Stock(){
         stock = new HashMap<>();
+    }
+
+    public int combienEnStock(Produit pProduit){
+        return stock.get(pProduit);
     }
 
     /**

@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -15,6 +16,10 @@ import java.util.UUID;
  */
 public class Type implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    UUID id;
     String nom;
     Categorie categorie;
     ArrayList<Produit> produitListe = new ArrayList<>();
@@ -44,6 +49,22 @@ public class Type implements Serializable {
             image = ImageIO.read(new File(pCheminImage));
             ImageIO.write(image, "png", new File(cheminImage));
         }
+    }
+
+    /**
+     * Appele avant la creation de l'objet lors de la deserialization
+     * Verifie que l'objet n'a pas deja ete cree
+     * @return le nouvel objet cree ou sa reference dans la liste statique
+     */
+    @Serial
+    private Object readResolve() {
+
+        for(Type p : typeListe){
+            if(p.id.equals(this.id))
+                return p;
+        }
+        typeListe.add(this);
+        return this;
     }
 
     public ArrayList<Produit> getProduitListe() {

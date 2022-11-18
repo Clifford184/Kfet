@@ -1,8 +1,10 @@
 package application.model.vendable;
 
 import java.awt.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Decrit une categorie de type.
@@ -13,6 +15,10 @@ import java.util.ArrayList;
  */
 public class Categorie implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    UUID id;
     String nom;
 
     ArrayList<Type> typeListe;
@@ -26,6 +32,23 @@ public class Categorie implements Serializable {
     public Categorie(String pNom){
         nom = pNom;
         typeListe = new ArrayList<>();
+        categorieListe.add(this);
+    }
+
+    /**
+     * Appele avant la creation de l'objet lors de la deserialization
+     * Verifie que l'objet n'a pas deja ete cree
+     * @return le nouvel objet cree ou sa reference dans la liste statique
+     */
+    @Serial
+    private Object readResolve() {
+
+        for(Categorie p : categorieListe){
+            if(p.id.equals(this.id))
+                return p;
+        }
+        categorieListe.add(this);
+        return this;
     }
 
     public ArrayList<Type> getTypeListe(){

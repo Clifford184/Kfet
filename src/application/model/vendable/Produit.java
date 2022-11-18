@@ -1,17 +1,27 @@
 package application.model.vendable;
 
 import application.model.Stock;
+import application.model.client.Groupe;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Decrit un produit qui est propose a la vente
  */
 public class Produit extends Vendable implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    UUID id;
     Type type;
     boolean enStock;
+
+    public static ArrayList<Produit> produitListe = new ArrayList<>();
 
     /**
      * Cree un nouveau produit et ajoute sa reference au stock (avec 0 exemplaire)
@@ -26,6 +36,23 @@ public class Produit extends Vendable implements Serializable {
         super(pNom, pPrixAchat, pPrixVente, pCheminImage);
         type = pType;
         Stock.getInstance().ajouterNouveauProduit(this);
+        produitListe.add(this);
+    }
+
+    /**
+     * Appele avant la creation de l'objet lors de la deserialization
+     * Verifie que l'objet n'a pas deja ete cree
+     * @return le nouvel objet cree ou sa reference dans la liste statique
+     */
+    @Serial
+    private Object readResolve() {
+
+        for(Produit p : produitListe){
+            if(p.id.equals(this.id))
+                return p;
+        }
+        produitListe.add(this);
+        return this;
     }
 
     /**

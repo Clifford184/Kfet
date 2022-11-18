@@ -1,17 +1,26 @@
 package application.model;
 
 
+import application.model.vendable.Categorie;
 import application.model.vendable.Vendable;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Decrit le panier d'une commande
  */
 public class Panier implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    UUID id;
     ArrayList<Vendable> vendableListe;
+
+    static ArrayList<Panier> panierListe = new ArrayList<>();
 
     /**
      * Cree un nouveau panier vide
@@ -19,6 +28,22 @@ public class Panier implements Serializable {
     public Panier(){
 
         vendableListe = new ArrayList<>();
+    }
+
+    /**
+     * Appele avant la creation de l'objet lors de la deserialization
+     * Verifie que l'objet n'a pas deja ete cree
+     * @return le nouvel objet cree ou sa reference dans la liste statique
+     */
+    @Serial
+    private Object readResolve() {
+
+        for(Panier p : panierListe){
+            if(p.id.equals(this.id))
+                return p;
+        }
+        panierListe.add(this);
+        return this;
     }
 
     /**
