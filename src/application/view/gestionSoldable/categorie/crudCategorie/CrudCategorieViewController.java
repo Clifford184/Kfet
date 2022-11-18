@@ -1,31 +1,32 @@
 package application.view.gestionSoldable.categorie.crudCategorie;
 
+import application.view.View;
 import application.view.ViewController;
+import application.view.gestionSoldable.categorie.GestionCategorieView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class CrudCategorieViewController extends ViewController {
 
+    @FXML
+    private AnchorPane viewCrudCategorie;
     @FXML
     private TextField nomCategorie;
 
 
     public void annuler() {
-        getView().close();
+        GestionCategorieView gestionCategorieView = new GestionCategorieView();
+        getView().changerScene(gestionCategorieView);
     }
 
     public void valider() {
-        // TODO Gerer les exceptions + ou mettre le new produit
-//        try {
-//            float pAchat = Float.parseFloat(prixAchat.getText());
-//            float pVente = Float.parseFloat(prixVente.getText());
-//            Product newProduit = new Product(nomProduit.getText(),pAchat, pVente,type.getValue());
-//
-//            getView().close();
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
+        getView().getController().creationCategorie(nomCategorie.getText());
+        annuler();
     }
 
     public CrudCategorieViewController() {
@@ -39,7 +40,7 @@ public class CrudCategorieViewController extends ViewController {
         return nomCategorie;
     }
 
-    public void setNomCategorie(TextField nomCategorie) {
-        this.nomCategorie = nomCategorie;
+    public AnchorPane getViewCrudCategorie() {
+        return viewCrudCategorie;
     }
 }

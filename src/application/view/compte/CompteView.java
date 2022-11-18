@@ -68,6 +68,15 @@ public class CompteView extends View {
     @Override
     public void update(Observable observable, String[] messages) {}
 
+    public void changerScene(View view) {
+        try {
+            Stage stage = (Stage) getViewController().getViewCompte().getScene().getWindow();
+            view.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public CompteController getController() {
         return (CompteController) super.getController();

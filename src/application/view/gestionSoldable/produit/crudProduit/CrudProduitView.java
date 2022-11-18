@@ -2,6 +2,7 @@ package application.view.gestionSoldable.produit.crudProduit;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.CrudProduitController;
+import application.model.vendable.Type;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,8 +52,14 @@ public class CrudProduitView extends View {
         stage.show();
     }
 
-    public void changerScene() throws Exception {
-
+    public void changerScene(View view) {
+        try {
+            Stage stage = (Stage) getViewController().getViewCrudProduit().getScene().getWindow();
+            view.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -61,17 +68,12 @@ public class CrudProduitView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "type":
-                        getViewController().setType(getController().getListeType());
+                        getViewController().setListeType(Type.getTypeListe());
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void close() {
-        Stage stage = (Stage) getViewController().getCategorie().getScene().getWindow();
-        stage.close();
     }
 
     @Override

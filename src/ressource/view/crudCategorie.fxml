@@ -6,20 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieViewController">
+<AnchorPane fx:id="viewCrudCategorie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieViewController">
    <children>
       <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/valide.png" />
+            <Image url="@../image/icone/valide.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/annuler.png" />
+            <Image url="@../image/icone/annuler.png" />
          </image>
       </ImageView>
       <Label layoutX="137.0" layoutY="138.0" text="Catégorie:" />
       <TextField fx:id="nomCategorie" layoutX="201.0" layoutY="134.0" />
-      <Label layoutX="137.0" layoutY="192.0" text="Image:" />
    </children>
 </AnchorPane>

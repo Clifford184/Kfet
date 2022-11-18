@@ -27,7 +27,7 @@ public class Type implements Serializable {
     String cheminImage;
     transient BufferedImage image;
 
-    public static ArrayList<Type> typeListe = new ArrayList<>();
+    private static ArrayList<Type> typeListe = new ArrayList<>();
 
     /**
      * Cree un nouveau type
@@ -42,10 +42,9 @@ public class Type implements Serializable {
         typeListe.add(this);
 
         if(pCheminImage==null){  //Utilisation de l'image par defaut.
-            cheminImage = "asset/image/type/imageParDefaut.png";
+            cheminImage = "src/ressource/image/type/imageParDefaut.png";
         }else{
-            cheminImage = "asset/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
-
+            cheminImage = "src/ressource/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
             image = ImageIO.read(new File(pCheminImage));
             ImageIO.write(image, "png", new File(cheminImage));
         }
@@ -81,6 +80,15 @@ public class Type implements Serializable {
 
     public static void deleteType(Type pType){
         typeListe.remove(pType);
+    }
+
+    public static ArrayList<Type> getTypeListe() {
+        return typeListe;
+    }
+
+    @Override
+    public String toString() {
+        return nom;
     }
 
 }

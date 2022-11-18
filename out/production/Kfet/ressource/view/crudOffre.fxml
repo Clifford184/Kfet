@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="viewCrudOffre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.crudOffre.CrudOffreViewController">
+   <children>
+      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icone/valide.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icone/annuler.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="34.0" layoutY="144.0" text="Catégorie:" />
+      <ComboBox layoutX="106.0" layoutY="140.0" prefWidth="150.0" />
+      <ComboBox layoutX="106.0" layoutY="194.0" prefWidth="150.0" />
+      <Label layoutX="34.0" layoutY="198.0" text="Type:" />
+      <Label layoutX="321.0" layoutY="141.0" text="Catégorie:" />
+      <ComboBox layoutX="393.0" layoutY="137.0" prefWidth="150.0" />
+      <ComboBox layoutX="393.0" layoutY="191.0" prefWidth="150.0" />
+      <Label layoutX="321.0" layoutY="195.0" text="Type:" />
+      <Label layoutX="134.0" layoutY="80.0" text="Type de produit 1" />
+      <Label layoutX="421.0" layoutY="80.0" text="Type de produit 2" />
+   </children>
+</AnchorPane>

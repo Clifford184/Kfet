@@ -1,6 +1,6 @@
 package application.model;
 
-import application.model.client.Client;
+import application.model.Client.Client;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -88,5 +88,13 @@ public class Commande implements Serializable {
 
     public void setEtatActuel(State etatActuel) {
         this.etatActuel = etatActuel;
+    }
+
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
     }
 }
