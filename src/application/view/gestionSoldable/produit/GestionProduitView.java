@@ -61,7 +61,7 @@ public class GestionProduitView extends View {
                 switch (message) {
                     case "produit" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().setListeProduit(Stock.getInstance().afficherListeProduit());
+                        //getViewController().setListeProduit(Stock.getInstance());
                     }
                 }
             }

@@ -1,7 +1,6 @@
 package application.model;
 
-import application.model.client.Client;
-import application.model.client.Groupe;
+import application.model.client.*;
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.TemplateOffre;

@@ -1,7 +1,7 @@
 package application.controller.compte;
 
 import application.controller.Controller;
-import application.model.Client.Client;
+import application.model.client.Client;
 import application.model.Commande;
 
 public class CompteController extends Controller {

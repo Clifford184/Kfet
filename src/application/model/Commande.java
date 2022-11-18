@@ -1,6 +1,6 @@
 package application.model;
 
-import application.model.Client.Client;
+import application.model.client.Client;
 
 import java.io.Serial;
 import java.io.Serializable;

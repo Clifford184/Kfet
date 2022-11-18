@@ -1,7 +1,7 @@
 package application.view.compte.DebitArgentCompte;
 
 
-import application.model.Client.Client;
+import application.model.client.Client;
 import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

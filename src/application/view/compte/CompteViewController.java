@@ -1,7 +1,6 @@
 package application.view.compte;
 
-import application.model.Client.Client;
-import application.model.Client.Groupe;
+import application.model.client.*;
 import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
 import application.view.priseCommande.PriseCommandeView;

@@ -60,7 +60,7 @@ public class GestionCategorieView extends View {
                 switch (message) {
                     case "categorie" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().setListeCategorie(Categorie.getCategorieListe());
+                        getViewController().setListeCategorie(Categorie.categorieListe);
                     }
                 }
             }

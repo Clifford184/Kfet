@@ -1,4 +1,4 @@
-package application.model.Client;
+package application.model.client;
 
 import application.model.vendable.Type;
 
