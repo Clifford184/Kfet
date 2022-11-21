@@ -37,6 +37,8 @@ public class Commande implements Serializable {
      * @param pPanier l'objet panier de la commande
      */
     public Commande(Panier pPanier){
+        id = UUID.randomUUID();
+
         panier = pPanier;
         date = LocalDateTime.now();
         etatActuel = State.COMMENCEE;

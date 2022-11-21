@@ -37,11 +37,12 @@ public class Type implements Serializable {
      * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
     public Type(String pNom, Categorie pCategorie, String pCheminImage) throws IOException {
+        id = UUID.randomUUID();
         nom = pNom;
         categorie = pCategorie;
         typeListe.add(this);
 
-        if(pCheminImage==null){  //Utilisation de l'image par defaut.
+        if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
             cheminImage = "src/ressource/image/type/imageParDefaut.png";
         }else{
             cheminImage = "src/ressource/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
@@ -64,6 +65,10 @@ public class Type implements Serializable {
         }
         typeListe.add(this);
         return this;
+    }
+
+    public void ajouterProduit(Produit pProduit){
+        produitListe.add(pProduit);
     }
 
     public ArrayList<Produit> getProduitListe() {

@@ -1,6 +1,7 @@
 package application.view;
 
 import application.controller.Controller;
+import application.model.Systeme;
 import javafx.application.Application;
 
 /**
@@ -64,4 +65,13 @@ public abstract class View extends Application implements Observer {
     public void setViewController(ViewController viewController) {
         this.viewController = viewController;
     }
+
+    /**
+     * Appele automatiquement avant la fermeture complete de l'application
+     */
+    public void stop(){
+        Systeme.saveAll();
+    }
+
+
 }

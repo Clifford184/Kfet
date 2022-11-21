@@ -45,13 +45,13 @@ public abstract class Vendable implements Serializable {
             prixAchat = pPrixAchat;
         }
 
-        if(pCheminImage==null){  //Utilisation de l'image par defaut.
+        if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
             cheminImage = "asset"+File.separator+"image/vendable/imageParDefaut.png";
         }else{
             cheminImage = "asset/image/vendable/"+nom+"-"+UUID.randomUUID().toString()+".png";
 
-            image = ImageIO.read(new File(pCheminImage));
-            ImageIO.write(image, "png", new File(cheminImage));
+            //image = ImageIO.read(new File(pCheminImage));
+            //ImageIO.write(image, "png", new File(cheminImage));
         }
 
     }
@@ -67,7 +67,7 @@ public abstract class Vendable implements Serializable {
 
     @Override
     public String toString(){
-        return nom +":"+ prixVente +"e";
+        return nom +" : "+ prixVente +"e";
     }
 
     public String getNom() {

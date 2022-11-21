@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="viewCrudOffre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.crudOffre.CrudOffreViewController">
+<AnchorPane fx:id="viewCrudOffre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.crudOffre.CrudOffreViewController">
    <children>
-      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/icone/valide.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/icone/annuler.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="34.0" layoutY="144.0" text="Catégorie:" />
-      <ComboBox layoutX="106.0" layoutY="140.0" prefWidth="150.0" />
-      <ComboBox layoutX="106.0" layoutY="194.0" prefWidth="150.0" />
-      <Label layoutX="34.0" layoutY="198.0" text="Type:" />
-      <Label layoutX="321.0" layoutY="141.0" text="Catégorie:" />
-      <ComboBox layoutX="393.0" layoutY="137.0" prefWidth="150.0" />
-      <ComboBox layoutX="393.0" layoutY="191.0" prefWidth="150.0" />
-      <Label layoutX="321.0" layoutY="195.0" text="Type:" />
-      <Label layoutX="134.0" layoutY="80.0" text="Type de produit 1" />
-      <Label layoutX="421.0" layoutY="80.0" text="Type de produit 2" />
+      <Button fx:id="valider" layoutX="575.0" layoutY="22.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="63.0" text="Valider" />
+      <Button fx:id="ajouterCategorie" layoutX="195.0" layoutY="157.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="+" />
+      <ComboBox fx:id="listeCategorie" layoutX="38.0" layoutY="157.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="nomMenu" layoutX="163.0" layoutY="25.0" prefHeight="26.0" prefWidth="149.0" promptText="Nom du menu" />
+      <ImageView fx:id="image" fitHeight="103.0" fitWidth="119.0" layoutX="38.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="prixVente" layoutX="355.0" layoutY="25.0" prefHeight="26.0" prefWidth="90.0" promptText="Prix de vente" />
+      <TextField fx:id="labelRevient" layoutX="395.0" layoutY="66.0" />
+      <Label layoutX="221.0" layoutY="105.0" />
+      <TextField fx:id="prixMembre" layoutX="453.0" layoutY="25.0" prefHeight="26.0" prefWidth="90.0" promptText="Prix membre" />
+      <Label layoutX="300.0" layoutY="70.0" text=" Coût de revient" />
+      <Button fx:id="choisirImage" layoutX="163.0" layoutY="88.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="89.0" text="Choisir image" />
+      <ScrollPane layoutX="38.0" layoutY="200.0" prefHeight="234.0" prefWidth="183.0" style="-fx-border-color: gray;">
+         <content>
+            <VBox fx:id="tableCategorie" prefHeight="226.0" prefWidth="170.0" />
+         </content></ScrollPane>
+      <ScrollPane layoutX="246.0" layoutY="177.0" prefHeight="257.0" prefWidth="183.0" style="-fx-border-color: gray;">
+         <content>
+            <VBox fx:id="tableType" prefHeight="246.0" prefWidth="170.0" />
+         </content></ScrollPane>
+      <ScrollPane layoutX="446.0" layoutY="176.0" prefHeight="258.0" prefWidth="183.0" style="-fx-border-color: gray;">
+         <content>
+            <VBox fx:id="tableProduit" prefHeight="248.0" prefWidth="169.0" />
+         </content></ScrollPane>
+      <TextField fx:id="labelMarge" layoutX="395.0" layoutY="101.0" />
+      <Label layoutX="253.0" layoutY="155.0" text="Type" />
+      <Label layoutX="38.0" layoutY="137.0" text="Liste catégories" />
+      <Label layoutX="355.0" layoutY="105.0" text="Marge" />
+      <Label layoutX="456.0" layoutY="155.0" text="Produit" />
    </children>
 </AnchorPane>

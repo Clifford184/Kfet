@@ -22,37 +22,37 @@ public class Systeme {
 
     public static void saveAll(){
 
-        String path = "Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
+        String path = "data/Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Categorie.categorieListe);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        path = "TemplateOffre.txt";
+        path = "data/TemplateOffre.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(TemplateOffre.templateOffreListe);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        path = "Stock.txt";
+        path = "data/Stock.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Stock.getInstance());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        path = "Groupe&Client.txt";
+        path = "data/Groupe&Client.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Groupe.groupeListe);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        path = "Panier.txt";
+        path = "data/Panier.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Groupe.groupeListe);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        path = "Commande.txt";
+        path = "data/Commande.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Groupe.groupeListe);
         } catch (IOException e) {
@@ -62,42 +62,42 @@ public class Systeme {
     }
 
     public static void loadAll(){
-        String path = "Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
+        String path = "data/Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
             ArrayList<Categorie> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 
-        path = "TemplateOffre.txt";
+        path = "data/TemplateOffre.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
             ArrayList<Type> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 
-        path = "Stock.txt";
+        path = "data/Stock.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
-            ArrayList<Produit> l = (ArrayList) ois.readObject();
+            Stock s = (Stock) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 
-        path = "Groupe&Client.txt";
+        path = "data/Groupe&Client.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
-            Stock s = (Stock)ois.readObject();
+            ArrayList<Groupe> l = (ArrayList<Groupe>)ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 
-        path = "Panier.txt";
+        path = "data/Panier.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
             ArrayList<Panier> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 
-        path = "Commande.txt";
+        path = "data/Commande.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
             ArrayList<Commande> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {

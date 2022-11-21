@@ -3,6 +3,7 @@ package application.model.vendable;
 import java.awt.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -30,6 +31,7 @@ public class Categorie implements Serializable {
      * @param pNom son nom
      */
     public Categorie(String pNom){
+        id = UUID.randomUUID();
         nom = pNom;
         typeListe = new ArrayList<>();
         categorieListe.add(this);
@@ -50,6 +52,37 @@ public class Categorie implements Serializable {
         categorieListe.add(this);
         return this;
     }
+
+    /**
+     * Retourne la liste des noms des categories existantes
+     * @return la liste des noms
+     */
+    public static ArrayList<String> listeDesCategories(){
+        ArrayList<String> listeNom = new ArrayList<>();
+        for(Categorie c : categorieListe)
+            listeNom.add(c.toString());
+        return listeNom;
+    }
+
+    /**
+     * Permet d'avoir la liste de tous les produits inclue dans cette categorie
+     * Elle parcourt chaque type associee a cette categorie, et concatene les listes
+     * de produits de chaque type
+     * @return la liste de tous les produits
+     */
+    public ArrayList<Produit> listeTousLesProduits(){
+        ArrayList<Produit> liste = new ArrayList<>();
+        for(Type t : typeListe){
+            liste.addAll(t.produitListe);
+        }
+        return liste;
+    }
+
+    public void ajouterType(Type pType){
+        if(typeListe.contains(pType)==false)
+            typeListe.add(pType);
+    }
+
 
     public ArrayList<Type> getTypeListe(){
         return typeListe;

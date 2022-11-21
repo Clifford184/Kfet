@@ -26,6 +26,7 @@ public class Panier implements Serializable {
      * Cree un nouveau panier vide
      */
     public Panier(){
+        id = UUID.randomUUID();
 
         vendableListe = new ArrayList<>();
     }

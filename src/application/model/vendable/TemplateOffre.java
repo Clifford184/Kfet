@@ -51,6 +51,7 @@ public class TemplateOffre implements Serializable {
      */
     public TemplateOffre(String pNom, float pPrixVente, ArrayList<Categorie> pCategorieListe,
                          ArrayList<Produit> pBlacklist, String pCheminImage) throws IOException {
+        id = UUID.randomUUID();
         nom = pNom;
         prixVente = pPrixVente;
         categorieListe = pCategorieListe;

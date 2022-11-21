@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -34,7 +35,11 @@ public class Produit extends Vendable implements Serializable {
      */
     public Produit(String pNom, float pPrixAchat, float pPrixVente, Type pType, String pCheminImage) throws IOException {
         super(pNom, pPrixAchat, pPrixVente, pCheminImage);
+        id = UUID.randomUUID();
         type = pType;
+
+        type.ajouterProduit(this);
+
         Stock.getInstance().ajouterNouveauProduit(this);
         produitListe.add(this);
     }
@@ -53,6 +58,31 @@ public class Produit extends Vendable implements Serializable {
         }
         produitListe.add(this);
         return this;
+    }
+
+    /**
+     * Permet de determiner le prix d'achat et le plus bas et le plus haut d'une liste
+     * de produits. Utile pour calculer l'intervalle du cout de revient d'une categorie
+     * et d'une offre en generale.
+     * @param pListe la liste de produits a examiner
+     * @return une hashmap. La cle '0' donne le prix d'achat minimal, '1' le maximal.
+     */
+    public static HashMap<Integer,Float> intervalleCoutAchat(ArrayList<Produit> pListe){
+        HashMap<Integer, Float> intervalle = new HashMap<>();
+        float minimum = 0, maximum = 0;
+        for(Produit p : pListe){
+            if(minimum==0){ //On initialise les valeurs a celles du premier produit
+                minimum = p.prixAchat;
+                maximum = p.prixAchat;
+            }
+            if(p.prixAchat<minimum)
+                minimum = p.prixAchat;
+            if(p.prixAchat>maximum)
+                maximum = p.prixAchat;
+        }
+        intervalle.put(0,minimum);
+        intervalle.put(1,maximum);
+        return intervalle;
     }
 
     /**

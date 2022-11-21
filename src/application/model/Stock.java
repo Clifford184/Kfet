@@ -20,10 +20,15 @@ public class Stock implements Serializable {
 
     static Stock singleton;
 
-    private void Stock(){
+    private Stock(){
         stock = new HashMap<>();
     }
 
+    /**
+     * Permet de savoir combien d'exemplaire il y a de ce produit
+     * @param pProduit le produit a regarder
+     * @return son nombre en stock
+     */
     public int combienEnStock(Produit pProduit){
         return stock.get(pProduit);
     }
@@ -69,14 +74,16 @@ public class Stock implements Serializable {
      * Retire pNombre exemplaire du produit du stock
      * @param pProduit le produit concerne
      * @param pNombre son nombre d'exemplaire a retirer
+     * @return true si succes
      */
-    public void retirerDuStock(Produit pProduit, int pNombre){
+    public boolean retirerDuStock(Produit pProduit, int pNombre){
         Integer nombre = stock.get(pProduit);
         if(nombre<pNombre){
-            //ERREURUUEUURURUEU
+            return false;
         }
         nombre -= pNombre;
         stock.put(pProduit, nombre);
+        return true;
     }
 
     /**
