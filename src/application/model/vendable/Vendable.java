@@ -46,9 +46,9 @@ public abstract class Vendable implements Serializable {
         }
 
         if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
-            cheminImage = "asset"+File.separator+"image/vendable/imageParDefaut.png";
+            cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+"imageParDefaut.png";
         }else{
-            cheminImage = "asset/image/vendable/"+nom+"-"+UUID.randomUUID().toString()+".png";
+            cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+nom+"-"+UUID.randomUUID().toString()+".png";
 
             //image = ImageIO.read(new File(pCheminImage));
             //ImageIO.write(image, "png", new File(cheminImage));

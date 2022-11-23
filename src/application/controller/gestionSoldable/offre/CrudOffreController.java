@@ -3,7 +3,9 @@ package application.controller.gestionSoldable.offre;
 import application.controller.Controller;
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
+import application.model.vendable.TemplateOffre;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,6 +29,11 @@ public class CrudOffreController extends Controller {
         }
 
         return intervalle;
+    }
+
+    public void creerOffreTemplate(String pNom, float pPrixVente, float pPrixVenteMembre, ArrayList<Categorie> pCategorieListe,
+                                   ArrayList<Produit> pBlacklist, String pCheminImage) throws IOException {
+        new TemplateOffre(pNom,pPrixVente,pPrixVenteMembre,pCategorieListe,pBlacklist,pCheminImage);
     }
 
 }
