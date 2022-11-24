@@ -38,7 +38,7 @@ public class Offre extends Vendable implements Serializable {
      * @throws IOException
      */
     public Offre(TemplateOffre pTemplateOffre, ArrayList<Produit> pProduits) throws IOException {
-        super(pTemplateOffre.getNom(), 0, pTemplateOffre.getPrixVente(), "");
+        super(pTemplateOffre.getNom(), 0, pTemplateOffre.getPrixVente(),pTemplateOffre.getVenteMembre(), "");
 
         image = ImageIO.read(new File(pTemplateOffre.cheminImage));
 

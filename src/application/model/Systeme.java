@@ -8,6 +8,7 @@ import application.model.vendable.Type;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Cette classe s'occupera d'enclencher la de/serialisation de tous
@@ -36,7 +37,7 @@ public class Systeme {
         }
         path = "data/Stock.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Stock.getInstance());
+            oos.writeObject(Stock.getInstance().stock);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,7 +79,7 @@ public class Systeme {
 
         path = "data/Stock.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
-            Stock s = (Stock) ois.readObject();
+            Stock.getInstance().stock = (HashMap<Produit, Integer>) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }

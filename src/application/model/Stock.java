@@ -16,7 +16,7 @@ public class Stock implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    HashMap<Produit, Integer> stock;
+    public HashMap<Produit, Integer> stock;
 
     static Stock singleton;
 
@@ -30,6 +30,8 @@ public class Stock implements Serializable {
      * @return son nombre en stock
      */
     public int combienEnStock(Produit pProduit){
+        if(stock.get(pProduit)==null)
+            return 0;
         return stock.get(pProduit);
     }
 

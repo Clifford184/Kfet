@@ -106,4 +106,8 @@ public class TemplateOffre implements Serializable {
     public float getPrixVente() {
         return prixVente;
     }
+
+    public float getVenteMembre() {
+        return prixMembre;
+    }
 }

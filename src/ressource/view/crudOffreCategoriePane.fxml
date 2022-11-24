@@ -6,7 +6,7 @@
 
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="158.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="application.view.gestionSoldable.offre.crudOffre.ControllerCategorieListeElement">
+   fx:controller="application.view.gestionSoldable.offre.crudOffre.CategorieOffreElementController">
    <children>
       <Label fx:id="nomCategorie" layoutX="14.0" layoutY="11.0" text="Label" />
       <Button fx:id="supprimerCategorie" layoutX="126.0" layoutY="7.0" mnemonicParsing="false" text="-" />

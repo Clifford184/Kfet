@@ -40,6 +40,7 @@ public class Type implements Serializable {
         id = UUID.randomUUID();
         nom = pNom;
         categorie = pCategorie;
+        pCategorie.ajouterType(this);
         typeListe.add(this);
 
         if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.

@@ -60,7 +60,7 @@
                         <Insets bottom="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" text="Stock">
+                  <Button mnemonicParsing="false" onMouseClicked="#redirectionStock" prefHeight="25.0" prefWidth="203.0" text="Stock">
                      <VBox.margin>
                         <Insets bottom="25.0" />
                      </VBox.margin></Button>

@@ -50,13 +50,16 @@ public class CrudProduitViewController extends ViewController {
 
     public void valider(){
         // TODO Gerer les exceptions + ou mettre le new produit
+        // TODO faire le champs interface prix vente membre
+        // TODO afficher marge comme creation offre
+        float prixVenteMembre = 0;
         try {
             String nomProduit = this.nomProduit.getText();
             float prixAchatProduit = Float.parseFloat(prixAchat.getText());
             float prixVenteProduit = Float.parseFloat(prixVente.getText());
             Type typeProduit = listeType.getValue();
             String chemin = image;
-            getView().getController().creationProduit(nomProduit, prixAchatProduit, prixVenteProduit, typeProduit, chemin);
+            getView().getController().creationProduit(nomProduit, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
 
             annuler();
         }

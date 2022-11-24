@@ -7,10 +7,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 
-public class ControllerProduitListeElement {
+public class ProduitOffreElementController {
     public Label nomProduit;
     public CheckBox checkboxProduit;
     Produit produit;

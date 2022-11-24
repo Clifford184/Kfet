@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class ControllerCategorieListeElement {
+public class CategorieOffreElementController {
 
     public Label nomCategorie;
     public Button supprimerCategorie;

@@ -18,9 +18,9 @@ public class CrudProduitController extends Controller {
         notifyObservers(messages);
     }
 
-    public void creationProduit(String pNom, float pAchat, float pVente, Type pType, String pchemin){
+    public void creationProduit(String pNom, float pAchat, float pVente, float pPrixVenteMembre, Type pType, String pchemin){
         try {
-            new Produit(pNom, pAchat, pVente, pType, pchemin);
+            new Produit(pNom, pAchat, pVente, pPrixVenteMembre, pType, pchemin);
         }
         catch (Exception e){
             e.printStackTrace();

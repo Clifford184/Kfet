@@ -17,6 +17,7 @@ public abstract class Vendable implements Serializable {
     String nom;
     float prixAchat;
     float prixVente;
+    float prixVenteMembre;
     String cheminImage;
     transient BufferedImage image;
 
@@ -27,13 +28,15 @@ public abstract class Vendable implements Serializable {
      * @param pNom son nom
      * @param pPrixAchat son prix d'achat
      * @param pPrixVente son prix de vente
+     * @param pPrixVenteMembre son prix de vente a un membre de l'association
      * @param pCheminImage le chemin de l'image associee
      * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
-    public Vendable(String pNom, float pPrixAchat, float pPrixVente, String pCheminImage) throws IOException {
+    public Vendable(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, String pCheminImage) throws IOException {
 
         nom = pNom;
         prixVente = pPrixVente;
+        prixVenteMembre = pPrixVenteMembre;
         prixAchat = 0;
 
         if(this instanceof Offre){
@@ -92,6 +95,14 @@ public abstract class Vendable implements Serializable {
 
     public void setPrixVente(float prixVente) {
         this.prixVente = prixVente;
+    }
+
+    public float getPrixVenteMembre() {
+        return prixVenteMembre;
+    }
+
+    public void setPrixVenteMembre(float prixVenteMembre) {
+        this.prixVenteMembre = prixVenteMembre;
     }
 
     public BufferedImage getImage() {

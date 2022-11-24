@@ -93,7 +93,7 @@ public class CrudOffreViewController extends ViewController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreCategoriePane.fxml"));
                     Pane pane = loader.load();
 
-                    ControllerCategorieListeElement controller = loader.getController();
+                    CategorieOffreElementController controller = loader.getController();
 
                     //Possible de le faire uniquement car les donnees ne sont accessible que depuis cette application
                     Categorie categorie = Categorie.categorieListe.get(listeCategorie.getSelectionModel().getSelectedIndex());
@@ -157,7 +157,7 @@ public class CrudOffreViewController extends ViewController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ControllerTypeListeElement controller = loader.getController();
+            TypeOffreElementController controller = loader.getController();
             controller.initialize(pane,vue,type);
             tableType.getChildren().add(pane);
         }
@@ -180,7 +180,7 @@ public class CrudOffreViewController extends ViewController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ControllerProduitListeElement controller = loader.getController();
+            ProduitOffreElementController controller = loader.getController();
             controller.initialize(!blacklist.contains(produit),vue,produit);
             tableProduit.getChildren().add(pane);
         }

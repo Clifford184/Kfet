@@ -29,12 +29,13 @@ public class Produit extends Vendable implements Serializable {
      * @param pNom son nom
      * @param pPrixAchat son prix d'achat
      * @param pPrixVente son prix de vente
+     * @param pPrixVente son prix de vente pour un membre
      * @param pType son type
      * @param pCheminImage le chemin de son image
      * @throws IOException
      */
-    public Produit(String pNom, float pPrixAchat, float pPrixVente, Type pType, String pCheminImage) throws IOException {
-        super(pNom, pPrixAchat, pPrixVente, pCheminImage);
+    public Produit(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, Type pType, String pCheminImage) throws IOException {
+        super(pNom, pPrixAchat, pPrixVente, pPrixVenteMembre, pCheminImage);
         id = UUID.randomUUID();
         type = pType;
 

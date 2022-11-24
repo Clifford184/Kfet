@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class ControllerTypeListeElement {
+public class TypeOffreElementController {
 
     public Label nomType;
     CrudOffreViewController vue;

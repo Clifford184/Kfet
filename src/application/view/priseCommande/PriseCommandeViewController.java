@@ -6,6 +6,7 @@ import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.compte.CompteView;
+import application.view.gestionSoldable.produit.stock.GestionStockView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.offre.GestionOffreView;
 import application.view.gestionSoldable.type.GestionTypeView;
@@ -16,13 +17,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import application.view.ViewController;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PriseCommandeViewController extends ViewController {
@@ -213,6 +212,18 @@ public class PriseCommandeViewController extends ViewController {
         try {
             CompteView compteView = new CompteView();
             getView().changerPage(compteView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * methode de redirection vers la page de gestion du stock
+     */
+    public void redirectionStock() {
+        try {
+            GestionStockView stockView = new GestionStockView();
+            getView().changerPage(stockView);
         } catch (Exception e) {
             e.printStackTrace();
         }
