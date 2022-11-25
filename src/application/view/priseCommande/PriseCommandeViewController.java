@@ -2,6 +2,7 @@ package application.view.priseCommande;
 
 import application.model.Commande;
 import application.model.Panier;
+import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
@@ -161,7 +162,11 @@ public class PriseCommandeViewController extends ViewController {
                 e.printStackTrace();
             }
             ProduitCommandeElement controller = loader.getController();
-            pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
+            if(Stock.getInstance().combienEnStock(produit)==0)
+                pane.setStyle("-fx-background-color: #BEBEBE");
+            else
+                pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
+
             controller.initialize(produit);
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(pane);
