@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kfet.iml" filepath="$PROJECT_DIR$/Kfet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Module_Discord/Module_Discord.iml" filepath="$PROJECT_DIR$/../Module_Discord/Module_Discord.iml" />
     </modules>
   </component>
 </project>
