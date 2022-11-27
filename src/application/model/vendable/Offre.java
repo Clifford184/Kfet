@@ -61,4 +61,7 @@ public class Offre extends Vendable implements Serializable {
         return this;
     }
 
+    public ArrayList<Produit> getProduitListe() {
+        return produitListe;
+    }
 }

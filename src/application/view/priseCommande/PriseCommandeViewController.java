@@ -164,8 +164,9 @@ public class PriseCommandeViewController extends ViewController {
             ProduitCommandeElement controller = loader.getController();
             if(Stock.getInstance().combienEnStock(produit)==0)
                 pane.setStyle("-fx-background-color: #BEBEBE");
-            else
+            else{
                 pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
+            }
 
             controller.initialize(produit);
             produitControllerListe.add(controller);
