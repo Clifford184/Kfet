@@ -57,10 +57,6 @@ public class GestionStockView extends View {
         stage.show();
     }
 
-    public void changerScene() throws Exception {
-
-    }
-
     @Override
     public void update(Observable observable, String[] messages) {
     }

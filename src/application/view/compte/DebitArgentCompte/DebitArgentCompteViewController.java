@@ -3,6 +3,9 @@ package application.view.compte.DebitArgentCompte;
 
 import application.model.client.Client;
 import application.view.ViewController;
+import application.view.compte.CompteView;
+import application.view.gestionSoldable.offre.GestionOffreView;
+import application.view.priseCommande.PriseCommandeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -20,29 +23,31 @@ public class DebitArgentCompteViewController extends ViewController {
 
     public DebitArgentCompteViewController(){}
 
-//    //TODO separer fenetre l'ajout d'argent et le debit
-//    public void initialise(boolean ajoutArgent) {
-//        if(!ajoutArgent){
-//            libelle.setText("Somme à débiter pour "+cl.getPrenom() + " "+cl.getNom()+":");
-//            this.somme.setText(somme+"€");
-//        }
-//        else {
-//            libelle.setText("Somme à ajouter pour "+cl.getPrenom() + " "+cl.getNom()+":");
-//        }
-//    }
-
     /**
      * methode qui annule le debit pour ce client
      */
     public void annuler(){
-        getView().close();
+        try {
+            CompteView compteView = new CompteView();
+            getView().changerPage(compteView);
+            compteView.getController().setCommande(getView().getController().getCommande());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * methode qui confirme le debit pour ce client
      */
     public void valider(){
-        getView().close();
+        float sommeDebit =  Float.parseFloat(somme.getText());
+        getView().getController().debiterClient(sommeDebit);
+        try {
+            PriseCommandeView priseCommandeView = new PriseCommandeView();
+            getView().changerPage(priseCommandeView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

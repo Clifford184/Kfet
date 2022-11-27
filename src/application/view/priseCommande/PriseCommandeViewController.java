@@ -2,6 +2,7 @@ package application.view.priseCommande;
 
 import application.model.Commande;
 import application.model.Panier;
+import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
@@ -128,13 +129,18 @@ public class PriseCommandeViewController extends ViewController {
         zoneAffichageType.getChildren().clear();
         ArrayList<Produit> listePlat = getView().getController().getProduitType(pType);
         for(Produit produit : listePlat) {
-            Pane pane = new Pane();
-            Label label = new Label();
-            label.setText(produit.getNom());
-            pane.getChildren().add(label);
-            pane.setOnMouseClicked(event -> AjouterAuPanier(produit) );
-            pane.setPadding( new Insets(50,50,50,50));
-            zoneAffichageType.getChildren().add(pane);
+            if(Stock.getInstance().combienEnStock(produit) > 0) {
+                Pane pane = new Pane();
+                Label label = new Label();
+                label.setText(produit.getNom());
+                pane.getChildren().add(label);
+                pane.setOnMouseClicked(event -> AjouterAuPanier(produit) );
+                pane.setPadding( new Insets(50,50,50,50));
+                zoneAffichageType.getChildren().add(pane);
+            }
+            else {
+                //TODO griser produit plus en stock
+            }
         }
     }
 
@@ -212,6 +218,7 @@ public class PriseCommandeViewController extends ViewController {
         try {
             CompteView compteView = new CompteView();
             getView().changerPage(compteView);
+            compteView.getController().setAchatContexte(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

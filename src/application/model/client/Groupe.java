@@ -35,9 +35,9 @@ public class Groupe implements Serializable {
      * @param pNom son nom
      */
     public Groupe(String pNom){
+        id = UUID.randomUUID();
         clientListe = new ArrayList<>();
         nom = pNom;
-
         groupeListe.add(this);
     }
 
@@ -128,4 +128,7 @@ public class Groupe implements Serializable {
         nom = pName;
     }
 
+    public String getNom() {
+        return nom;
+    }
 }
