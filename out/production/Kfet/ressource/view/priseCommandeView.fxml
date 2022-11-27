@@ -35,7 +35,7 @@
       <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="108.0" layoutY="29.0" mnemonicParsing="false" text="Commande en cours" />
-            <CheckBox layoutX="832.0" layoutY="33.0" mnemonicParsing="false" text="Afficher prix K'ftier" />
+            <CheckBox fx:id="prixMembreCheckbox" layoutX="832.0" layoutY="33.0" mnemonicParsing="false" text="Afficher prix K'ftier" />
             <Label fx:id="menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
          </children>
       </AnchorPane>

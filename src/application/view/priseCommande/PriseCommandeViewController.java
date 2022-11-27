@@ -7,6 +7,7 @@ import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.compte.CompteView;
+import application.view.gestionSoldable.offre.crudOffre.TypeOffreElementController;
 import application.view.gestionSoldable.produit.stock.GestionStockView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.offre.GestionOffreView;
@@ -14,19 +15,25 @@ import application.view.gestionSoldable.type.GestionTypeView;
 import application.view.methodePayement.MethodePayementView;
 import application.view.gestionSoldable.produit.GestionProduitView;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import application.view.ViewController;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class PriseCommandeViewController extends ViewController {
 
+    public CheckBox prixMembreCheckbox;
     @FXML
     private BorderPane ViewPriseCommande;
 
@@ -41,6 +48,22 @@ public class PriseCommandeViewController extends ViewController {
 
     @FXML
     private VBox panierVBox;
+
+    ArrayList<ProduitCommandeElement> produitControllerListe = new ArrayList<>();
+
+    public void initialize(){
+        prixMembreCheckbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue){
+                    for(ProduitCommandeElement c : produitControllerListe)
+                        c.setPrixMembre();
+                }else
+                    for(ProduitCommandeElement c : produitControllerListe)
+                        c.setPrixNormal();
+            }
+        });
+    }
 
     /**
      * methode pour animation du menu
@@ -114,6 +137,7 @@ public class PriseCommandeViewController extends ViewController {
      * methode de création de case pour chaque type existant
      */
     public void InitialisationType() {
+
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
             Label label = new Label();
@@ -127,20 +151,26 @@ public class PriseCommandeViewController extends ViewController {
 
     public void AffichagePlatType(Type pType) {
         zoneAffichageType.getChildren().clear();
-        ArrayList<Produit> listePlat = getView().getController().getProduitType(pType);
-        for(Produit produit : listePlat) {
-            if(Stock.getInstance().combienEnStock(produit) > 0) {
-                Pane pane = new Pane();
-                Label label = new Label();
-                label.setText(produit.getNom());
-                pane.getChildren().add(label);
-                pane.setOnMouseClicked(event -> AjouterAuPanier(produit) );
-                pane.setPadding( new Insets(50,50,50,50));
-                zoneAffichageType.getChildren().add(pane);
+        produitControllerListe.clear();
+
+        for(Produit produit : pType.getProduitListe()){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/affichageProduit.fxml"));
+            Pane pane = null;
+            try {
+                pane = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else {
-                //TODO griser produit plus en stock
+            ProduitCommandeElement controller = loader.getController();
+            if(Stock.getInstance().combienEnStock(produit)==0)
+                pane.setStyle("-fx-background-color: #BEBEBE");
+            else{
+                pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
             }
+
+            controller.initialize(produit);
+            produitControllerListe.add(controller);
+            zoneAffichageType.getChildren().add(pane);
         }
     }
 
@@ -218,7 +248,6 @@ public class PriseCommandeViewController extends ViewController {
         try {
             CompteView compteView = new CompteView();
             getView().changerPage(compteView);
-            compteView.getController().setAchatContexte(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,6 +14,9 @@ import java.util.UUID;
  * Decrit un element qui est propose a la vente (menu ou produit)
  */
 public abstract class Vendable implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 873236803779239388L;
 
     String nom;
     float prixAchat;
@@ -112,4 +116,7 @@ public abstract class Vendable implements Serializable {
     public void setImage(BufferedImage image) {
         this.image = image;
     }
-}
+
+    public String getCheminImage(){
+        return cheminImage;
+    }}
