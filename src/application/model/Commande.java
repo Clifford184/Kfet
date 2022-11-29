@@ -25,12 +25,11 @@ public class Commande implements Serializable {
 
     public enum State{
         COMMENCEE,
-        PAYEE,
         EN_COURS,
         TERMINEE
     }
 
-    static ArrayList<Commande> commandeListe = new ArrayList<>();
+    public static ArrayList<Commande> commandeListe = new ArrayList<>();
 
     /**
      * Cree une nouvelle commande
@@ -42,6 +41,7 @@ public class Commande implements Serializable {
         panier = pPanier;
         date = LocalDateTime.now();
         etatActuel = State.COMMENCEE;
+        commandeListe.add(this);
     }
 
     /**
