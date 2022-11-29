@@ -6,14 +6,8 @@ import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
-import application.view.compte.CompteView;
-import application.view.gestionSoldable.offre.crudOffre.TypeOffreElementController;
-import application.view.gestionSoldable.produit.stock.GestionStockView;
-import application.view.gestionSoldable.categorie.GestionCategorieView;
-import application.view.gestionSoldable.offre.GestionOffreView;
-import application.view.gestionSoldable.type.GestionTypeView;
+import application.view.Menu;
 import application.view.methodePayement.MethodePayementView;
-import application.view.gestionSoldable.produit.GestionProduitView;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import application.view.ViewController;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -69,29 +64,29 @@ public class PriseCommandeViewController extends ViewController {
      * methode pour animation du menu
      */
     public void openMenu() {
-        if (!sliderMenu.isVisible()) {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderMenu);
-
-            slide.setToX(0);
-            slide.play();
-
-            sliderMenu.setTranslateX(-176);
-            sliderMenu.setVisible(true);
-        } else {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderMenu);
-
-            slide.setToX(-176);
-            slide.play();
-
-            sliderMenu.setTranslateX(0);
-            slide.setOnFinished((ActionEvent e) -> {
-                sliderMenu.setVisible(false);
-            });
-        }
+//        if (!sliderMenu.isVisible()) {
+//            TranslateTransition slide = new TranslateTransition();
+//            slide.setDuration(Duration.seconds(0.4));
+//            slide.setNode(sliderMenu);
+//
+//            slide.setToX(0);
+//            slide.play();
+//
+//            sliderMenu.setTranslateX(-176);
+//            sliderMenu.setVisible(true);
+//        } else {
+//            TranslateTransition slide = new TranslateTransition();
+//            slide.setDuration(Duration.seconds(0.4));
+//            slide.setNode(sliderMenu);
+//
+//            slide.setToX(-176);
+//            slide.play();
+//
+//            sliderMenu.setTranslateX(0);
+//            slide.setOnFinished((ActionEvent e) -> {
+//                sliderMenu.setVisible(false);
+//            });
+//        }
     }
 
     /**
@@ -127,10 +122,22 @@ public class PriseCommandeViewController extends ViewController {
      * methode qui permet de cacher les slider a l'initialisation de la page
      */
     public void initialisationMenu() {
-        sliderMenu.setVisible(false);
-        sliderMenu.setTranslateX(-176);
-        sliderPanier.setVisible(false);
-        sliderPanier.setTranslateY(500);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
+        VBox vboxMenu = null;
+        try {
+            vboxMenu = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sliderMenu.getChildren().add(vboxMenu);
+
+        Menu menuController = loader.getController();
+        menuController.initialize(this, (Stage) ViewPriseCommande.getScene().getWindow());
+
+//        sliderMenu.setVisible(false);
+//        sliderMenu.setTranslateX(-176);
+//        sliderPanier.setVisible(false);
+//        sliderPanier.setTranslateY(500);
     }
 
     /**
@@ -191,78 +198,6 @@ public class PriseCommandeViewController extends ViewController {
             e.printStackTrace();
         }
 
-    }
-
-    /**
-     * methode de redirection vers la page de gestion des produits
-     */
-    public void redirectionGestionProduit() {
-        try {
-            GestionProduitView gestionProduitView = new GestionProduitView();
-            getView().changerPage(gestionProduitView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * methode de redirection vers la page de gestion des types
-     */
-    public void redirectionGestionType() {
-        try {
-            GestionTypeView gestionTypeView = new GestionTypeView();
-            getView().changerPage(gestionTypeView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * methode de redirection vers la page de gestion des catégories
-     */
-    public void redirectionGestionCategorie() {
-        try {
-            GestionCategorieView gestionCategorieView = new GestionCategorieView();
-            getView().changerPage(gestionCategorieView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * methode de redirection vers la page de gestion des offres
-     */
-    public void redirectionGestionOffre() {
-        try {
-            GestionOffreView gestionOffreView = new GestionOffreView();
-            getView().changerPage(gestionOffreView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * methode de redirection vers la page de gestion des comptes
-     */
-    public void redirectionCompte() {
-        try {
-            CompteView compteView = new CompteView();
-            getView().changerPage(compteView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * methode de redirection vers la page de gestion du stock
-     */
-    public void redirectionStock() {
-        try {
-            GestionStockView stockView = new GestionStockView();
-            getView().changerPage(stockView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**

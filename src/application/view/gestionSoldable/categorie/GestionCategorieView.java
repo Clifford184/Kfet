@@ -58,6 +58,10 @@ public class GestionCategorieView extends View {
         try {
             for (String message : messages) {
                 switch (message) {
+                    case "menu" -> {
+                        // initialise le menu
+                        getViewController().initialisationMenu();
+                    }
                     case "categorie" -> {
                         // Update du menu en fonctions des soldable existant
                         getViewController().setListeCategorie(Categorie.categorieListe);

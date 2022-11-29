@@ -4,6 +4,7 @@ import application.controller.Controller;
 import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.view.Menu;
 import application.view.ViewController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class GestionStockViewController extends ViewController {
     public Button validerModifButton;
     @FXML
     private AnchorPane viewGestionStock;
+    @FXML
+    private AnchorPane sliderMenu;
 
     boolean modifActivee = false;
 
@@ -100,6 +104,20 @@ public class GestionStockViewController extends ViewController {
             vboxStock.getChildren().add(pane);
         }
 
+    }
+
+    public void initialisationMenu() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
+        VBox vboxMenu = null;
+        try {
+            vboxMenu = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sliderMenu.getChildren().add(vboxMenu);
+
+        Menu menuController = loader.getController();
+        menuController.initialize(this, (Stage) viewGestionStock.getScene().getWindow());
     }
 
     public GestionStockView getView() {

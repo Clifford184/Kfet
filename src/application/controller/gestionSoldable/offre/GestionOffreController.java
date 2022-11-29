@@ -9,7 +9,7 @@ public class GestionOffreController extends Controller {
      */
     @Override
     public void initialize() {
-        String[] messages = {"offre"};
+        String[] messages = {"menu", "offre"};
         notifyObservers(messages);
     }
 }

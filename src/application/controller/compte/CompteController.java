@@ -13,7 +13,7 @@ public class CompteController extends Controller {
      */
     @Override
     public void initialize() {
-        String[] messages = {"client"};
+        String[] messages = {"menu", "client"};
         notifyObservers(messages);
     }
 

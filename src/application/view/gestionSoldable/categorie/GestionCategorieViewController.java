@@ -1,17 +1,22 @@
 package application.view.gestionSoldable.categorie;
 
 import application.model.vendable.Categorie;
+import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GestionCategorieViewController extends ViewController {
@@ -57,6 +62,20 @@ public class GestionCategorieViewController extends ViewController {
                 sliderMenu.setVisible(false);
             });
         }
+    }
+
+    public void initialisationMenu() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
+        VBox vboxMenu = null;
+        try {
+            vboxMenu = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sliderMenu.getChildren().add(vboxMenu);
+
+        Menu menuController = loader.getController();
+        menuController.initialize(this, (Stage) viewGestionCategorie.getScene().getWindow());
     }
 
     public void ajouterCategorie() throws Exception {

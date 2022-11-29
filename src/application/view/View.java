@@ -3,6 +3,7 @@ package application.view;
 import application.controller.Controller;
 import application.model.Systeme;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  * View of a HIM.
@@ -71,6 +72,20 @@ public abstract class View extends Application implements Observer {
      */
     public void stop(){
         Systeme.saveAll();
+    }
+
+    /**
+     * methode pour changer de page
+     * @param pPageDestination vue de destination
+     */
+    public void changerPage(Stage pStage, View pPageDestination) {
+        try {
+            Stage stage = pStage;
+            pPageDestination.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

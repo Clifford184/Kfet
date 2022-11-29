@@ -9,7 +9,7 @@ public class GestionCategorieController extends Controller {
      */
     @Override
     public void initialize() {
-        String[] messages = {"categorie"};
+        String[] messages = {"menu", "categorie"};
         notifyObservers(messages);
     }
 }
