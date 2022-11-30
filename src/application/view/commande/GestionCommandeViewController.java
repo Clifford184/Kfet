@@ -3,17 +3,20 @@ package application.view.commande;
 import application.model.Commande;
 import application.view.ViewController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 
 public class GestionCommandeViewController extends ViewController {
 
     public VBox listeCommandeVBox;
-
     public Button menuButton;
     public Label clientLabel;
     public Label heureCommandeLabel;
@@ -27,9 +30,19 @@ public class GestionCommandeViewController extends ViewController {
 
     public void initialize(){
 
+        for(Commande commande : Commande.getCommandeListe()){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionCommandeElement.fxml"));
+            Pane pane = null;
+            try {
+                pane = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            GestionCommandeElementController controller = loader.getController();
+            controller.initialize(this,commande);
+            listeCommandeVBox.getChildren().add(pane);
+        }
         //relier le menuButton
-
-
 
     }
 

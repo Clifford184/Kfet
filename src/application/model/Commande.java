@@ -1,6 +1,10 @@
 package application.model;
 
 import application.model.client.Client;
+import application.model.vendable.Offre;
+import application.model.vendable.Produit;
+import application.model.vendable.ProduitCommande;
+import application.model.vendable.Vendable;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -19,7 +23,9 @@ public class Commande implements Serializable {
     UUID id;
     LocalDateTime date;
     Client client;
-    Panier panier;
+    Panier panier;  //Utiliser pour les fonctionnalitees propres au panier
+    ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>(); //Utiliser pour gerer l'avancement
+    //de chaque article pendant la preparation de la commande.
 
     State etatActuel;
 
@@ -29,7 +35,7 @@ public class Commande implements Serializable {
         TERMINEE
     }
 
-    public static ArrayList<Commande> commandeListe = new ArrayList<>();
+    static ArrayList<Commande> commandeListe = new ArrayList<>();
 
     /**
      * Cree une nouvelle commande
@@ -42,6 +48,16 @@ public class Commande implements Serializable {
         date = LocalDateTime.now();
         etatActuel = State.COMMENCEE;
         commandeListe.add(this);
+
+        for(Vendable v : panier.getSoldableList()){
+            if(v instanceof Offre){
+                for(Produit p : ((Offre)v).getProduitListe())
+                    produitCommandeListe.add(new ProduitCommande(p));
+            }
+            if(v instanceof Produit)
+                produitCommandeListe.add(new ProduitCommande((Produit)v));
+
+        }
     }
 
     /**
@@ -58,6 +74,10 @@ public class Commande implements Serializable {
         }
         commandeListe.add(this);
         return this;
+    }
+
+    public static ArrayList<Commande> getCommandeListe() {
+        return commandeListe;
     }
 
     public LocalDateTime getDate() {
