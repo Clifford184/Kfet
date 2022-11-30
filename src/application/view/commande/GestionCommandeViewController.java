@@ -1,7 +1,10 @@
 package application.view.commande;
 
 import application.model.Commande;
+import application.model.vendable.Categorie;
 import application.view.ViewController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -12,19 +15,23 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class GestionCommandeViewController extends ViewController {
 
     public VBox listeCommandeVBox;
     public Button menuButton;
+    public Button consulterHistoriqueButton;
+
     public Label clientLabel;
     public Label heureCommandeLabel;
     public Label montantTotalLabel;
     public ComboBox etatActuelCombo;
-    public Button validerModifButton;
     public VBox listeProduitVBox;
-    public Button consulterHistoriqueButton;
+    public Button validerModifButton;
+
     @FXML
     private AnchorPane viewGestionCommande;
 
@@ -39,9 +46,10 @@ public class GestionCommandeViewController extends ViewController {
                 e.printStackTrace();
             }
             GestionCommandeElementController controller = loader.getController();
-            controller.initialize(this,commande);
+            controller.initialize(commande);
             listeCommandeVBox.getChildren().add(pane);
         }
+
         //relier le menuButton
 
     }
@@ -52,11 +60,15 @@ public class GestionCommandeViewController extends ViewController {
      * @param pCommande la commande dont il faut afficher les details
      */
     public void focusCommande(Commande pCommande){
-        clientLabel.setText(pCommande.getClient().getPrenom());
+        clientLabel.setText(pCommande.getClient().getPrenom()+pCommande.getClient().getNom());
+        heureCommandeLabel.setText(pCommande.getDate().toString());
         montantTotalLabel.setText(pCommande.getCart().valeurPanier()+"e");
 
-        //
+        String[] listeEnum = Arrays.stream(Commande.State.class.getEnumConstants()).map(Enum::name).toArray(String[]::new);
 
+        ObservableList<String> list = FXCollections.observableArrayList(listeEnum);
+        etatActuelCombo.setItems(list);
+        etatActuelCombo.getSelectionModel().select(0);
     }
 
     /**

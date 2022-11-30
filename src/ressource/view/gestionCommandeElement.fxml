@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="27.0" prefWidth="420.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="27.0" prefWidth="420.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="application.view.commande.GestionCommandeElementController">
    <children>
       <Label fx:id="listeClientLabel" layoutX="11.0" layoutY="5.0" text="Client" />
       <Label fx:id="listeHeureLabel" layoutX="107.0" layoutY="5.0" text="00:00" />
-      <Label fx:id="listeHeureLabel1" layoutX="163.0" layoutY="5.0" text="11,11e" />
-      <Label fx:id="listeHeureLabel11" layoutX="217.0" layoutY="5.0" text="Terminée" />
-      <Label fx:id="listeHeureLabel111" layoutX="294.0" layoutY="5.0" text="Pizza 4 fromage, coca" />
+      <Label fx:id="listePrixTotalLabel" layoutX="163.0" layoutY="5.0" text="11,11e" />
+      <Label fx:id="listeEtatLabel" layoutX="217.0" layoutY="5.0" text="Terminée" />
+      <Label fx:id="listeProduitLabel" layoutX="294.0" layoutY="5.0" text="Pizza 4 fromage, coca" />
    </children>
 </Pane>

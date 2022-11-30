@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -45,11 +46,12 @@ public class GestionStockViewController extends ViewController {
             Pane pane = null;
             try {
                 pane = loader.load();
+                pane.setOnMouseClicked(mouseEvent -> focusType(type));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             TypeStockElementController controller = loader.getController();
-            controller.initialize(pane, this, type);
+            controller.initialize(type);
             hboxType.getChildren().add(pane);
         }
         if(Type.getTypeListe().size()>0)

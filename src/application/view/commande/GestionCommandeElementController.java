@@ -1,12 +1,23 @@
 package application.view.commande;
 
 import application.model.Commande;
+import javafx.scene.control.Label;
 
 public class GestionCommandeElementController {
 
-    Commande commande;
-    GestionCommandeViewController view;
+    public Label listeClientLabel;
+    public Label listeHeureLabel;
+    public Label listePrixTotalLabel;
+    public Label listeEtatLabel;
+    public Label listeProduitLabel;
 
-    public void initialize(GestionCommandeViewController gestionCommandeViewController, Commande commande) {
+    Commande commande;
+
+    public void initialize(Commande pCommande) {
+        commande = pCommande;
+        listeClientLabel.setText(commande.getClient().getPrenom());
+        listeHeureLabel.setText(commande.getDate().toString());
+        listePrixTotalLabel.setText(commande.getCart().valeurPanier()+"e");
+        listeEtatLabel.setText(commande.getEtatActuel().name());
     }
 }
