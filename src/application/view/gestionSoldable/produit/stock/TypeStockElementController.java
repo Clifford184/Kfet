@@ -1,10 +1,12 @@
 package application.view.gestionSoldable.produit.stock;
 
 import application.model.vendable.Type;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class TypeStockElementController {
 
+    @FXML
     Label typeLabel;
     Type type;
 

@@ -27,9 +27,9 @@ public class Commande implements Serializable {
     ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>(); //Utiliser pour gerer l'avancement
     //de chaque article pendant la preparation de la commande.
 
-    State etatActuel;
+    Etat etatActuel;
 
-    public enum State{
+    public enum Etat {
         COMMENCEE,
         EN_COURS,
         TERMINEE
@@ -46,7 +46,7 @@ public class Commande implements Serializable {
 
         panier = pPanier;
         date = LocalDateTime.now();
-        etatActuel = State.COMMENCEE;
+        etatActuel = Etat.COMMENCEE;
         commandeListe.add(this);
 
         for(Vendable v : panier.getSoldableList()){
@@ -74,6 +74,31 @@ public class Commande implements Serializable {
         }
         commandeListe.add(this);
         return this;
+    }
+
+    /**
+     * Verifie l'etat de tous les produits pour mettre a jour l'etat de la commande
+     * en consequence.
+     **/
+    public void maj() {
+        boolean fini=true;
+
+        for(ProduitCommande p : produitCommandeListe){
+
+            if(p.getEtat()!= ProduitCommande.Etat.SERVI)
+                fini = false;
+
+            if(p.getEtat()== ProduitCommande.Etat.EN_COURS){
+                if(etatActuel == Etat.COMMENCEE){
+                    etatActuel = Etat.EN_COURS;
+                }
+            }
+        }
+
+        if(fini){
+            etatActuel = Etat.TERMINEE;
+        }
+
     }
 
     public static ArrayList<Commande> getCommandeListe() {
@@ -104,11 +129,11 @@ public class Commande implements Serializable {
         this.panier = panier;
     }
 
-    public State getEtatActuel() {
+    public Etat getEtatActuel() {
         return etatActuel;
     }
 
-    public void setEtatActuel(State etatActuel) {
+    public void setEtatActuel(Etat etatActuel) {
         this.etatActuel = etatActuel;
     }
 

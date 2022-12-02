@@ -5,7 +5,7 @@ public class ProduitCommande {
     Produit produit;
     Etat etat;
 
-    enum Etat{
+    public enum Etat{
         COMMENCE,
         EN_COURS,
         SERVI
@@ -15,8 +15,16 @@ public class ProduitCommande {
         produit = pProduit;
     }
 
+    public Etat getEtat() {
+        return etat;
+    }
+
     public void changerEtat(Etat pEtat){
         etat = pEtat;
+    }
+
+    public Produit getProduit(){
+        return produit;
     }
 
 }
