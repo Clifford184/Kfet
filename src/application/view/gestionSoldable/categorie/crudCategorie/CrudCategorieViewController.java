@@ -21,7 +21,7 @@ public class CrudCategorieViewController extends ViewController {
 
     public void annuler() {
         GestionCategorieView gestionCategorieView = new GestionCategorieView();
-        getView().changerScene(gestionCategorieView);
+        getView().changerPage((Stage) getViewCrudCategorie().getScene().getWindow(), gestionCategorieView);
     }
 
     public void valider() {

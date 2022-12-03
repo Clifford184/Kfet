@@ -41,6 +41,7 @@ public class CrudOffreViewController extends ViewController {
     public TextField champRevient;
     public TextField champMarge;
     public TextField champMargeMembre;
+    @FXML
     private AnchorPane viewCrudOffre;
 
     ArrayList<Categorie> categorieListe = new ArrayList<>();
@@ -236,7 +237,7 @@ public class CrudOffreViewController extends ViewController {
 
     public void annuler() {
         GestionOffreView gestionOffreView = new GestionOffreView();
-        getView().changerScene(gestionOffreView);
+        getView().changerPage((Stage) getViewCrudOffre().getScene().getWindow(), gestionOffreView);
     }
 
     /**

@@ -51,22 +51,9 @@ public class CrudCategorieView extends View {
         stage.show();
     }
 
-    public void changerScene() throws Exception {
-
-    }
-
     @Override
     public void update(Observable observable, String[] messages) {}
 
-    public void changerScene(View view)  {
-        try {
-            Stage stage = (Stage) getViewController().getViewCrudCategorie().getScene().getWindow();
-            view.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     public void close() {
         Stage stage = (Stage)  getViewController().getNomCategorie().getScene().getWindow();

@@ -86,12 +86,12 @@ public class GestionProduitViewController extends ViewController {
 
     public void ajouterProduit() {
         CrudProduitView crudProduitView = new CrudProduitView();
-        getView().changerScene(crudProduitView);
+        getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), crudProduitView);
     }
 
     public void redirectionPriseCommande() {
         PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView);
+        getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), priseCommandeView);
     }
 
     public GestionProduitViewController(){}

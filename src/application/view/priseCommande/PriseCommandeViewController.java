@@ -4,6 +4,7 @@ import application.model.Commande;
 import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.Produit;
+import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.Menu;
@@ -44,7 +45,14 @@ public class PriseCommandeViewController extends ViewController {
     @FXML
     private VBox panierVBox;
 
+    @FXML
+    private VBox listeTypeVBox;
+
     ArrayList<ProduitCommandeElement> produitControllerListe = new ArrayList<>();
+
+    boolean isMenu = false;
+    int etapeMenu = 0;
+    TemplateOffre templateOffreSelectionner;
 
     public void initialize(){
         prixMembreCheckbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -121,7 +129,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode qui permet de cacher les slider a l'initialisation de la page
      */
-    public void initialisationMenu() {
+    public void initialisationSliderMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
         try {
@@ -143,7 +151,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void InitialisationType() {
+    public void InitialiserAffichageType() {
 
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
@@ -154,9 +162,85 @@ public class PriseCommandeViewController extends ViewController {
             pane.setPadding(new Insets(50, 50, 50, 50));
             zoneAffichageType.getChildren().add(pane);
         }
+
+        Pane pane = new Pane();
+        Label label = new Label();
+        label.setText("Menu");
+        pane.getChildren().add(label);
+        pane.setOnMouseClicked(event -> AffichageOffre());
+        pane.setPadding(new Insets(50, 50, 50, 50));
+        zoneAffichageType.getChildren().add(pane);
+    }
+
+    public void AffichageOffre(){
+        isMenu = true;
+        etapeMenu = 0;
+        zoneAffichageType.getChildren().clear();
+        for (TemplateOffre templateOffre : TemplateOffre.getTemplateOffreListe()) {
+            Pane pane = new Pane();
+            Label label = new Label();
+            label.setText(templateOffre.getNom());
+            pane.getChildren().add(label);
+            pane.setOnMouseClicked(event -> AffichageTypeOffre(templateOffre) );
+            pane.setPadding(new Insets(50, 50, 50, 50));
+            zoneAffichageType.getChildren().add(pane);
+        }
+
+        afficherListeHorizontalType();
+    }
+
+    public void AffichageTypeOffre(TemplateOffre pTemplateOffre){
+        templateOffreSelectionner = pTemplateOffre;
+        zoneAffichageType.getChildren().clear();
+        if (etapeMenu < pTemplateOffre.getCategorieListe().size()) {
+            for (Type typeMenu : pTemplateOffre.getCategorieListe().get(etapeMenu).getTypeListe()) {
+                Pane pane = new Pane();
+                Label label = new Label();
+                label.setText(typeMenu.getName());
+                pane.getChildren().add(label);
+                pane.setOnMouseClicked(event -> AffichagePlatTypeMenu(typeMenu));
+                pane.setPadding(new Insets(50, 50, 50, 50));
+                zoneAffichageType.getChildren().add(pane);
+            }
+            etapeMenu++;
+        }
+        else {
+            getView().getController().ajouterAuPanier(templateOffreSelectionner);
+            reinitialiserMenu();
+        }
+    }
+
+    public void reinitialiserMenu(){
+        isMenu = false;
+        etapeMenu = 0;
+        templateOffreSelectionner = null;
+        getView().getController().AnnulerMenu();
+        getView().getController().viderPanier();
+    }
+
+    public void afficherListeHorizontalType(){
+        listeTypeVBox.getChildren().clear();
+        for (Type type : Type.getTypeListe()) {
+            Pane pane = new Pane();
+            Label label = new Label();
+            label.setText(type.getName());
+            pane.getChildren().add(label);
+            pane.setOnMouseClicked(event -> AffichagePlatType(type) );
+            pane.setPadding(new Insets(20, 0, 0, 0));
+            listeTypeVBox.getChildren().add(pane);
+        }
+
+        Pane pane = new Pane();
+        Label label = new Label();
+        label.setText("Menu");
+        pane.getChildren().add(label);
+        pane.setOnMouseClicked(event -> AffichageOffre());
+        pane.setPadding(new Insets(50, 50, 50, 50));
+        listeTypeVBox.getChildren().add(pane);
     }
 
     public void AffichagePlatType(Type pType) {
+        reinitialiserMenu();
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
 
@@ -179,10 +263,43 @@ public class PriseCommandeViewController extends ViewController {
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(pane);
         }
+
+        afficherListeHorizontalType();
+    }
+
+    public void AffichagePlatTypeMenu(Type pType) {
+        zoneAffichageType.getChildren().clear();
+        produitControllerListe.clear();
+
+        for(Produit produit : pType.getProduitListe()){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/affichageProduit.fxml"));
+            Pane pane = null;
+            try {
+                pane = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ProduitCommandeElement controller = loader.getController();
+            if(Stock.getInstance().combienEnStock(produit)==0)
+                pane.setStyle("-fx-background-color: #BEBEBE");
+            else{
+                pane.setOnMouseClicked(event -> AjouterProduitMenu(produit));
+            }
+
+            controller.initialize(produit);
+            produitControllerListe.add(controller);
+            zoneAffichageType.getChildren().add(pane);
+        }
+
+        afficherListeHorizontalType();
     }
 
     public void AjouterAuPanier(Produit pProduit) {
         getView().getController().ajouterAuPanier(pProduit);
+    }
+
+    public void AjouterProduitMenu(Produit pProduit) {
+        getView().getController().AjoutProduitMenu(pProduit);
     }
 
 
@@ -192,7 +309,7 @@ public class PriseCommandeViewController extends ViewController {
     public void redirectionMethodePayement() {
         try {
             MethodePayementView methodePayementView = new MethodePayementView();
-            getView().changerPage(methodePayementView);
+            getView().changerPage((Stage) getViewPriseCommande().getScene().getWindow(), methodePayementView);
             methodePayementView.getController().setCommande(new Commande(getView().getController().getPanier()));
         } catch (Exception e) {
             e.printStackTrace();

@@ -58,20 +58,6 @@ public class MethodePayementView extends View {
     @Override
     public void update(Observable observable, String[] messages) {}
 
-    /**
-     * methode pour changer de page
-     * @param pPageDestination vue de destination
-     */
-    public void changerPage(View pPageDestination) {
-        try {
-            Stage stage = (Stage) getViewController().getViewModePayement().getScene().getWindow();
-            pPageDestination.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public MethodePayementController getController() {
         return (MethodePayementController) super.getController();

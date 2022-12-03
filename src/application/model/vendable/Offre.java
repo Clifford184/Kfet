@@ -39,10 +39,11 @@ public class Offre extends Vendable implements Serializable {
      */
     public Offre(TemplateOffre pTemplateOffre, ArrayList<Produit> pProduits) throws IOException {
         super(pTemplateOffre.getNom(), 0, pTemplateOffre.getPrixVente(),pTemplateOffre.getVenteMembre(), "");
-
-        image = ImageIO.read(new File(pTemplateOffre.cheminImage));
-
         produitListe = pProduits;
+        for(Produit p : produitListe){
+            prixAchat += p.prixAchat;
+        }
+        image = ImageIO.read(new File(pTemplateOffre.cheminImage));
         id = UUID.randomUUID();
     }
     /**

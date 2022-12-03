@@ -74,19 +74,6 @@ public class DebitArgentCompteView extends View {
         }
     }
 
-    /**
-     * methode pour fermer la fenetre de comfirmation
-     */
-    public void changerPage(View pPageDestination) {
-        try {
-            Stage stage = (Stage) getViewController().getViewArgentConfimation().getScene().getWindow();
-            pPageDestination.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public DebitArgentCompteController getController() {
         return (DebitArgentCompteController) super.getController();

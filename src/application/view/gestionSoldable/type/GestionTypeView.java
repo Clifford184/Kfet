@@ -73,16 +73,6 @@ public class GestionTypeView extends View {
         }
     }
 
-    public void changerScene(View view)  {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionType().getScene().getWindow();
-            view.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public GestionTypeController getController() {
         return (GestionTypeController) super.getController();

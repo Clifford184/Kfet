@@ -72,16 +72,6 @@ public class GestionOffreView extends View {
         }
     }
 
-    public void changerScene(View view)  {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionOffre().getScene().getWindow();
-            view.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public GestionOffreController getController() {
         return (GestionOffreController) super.getController();

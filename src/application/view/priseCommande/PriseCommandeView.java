@@ -75,17 +75,21 @@ public class PriseCommandeView extends View {
         try {
             for (String message : messages) {
                 switch (message) {
-                    case "menu" -> {
+                    case "sliderMenu" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().initialisationMenu();
+                        getViewController().initialisationSliderMenu();
                     }
                     case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().InitialisationType();
+                        getViewController().InitialiserAffichageType();
                     }
                     case "panier" -> {
                         // Update du panier quand on ajoute un produit
                         getViewController().setArticlePanier(getController().getPanier());
+                    }
+                    case "menu" -> {
+                        // Update de affichage du menu apres ajout un produit
+                        getViewController().AffichageTypeOffre(getViewController().templateOffreSelectionner);
                     }
                 }
             }
@@ -110,19 +114,5 @@ public class PriseCommandeView extends View {
     @Override
     public PriseCommandeViewController getViewController() {
         return (PriseCommandeViewController) super.getViewController();
-    }
-
-    /**
-     * methode pour changer de page
-     * @param pPageDestination vue de destination
-     */
-    public void changerPage(View pPageDestination) {
-        try {
-            Stage stage = (Stage) getViewController().getViewPriseCommande().getScene().getWindow();
-            pPageDestination.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

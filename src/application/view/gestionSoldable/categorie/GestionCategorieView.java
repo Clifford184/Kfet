@@ -73,16 +73,6 @@ public class GestionCategorieView extends View {
         }
     }
 
-    public void changerScene(View view)  {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionCategorie().getScene().getWindow();
-            view.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public GestionCategorieController getController() {
         return (GestionCategorieController) super.getController();

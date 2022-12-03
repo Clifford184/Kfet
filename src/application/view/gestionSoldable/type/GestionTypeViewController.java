@@ -85,12 +85,7 @@ public class GestionTypeViewController extends ViewController {
 
     public void ajouterType() throws Exception {
         CrudTypeView crudTypeView = new CrudTypeView();
-        getView().changerScene(crudTypeView);
-    }
-
-    public void redirectionPriseCommande() throws Exception {
-        PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView);
+        getView().changerPage((Stage) getViewGestionType().getScene().getWindow(), crudTypeView);
     }
 
     public GestionTypeViewController(){}

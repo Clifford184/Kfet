@@ -80,12 +80,12 @@ public class GestionCategorieViewController extends ViewController {
 
     public void ajouterCategorie() throws Exception {
         CrudCategorieView crudCategorieView = new CrudCategorieView();
-        getView().changerScene(crudCategorieView);
+        getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), crudCategorieView);
     }
 
     public void redirectionPriseCommande() throws Exception {
         PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView);
+        getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), priseCommandeView);
     }
 
     public GestionCategorieViewController(){}
