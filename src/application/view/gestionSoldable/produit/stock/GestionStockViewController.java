@@ -41,7 +41,6 @@ public class GestionStockViewController extends ViewController {
     public void initialize(){
 
         for(Type type : Type.getTypeListe()){
-            Stock s = Stock.getInstance();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/stockTypeElement.fxml"));
             Pane pane = null;
             try {

@@ -27,6 +27,7 @@ public class Client implements Serializable {
      * @param pGroupe son groupe
      */
     public Client(String pNom, String pPrenom, Groupe pGroupe){
+        id = UUID.randomUUID();
         nom = pNom;
         prenom = pPrenom;
         groupe = pGroupe;

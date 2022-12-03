@@ -7,7 +7,6 @@ import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.compte.CompteView;
-import application.view.gestionSoldable.offre.crudOffre.TypeOffreElementController;
 import application.view.gestionSoldable.produit.stock.GestionStockView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.offre.GestionOffreView;
@@ -136,20 +135,20 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void InitialisationType() {
+    public void initialisationType() {
 
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
             Label label = new Label();
             label.setText(type.getName());
             pane.getChildren().add(label);
-            pane.setOnMouseClicked(event -> AffichagePlatType(type) );
+            pane.setOnMouseClicked(event -> affichagePlatType(type) );
             pane.setPadding(new Insets(50, 50, 50, 50));
             zoneAffichageType.getChildren().add(pane);
         }
     }
 
-    public void AffichagePlatType(Type pType) {
+    public void affichagePlatType(Type pType) {
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
 
@@ -165,7 +164,7 @@ public class PriseCommandeViewController extends ViewController {
             if(Stock.getInstance().combienEnStock(produit)==0)
                 pane.setStyle("-fx-background-color: #BEBEBE");
             else{
-                pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
+                pane.setOnMouseClicked(event -> ajouterAuPanier(produit));
             }
 
             controller.initialize(produit);
@@ -174,7 +173,7 @@ public class PriseCommandeViewController extends ViewController {
         }
     }
 
-    public void AjouterAuPanier(Produit pProduit) {
+    public void ajouterAuPanier(Produit pProduit) {
         getView().getController().ajouterAuPanier(pProduit);
     }
 

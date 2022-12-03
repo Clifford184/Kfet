@@ -78,7 +78,7 @@ public class PriseCommandeView extends View {
                 switch (message) {
                     case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().InitialisationType();
+                        getViewController().initialisationType();
                     }
                     case "panier" -> {
                         // Update du menu en fonctions des soldable existant

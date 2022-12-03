@@ -57,8 +57,8 @@ public abstract class Vendable implements Serializable {
         }else{
             cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+nom+"-"+UUID.randomUUID().toString()+".png";
 
-            //image = ImageIO.read(new File(pCheminImage));
-            //ImageIO.write(image, "png", new File(cheminImage));
+            image = ImageIO.read(new File(pCheminImage));
+            ImageIO.write(image, "png", new File(cheminImage));
         }
 
     }

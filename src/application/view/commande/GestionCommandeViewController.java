@@ -2,10 +2,12 @@ package application.view.commande;
 
 import application.model.Commande;
 import application.view.ViewController;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -43,6 +45,8 @@ public class GestionCommandeViewController extends ViewController {
             //faire un tri pour afficher en premier les commandes commencée, en cours, et terminée
             GestionCommandeElementController controller = loader.getController();
             controller.initialize(commande);
+            pane.setOnMouseClicked(mouseEvent -> focusCommande(commande));
+
             listeCommandeVBox.getChildren().add(pane);
         }
         //relier le menuButton
@@ -66,7 +70,7 @@ public class GestionCommandeViewController extends ViewController {
     /**
      * Ouvre une nouvelle fenetre (?) permettant de consulter les commandes passees
      */
-    public void consulterHistoirique(){
+    public void consulterHistorique(){
 
     }
 
