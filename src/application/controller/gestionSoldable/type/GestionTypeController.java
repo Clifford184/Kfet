@@ -9,7 +9,7 @@ public class GestionTypeController extends Controller {
      */
     @Override
     public void initialize() {
-        String[] messages = {"type"};
+        String[] messages = {"menu", "type"};
         notifyObservers(messages);
     }
 }

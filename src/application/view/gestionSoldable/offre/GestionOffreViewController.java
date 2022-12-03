@@ -2,18 +2,23 @@ package application.view.gestionSoldable.offre;
 
 import application.model.vendable.Categorie;
 import application.model.vendable.Offre;
+import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.offre.crudOffre.CrudOffreView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GestionOffreViewController extends ViewController {
@@ -56,6 +61,20 @@ public class GestionOffreViewController extends ViewController {
                 sliderMenu.setVisible(false);
             });
         }
+    }
+
+    public void initialisationMenu() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
+        VBox vboxMenu = null;
+        try {
+            vboxMenu = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sliderMenu.getChildren().add(vboxMenu);
+
+        Menu menuController = loader.getController();
+        menuController.initialize(this, (Stage) viewGestionOffre.getScene().getWindow());
     }
 
     public void ajouterOffre() throws Exception {

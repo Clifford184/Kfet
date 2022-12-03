@@ -42,7 +42,6 @@ public class Client implements Serializable {
      */
     @Serial
     private Object readResolve() {
-
         for(Client p : clientListe){
             if(p.id.equals(this.id))
                 return p;
@@ -97,5 +96,10 @@ public class Client implements Serializable {
 
     public void setArgent(float argent) {
         this.argent = argent;
+    }
+
+    @Override
+    public String toString() {
+        return nom;
     }
 }

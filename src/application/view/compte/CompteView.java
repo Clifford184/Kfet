@@ -57,7 +57,7 @@ public class CompteView extends View {
      */
     public void changerPage(View pPageDestination) {
         try {
-            Stage stage = new Stage();
+            Stage stage = (Stage) getViewController().getViewCompte().getScene().getWindow();
             pPageDestination.start(stage);
         }
         catch (Exception e){
@@ -66,7 +66,24 @@ public class CompteView extends View {
     }
 
     @Override
-    public void update(Observable observable, String[] messages) {}
+    public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "menu" -> {
+                        // initialise le menu
+                        getViewController().initialisationMenu();
+                    }
+                    case "client" -> {
+                        // Update du menu en fonctions des soldable existant
+                       getViewController().initialize(); //TODO modification
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void changerScene(View view) {
         try {

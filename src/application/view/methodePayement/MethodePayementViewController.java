@@ -21,6 +21,7 @@ public class MethodePayementViewController extends ViewController {
         try {
             CompteView compteView = new CompteView();
             getView().changerPage(compteView);
+            compteView.getController().setAchatContexte(true);
             compteView.getController().setCommande(getView().getController().getCommande());
         } catch (Exception e) {
             e.printStackTrace();

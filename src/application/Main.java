@@ -1,6 +1,8 @@
 package application;
 
 import application.model.Systeme;
+import application.model.client.Client;
+import application.model.client.Groupe;
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
@@ -27,7 +29,11 @@ public class Main {
             new Produit("Oasis", 0.4f,0.8f,0.6f,t2,"");
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+
+        Groupe gp = new Groupe("DI4");
+        Client cl = new Client("Julien", "Mathias", gp);
+        */
 
 
 

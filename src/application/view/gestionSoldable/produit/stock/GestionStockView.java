@@ -57,12 +57,20 @@ public class GestionStockView extends View {
         stage.show();
     }
 
-    public void changerScene() throws Exception {
-
-    }
-
     @Override
     public void update(Observable observable, String[] messages) {
+        try {
+            for (String message : messages) {
+                switch (message) {
+                    case "menu" -> {
+                        // initialise le menu
+                        getViewController().initialisationMenu();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void changerScene(View view) {
