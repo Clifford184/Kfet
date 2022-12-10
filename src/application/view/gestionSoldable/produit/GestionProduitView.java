@@ -2,8 +2,6 @@ package application.view.gestionSoldable.produit;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.GestionProduitController;
-import application.model.Stock;
-import application.model.vendable.Type;
 import application.view.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,7 +29,7 @@ public class GestionProduitView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionProduit.fxml";
+        String fileName = "/ressource/view/gestionSoldable/produit/gestionProduit.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(GestionProduitView.class.getResource(fileName));
 
         // Creation of the scene.

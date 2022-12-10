@@ -41,6 +41,7 @@ public class CrudOffreViewController extends ViewController {
     public TextField champRevient;
     public TextField champMarge;
     public TextField champMargeMembre;
+    @FXML
     private AnchorPane viewCrudOffre;
 
     ArrayList<Categorie> categorieListe = new ArrayList<>();
@@ -90,7 +91,7 @@ public class CrudOffreViewController extends ViewController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreCategoriePane.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreCategoriePane.fxml"));
                     Pane pane = loader.load();
 
                     CategorieOffreElementController controller = loader.getController();
@@ -150,7 +151,7 @@ public class CrudOffreViewController extends ViewController {
         tableProduit.getChildren().clear();
 
         for(Type type : pCategorie.getTypeListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreTypePane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreTypePane.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();
@@ -173,7 +174,7 @@ public class CrudOffreViewController extends ViewController {
         tableProduit.getChildren().clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreProduitPane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreProduitPane.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();

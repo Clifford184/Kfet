@@ -3,8 +3,6 @@ package application.view.methodePayement;
 import application.controller.Observable;
 import application.controller.methodePayement.MethodePayementController;
 import application.view.View;
-import application.view.compte.CompteView;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -31,7 +29,7 @@ public class MethodePayementView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/methodePayementView.fxml";
+        String fileName = "/ressource/view/methodePayement/methodePayementView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MethodePayementView.class.getResource(fileName));
 
         // Creation of the scene.

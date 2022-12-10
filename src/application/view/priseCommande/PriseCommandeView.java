@@ -43,7 +43,7 @@ public class PriseCommandeView extends View {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/priseCommandeView.fxml";
+        String fileName = "/ressource/view/priseCommande/priseCommandeView.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(PriseCommandeView.class.getResource(fileName));
 
         // Creation of the scene.

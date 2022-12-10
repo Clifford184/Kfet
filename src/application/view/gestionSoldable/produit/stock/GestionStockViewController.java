@@ -1,7 +1,5 @@
 package application.view.gestionSoldable.produit.stock;
 
-import application.controller.Controller;
-import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.Menu;
@@ -14,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -45,7 +42,7 @@ public class GestionStockViewController extends ViewController {
     public void initialize(){
 
         for(Type type : Type.getTypeListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/stockTypeElement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/stock/stockTypeElement.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();
@@ -92,7 +89,7 @@ public class GestionStockViewController extends ViewController {
         controllerProduitAfficheListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/stockProduitElement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/stock/stockProduitElement.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();

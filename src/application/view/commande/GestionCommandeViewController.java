@@ -2,18 +2,15 @@ package application.view.commande;
 
 import application.model.Commande;
 import application.view.ViewController;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class GestionCommandeViewController extends ViewController {
@@ -35,7 +32,7 @@ public class GestionCommandeViewController extends ViewController {
     public void initialize(){
 
         for(Commande commande : Commande.getCommandeListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionCommandeElement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/commande/gestionCommandeElement.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();

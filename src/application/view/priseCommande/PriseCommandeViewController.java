@@ -143,7 +143,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void InitialisationType() {
+    public void initialisationType() {
 
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
@@ -161,7 +161,7 @@ public class PriseCommandeViewController extends ViewController {
         produitControllerListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/affichageProduit.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/priseCommande/affichageProduit.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();

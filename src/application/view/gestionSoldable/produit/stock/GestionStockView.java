@@ -35,7 +35,7 @@ public class GestionStockView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/stock.fxml";
+        String fileName = "/ressource/view/gestionSoldable/stock/stock.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(GestionStockView.class.getResource(fileName));
 
         // Creation of the scene.

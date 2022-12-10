@@ -29,7 +29,7 @@ public class GestionOffreView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionOffre.fxml";
+        String fileName = "/ressource/view/gestionSoldable/offre/gestionOffre.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(GestionOffreView.class.getResource(fileName));
 
         // Creation of the scene.

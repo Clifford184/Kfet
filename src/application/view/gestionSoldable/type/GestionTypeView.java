@@ -30,7 +30,7 @@ public class GestionTypeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionType.fxml";
+        String fileName = "/ressource/view/gestionSoldable/type/gestionType.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(GestionTypeView.class.getResource(fileName));
 
         // Creation of the scene.

@@ -31,7 +31,7 @@ public class DebitArgentCompteView extends View {
     public void start(Stage stage) throws Exception {
         // In the case of the separator for the resources, it's the same for every OS: '/'.
         // So there is no need to use File.separator.
-        String fileName = "/ressource/view/debitArgentCompte.fxml";
+        String fileName = "/ressource/view/compte/debitArgentCompte.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(DebitArgentCompteView.class.getResource(fileName));
 
         // Creation of the scene.

@@ -36,7 +36,7 @@
                         </Label>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/icone/autresPayement.png" />
+                              <Image url="@../../image/icone/autresPayement.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -50,7 +50,7 @@
                         </Label>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="77.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/icone/compte.png" />
+                              <Image url="@../../image/icone/compte.png" />
                            </image>
                         </ImageView>
                      </children>
