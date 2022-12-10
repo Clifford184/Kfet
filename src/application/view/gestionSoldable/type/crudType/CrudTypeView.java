@@ -3,7 +3,9 @@ package application.view.gestionSoldable.type.crudType;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.CrudTypeController;
 import application.model.vendable.Categorie;
+import application.view.SceneLoader;
 import application.view.View;
+import application.view.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,6 +13,10 @@ import javafx.stage.Stage;
 public class CrudTypeView extends View {
 
     public CrudTypeView()  {
+        cheminVue = "/ressource/view/gestionSoldable/type/crudType.fxml";
+        minWidth = 880;
+        minHeight = 580;
+        nomFenetre = "Gestion type";
         setController(null);
     }
 
@@ -30,25 +36,13 @@ public class CrudTypeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionSoldable/type/crudType.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(CrudTypeView.class.getResource(fileName));
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(880);
-        stage.setMinHeight(580);
-        stage.setScene(scene);
-
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
 
-        // Show the view.
         stage.show();
     }
 

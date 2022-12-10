@@ -2,7 +2,9 @@ package application.view.gestionSoldable.offre;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.offre.GestionOffreController;
+import application.view.SceneLoader;
 import application.view.View;
+import application.view.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -10,6 +12,10 @@ import javafx.stage.Stage;
 public class GestionOffreView extends View {
 
     public GestionOffreView()  {
+        cheminVue = "/ressource/view/gestionSoldable/offre/gestionOffre.fxml";
+        minWidth = 880;
+        minHeight = 580;
+        nomFenetre = "Gestion offre";
         setController(null);
     }
 
@@ -29,25 +35,13 @@ public class GestionOffreView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionSoldable/offre/gestionOffre.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(GestionOffreView.class.getResource(fileName));
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(880);
-        stage.setMinHeight(580);
-        stage.setScene(scene);
-
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
 
-        // Show the view.
         stage.show();
     }
 

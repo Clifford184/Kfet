@@ -9,6 +9,12 @@ import javafx.stage.Stage;
  * View of a HIM.
  */
 public abstract class View extends Application implements Observer {
+
+    protected String cheminVue;
+    protected int minWidth;
+    protected int minHeight;
+    protected String nomFenetre;
+
     /**
      * Controller which controls the elements of the view.
      */
