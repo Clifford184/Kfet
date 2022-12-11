@@ -29,7 +29,7 @@
          <children>
             <ImageView fx:id="ajouter" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterProduit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/icone/ajouter.png" />
+                  <Image url="@../../../image/icone/ajouter.png" />
                </image>
             </ImageView>
          </children>

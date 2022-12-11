@@ -1,12 +1,13 @@
-package application.view;
+package application.view.outils;
 
+import application.view.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class SceneLoader {
 
@@ -27,8 +28,7 @@ public class SceneLoader {
 
         Scene scene = null;
         try {
-            URL s = SceneLoader.class.getResource(pChemin);
-            fxmlLoader = new FXMLLoader(s);
+            fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(pChemin));
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
 
@@ -45,8 +45,18 @@ public class SceneLoader {
 
     }
 
-    /*public FXMLLoader getLoader(ViewController pController, String pChemin){
+    public static ControllerEtPane loadPane(String pChemin){
+        pChemin = pChemin.replaceAll("//", File.separator);
+        FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(pChemin));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
 
-    }*/
+            //affichage fenetre crash, sauvegarder et quitter.
+
+        }
+        return new ControllerEtPane(loader.getController(),pane);
+    }
 
 }

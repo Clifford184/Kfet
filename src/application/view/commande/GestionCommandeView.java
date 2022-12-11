@@ -2,12 +2,9 @@ package application.view.commande;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.StockController;
-import application.view.SceneLoader;
+import application.view.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
-import application.view.gestionSoldable.produit.stock.GestionStockView;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GestionCommandeView extends View {

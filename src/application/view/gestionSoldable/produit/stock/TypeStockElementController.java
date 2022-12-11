@@ -1,10 +1,11 @@
 package application.view.gestionSoldable.produit.stock;
 
 import application.model.vendable.Type;
+import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class TypeStockElementController {
+public class TypeStockElementController extends ViewController {
 
     @FXML
     Label typeLabel;

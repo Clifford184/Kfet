@@ -1,9 +1,10 @@
 package application.view.commande;
 
 import application.model.Commande;
+import application.view.ViewController;
 import javafx.scene.control.Label;
 
-public class GestionCommandeElementController {
+public class GestionCommandeElementController extends ViewController {
 
     public Label listeClientLabel;
     public Label listeHeureLabel;

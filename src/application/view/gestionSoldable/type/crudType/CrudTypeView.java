@@ -3,11 +3,9 @@ package application.view.gestionSoldable.type.crudType;
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.CrudTypeController;
 import application.model.vendable.Categorie;
-import application.view.SceneLoader;
+import application.view.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class CrudTypeView extends View {

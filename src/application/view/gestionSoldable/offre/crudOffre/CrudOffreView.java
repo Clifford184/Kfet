@@ -2,11 +2,9 @@ package application.view.gestionSoldable.offre.crudOffre;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.offre.CrudOffreController;
-import application.view.SceneLoader;
+import application.view.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class CrudOffreView extends View {

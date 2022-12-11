@@ -2,11 +2,9 @@ package application.view.compte.DebitArgentCompte;
 
 import application.controller.Observable;
 import application.controller.compte.DebitArgentCompte.DebitArgentCompteController;
-import application.view.SceneLoader;
+import application.view.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class DebitArgentCompteView extends View {
