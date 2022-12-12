@@ -105,22 +105,26 @@ public class Commande implements Serializable {
      **/
     public void maj() {
         boolean fini=true;
+        boolean commencee=true;
 
         for(ProduitCommande p : produitCommandeListe){
+
+            if(p.getEtat()!=ProduitCommande.Etat.COMMENCE)
+                commencee=false;
 
             if(p.getEtat()!= ProduitCommande.Etat.SERVI)
                 fini = false;
 
             if(p.getEtat()== ProduitCommande.Etat.EN_COURS){
-                if(etatActuel == Etat.COMMENCEE){
-                    etatActuel = Etat.EN_COURS;
-                }
+                etatActuel = Etat.EN_COURS;
             }
         }
 
         if(fini){
             etatActuel = Etat.TERMINEE;
         }
+        if(commencee)
+            etatActuel = Etat.COMMENCEE;
 
     }
 
@@ -129,6 +133,10 @@ public class Commande implements Serializable {
             return client.getPrenom()+" "+client.getNom();
         }else
             return prenomClient;
+    }
+
+    public ArrayList<ProduitCommande> getProduitCommandeListe() {
+        return produitCommandeListe;
     }
 
     public static ArrayList<Commande> getCommandeListe() {
@@ -141,14 +149,6 @@ public class Commande implements Serializable {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public Panier getCart() {
-        return panier;
-    }
-
-    public void setCart(Panier panier) {
-        this.panier = panier;
     }
 
     public Etat getEtatActuel() {

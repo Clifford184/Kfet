@@ -1,5 +1,6 @@
 package application.view.commande;
 
+import application.controller.commande.GestionCommandeController;
 import application.model.Commande;
 import application.model.vendable.Produit;
 import application.model.vendable.ProduitCommande;
@@ -16,20 +17,25 @@ import java.util.Arrays;
 public class GestionComProduitElementController extends ViewController {
 
     public Label nomProduitLabel;
-    public ComboBox etatProduitCombo;
+    public ComboBox<String> etatProduitCombo;
 
-    public void initialize(ProduitCommande pProduit, Commande pCommande){
+    GestionCommandeController controllerPrincipal;
+
+    public void initialize(ProduitCommande pProduit, GestionCommandeController pController){
+
+        controllerPrincipal = pController;
 
         nomProduitLabel.setText(pProduit.getProduit().getNom());
 
         String[] listeEnum = Arrays.stream(ProduitCommande.Etat.class.getEnumConstants()).map(Enum::name).toArray(String[]::new);
         ObservableList<String> list = FXCollections.observableArrayList(listeEnum);
         etatProduitCombo.setItems(list);
-        etatProduitCombo.getSelectionModel().select(pProduit.getEtat());
-        etatProduitCombo.valueProperty().addListener(new ChangeListener() {
+        etatProduitCombo.getSelectionModel().select(pProduit.getEtat().ordinal());
+        etatProduitCombo.valueProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                pCommande.maj();
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                controllerPrincipal.changerEtatProduit(pProduit, ProduitCommande.Etat.valueOf(newValue));
+                controllerPrincipal.majCommande();
             }
         });
 

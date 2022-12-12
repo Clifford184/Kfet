@@ -55,7 +55,7 @@ public class Systeme {
         }
         path = "data/Commande.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Groupe.groupeListe);
+            oos.writeObject(Commande.commandeListe);
         } catch (IOException e) {
             e.printStackTrace();
         }

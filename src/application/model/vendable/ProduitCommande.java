@@ -1,6 +1,12 @@
 package application.model.vendable;
 
-public class ProduitCommande {
+import java.io.Serializable;
+
+/**
+ * Decrit un produit a ete commande. Permet une gestion
+ * de son avancement de preparation
+ **/
+public class ProduitCommande implements Serializable {
 
     Produit produit;
     Etat etat;
@@ -11,9 +17,7 @@ public class ProduitCommande {
         SERVI
     }
 
-    /**
-     * Decrit un produit a ete commande. Permet une gestion
-     * de son avancement de preparation
+    /** Constructeur d'un produit commande
      * @param pProduit le produit a decrire.
      */
     public ProduitCommande(Produit pProduit){

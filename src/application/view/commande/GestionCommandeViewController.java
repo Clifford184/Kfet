@@ -1,6 +1,7 @@
 package application.view.commande;
 
 import application.model.Commande;
+import application.model.vendable.ProduitCommande;
 import application.view.outils.ControllerEtPane;
 import application.view.outils.SceneLoader;
 import application.view.ViewController;
@@ -43,8 +44,12 @@ public class GestionCommandeViewController extends ViewController {
 
             listeCommandeVBox.getChildren().add(pane);
         }
-        //relier le menuButton
 
+    }
+
+    public void recharger() {
+        listeCommandeVBox.getChildren().clear();
+        initialize();
     }
 
     /**
@@ -54,9 +59,24 @@ public class GestionCommandeViewController extends ViewController {
      */
     public void focusCommande(Commande pCommande){
 
+        getView().getController().focusCommande(pCommande);
+
         clientLabel.setText(pCommande.getIdentiteClient());
-        heureCommandeLabel.setText(pCommande.getDate().toString());
-        montantTotalLabel.setText(pCommande.getCart().valeurPanier()+"e");
+        heureCommandeLabel.setText(pCommande.getDate().getHour()+":"+pCommande.getDate().getMinute());
+        montantTotalLabel.setText(pCommande.getPanier().valeurPanier()+"e");
+        etatCommandeLabel.setText(pCommande.getEtatActuel().name());
+
+        for(ProduitCommande p : pCommande.getProduitCommandeListe()){
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/commande/gestionCommandeProduitElement.fxml");
+            Pane pane = controllerEtPane.getPane();
+
+            //faire un tri pour afficher en premier les commandes commencée, en cours, et terminée
+            GestionComProduitElementController controller = (GestionComProduitElementController) controllerEtPane.getController();
+            controller.initialize(p, getView().getController());
+
+            listeProduitVBox.getChildren().add(pane);
+        }
 
     }
 

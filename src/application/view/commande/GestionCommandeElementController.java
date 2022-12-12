@@ -17,8 +17,11 @@ public class GestionCommandeElementController extends ViewController {
     public void initialize(Commande pCommande) {
         commande = pCommande;
         listeClientLabel.setText(commande.getIdentiteClient());
-        listeHeureLabel.setText(commande.getDate().toString());
-        listePrixTotalLabel.setText(commande.getCart().valeurPanier()+"e");
+        listeHeureLabel.setText(commande.getDate().getHour()+":"+commande.getDate().getMinute());
+        listePrixTotalLabel.setText(commande.getPanier().valeurPanier()+"e");
         listeEtatLabel.setText(commande.getEtatActuel().name());
+
+        listeProduitLabel.setText(commande.getProduitCommandeListe().get(0).getProduit().getNom());
+
     }
 }
