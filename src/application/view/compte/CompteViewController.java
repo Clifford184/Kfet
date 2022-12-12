@@ -135,7 +135,7 @@ public class CompteViewController extends ViewController {
         if (pClient != null) {
             DebitArgentCompteView debitArgentCompteView = new DebitArgentCompteView();
             getView().changerPage((Stage) getViewCompte().getScene().getWindow(), debitArgentCompteView);
-            debitArgentCompteView.getController().setCommande(getView().getController().getCommande());
+            debitArgentCompteView.getController().setPanier(getView().getController().getPanier());
             debitArgentCompteView.getController().setClient(pClient);
         }
     }

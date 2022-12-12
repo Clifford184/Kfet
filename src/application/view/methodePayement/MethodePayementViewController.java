@@ -48,6 +48,8 @@ public class MethodePayementViewController extends ViewController {
             getView().changerPage((Stage) getViewModePayement().getScene().getWindow(), compteView);
             compteView.getController().setAchatContexte(true);
             compteView.getController().setPanier(getView().getController().getPanier());
+            //Oblige de refaire initialize pour prendre en compte les set fait avant
+            compteView.initialize();
         } catch (Exception e) {
             e.printStackTrace();
         }
