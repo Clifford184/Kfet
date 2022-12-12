@@ -14,8 +14,8 @@ public class PriseCommandeView extends View {
      */
     public PriseCommandeView()  {
         cheminVue = "/ressource/view/priseCommande/priseCommandeView.fxml";
-        minWidth = 880;
-        minHeight = 580;
+        minWidth = 1084;
+        minHeight = 724;
         nomFenetre = "Prise de commande";
         setController(null);
     }
@@ -56,6 +56,7 @@ public class PriseCommandeView extends View {
         initialize();
 
         stage.show();
+
     }
 
     /**

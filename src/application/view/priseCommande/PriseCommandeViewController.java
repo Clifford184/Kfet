@@ -154,22 +154,25 @@ public class PriseCommandeViewController extends ViewController {
     public void InitialiserAffichageType() {
 
         for (Type type : Type.getTypeListe()) {
-            Pane pane = new Pane();
-            Label label = new Label();
-            label.setText(type.getName());
-            pane.getChildren().add(label);
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+
+            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+            Pane pane = controllerEtPane.getPane();
             pane.setOnMouseClicked(event -> AffichagePlatType(type) );
-            pane.setPadding(new Insets(50, 50, 50, 50));
+            controller.initialize(type);
             zoneAffichageType.getChildren().add(pane);
         }
 
-        Pane pane = new Pane();
-        Label label = new Label();
-        label.setText("Menu");
-        pane.getChildren().add(label);
+        ControllerEtPane controllerEtPane =
+                SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+
+        ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+        Pane pane = controllerEtPane.getPane();
         pane.setOnMouseClicked(event -> AffichageOffre());
-        pane.setPadding(new Insets(50, 50, 50, 50));
+        controller.initializeOffre();
         zoneAffichageType.getChildren().add(pane);
+
     }
 
     public void AffichageOffre(){
@@ -177,13 +180,16 @@ public class PriseCommandeViewController extends ViewController {
         etapeMenu = 0;
         zoneAffichageType.getChildren().clear();
         for (TemplateOffre templateOffre : TemplateOffre.getTemplateOffreListe()) {
-            Pane pane = new Pane();
-            Label label = new Label();
-            label.setText(templateOffre.getNom());
-            pane.getChildren().add(label);
+
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+
+            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+            Pane pane = controllerEtPane.getPane();
             pane.setOnMouseClicked(event -> AffichageTypeOffre(templateOffre) );
-            pane.setPadding(new Insets(50, 50, 50, 50));
+            controller.initialize(templateOffre);
             zoneAffichageType.getChildren().add(pane);
+
         }
 
         afficherListeHorizontalType();
@@ -194,12 +200,14 @@ public class PriseCommandeViewController extends ViewController {
         zoneAffichageType.getChildren().clear();
         if (etapeMenu < pTemplateOffre.getCategorieListe().size()) {
             for (Type typeMenu : pTemplateOffre.getCategorieListe().get(etapeMenu).getTypeListe()) {
-                Pane pane = new Pane();
-                Label label = new Label();
-                label.setText(typeMenu.getName());
-                pane.getChildren().add(label);
+
+                ControllerEtPane controllerEtPane =
+                        SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+
+                ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+                Pane pane = controllerEtPane.getPane();
                 pane.setOnMouseClicked(event -> AffichagePlatTypeMenu(typeMenu));
-                pane.setPadding(new Insets(50, 50, 50, 50));
+                controller.initialize(typeMenu);
                 zoneAffichageType.getChildren().add(pane);
             }
             etapeMenu++;
@@ -222,7 +230,7 @@ public class PriseCommandeViewController extends ViewController {
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
             Label label = new Label();
-            label.setText(type.getName());
+            label.setText(type.getNom());
             pane.getChildren().add(label);
             pane.setOnMouseClicked(event -> AffichagePlatType(type) );
             pane.setPadding(new Insets(20, 0, 0, 0));
@@ -252,7 +260,7 @@ public class PriseCommandeViewController extends ViewController {
         for(Produit produit : pType.getProduitListe()){
 
             ControllerEtPane controllerEtPane =
-                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageProduit.fxml");
+                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
 
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             Pane pane = controllerEtPane.getPane();
@@ -276,7 +284,7 @@ public class PriseCommandeViewController extends ViewController {
         produitControllerListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/priseCommande/affichageProduit.fxml");
+            ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
 
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             if(Stock.getInstance().combienEnStock(produit)==0)
@@ -306,6 +314,10 @@ public class PriseCommandeViewController extends ViewController {
      * methode de redirection vers la page de methode de payement
      */
     public void redirectionMethodePayement() {
+
+        if(getView().getController().getPanier().getVendableListe().size()==0)
+            return;
+
         try {
             MethodePayementView methodePayementView = new MethodePayementView();
             getView().changerPage((Stage) getViewPriseCommande().getScene().getWindow(), methodePayementView);

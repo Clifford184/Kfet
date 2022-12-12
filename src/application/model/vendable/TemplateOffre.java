@@ -87,6 +87,10 @@ public class TemplateOffre implements Serializable {
         return this;
     }
 
+    public String getCheminImage() {
+        return cheminImage;
+    }
+
     public String getNom() {
         return nom;
     }

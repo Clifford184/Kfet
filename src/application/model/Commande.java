@@ -140,10 +140,7 @@ public class Commande implements Serializable {
     }
 
     public String getIdentiteClient(){
-        if(client!=null){
-            return client.getPrenom()+" "+client.getNom();
-        }else
-            return prenomClient;
+        return prenomClient;
     }
 
     public ArrayList<ProduitCommande> getProduitCommandeListe() {
