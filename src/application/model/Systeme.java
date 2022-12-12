@@ -43,19 +43,19 @@ public class Systeme {
         }
         path = "data/Groupe&Client.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Groupe.groupeListe);
+            oos.writeObject(Groupe.getGroupeListe());
         } catch (IOException e) {
             e.printStackTrace();
         }
         path = "data/Panier.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Groupe.groupeListe);
+            oos.writeObject(Groupe.getGroupeListe());
         } catch (IOException e) {
             e.printStackTrace();
         }
         path = "data/Commande.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Groupe.groupeListe);
+            oos.writeObject(Groupe.getGroupeListe());
         } catch (IOException e) {
             e.printStackTrace();
         }

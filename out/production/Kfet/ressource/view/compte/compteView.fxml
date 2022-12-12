@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -30,16 +29,8 @@
    <right>
       <AnchorPane prefHeight="316.0" prefWidth="51.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="49.0" fitWidth="25.0" layoutX="13.0" layoutY="106.0" onMouseClicked="#ajouterArgent" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../image/icone/ajoutCompte.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="29.0" layoutX="11.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../image/icone/ajoutArgent.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="ajouterClientImageView" fitHeight="49.0" fitWidth="25.0" layoutX="13.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ajouterArgentImageView" fitHeight="33.0" fitWidth="29.0" layoutX="11.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </right>
