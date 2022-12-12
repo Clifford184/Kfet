@@ -1,7 +1,8 @@
 package application.model;
 
 
-import application.model.vendable.Categorie;
+import application.model.vendable.Offre;
+import application.model.vendable.Produit;
 import application.model.vendable.Vendable;
 
 import java.io.Serial;
@@ -22,6 +23,9 @@ public class Panier implements Serializable {
 
     static ArrayList<Panier> panierListe = new ArrayList<>();
 
+    public static Panier panierCourant;
+    boolean termine = false;
+
     /**
      * Cree un nouveau panier vide
      */
@@ -29,6 +33,7 @@ public class Panier implements Serializable {
         id = UUID.randomUUID();
 
         vendableListe = new ArrayList<>();
+        panierCourant = this;
     }
 
     /**
@@ -76,6 +81,23 @@ public class Panier implements Serializable {
         return value;
     }
 
+    /**
+     * Vide le panier de tous ses elements et remplis le stock
+     */
+    public void viderPanier(){
+        Stock stock = Stock.getInstance();
+        for(Vendable v : vendableListe){
+            if(v instanceof Offre){
+                for(Produit p : ((Offre)v).getProduitListe()){
+                    stock.remplirStock(p,1);
+                }
+            }else{
+                stock.remplirStock((Produit)v,1);
+            }
+        }
+        vendableListe.clear();
+    }
+
     @Override
     public String toString(){
         StringBuilder aRetourner = new StringBuilder();
@@ -85,7 +107,15 @@ public class Panier implements Serializable {
         return aRetourner.toString();
     }
 
-    public ArrayList<Vendable> getSoldableList(){
+    public void terminerPanier(){
+        termine = true;
+    }
+
+    public boolean getTerminePanier(){
+        return termine;
+    }
+
+    public ArrayList<Vendable> getVendableListe(){
         return vendableListe;
     }
 

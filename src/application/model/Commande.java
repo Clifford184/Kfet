@@ -33,9 +33,19 @@ public class Commande implements Serializable {
     Etat etatActuel;
 
     public enum Etat {
-        COMMENCEE,
-        EN_COURS,
-        TERMINEE
+        COMMENCEE("#FF7A7A"),
+        EN_COURS("#FFC77A"),
+        TERMINEE("#9CFF7A");
+
+        private final String couleur;
+
+        private Etat(String pCouleur) {
+            couleur = pCouleur;
+        }
+
+        public String getCouleur() {
+            return couleur;
+        }
     }
 
     static ArrayList<Commande> commandeListe = new ArrayList<>();
@@ -69,11 +79,12 @@ public class Commande implements Serializable {
         prenomClient = pClient;
 
         panier = pPanier;
+        panier.terminerPanier();
         date = LocalDateTime.now();
         etatActuel = Etat.COMMENCEE;
         commandeListe.add(this);
 
-        for(Vendable v : panier.getSoldableList()){
+        for(Vendable v : panier.getVendableListe()){
             if(v instanceof Offre){
                 for(Produit p : ((Offre)v).getProduitListe())
                     produitCommandeListe.add(new ProduitCommande(p));

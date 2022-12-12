@@ -1,6 +1,5 @@
 package application.view.priseCommande;
 
-import application.model.Commande;
 import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.Produit;
@@ -16,21 +15,16 @@ import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import application.view.ViewController;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PriseCommandeViewController extends ViewController {
@@ -221,7 +215,6 @@ public class PriseCommandeViewController extends ViewController {
         etapeMenu = 0;
         templateOffreSelectionner = null;
         getView().getController().AnnulerMenu();
-        getView().getController().viderPanier();
     }
 
     public void afficherListeHorizontalType(){
@@ -246,6 +239,12 @@ public class PriseCommandeViewController extends ViewController {
     }
 
     public void AffichagePlatType(Type pType) {
+
+        if(pType==null)
+            return;
+
+        getView().getController().focusType(pType);
+
         reinitialiserMenu();
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
@@ -277,23 +276,18 @@ public class PriseCommandeViewController extends ViewController {
         produitControllerListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/priseCommande/affichageProduit.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ProduitCommandeElement controller = loader.getController();
+            ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/priseCommande/affichageProduit.fxml");
+
+            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             if(Stock.getInstance().combienEnStock(produit)==0)
-                pane.setStyle("-fx-background-color: #BEBEBE");
+                controllerEtPane.getPane().setStyle("-fx-background-color: #BEBEBE");
             else{
-                pane.setOnMouseClicked(event -> AjouterProduitMenu(produit));
+                controllerEtPane.getPane().setOnMouseClicked(event -> AjouterProduitMenu(produit));
             }
 
             controller.initialize(produit);
             produitControllerListe.add(controller);
-            zoneAffichageType.getChildren().add(pane);
+            zoneAffichageType.getChildren().add(controllerEtPane.getPane());
         }
 
         afficherListeHorizontalType();
@@ -321,6 +315,10 @@ public class PriseCommandeViewController extends ViewController {
         }
 
     }
+    public void rechargerProduit() {
+        AffichagePlatType(getView().getController().getType());
+    }
+
 
     public void afficherGestionCommande(){
 
@@ -330,8 +328,17 @@ public class PriseCommandeViewController extends ViewController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    public void setArticlePanier(Panier pPanier) {
+        panierVBox.getChildren().clear();
+        for(Vendable v : pPanier.getVendableListe()){
+            Label produitLabel = new Label(v.getNom() + "    X1"+"    " +v.getPrixVente());
+            produitLabel.setPadding(new Insets(0,2,0,0));
+            panierVBox.getChildren().add(produitLabel);
+        }
+    }
+
 
     /**
      * constructeur par défaut
@@ -355,12 +362,6 @@ public class PriseCommandeViewController extends ViewController {
         return ViewPriseCommande;
     }
 
-    public void setArticlePanier(Panier pPanier) {
-        Vendable vendable = pPanier.getSoldableList().get(pPanier.getSoldableList().size()-1);
-        Label produitLabel = new Label(vendable.getNom() + "    X1"+"    " +vendable.getPrixVente());
-        produitLabel.setPadding(new Insets(0,2,0,0));
-        panierVBox.getChildren().add(produitLabel);
-    }
 }
 
 

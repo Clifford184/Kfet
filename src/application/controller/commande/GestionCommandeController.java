@@ -26,4 +26,8 @@ public class GestionCommandeController extends Controller {
         String[] messages = {"commande_modifiee"};
         notifyObservers(messages);
     }
+
+    public Commande getCommande(){
+        return selectionnee;
+    }
 }

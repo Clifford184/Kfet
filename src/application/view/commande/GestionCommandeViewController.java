@@ -43,12 +43,14 @@ public class GestionCommandeViewController extends ViewController {
             pane.setOnMouseClicked(mouseEvent -> focusCommande(commande));
 
             listeCommandeVBox.getChildren().add(pane);
+            pane.setStyle("-fx-background-color:"+commande.getEtatActuel().getCouleur());
         }
 
     }
 
     public void recharger() {
         listeCommandeVBox.getChildren().clear();
+        focusCommande(getView().getController().getCommande());
         initialize();
     }
 
@@ -58,6 +60,8 @@ public class GestionCommandeViewController extends ViewController {
      * @param pCommande la commande dont il faut afficher les details
      */
     public void focusCommande(Commande pCommande){
+
+        listeProduitVBox.getChildren().clear();
 
         getView().getController().focusCommande(pCommande);
 

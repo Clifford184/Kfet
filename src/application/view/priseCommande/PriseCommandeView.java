@@ -79,6 +79,7 @@ public class PriseCommandeView extends View {
                     case "panier" -> {
                         // Update du panier quand on ajoute un produit
                         getViewController().setArticlePanier(getController().getPanier());
+                        getViewController().rechargerProduit();
                     }
                     case "menu" -> {
                         // Update de affichage du menu apres ajout un produit
