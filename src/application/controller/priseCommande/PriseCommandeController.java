@@ -9,17 +9,33 @@ import java.util.ArrayList;
 
 public class PriseCommandeController extends Controller {
 
-    Panier panier = new Panier();
+    Panier panier;
     ArrayList<Produit> produitMenuSelectionnee = new ArrayList<>();
 
+    Type typeSelectionne;
+
+    public PriseCommandeController(){
+        if(Panier.panierCourant==null)
+            panier = new Panier();
+        else{
+            if(Panier.panierCourant.getTerminePanier())
+                panier = new Panier();
+            else
+                panier = Panier.panierCourant;
+        }
+    }
 
     /**
      * methode d'initialisation du controller
      */
     @Override
     public void initialize()  {
-        String[] messages = {"sliderMenu","type"};
+        String[] messages = {"sliderMenu","type","panier"};
         notifyObservers(messages);
+    }
+
+    public void focusType(Type pType){
+        typeSelectionne = pType;
     }
 
     public void ajouterAuPanier(Produit pProduit){
@@ -53,16 +69,9 @@ public class PriseCommandeController extends Controller {
     }
 
     public void viderPanier(){
-        Stock stock = Stock.getInstance();
-        for(Vendable v : panier.getSoldableList()){
-            if(v instanceof Offre){
-                for(Produit p : ((Offre)v).getProduitListe()){
-                    stock.remplirStock(p,1);
-                }
-            }else{
-                stock.remplirStock((Produit)v,1);
-            }
-        }
+        panier.viderPanier();
+        String[] messages = {"panier","type"};
+        notifyObservers(messages);
     }
 
     public void AjoutProduitMenu(Produit pProduit) {
@@ -82,5 +91,9 @@ public class PriseCommandeController extends Controller {
 
     public Panier getPanier() {
         return panier;
+    }
+
+    public Type getType() {
+        return typeSelectionne;
     }
 }

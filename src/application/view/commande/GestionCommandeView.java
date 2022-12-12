@@ -1,6 +1,7 @@
 package application.view.commande;
 
 import application.controller.Observable;
+import application.controller.commande.GestionCommandeController;
 import application.controller.gestionSoldable.produit.StockController;
 import application.view.outils.SceneLoader;
 import application.view.View;
@@ -14,7 +15,7 @@ public class GestionCommandeView extends View {
     public GestionCommandeView() {
         cheminVue = "/ressource/view/commande/gestionCommande.fxml";
         minWidth = 880;
-        minHeight = 580;
+        minHeight = 490;
         nomFenetre = "Gestion commande";
         setController(null);
     }
@@ -26,7 +27,7 @@ public class GestionCommandeView extends View {
     public void initialize() {
         // Initialization of the controller.
         if (getController() == null) {
-            setController(new StockController());
+            setController(new GestionCommandeController());
         }
         getController().initialize();
     }
@@ -54,6 +55,14 @@ public class GestionCommandeView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
+        for (String message : messages) {
+            switch (message) {
+                case "commande_modifiee" -> {
+                    // Update du menu en fonctions des soldable existant
+                    getViewController().recharger();
+                }
+            }
+        }
     }
 
     public void changerScene(View view) {
@@ -66,8 +75,8 @@ public class GestionCommandeView extends View {
     }
 
     @Override
-    public StockController getController() {
-        return (StockController) super.getController();
+    public GestionCommandeController getController() {
+        return (GestionCommandeController) super.getController();
     }
 
     @Override

@@ -68,6 +68,10 @@ public class Type implements Serializable {
         return this;
     }
 
+    public String getCheminImage() {
+        return cheminImage;
+    }
+
     public void ajouterProduit(Produit pProduit){
         produitListe.add(pProduit);
     }
@@ -76,11 +80,11 @@ public class Type implements Serializable {
         return produitListe;
     }
 
-    public void setName(String pNewName){
-        nom = pNewName;
+    public void setNom(String pNom){
+        nom = pNom;
     }
 
-    public String getName() {
+    public String getNom() {
         return nom;
     }
 

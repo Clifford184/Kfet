@@ -31,7 +31,9 @@ public class SceneLoader {
             fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(pChemin));
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
+            e.printStackTrace();
 
+            System.out.println("Erreur chargement fxml");
             //affichage fenetre crash, sauvegarder et quitter.
 
         }
@@ -42,7 +44,6 @@ public class SceneLoader {
         stage.setScene(scene);
 
         return fxmlLoader.getController();
-
     }
 
     public static ControllerEtPane loadPane(String pChemin){

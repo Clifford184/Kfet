@@ -27,12 +27,25 @@ public class Commande implements Serializable {
     ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>(); //Utiliser pour gerer l'avancement
     //de chaque article pendant la preparation de la commande.
 
+    //Si la commande n'est pas relie a un client ayant un compte, on le designe juste par son prenom
+    String prenomClient;
+
     Etat etatActuel;
 
     public enum Etat {
-        COMMENCEE,
-        EN_COURS,
-        TERMINEE
+        COMMENCEE("#FF7A7A"),
+        EN_COURS("#FFC77A"),
+        TERMINEE("#9CFF7A");
+
+        private final String couleur;
+
+        private Etat(String pCouleur) {
+            couleur = pCouleur;
+        }
+
+        public String getCouleur() {
+            return couleur;
+        }
     }
 
     static ArrayList<Commande> commandeListe = new ArrayList<>();
@@ -41,22 +54,43 @@ public class Commande implements Serializable {
      * Cree une nouvelle commande
      * @param pPanier l'objet panier de la commande
      */
-    public Commande(Panier pPanier){
+    public static Commande creerCommande(Panier pPanier, Client pClient){
+        Commande commande = new Commande(pPanier, pClient.getPrenom()+" "+pClient.getNom());
+        commande.client = pClient;
+        return commande;
+    }
+
+    /**
+     * Cree une nouvelle commande
+     * @param pPanier l'objet panier de la commande
+     */
+    public static Commande creerCommande(Panier pPanier, String pClient){
+        return new Commande(pPanier,pClient);
+    }
+
+    /**
+     * Constructeur privee de commande, il faut passer par creerCommande pour instancier un objet
+     * @param pPanier l'objet panier de la commande
+     * @param pClient le nom du client
+     */
+    private Commande(Panier pPanier, String pClient){
         id = UUID.randomUUID();
 
+        prenomClient = pClient;
+
         panier = pPanier;
+        panier.terminerPanier();
         date = LocalDateTime.now();
         etatActuel = Etat.COMMENCEE;
         commandeListe.add(this);
 
-        for(Vendable v : panier.getSoldableList()){
+        for(Vendable v : panier.getVendableListe()){
             if(v instanceof Offre){
                 for(Produit p : ((Offre)v).getProduitListe())
                     produitCommandeListe.add(new ProduitCommande(p));
             }
             if(v instanceof Produit)
                 produitCommandeListe.add(new ProduitCommande((Produit)v));
-
         }
     }
 
@@ -82,23 +116,35 @@ public class Commande implements Serializable {
      **/
     public void maj() {
         boolean fini=true;
+        boolean commencee=true;
 
         for(ProduitCommande p : produitCommandeListe){
+
+            if(p.getEtat()!=ProduitCommande.Etat.COMMENCE)
+                commencee=false;
 
             if(p.getEtat()!= ProduitCommande.Etat.SERVI)
                 fini = false;
 
             if(p.getEtat()== ProduitCommande.Etat.EN_COURS){
-                if(etatActuel == Etat.COMMENCEE){
-                    etatActuel = Etat.EN_COURS;
-                }
+                etatActuel = Etat.EN_COURS;
             }
         }
 
         if(fini){
             etatActuel = Etat.TERMINEE;
         }
+        if(commencee)
+            etatActuel = Etat.COMMENCEE;
 
+    }
+
+    public String getIdentiteClient(){
+        return prenomClient;
+    }
+
+    public ArrayList<ProduitCommande> getProduitCommandeListe() {
+        return produitCommandeListe;
     }
 
     public static ArrayList<Commande> getCommandeListe() {
@@ -111,22 +157,6 @@ public class Commande implements Serializable {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Panier getCart() {
-        return panier;
-    }
-
-    public void setCart(Panier panier) {
-        this.panier = panier;
     }
 
     public Etat getEtatActuel() {

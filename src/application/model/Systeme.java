@@ -23,6 +23,10 @@ public class Systeme {
 
     public static void saveAll(){
 
+        //Si il y a une commande en cours non terminee, on doit vider le panier pour remplir le stock
+        if(Panier.panierCourant.getTerminePanier()==false)
+            Panier.panierCourant.viderPanier();
+
         String path = "data/Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Categorie.categorieListe);
@@ -55,7 +59,7 @@ public class Systeme {
         }
         path = "data/Commande.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeObject(Groupe.getGroupeListe());
+            oos.writeObject(Commande.commandeListe);
         } catch (IOException e) {
             e.printStackTrace();
         }

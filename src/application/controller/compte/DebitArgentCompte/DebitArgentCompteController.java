@@ -1,6 +1,7 @@
 package application.controller.compte.DebitArgentCompte;
 
 import application.controller.Controller;
+import application.model.Panier;
 import application.model.Stock;
 import application.model.client.Client;
 import application.model.Commande;
@@ -9,7 +10,7 @@ import application.model.vendable.Vendable;
 
 public class DebitArgentCompteController extends Controller {
 
-    Commande commande;
+    Panier panier;
     Client client;
 
     /**
@@ -20,27 +21,22 @@ public class DebitArgentCompteController extends Controller {
 
     public void debiterClient(float pSomme){
         client.retirerArgent(pSomme);
-        //TODO gerer retirer menu et produit
-        for (Vendable vendable : commande.getPanier().getSoldableList()){
-            if(vendable instanceof Produit) {
-                Stock.getInstance().retirerDuStock((Produit) vendable, 1);
-            }
-        }
-
+        Commande.creerCommande(panier,client);
+        //Le stock est deja a jour. Il l'est mis automatiquement lors de la prise de la commande
     }
 
-    public Commande getCommande() {
-        return commande;
+    public Panier getPanier() {
+        return panier;
     }
 
-    public void setCommande(Commande commande) {
-        this.commande = commande;
+    public void setPanier(Panier pPanier) {
+        panier = pPanier;
         String[] messages = {"commande"};
         notifyObservers(messages);
     }
 
     public float getSommeAdebiter(){
-       return commande.getPanier().valeurPanier();
+       return panier.valeurPanier();
     }
 
     public Client getClient() {
