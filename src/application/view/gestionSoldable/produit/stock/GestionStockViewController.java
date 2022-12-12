@@ -48,6 +48,7 @@ public class GestionStockViewController extends ViewController {
 
             TypeStockElementController controller = (TypeStockElementController) controllerEtPane.getController();
             controller.initialize(type);
+            controllerEtPane.getPane().setOnMouseClicked(event -> focusType(type));
             hboxType.getChildren().add(controllerEtPane.getPane());
         }
         if(Type.getTypeListe().size()>0)

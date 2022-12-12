@@ -10,19 +10,16 @@ import java.util.ArrayList;
 public class PriseCommandeController extends Controller {
 
     Panier panier = new Panier();
+    ArrayList<Produit> produitMenuSelectionnee = new ArrayList<>();
+
 
     /**
      * methode d'initialisation du controller
      */
     @Override
     public void initialize()  {
-        String[] messages = {"menu","type"};
+        String[] messages = {"sliderMenu","type"};
         notifyObservers(messages);
-    }
-
-    public ArrayList<Produit> getProduitType(Type pType){
-        int indexType = Type.getTypeListe().indexOf(pType);
-        return Type.getTypeListe().get(indexType).getProduitListe();
     }
 
     public void ajouterAuPanier(Produit pProduit){
@@ -31,6 +28,28 @@ public class PriseCommandeController extends Controller {
 
         String[] messages = {"panier"};
         notifyObservers(messages);
+    }
+
+    public void ajouterAuPanier(TemplateOffre pTemplateOffre){
+        try {
+            Offre offre = new Offre(pTemplateOffre, produitMenuSelectionnee);
+            panier.ajouterElement(offre);
+
+            // On enleve du stock les produits du menu
+            Stock stock = Stock.getInstance();
+            for(Produit produit : offre.getProduitListe()){
+                stock.retirerDuStock(produit,1);
+            }
+
+            //suppression des produits du menu selectionne mis dans le panier
+            produitMenuSelectionnee.clear();
+
+            String[] messages = {"panier","type"};
+            notifyObservers(messages);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void viderPanier(){
@@ -44,6 +63,21 @@ public class PriseCommandeController extends Controller {
                 stock.remplirStock((Produit)v,1);
             }
         }
+    }
+
+    public void AjoutProduitMenu(Produit pProduit) {
+        produitMenuSelectionnee.add(pProduit);
+
+        String[] messages = {"menu"};
+        notifyObservers(messages);
+    }
+
+    public void AnnulerMenu() {
+        Stock stock = Stock.getInstance();
+        for(Produit p: produitMenuSelectionnee){
+            stock.remplirStock(p,1);
+        }
+        produitMenuSelectionnee.clear();
     }
 
     public Panier getPanier() {
