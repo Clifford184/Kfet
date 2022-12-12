@@ -3,6 +3,7 @@ package application.view.commande;
 import application.model.Commande;
 import application.model.vendable.Produit;
 import application.model.vendable.ProduitCommande;
+import application.view.ViewController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,7 +13,7 @@ import javafx.scene.control.Label;
 
 import java.util.Arrays;
 
-public class GestionComProduitElementController {
+public class GestionComProduitElementController extends ViewController {
 
     public Label nomProduitLabel;
     public ComboBox etatProduitCombo;

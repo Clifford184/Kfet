@@ -2,13 +2,14 @@ package application.view.priseCommande;
 
 import application.model.Stock;
 import application.model.vendable.Produit;
+import application.view.ViewController;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
 
-public class ProduitCommandeElement {
+public class ProduitCommandeElement extends ViewController {
     public ImageView imageView;
     public Label nomProduitLabel;
     public Label stockLabel;

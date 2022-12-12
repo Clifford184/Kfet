@@ -2,14 +2,18 @@ package application.view.compte.DebitArgentCompte;
 
 import application.controller.Observable;
 import application.controller.compte.DebitArgentCompte.DebitArgentCompteController;
+import application.view.outils.SceneLoader;
 import application.view.View;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import application.view.ViewController;
 import javafx.stage.Stage;
 
 public class DebitArgentCompteView extends View {
 
     public DebitArgentCompteView()  {
+        cheminVue = "/ressource/view/compte/debitArgentCompte.fxml";
+        minWidth = 440;
+        minHeight = 250;
+        nomFenetre = "Debit argent";
         setController(null);
     }
 
@@ -29,28 +33,13 @@ public class DebitArgentCompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // In the case of the separator for the resources, it's the same for every OS: '/'.
-        // So there is no need to use File.separator.
-        String fileName = "/ressource/view/debitArgentCompte.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(DebitArgentCompteView.class.getResource(fileName));
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(440);
-        stage.setMinHeight(250);
-        stage.setScene(scene);
-
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
-        //getViewController().initialise();
 
-        // Show the view.
         stage.show();
     }
 

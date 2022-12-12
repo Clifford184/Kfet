@@ -3,6 +3,8 @@ package application.view.gestionSoldable.offre.crudOffre;
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.view.outils.ControllerEtPane;
+import application.view.outils.SceneLoader;
 import application.view.ViewController;
 import application.view.gestionSoldable.offre.GestionOffreView;
 import javafx.collections.FXCollections;
@@ -91,7 +93,7 @@ public class CrudOffreViewController extends ViewController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreCategoriePane.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreCategoriePane.fxml"));
                     Pane pane = loader.load();
 
                     CategorieOffreElementController controller = loader.getController();
@@ -151,16 +153,13 @@ public class CrudOffreViewController extends ViewController {
         tableProduit.getChildren().clear();
 
         for(Type type : pCategorie.getTypeListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreTypePane.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            TypeOffreElementController controller = loader.getController();
-            controller.initialize(pane,vue,type);
-            tableType.getChildren().add(pane);
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/gestionSoldable/offre/crudOffreTypePane.fxml");
+
+            TypeOffreElementController controller = (TypeOffreElementController) controllerEtPane.getController();
+            controller.initialize(vue,type);
+            controllerEtPane.getPane().setOnMouseClicked(mouseEvent -> vue.focusType(type));
+            tableType.getChildren().add(controllerEtPane.getPane());
         }
     }
 
@@ -174,16 +173,12 @@ public class CrudOffreViewController extends ViewController {
         tableProduit.getChildren().clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/crudOffreProduitPane.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ProduitOffreElementController controller = loader.getController();
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/gestionSoldable/offre/crudOffreProduitPane.fxml");
+
+            ProduitOffreElementController controller = (ProduitOffreElementController) controllerEtPane.getController();
             controller.initialize(!blacklist.contains(produit),vue,produit);
-            tableProduit.getChildren().add(pane);
+            tableProduit.getChildren().add(controllerEtPane.getPane());
         }
 
     }

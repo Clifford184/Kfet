@@ -2,13 +2,14 @@ package application.view.gestionSoldable.offre.crudOffre;
 
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.view.ViewController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
-public class ProduitOffreElementController {
+public class ProduitOffreElementController extends ViewController {
     public Label nomProduit;
     public CheckBox checkboxProduit;
     Produit produit;

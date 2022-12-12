@@ -4,7 +4,6 @@ import application.model.Commande;
 import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.Produit;
-import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.Menu;
@@ -129,17 +128,13 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode qui permet de cacher les slider a l'initialisation de la page
      */
-    public void initialisationSliderMenu() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
-        VBox vboxMenu = null;
-        try {
-            vboxMenu = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        sliderMenu.getChildren().add(vboxMenu);
+    public void initialisationMenu() {
 
-        Menu menuController = loader.getController();
+        ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/menu.fxml");
+        Menu menuController = (Menu) controllerEtPane.getController();
+
+        sliderMenu.getChildren().add(controllerEtPane.getPane());
+
         menuController.initialize(this, (Stage) ViewPriseCommande.getScene().getWindow());
 
         sliderMenu.setVisible(true);
@@ -151,7 +146,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void InitialiserAffichageType() {
+    public void InitialisationType() {
 
         for (Type type : Type.getTypeListe()) {
             Pane pane = new Pane();
@@ -245,14 +240,13 @@ public class PriseCommandeViewController extends ViewController {
         produitControllerListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/affichageProduit.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ProduitCommandeElement controller = loader.getController();
+
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageProduit.fxml");
+
+            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+            Pane pane = controllerEtPane.getPane();
+
             if(Stock.getInstance().combienEnStock(produit)==0)
                 pane.setStyle("-fx-background-color: #BEBEBE");
             else{

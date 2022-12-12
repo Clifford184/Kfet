@@ -2,13 +2,14 @@ package application.view.gestionSoldable.produit.stock;
 
 import application.model.Stock;
 import application.model.vendable.Produit;
+import application.view.ViewController;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 import java.util.function.UnaryOperator;
 
-public class ProduitStockElementController {
+public class ProduitStockElementController extends ViewController {
 
     public Label labelNomProduit;
     public Label labelPrixAchat;

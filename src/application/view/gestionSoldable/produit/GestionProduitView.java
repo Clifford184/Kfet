@@ -2,16 +2,18 @@ package application.view.gestionSoldable.produit;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.GestionProduitController;
-import application.model.Stock;
-import application.model.vendable.Type;
+import application.view.outils.SceneLoader;
 import application.view.View;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import application.view.ViewController;
 import javafx.stage.Stage;
 
 public class GestionProduitView extends View {
 
     public GestionProduitView()  {
+        cheminVue = "/ressource/view/gestionSoldable/produit/gestionProduit.fxml";
+        minWidth = 880;
+        minHeight = 580;
+        nomFenetre = "Gestion produit";
         setController(null);
     }
 
@@ -31,25 +33,13 @@ public class GestionProduitView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionProduit.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(GestionProduitView.class.getResource(fileName));
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(880);
-        stage.setMinHeight(580);
-        stage.setScene(scene);
-
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
 
-        // Show the view.
         stage.show();
     }
 

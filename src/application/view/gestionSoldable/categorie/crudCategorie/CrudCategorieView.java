@@ -29,7 +29,7 @@ public class CrudCategorieView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/crudCategorie.fxml";
+        String fileName = "/ressource/view/gestionSoldable/categorie/crudCategorie.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(CrudCategorieView.class.getResource(fileName));
 
         // Creation of the scene.

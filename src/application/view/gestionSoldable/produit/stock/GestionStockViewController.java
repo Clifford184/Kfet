@@ -1,10 +1,10 @@
 package application.view.gestionSoldable.produit.stock;
 
-import application.controller.Controller;
-import application.model.Stock;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.Menu;
+import application.view.outils.ControllerEtPane;
+import application.view.outils.SceneLoader;
 import application.view.ViewController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,10 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -45,17 +43,12 @@ public class GestionStockViewController extends ViewController {
     public void initialize(){
 
         for(Type type : Type.getTypeListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/stockTypeElement.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-                pane.setOnMouseClicked(mouseEvent -> focusType(type));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            TypeStockElementController controller = loader.getController();
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/gestionSoldable/stock/stockTypeElement.fxml");
+
+            TypeStockElementController controller = (TypeStockElementController) controllerEtPane.getController();
             controller.initialize(type);
-            hboxType.getChildren().add(pane);
+            hboxType.getChildren().add(controllerEtPane.getPane());
         }
         if(Type.getTypeListe().size()>0)
             focusType(Type.getTypeListe().get(0));
@@ -92,17 +85,13 @@ public class GestionStockViewController extends ViewController {
         controllerProduitAfficheListe.clear();
 
         for(Produit produit : pType.getProduitListe()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/stockProduitElement.fxml"));
-            Pane pane = null;
-            try {
-                pane = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ProduitStockElementController controller = loader.getController();
+            ControllerEtPane controllerEtPane =
+                    SceneLoader.loadPane("/ressource/view/gestionSoldable/stock/stockProduitElement.fxml");
+
+            ProduitStockElementController controller = (ProduitStockElementController) controllerEtPane.getController();
             controller.initialize(produit,modifActivee);
             controllerProduitAfficheListe.add(controller);
-            vboxStock.getChildren().add(pane);
+            vboxStock.getChildren().add(controllerEtPane.getPane());
         }
 
     }

@@ -2,9 +2,9 @@ package application.view.priseCommande;
 
 import application.controller.Observable;
 import application.controller.priseCommande.PriseCommandeController;
+import application.view.outils.SceneLoader;
 import application.view.View;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import application.view.ViewController;
 import javafx.stage.Stage;
 
 public class PriseCommandeView extends View {
@@ -13,6 +13,10 @@ public class PriseCommandeView extends View {
      * constructeur par défaut
      */
     public PriseCommandeView()  {
+        cheminVue = "/ressource/view/priseCommande/priseCommandeView.fxml";
+        minWidth = 880;
+        minHeight = 580;
+        nomFenetre = "Prise de commande";
         setController(null);
     }
 
@@ -43,25 +47,14 @@ public class PriseCommandeView extends View {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/priseCommandeView.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(PriseCommandeView.class.getResource(fileName));
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(880);
-        stage.setMinHeight(580);
-        stage.setScene(scene);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
 
-        // Show the view.
         stage.show();
     }
 

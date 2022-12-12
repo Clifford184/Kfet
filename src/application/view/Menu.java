@@ -11,7 +11,7 @@ import application.view.methodePayement.MethodePayementView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.stage.Stage;
 
-public class Menu {
+public class Menu extends ViewController{
 
     private ViewController viewController;
     private Stage stage;
