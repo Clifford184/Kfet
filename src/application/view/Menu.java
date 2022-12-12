@@ -1,13 +1,11 @@
 package application.view;
 
-import application.model.Commande;
 import application.view.compte.CompteView;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.offre.GestionOffreView;
 import application.view.gestionSoldable.produit.GestionProduitView;
 import application.view.gestionSoldable.produit.stock.GestionStockView;
 import application.view.gestionSoldable.type.GestionTypeView;
-import application.view.methodePayement.MethodePayementView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.stage.Stage;
 

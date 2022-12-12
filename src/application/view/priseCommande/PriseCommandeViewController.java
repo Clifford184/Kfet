@@ -4,10 +4,13 @@ import application.model.Commande;
 import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.Produit;
+import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.Menu;
 import application.view.methodePayement.MethodePayementView;
+import application.view.outils.ControllerEtPane;
+import application.view.outils.SceneLoader;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,7 +27,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 public class PriseCommandeViewController extends ViewController {
 
