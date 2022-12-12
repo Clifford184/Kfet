@@ -9,6 +9,7 @@ import application.view.priseCommande.PriseCommandeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class DebitArgentCompteViewController extends ViewController {
 
@@ -29,7 +30,7 @@ public class DebitArgentCompteViewController extends ViewController {
     public void annuler(){
         try {
             CompteView compteView = new CompteView();
-            getView().changerPage(compteView);
+            getView().changerPage((Stage) getViewArgentConfimation().getScene().getWindow(), compteView);
             compteView.getController().setCommande(getView().getController().getCommande());
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +45,7 @@ public class DebitArgentCompteViewController extends ViewController {
         getView().getController().debiterClient(sommeDebit);
         try {
             PriseCommandeView priseCommandeView = new PriseCommandeView();
-            getView().changerPage(priseCommandeView);
+            getView().changerPage((Stage) getViewArgentConfimation().getScene().getWindow(), priseCommandeView);
         } catch (Exception e) {
             e.printStackTrace();
         }

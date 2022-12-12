@@ -59,11 +59,12 @@ public class TemplateOffre implements Serializable {
         prixVente = pPrixVente;
         categorieListe = pCategorieListe;
         blackList = pBlacklist;
+        templateOffreListe.add(this);
 
         if(pCheminImage==null){  //Utilisation de l'image par defaut.
-            cheminImage = "asset/image/offre/imageParDefaut.png";
+            cheminImage = "src/ressource/image/offre/imageParDefaut.png";
         }else{
-            cheminImage = "asset/image/offre/"+nom+"-"+ UUID.randomUUID().toString()+".png";
+            cheminImage = "src/ressource/image/offre/"+nom+"-"+ UUID.randomUUID().toString()+".png";
 
             image = ImageIO.read(new File(pCheminImage));
             ImageIO.write(image, "png", new File(cheminImage));
@@ -110,4 +111,14 @@ public class TemplateOffre implements Serializable {
     public float getVenteMembre() {
         return prixMembre;
     }
+
+    public static ArrayList<TemplateOffre> getTemplateOffreListe() {
+        return templateOffreListe;
+    }
+
+    public static void setTemplateOffreListe(ArrayList<TemplateOffre> templateOffreListe) {
+        TemplateOffre.templateOffreListe = templateOffreListe;
+    }
+
+
 }

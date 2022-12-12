@@ -65,4 +65,7 @@
          </children>
       </AnchorPane>
    </bottom>
+   <right>
+      <VBox fx:id="listeTypeVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

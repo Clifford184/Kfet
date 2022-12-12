@@ -79,12 +79,12 @@ public class GestionOffreViewController extends ViewController {
 
     public void ajouterOffre() throws Exception {
         CrudOffreView crudOffreView = new CrudOffreView();
-        getView().changerScene(crudOffreView);
+        getView().changerPage((Stage) getViewGestionOffre().getScene().getWindow(), crudOffreView);
     }
 
     public void redirectionPriseCommande() throws Exception {
         PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerScene(priseCommandeView);
+        getView().changerPage((Stage) getViewGestionOffre().getScene().getWindow(), priseCommandeView);
     }
 
     public GestionOffreViewController(){}

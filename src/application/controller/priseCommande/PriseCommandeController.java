@@ -21,7 +21,8 @@ public class PriseCommandeController extends Controller {
     }
 
     public ArrayList<Produit> getProduitType(Type pType){
-        return pType.getProduitListe();
+        int indexType = Type.getTypeListe().indexOf(pType);
+        return Type.getTypeListe().get(indexType).getProduitListe();
     }
 
     public void ajouterAuPanier(Produit pProduit){

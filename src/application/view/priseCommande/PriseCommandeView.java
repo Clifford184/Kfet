@@ -81,7 +81,7 @@ public class PriseCommandeView extends View {
                     }
                     case "type" -> {
                         // Update du menu en fonctions des soldable existant
-                        getViewController().initialisationType();
+                        getViewController().InitialisationType();
                     }
                     case "panier" -> {
                         // Update du panier quand on ajoute un produit

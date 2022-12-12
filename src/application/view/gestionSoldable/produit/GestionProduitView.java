@@ -74,15 +74,6 @@ public class GestionProduitView extends View {
         }
     }
 
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionProduit().getScene().getWindow();
-            view.start(stage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public GestionProduitController getController() {
         return (GestionProduitController) super.getController();

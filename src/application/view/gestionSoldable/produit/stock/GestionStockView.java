@@ -73,15 +73,6 @@ public class GestionStockView extends View {
         }
     }
 
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionStock().getScene().getWindow();
-            view.start(stage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public StockController getController() {
         return (StockController) super.getController();

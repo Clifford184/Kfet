@@ -41,16 +41,8 @@ public abstract class Vendable implements Serializable {
         nom = pNom;
         prixVente = pPrixVente;
         prixVenteMembre = pPrixVenteMembre;
-        prixAchat = 0;
+        prixAchat = pPrixAchat;
 
-        if(this instanceof Offre){
-            for(Produit p : ((Offre) this).produitListe){
-                pPrixAchat += p.prixAchat;
-            }
-            return;
-        }else{
-            prixAchat = pPrixAchat;
-        }
 
         if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
             cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+"imageParDefaut.png";

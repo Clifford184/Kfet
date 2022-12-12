@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class CrudTypeViewController extends ViewController {
 
     public void annuler(){
         GestionTypeView gestionTypeView = new GestionTypeView();
-        getView().changerScene(gestionTypeView);
+        getView().changerPage((Stage) getViewCrudType().getScene().getWindow(), gestionTypeView);
     }
 
     public void valider(){

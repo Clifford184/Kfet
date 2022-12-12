@@ -5,6 +5,7 @@ import application.view.compte.CompteView;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MethodePayementViewController extends ViewController {
 
@@ -20,7 +21,7 @@ public class MethodePayementViewController extends ViewController {
     public void redirectionPayementCompte() {
         try {
             CompteView compteView = new CompteView();
-            getView().changerPage(compteView);
+            getView().changerPage((Stage) getViewModePayement().getScene().getWindow(), compteView);
             compteView.getController().setAchatContexte(true);
             compteView.getController().setCommande(getView().getController().getCommande());
         } catch (Exception e) {

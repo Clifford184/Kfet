@@ -52,16 +52,6 @@ public class CrudProduitView extends View {
         stage.show();
     }
 
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewCrudProduit().getScene().getWindow();
-            view.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void update(Observable observable, String[] messages) {
         try {

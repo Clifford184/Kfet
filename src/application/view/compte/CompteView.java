@@ -51,20 +51,6 @@ public class CompteView extends View {
         stage.show();
     }
 
-    /**
-     * methode pour changer de page
-     * @param pPageDestination vue de destination
-     */
-    public void changerPage(View pPageDestination) {
-        try {
-            Stage stage = (Stage) getViewController().getViewCompte().getScene().getWindow();
-            pPageDestination.start(stage);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void update(Observable observable, String[] messages) {
         try {
@@ -80,15 +66,6 @@ public class CompteView extends View {
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewCompte().getScene().getWindow();
-            view.start(stage);
         } catch (Exception e) {
             e.printStackTrace();
         }
