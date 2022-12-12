@@ -5,6 +5,7 @@ import application.controller.compte.crudClient.CrudClientController;
 import application.model.client.Groupe;
 import application.view.View;
 import application.view.ViewController;
+import application.view.outils.SceneLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -36,9 +37,9 @@ public class CrudClientView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       // ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
-        //setViewController(viewController);
+        setViewController(viewController);
 
         getViewController().setView(this);
 
