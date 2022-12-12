@@ -4,6 +4,7 @@ import application.model.client.*;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
+import application.view.compte.ajoutArgentCompte.AjoutArgentCompteView;
 import application.view.compte.crudClient.CrudClientView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -89,13 +90,12 @@ public class CompteViewController extends ViewController {
      * methode qui initialise les données pour la vue
      */
     public void initialiserView() {
-        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajoutCompte.png");
+        File cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutCompte.png");
         ajouterClientImageView.setImage(new Image(cheminImage.toURI().toString()));
         ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionCreationClient());
 
-        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajoutArgent.png");
+        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutArgent.png");
         ajouterArgentImageView.setImage(new Image(cheminImage.toURI().toString()));
-        ajouterArgentImageView.setOnMouseClicked(mouseEvent -> redirectionAjouterArgent());
 
         tablePromo.getTabs().clear();
         String[] listeEntete = {"nom", "prenom", "argent"};
@@ -112,13 +112,14 @@ public class CompteViewController extends ViewController {
                 tableView.getItems().add(client);
             }
 
-            tableView.setOnMouseClicked(event -> {
-                try {
+            if (getView().getController().isAchatContexte()) {
+                tableView.setOnMouseClicked(event -> {
                     debiterClient(tableView.getSelectionModel().getSelectedItem());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+                });
+            } else {
+                ajouterArgentImageView.setOnMouseClicked(mouseEvent ->
+                        redirectionAjouterArgent(tableView.getSelectionModel().getSelectedItem()));
+            }
 
             Tab tab = new Tab(promo.getNom(), tableView);
             tablePromo.getTabs().add(tab);
@@ -128,22 +129,18 @@ public class CompteViewController extends ViewController {
     /**
      * methode pour ouvrir la confirmation du debit pour un client
      *
-     * @param cl client à débiter
+     * @param pClient client à débiter
      */
-    public void debiterClient(Client cl) {
-        try {
-            if (getView().getController().isAchatContexte()) {
-                DebitArgentCompteView debitArgentCompteView = new DebitArgentCompteView();
-                getView().changerPage((Stage) getViewCompte().getScene().getWindow(), debitArgentCompteView);
-                debitArgentCompteView.getController().setCommande(getView().getController().getCommande());
-                debitArgentCompteView.getController().setClient(cl);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void debiterClient(Client pClient) {
+        if (pClient != null) {
+            DebitArgentCompteView debitArgentCompteView = new DebitArgentCompteView();
+            getView().changerPage((Stage) getViewCompte().getScene().getWindow(), debitArgentCompteView);
+            debitArgentCompteView.getController().setCommande(getView().getController().getCommande());
+            debitArgentCompteView.getController().setClient(pClient);
         }
     }
 
-    public void redirectionCreationClient(){
+    public void redirectionCreationClient() {
         CrudClientView crudClientView = new CrudClientView();
         getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
     }
@@ -151,7 +148,12 @@ public class CompteViewController extends ViewController {
     /**
      * methode pour ajouter de l'argent à un client
      */
-    public void redirectionAjouterArgent() {
+    public void redirectionAjouterArgent(Client pClient) {
+        if (pClient != null) {
+            AjoutArgentCompteView ajoutArgentCompteView = new AjoutArgentCompteView();
+            getView().changerPage((Stage) getViewCompte().getScene().getWindow(), ajoutArgentCompteView);
+            ajoutArgentCompteView.getController().setClient(pClient);
+        }
     }
 
     /**

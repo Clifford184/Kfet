@@ -1,20 +1,19 @@
-package application.view.compte.crudClient;
+package application.view.compte.ajoutArgentCompte;
 
 import application.controller.Observable;
-import application.controller.compte.crudClient.CrudClientController;
-import application.model.client.Groupe;
+import application.controller.compte.ajoutArgentCompte.AjoutArgentCompteController;
 import application.view.View;
 import application.view.ViewController;
 import application.view.outils.SceneLoader;
 import javafx.stage.Stage;
 
-public class CrudClientView extends View {
+public class AjoutArgentCompteView extends View {
 
-    public CrudClientView()  {
-        cheminVue = "/ressource/view/compte/crudClient.fxml";
-        minWidth = 880;
-        minHeight = 580;
-        nomFenetre = "Nouveau client";
+    public AjoutArgentCompteView()  {
+        cheminVue = "/ressource/view/compte/ajoutAgentCompte.fxml";
+        minWidth = 440;
+        minHeight = 250;
+        nomFenetre = "Ajout argent";
         setController(null);
     }
 
@@ -22,7 +21,7 @@ public class CrudClientView extends View {
     public void initialize() {
         // Initialization of the controller.
         if (getController() == null) {
-            setController(new CrudClientController());
+            setController(new AjoutArgentCompteController());
         }
         getController().initialize();
     }
@@ -34,11 +33,9 @@ public class CrudClientView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
 
         setViewController(viewController);
-
         getViewController().setView(this);
 
         initialize();
@@ -52,12 +49,12 @@ public class CrudClientView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "initialiseView" -> {
-                        // Update de la vue pour initialiser les imagesView
+                        // Update du menu en fonctions des soldable existant
                         getViewController().initialiserView();
                     }
-                    case "promo" -> {
-                        // Update de la comboBox des promo
-                        getViewController().setPromoComboBox(Groupe.getGroupeListe());
+                    case "client" -> {
+                        // Update du menu en fonctions des soldable existant
+                        getViewController().setClientLabel(getController().getClient());
                     }
                 }
             }
@@ -67,13 +64,13 @@ public class CrudClientView extends View {
     }
 
     @Override
-    public CrudClientController getController() {
-        return (CrudClientController) super.getController();
+    public AjoutArgentCompteController getController() {
+        return (AjoutArgentCompteController) super.getController();
     }
 
     @Override
-    public CrudClientViewController getViewController() {
-        return (CrudClientViewController) super.getViewController();
+    public AjoutArgentCompteViewController getViewController() {
+        return (AjoutArgentCompteViewController) super.getViewController();
     }
 
 }
