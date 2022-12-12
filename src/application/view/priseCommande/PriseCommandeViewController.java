@@ -142,10 +142,10 @@ public class PriseCommandeViewController extends ViewController {
         Menu menuController = loader.getController();
         menuController.initialize(this, (Stage) ViewPriseCommande.getScene().getWindow());
 
-//        sliderMenu.setVisible(false);
-//        sliderMenu.setTranslateX(-176);
-//        sliderPanier.setVisible(false);
-//        sliderPanier.setTranslateY(500);
+        sliderMenu.setVisible(true);
+        sliderMenu.setTranslateX(0);
+        sliderPanier.setVisible(false);
+        sliderPanier.setTranslateY(500);
     }
 
     /**
