@@ -43,6 +43,8 @@ module Kfet {
     opens application.view.gestionSoldable.offre.crudOffre;
     exports application.view.gestionSoldable.produit.stock to javafx.fxml;
     opens application.view.gestionSoldable.produit.stock;
+    exports application.view.compte.crudClient to javafx.fxml;
+    opens application.view.compte.crudClient;
 
     //controller
     exports application.controller to javafx.fxml;
@@ -65,6 +67,8 @@ module Kfet {
     opens application.controller.gestionSoldable.categorie;
     exports application.controller.gestionSoldable.offre to javafx.fxml;
     opens application.controller.gestionSoldable.offre;
+    exports application.controller.compte.crudClient to javafx.fxml;
+    opens application.controller.compte.crudClient;
 
 
 }

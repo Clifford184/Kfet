@@ -7,6 +7,7 @@ import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.View;
+import application.view.compte.crudClient.CrudClientView;
 import application.view.priseCommande.PriseCommandeView;
 
 import java.io.IOException;

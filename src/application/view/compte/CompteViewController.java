@@ -4,19 +4,22 @@ import application.model.client.*;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
-import application.view.priseCommande.PriseCommandeView;
+import application.view.compte.crudClient.CrudClientView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -31,7 +34,11 @@ public class CompteViewController extends ViewController {
     @FXML
     private TabPane tablePromo;
 
-    boolean achatContexte;
+    @FXML
+    ImageView ajouterClientImageView;
+
+    @FXML
+    ImageView ajouterArgentImageView;
 
     /**
      * methode pour animation du menu
@@ -80,13 +87,19 @@ public class CompteViewController extends ViewController {
 
     /**
      * methode qui initialise les données pour la vue
-     * TODO methode à revoir
      */
-    public void initialize() {
-        //Groupe.groupeListe.clear();
+    public void initialiserView() {
+        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajoutCompte.png");
+        ajouterClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+        ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionCreationClient());
+
+        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajoutArgent.png");
+        ajouterArgentImageView.setImage(new Image(cheminImage.toURI().toString()));
+        ajouterArgentImageView.setOnMouseClicked(mouseEvent -> redirectionAjouterArgent());
+
         tablePromo.getTabs().clear();
         String[] listeEntete = {"nom", "prenom", "argent"};
-        ArrayList<Groupe> listeGroupe = Groupe.groupeListe; //TODO utiliser getter
+        ArrayList<Groupe> listeGroupe = Groupe.getGroupeListe();
 
         for (Groupe promo : listeGroupe) {
             TableView<Client> tableView = new TableView();
@@ -122,7 +135,6 @@ public class CompteViewController extends ViewController {
             if (getView().getController().isAchatContexte()) {
                 DebitArgentCompteView debitArgentCompteView = new DebitArgentCompteView();
                 getView().changerPage((Stage) getViewCompte().getScene().getWindow(), debitArgentCompteView);
-                //TODO encore en phase de test
                 debitArgentCompteView.getController().setCommande(getView().getController().getCommande());
                 debitArgentCompteView.getController().setClient(cl);
             }
@@ -131,10 +143,15 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    public void redirectionCreationClient(){
+        CrudClientView crudClientView = new CrudClientView();
+        getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
+    }
+
     /**
      * methode pour ajouter de l'argent à un client
      */
-    public void ajouterArgent() {
+    public void redirectionAjouterArgent() {
     }
 
     /**

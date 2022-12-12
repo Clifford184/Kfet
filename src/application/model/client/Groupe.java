@@ -28,7 +28,7 @@ public class Groupe implements Serializable {
     Groupe groupeSuivant;
     Groupe groupePrecedent;
 
-    public static ArrayList<Groupe> groupeListe = new ArrayList<>();
+    private static ArrayList<Groupe> groupeListe = new ArrayList<>();
 
     /**
      * Cree un nouveau groupe
@@ -130,5 +130,18 @@ public class Groupe implements Serializable {
 
     public String getNom() {
         return nom;
+    }
+
+    public static ArrayList<Groupe> getGroupeListe() {
+        return groupeListe;
+    }
+
+    @Override
+    public String toString() {
+        return nom;
+    }
+
+    public static void setGroupeListe(ArrayList<Groupe> groupeListe) {
+        Groupe.groupeListe = groupeListe;
     }
 }
