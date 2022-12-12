@@ -2,10 +2,11 @@ package application.controller.compte;
 
 import application.controller.Controller;
 import application.model.Commande;
+import application.model.Panier;
 
 public class CompteController extends Controller {
 
-    Commande commande;
+    Panier panier;
     boolean achatContexte;
 
     /**
@@ -17,12 +18,12 @@ public class CompteController extends Controller {
         notifyObservers(messages);
     }
 
-    public Commande getCommande() {
-        return commande;
+    public Panier getPanier() {
+        return panier;
     }
 
-    public void setCommande(Commande commande) {
-        this.commande = commande;
+    public void setPanier(Panier panier) {
+        this.panier = panier;
     }
 
     public boolean isAchatContexte() {

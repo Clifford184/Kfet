@@ -27,6 +27,9 @@ public class Commande implements Serializable {
     ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>(); //Utiliser pour gerer l'avancement
     //de chaque article pendant la preparation de la commande.
 
+    //Si la commande n'est pas relie a un client ayant un compte, on le designe juste par son prenom
+    String prenomClient;
+
     Etat etatActuel;
 
     public enum Etat {
@@ -41,8 +44,29 @@ public class Commande implements Serializable {
      * Cree une nouvelle commande
      * @param pPanier l'objet panier de la commande
      */
-    public Commande(Panier pPanier){
+    public static Commande creerCommande(Panier pPanier, Client pClient){
+        Commande commande = new Commande(pPanier, pClient.getPrenom()+" "+pClient.getNom());
+        commande.client = pClient;
+        return commande;
+    }
+
+    /**
+     * Cree une nouvelle commande
+     * @param pPanier l'objet panier de la commande
+     */
+    public static Commande creerCommande(Panier pPanier, String pClient){
+        return new Commande(pPanier,pClient);
+    }
+
+    /**
+     * Constructeur privee de commande, il faut passer par creerCommande pour instancier un objet
+     * @param pPanier l'objet panier de la commande
+     * @param pClient le nom du client
+     */
+    private Commande(Panier pPanier, String pClient){
         id = UUID.randomUUID();
+
+        prenomClient = pClient;
 
         panier = pPanier;
         date = LocalDateTime.now();
@@ -56,7 +80,6 @@ public class Commande implements Serializable {
             }
             if(v instanceof Produit)
                 produitCommandeListe.add(new ProduitCommande((Produit)v));
-
         }
     }
 
@@ -101,6 +124,13 @@ public class Commande implements Serializable {
 
     }
 
+    public String getIdentiteClient(){
+        if(client!=null){
+            return client.getPrenom()+" "+client.getNom();
+        }else
+            return prenomClient;
+    }
+
     public static ArrayList<Commande> getCommandeListe() {
         return commandeListe;
     }
@@ -111,14 +141,6 @@ public class Commande implements Serializable {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public Panier getCart() {

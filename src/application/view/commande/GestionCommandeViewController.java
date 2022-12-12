@@ -54,7 +54,7 @@ public class GestionCommandeViewController extends ViewController {
      */
     public void focusCommande(Commande pCommande){
 
-        clientLabel.setText(pCommande.getClient().getPrenom()+pCommande.getClient().getNom());
+        clientLabel.setText(pCommande.getIdentiteClient());
         heureCommandeLabel.setText(pCommande.getDate().toString());
         montantTotalLabel.setText(pCommande.getCart().valeurPanier()+"e");
 

@@ -2,10 +2,11 @@ package application.controller.methodePayement;
 
 import application.controller.Controller;
 import application.model.Commande;
+import application.model.Panier;
 
 public class MethodePayementController extends Controller {
 
-    private Commande commande;
+    private Panier panier;
 
     /**
      * methode d'initialisation du controller
@@ -13,12 +14,11 @@ public class MethodePayementController extends Controller {
     @Override
     public void initialize() {}
 
-
-    public Commande getCommande() {
-        return commande;
+    public Panier getPanier() {
+        return panier;
     }
 
-    public void setCommande(Commande commande) {
-        this.commande = commande;
+    public void setPanier(Panier panier) {
+        this.panier = panier;
     }
 }

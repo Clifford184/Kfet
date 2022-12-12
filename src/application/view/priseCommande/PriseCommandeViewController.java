@@ -8,6 +8,7 @@ import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
 import application.view.Menu;
+import application.view.commande.GestionCommandeView;
 import application.view.methodePayement.MethodePayementView;
 import application.view.outils.ControllerEtPane;
 import application.view.outils.SceneLoader;
@@ -15,11 +16,15 @@ import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import application.view.ViewController;
 import javafx.stage.Stage;
@@ -31,6 +36,7 @@ import java.util.ArrayList;
 public class PriseCommandeViewController extends ViewController {
 
     public CheckBox prixMembreCheckbox;
+    public Button commandeBtn;
     @FXML
     private BorderPane ViewPriseCommande;
 
@@ -56,6 +62,9 @@ public class PriseCommandeViewController extends ViewController {
     TemplateOffre templateOffreSelectionner;
 
     public void initialize(){
+
+        commandeBtn.setOnMouseClicked(mouseEvent -> afficherGestionCommande());
+
         prixMembreCheckbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -306,9 +315,20 @@ public class PriseCommandeViewController extends ViewController {
         try {
             MethodePayementView methodePayementView = new MethodePayementView();
             getView().changerPage((Stage) getViewPriseCommande().getScene().getWindow(), methodePayementView);
-            methodePayementView.getController().setCommande(new Commande(getView().getController().getPanier()));
+            methodePayementView.getController().setPanier(getView().getController().getPanier());
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public void afficherGestionCommande(){
+
+       GestionCommandeView gestionCommandeView = new GestionCommandeView();
+        try {
+            gestionCommandeView.start(new Stage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
     }

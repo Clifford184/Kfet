@@ -31,7 +31,7 @@ public class DebitArgentCompteViewController extends ViewController {
         try {
             CompteView compteView = new CompteView();
             getView().changerPage((Stage) getViewArgentConfimation().getScene().getWindow(), compteView);
-            compteView.getController().setCommande(getView().getController().getCommande());
+            compteView.getController().setPanier(getView().getController().getPanier());
         } catch (Exception e) {
             e.printStackTrace();
         }

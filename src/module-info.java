@@ -43,6 +43,9 @@ module Kfet {
     opens application.view.gestionSoldable.offre.crudOffre;
     exports application.view.gestionSoldable.produit.stock to javafx.fxml;
     opens application.view.gestionSoldable.produit.stock;
+    exports application.view.commande to javafx.fxml;
+    opens application.view.commande;
+
 
     //controller
     exports application.controller to javafx.fxml;
