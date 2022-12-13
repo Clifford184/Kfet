@@ -49,6 +49,8 @@ module Kfet {
     opens application.view.commande;
     exports application.view.compte.ajoutArgentCompte to javafx.fxml;
     opens application.view.compte.ajoutArgentCompte;
+    exports application.view.compte.crudGroupe to javafx.fxml;
+    opens application.view.compte.crudGroupe;
 
     //controller
     exports application.controller to javafx.fxml;
@@ -77,6 +79,8 @@ module Kfet {
     opens application.controller.compte.crudClient;
     exports application.controller.compte.ajoutArgentCompte to javafx.fxml;
     opens application.controller.compte.ajoutArgentCompte;
+    exports application.controller.compte.crudGroupe to javafx.fxml;
+    opens application.controller.compte.crudGroupe;
 
 
 }

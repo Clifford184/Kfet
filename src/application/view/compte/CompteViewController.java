@@ -6,6 +6,7 @@ import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
 import application.view.compte.ajoutArgentCompte.AjoutArgentCompteView;
 import application.view.compte.crudClient.CrudClientView;
+import application.view.compte.crudGroupe.CrudGroupeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +41,11 @@ public class CompteViewController extends ViewController {
 
     @FXML
     ImageView ajouterArgentImageView;
+
+    @FXML
+    ImageView ceationGroupeImageView;
+
+    Client clientSelectionne;
 
     /**
      * methode pour animation du menu
@@ -97,6 +103,10 @@ public class CompteViewController extends ViewController {
         cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutArgent.png");
         ajouterArgentImageView.setImage(new Image(cheminImage.toURI().toString()));
 
+        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutGroupe.png");
+        ceationGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        ceationGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionCreationGroupe());
+
         tablePromo.getTabs().clear();
         String[] listeEntete = {"nom", "prenom", "argent"};
         ArrayList<Groupe> listeGroupe = Groupe.getGroupeListe();
@@ -113,12 +123,17 @@ public class CompteViewController extends ViewController {
             }
 
             if (getView().getController().isAchatContexte()) {
+                System.out.println(tableView.getSelectionModel().getSelectedItem());
                 tableView.setOnMouseClicked(event -> {
                     debiterClient(tableView.getSelectionModel().getSelectedItem());
                 });
             } else {
-                ajouterArgentImageView.setOnMouseClicked(mouseEvent ->
-                        redirectionAjouterArgent(tableView.getSelectionModel().getSelectedItem()));
+                tableView.setOnMouseClicked(event -> {
+                    sauvegardeDernierClientSelectionner(tableView.getSelectionModel().getSelectedItem());
+                });
+                ajouterArgentImageView.setOnMouseClicked(event -> {
+                    redirectionAjouterArgent(clientSelectionne);
+                });
             }
 
             Tab tab = new Tab(promo.getNom(), tableView);
@@ -126,6 +141,11 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    public void sauvegardeDernierClientSelectionner(Client pDernierClientSelected){
+        if(pDernierClientSelected != null) {
+            clientSelectionne = pDernierClientSelected;
+        }
+    }
     /**
      * methode pour ouvrir la confirmation du debit pour un client
      *
@@ -143,6 +163,11 @@ public class CompteViewController extends ViewController {
     public void redirectionCreationClient() {
         CrudClientView crudClientView = new CrudClientView();
         getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
+    }
+
+    public void redirectionCreationGroupe() {
+        CrudGroupeView crudGroupeView = new CrudGroupeView();
+        getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudGroupeView);
     }
 
     /**
