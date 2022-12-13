@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="ViewPriseCommande" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.priseCommande.PriseCommandeViewController">
+   <center>
+      <VBox>
+         <children>
+            <AnchorPane prefHeight="272.0" prefWidth="866.0">
+               <children>
+                  <AnchorPane prefHeight="321.0" prefWidth="486.0">
+                     <children>
+                        <VBox layoutX="6.0" prefHeight="385.0" prefWidth="860.0">
+                           <children>
+                              <HBox fx:id="zoneAffichageType" prefHeight="110.0" prefWidth="374.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="commandeBtn" layoutX="108.0" layoutY="29.0" mnemonicParsing="false" text="Commande en cours" />
+            <CheckBox fx:id="prixMembreCheckbox" layoutX="832.0" layoutY="33.0" mnemonicParsing="false" text="Afficher prix K'ftier" />
+            <Label fx:id="menu" layoutX="34.0" layoutY="33.0" onMouseClicked="#openMenu" text="Menu" />
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane fx:id="sliderMenu" prefHeight="316.0" prefWidth="107.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="256.0" prefWidth="984.0" style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="panier" layoutX="530.0" layoutY="144.0" onMouseClicked="#openPanier" text="Up" />
+            <AnchorPane fx:id="sliderPanier" layoutX="364.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="348.0" style="-fx-background-color: #808080;">
+               <children>
+                  <VBox fx:id="panierVBox" prefHeight="108.0" prefWidth="275.0" />
+                  <ImageView fx:id="payementIcone" fitHeight="38.0" fitWidth="36.0" layoutX="298.0" layoutY="61.0" onMouseClicked="#redirectionMethodePayement" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icone/valide.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="35.0" fitWidth="32.0" layoutX="55.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/icone/panier.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="101.0" layoutY="144.0" text="Panier" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <VBox fx:id="listeTypeVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
