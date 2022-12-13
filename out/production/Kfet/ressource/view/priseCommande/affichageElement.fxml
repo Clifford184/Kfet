@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="132.0" prefWidth="130.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="application.view.priseCommande.ProduitCommandeElement">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="85.0" fitWidth="105.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="nomProduitLabel" layoutX="30.0" layoutY="6.0" text="Nom produit" />
+      <Label fx:id="stockLabel" layoutX="99.0" layoutY="110.0" text="(100)" />
+      <Label fx:id="prixLabel" layoutX="12.0" layoutY="110.0" text="Prix" />
+   </children>
+</Pane>

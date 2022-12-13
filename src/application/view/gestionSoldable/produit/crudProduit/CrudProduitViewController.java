@@ -1,23 +1,34 @@
 package application.view.gestionSoldable.produit.crudProduit;
 
-import application.model.vendable.Categorie;
-import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.GestionProduitView;
-import application.view.gestionSoldable.type.GestionTypeView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.UnaryOperator;
 
 public class CrudProduitViewController extends ViewController {
 
+    public TextField prixMembre;
+    public TextField champMarge;
+    public ImageView validerImageBtn;
+    public ImageView annulerImageBtn;
+    public Button choisirImageBtn;
+    public ImageView imageProduit;
     @FXML
     private AnchorPane viewCrudProduit;
 
@@ -33,15 +44,68 @@ public class CrudProduitViewController extends ViewController {
     @FXML
     private TextField prixVente;
 
-    private String image;
+    private String cheminImage;
 
 
-    @FXML
-    public void ChoisirImage() {
-        final FileChooser selecteurDeFichier = new FileChooser();
-        selecteurDeFichier.setTitle("choisir une image");
-        File fichier = selecteurDeFichier.showOpenDialog(null);
-        image = fichier.getPath();
+    public void initialize(){
+
+        validerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
+        validerImageBtn.onMouseClickedProperty().set(mouseEvent -> valider());
+
+        annulerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/annuler.png").toString()));
+        annulerImageBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
+
+        UnaryOperator<TextFormatter.Change> filtrePrix = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d{0,3}([.]\\d{0,2})?")) {
+                return change;
+            }
+            return null;
+        };
+
+        prixAchat.setTextFormatter(new TextFormatter<>(filtrePrix));
+        prixVente.setTextFormatter(new TextFormatter<>(filtrePrix));
+        prixMembre.setTextFormatter(new TextFormatter<>(filtrePrix));
+
+        prixAchat.textProperty().addListener((observableValue, s, t1) -> majStatPrix());
+        prixVente.textProperty().addListener((observableValue, s, t1) -> majStatPrix());
+        prixMembre.textProperty().addListener((observableValue, s, t1) -> majStatPrix());
+
+
+        FileChooser.ExtensionFilter imageFilter
+                = new FileChooser.ExtensionFilter("Image", "*.jpg", "*.png");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(imageFilter);
+        choisirImageBtn.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                File fichierImage = fileChooser.showOpenDialog(new Stage());
+                if (fichierImage == null)
+                    return;
+                cheminImage = fichierImage.getAbsolutePath();
+                imageProduit.setImage(new Image(cheminImage));
+            }
+        });
+
+    }
+
+    private void majStatPrix() {
+
+        if(prixVente.getText().equals("")|| prixMembre.getText().equals("") || prixAchat.getText().equals(""))
+            return;
+
+        float prixMinMarge, prixMaxMarge;
+        if(Float.parseFloat(prixVente.getText())<Float.parseFloat(prixMembre.getText())){
+            //Le prix membre est inferieur au prix normal, prix membre -> moins de marge
+            prixMinMarge = Float.parseFloat(prixMembre.getText())-Float.parseFloat(prixAchat.getText());
+            prixMaxMarge = Float.parseFloat(prixVente.getText())-Float.parseFloat(prixAchat.getText());
+        }else{
+            prixMinMarge = Float.parseFloat(prixVente.getText())-Float.parseFloat(prixAchat.getText());
+            prixMaxMarge = Float.parseFloat(prixMembre.getText())-Float.parseFloat(prixAchat.getText());
+        }
+
+        champMarge.setText("de "+prixMinMarge+" à "+prixMaxMarge+"e");
     }
 
     public void annuler(){
@@ -50,18 +114,14 @@ public class CrudProduitViewController extends ViewController {
     }
 
     public void valider(){
-        // TODO Gerer les exceptions + ou mettre le new produit
-        // TODO faire le champs interface prix vente membre
-        // TODO afficher marge comme creation offre
-        float prixVenteMembre = 0;
         try {
             String nomProduit = this.nomProduit.getText();
             float prixAchatProduit = Float.parseFloat(prixAchat.getText());
             float prixVenteProduit = Float.parseFloat(prixVente.getText());
+            float prixVenteMembre = Float.parseFloat(prixMembre.getText());
             Type typeProduit = listeType.getValue();
-            String chemin = image;
+            String chemin = cheminImage;
             getView().getController().creationProduit(nomProduit, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
-
             annuler();
         }
         catch (Exception e){
