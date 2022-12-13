@@ -102,6 +102,13 @@ public class GestionProduitViewController extends ViewController {
 
     public void modifierProduit(){
 
+        Produit p = produitTable.getSelectionModel().getSelectedItem();
+        if(p==null)
+            return;
+
+        CrudProduitView crudProduitView = new CrudProduitView();
+        getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), crudProduitView);
+        crudProduitView.getViewController().setContexteModification(p);
     }
 
     public void ajouterProduit() {

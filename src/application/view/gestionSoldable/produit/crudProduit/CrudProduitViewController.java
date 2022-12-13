@@ -1,5 +1,6 @@
 package application.view.gestionSoldable.produit.crudProduit;
 
+import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.GestionProduitView;
@@ -45,6 +46,9 @@ public class CrudProduitViewController extends ViewController {
     private TextField prixVente;
 
     private String cheminImage;
+
+    boolean contexteModification = false;
+
 
 
     public void initialize(){
@@ -108,21 +112,50 @@ public class CrudProduitViewController extends ViewController {
         champMarge.setText("de "+prixMinMarge+" à "+prixMaxMarge+"e");
     }
 
+    /**
+     * Permet de signifier qu'on est en train de modifier un produit.
+     * Va peupler les champs des valeurs du produit et le comportement
+     * de la validation aura pour effet de modifier le produit
+     * @param p
+     */
+    public void setContexteModification(Produit p) {
+        getView().getController().setProduit(p);
+        contexteModification = true;
+        nomProduit.setText(p.getNom());
+        listeType.getSelectionModel().select(p.getType());
+        prixAchat.setText(p.getPrixAchat()+"");
+        prixVente.setText(p.getPrixVente()+"");
+        prixMembre.setText(p.getPrixVenteMembre()+"");
+        imageProduit.setImage(new Image(new File(p.getCheminImage()).toURI().toString()));
+        majStatPrix();
+    }
+
     public void annuler(){
         GestionProduitView gestionProduitView = new GestionProduitView();
         getView().changerPage((Stage) getViewCrudProduit().getScene().getWindow() ,gestionProduitView);
     }
 
+    /**
+     *
+     */
     public void valider(){
         try {
-            String nomProduit = this.nomProduit.getText();
+
+            String nom = nomProduit.getText();
             float prixAchatProduit = Float.parseFloat(prixAchat.getText());
             float prixVenteProduit = Float.parseFloat(prixVente.getText());
             float prixVenteMembre = Float.parseFloat(prixMembre.getText());
             Type typeProduit = listeType.getValue();
             String chemin = cheminImage;
-            getView().getController().creationProduit(nomProduit, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
-            annuler();
+
+            if(contexteModification){
+                getView().getController().modificationProduit(nom, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
+                annuler();
+            }else{
+                getView().getController().creationProduit(nom, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
+                annuler();
+            }
+
         }
         catch (Exception e){
             e.printStackTrace();
@@ -146,4 +179,5 @@ public class CrudProduitViewController extends ViewController {
     public AnchorPane getViewCrudProduit() {
         return viewCrudProduit;
     }
+
 }
