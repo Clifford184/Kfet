@@ -18,7 +18,7 @@ public class Client implements Serializable {
     Groupe groupe;
     float argent;
 
-    static ArrayList<Client> clientListe = new ArrayList<>();
+    private static ArrayList<Client> clientListe = new ArrayList<>();
 
     /**
      * Cree un nouveau client
@@ -96,6 +96,14 @@ public class Client implements Serializable {
 
     public void setArgent(float argent) {
         this.argent = argent;
+    }
+
+    public static ArrayList<Client> getClientListe() {
+        return clientListe;
+    }
+
+    public static void setClientListe(ArrayList<Client> clientListe) {
+        Client.clientListe = clientListe;
     }
 
     @Override

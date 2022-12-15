@@ -1,0 +1,132 @@
+package application.view.compte.gestionGroupe;
+
+
+
+import application.model.client.Client;
+import application.model.client.Groupe;
+import application.model.vendable.Type;
+import application.view.Menu;
+import application.view.ViewController;
+import application.view.compte.crudGroupe.CrudGroupeView;
+import application.view.utile.AlertView;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class GestionGroupeViewController extends ViewController {
+
+    @FXML
+    private BorderPane gestionGroupeView;
+
+    @FXML
+    private AnchorPane sliderMenu;
+
+    @FXML
+    private ImageView ajouterGroupeImageView;
+
+    @FXML
+    private ImageView modifierGroupeImageView;
+
+    @FXML
+    private ImageView supprimerGroupeImageView;
+
+    @FXML
+    private ListView<Groupe> groupeListView;
+
+    Groupe groupeSelectionne;
+
+    public void initialiserView(){
+        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajouterGroupe.png");
+        ajouterGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        ajouterGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionCreationGroupe());
+
+        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"modifierGroupe.png");
+        modifierGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        modifierGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionModificationGroupe());
+
+        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"supprimerGroupe.png");
+        supprimerGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        supprimerGroupeImageView.setOnMouseClicked(mouseEvent -> supprimerGroupe());
+
+    }
+
+    public void initialisationMenu() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
+        VBox vboxMenu = null;
+        try {
+            vboxMenu = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sliderMenu.getChildren().add(vboxMenu);
+
+        Menu menuController = loader.getController();
+        menuController.initialize(this, (Stage) gestionGroupeView.getScene().getWindow());
+    }
+
+    public void redirectionCreationGroupe() {
+        CrudGroupeView crudGroupeView = new CrudGroupeView();
+        getView().changerPage((Stage) gestionGroupeView.getScene().getWindow(), crudGroupeView);
+    }
+
+    public void redirectionModificationGroupe(){
+        if(groupeListView.getSelectionModel().getSelectedItem() != null){
+            CrudGroupeView crudGroupeView = new CrudGroupeView();
+            getView().changerPage((Stage) gestionGroupeView.getScene().getWindow(), crudGroupeView);
+            crudGroupeView.getController().setGroupe(groupeListView.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    public void supprimerGroupe(){
+        if(groupeListView.getSelectionModel().getSelectedItem() != null){
+            boolean resultat =  getView().getController().supprimerGroupe(groupeListView.getSelectionModel().getSelectedItem());
+            if(!resultat) {
+                AlertView alertView = new AlertView();
+                getView().genererNouvellePage(alertView);
+                String errorMessage = "Impossible de supprimer le groupe "
+                                     + groupeListView.getSelectionModel().getSelectedItem().getNom()
+                                    +" \n car il reste des clients dans le groupe: \n";
+                for (Client client : groupeListView.getSelectionModel().getSelectedItem().getClientListe()){
+                    errorMessage+= client.getPrenom()+" "+client.getNom()+"\n";
+                }
+                alertView.getController().setMessage(errorMessage);
+            }
+        }
+    }
+
+    /**
+     * Methode qui recupere le dernier groupe selectionne
+     * @param pDernierGroupeSelected groupe selectionne en dernier
+     */
+    public void sauvegardeDernierGroupeSelectionner(Groupe pDernierGroupeSelected){
+        if(pDernierGroupeSelected != null) {
+            groupeSelectionne = pDernierGroupeSelected;
+        }
+    }
+
+    public GestionGroupeViewController(){}
+
+    @Override
+    public GestionGroupeView getView() {
+        return (GestionGroupeView) super.getView();
+    }
+
+    public ListView<Groupe> getGroupeListView() {
+        return groupeListView;
+    }
+
+    public void setGroupeListView(ArrayList<Groupe> listeType) {
+        this.groupeListView.getItems().setAll(listeType);
+    }
+}

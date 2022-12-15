@@ -6,7 +6,7 @@ import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
 import application.view.compte.ajoutArgentCompte.AjoutArgentCompteView;
 import application.view.compte.crudClient.CrudClientView;
-import application.view.compte.crudGroupe.CrudGroupeView;
+import application.view.compte.gestionGroupe.GestionGroupeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,12 +40,19 @@ public class CompteViewController extends ViewController {
     ImageView ajouterClientImageView;
 
     @FXML
+    ImageView modificationClientImageView;
+
+    @FXML
+    ImageView suppressionClientImageView;
+
+    @FXML
     ImageView ajouterArgentImageView;
 
     @FXML
-    ImageView ceationGroupeImageView;
+    ImageView gestionGroupeImageView;
 
     Client clientSelectionne;
+
 
     /**
      * methode pour animation du menu
@@ -96,17 +103,30 @@ public class CompteViewController extends ViewController {
      * methode qui initialise les données pour la vue
      */
     public void initialiserView() {
+        //Initialisation ImageView Creation Client
         File cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutCompte.png");
         ajouterClientImageView.setImage(new Image(cheminImage.toURI().toString()));
-        ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionCreationClient());
+        ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionAjoutCrudClient());
 
+        //Initialisation ImageView modification client
+        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "modifierClient.png");
+        modificationClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+        modificationClientImageView.setOnMouseClicked(mouseEvent -> redirectionModificationCrudClient());
+
+        //Initialisation ImageView suppression client
+        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "supprimerClient.png");
+        suppressionClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+        suppressionClientImageView.setOnMouseClicked(mouseEvent -> supprimerClient());
+
+        //Initialisation ImageView Ajout argent client
         cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutArgent.png");
         ajouterArgentImageView.setImage(new Image(cheminImage.toURI().toString()));
 
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutGroupe.png");
-        ceationGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
-        ceationGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionCreationGroupe());
+        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "gestionGroupe.png");
+        gestionGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        gestionGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionGestionGroupe());
 
+        //Initailisation du tableau de visualisation des groupes et clients
         tablePromo.getTabs().clear();
         String[] listeEntete = {"nom", "prenom", "argent"};
         ArrayList<Groupe> listeGroupe = Groupe.getGroupeListe();
@@ -123,7 +143,6 @@ public class CompteViewController extends ViewController {
             }
 
             if (getView().getController().isAchatContexte()) {
-                System.out.println(tableView.getSelectionModel().getSelectedItem());
                 tableView.setOnMouseClicked(event -> {
                     debiterClient(tableView.getSelectionModel().getSelectedItem());
                 });
@@ -131,6 +150,7 @@ public class CompteViewController extends ViewController {
                 tableView.setOnMouseClicked(event -> {
                     sauvegardeDernierClientSelectionner(tableView.getSelectionModel().getSelectedItem());
                 });
+
                 ajouterArgentImageView.setOnMouseClicked(event -> {
                     redirectionAjouterArgent(clientSelectionne);
                 });
@@ -141,11 +161,18 @@ public class CompteViewController extends ViewController {
         }
     }
 
-    public void sauvegardeDernierClientSelectionner(Client pDernierClientSelected){
-        if(pDernierClientSelected != null) {
+    /**
+     * Methode qui recupere le dernier client selectionne
+     * utile pour la methode ajout argent au client selectionner
+     *
+     * @param pDernierClientSelected client selectionne en dernier
+     */
+    public void sauvegardeDernierClientSelectionner(Client pDernierClientSelected) {
+        if (pDernierClientSelected != null) {
             clientSelectionne = pDernierClientSelected;
         }
     }
+
     /**
      * methode pour ouvrir la confirmation du debit pour un client
      *
@@ -160,14 +187,26 @@ public class CompteViewController extends ViewController {
         }
     }
 
-    public void redirectionCreationClient() {
+    public void redirectionAjoutCrudClient() {
         CrudClientView crudClientView = new CrudClientView();
         getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
     }
 
-    public void redirectionCreationGroupe() {
-        CrudGroupeView crudGroupeView = new CrudGroupeView();
-        getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudGroupeView);
+    public void redirectionModificationCrudClient() {
+        if (clientSelectionne != null) {
+            CrudClientView crudClientView = new CrudClientView();
+            getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
+            crudClientView.getController().setClient(clientSelectionne);
+        }
+    }
+
+    public void redirectionGestionGroupe() {
+        GestionGroupeView gestionGroupeView = new GestionGroupeView();
+        getView().changerPage((Stage) getViewCompte().getScene().getWindow(), gestionGroupeView);
+    }
+
+    public void supprimerClient() {
+        getView().getController().supprimerClient(clientSelectionne);
     }
 
     /**

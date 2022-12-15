@@ -1,12 +1,12 @@
 package application.view.compte.crudClient;
 
 
+import application.model.client.Client;
 import application.model.client.Groupe;
 import application.view.ViewController;
 import application.view.compte.CompteView;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -58,7 +58,13 @@ public class CrudClientViewController extends ViewController {
             String prenom = prenomTextField.getText();
             Groupe promo = promoComboBox.getValue();
 
-            getView().getController().creerClient(nom, prenom, promo);
+            if (getView().getController().getClient() == null){
+                getView().getController().creerClient(nom, prenom, promo);
+            }
+            else {
+                getView().getController().modifierClient(nom, prenom, promo);
+            }
+
             close();
         }
     }
@@ -84,5 +90,11 @@ public class CrudClientViewController extends ViewController {
 
     public void setPromoComboBox(ArrayList<Groupe> plisteGroupe) {
         this.promoComboBox.getItems().setAll(plisteGroupe);
+    }
+
+    public void setClient(Client pClient){
+        nomTextField.setText(pClient.getNom());
+        prenomTextField.setText(pClient.getPrenom());
+        promoComboBox.setValue(pClient.getPromo());
     }
 }

@@ -4,6 +4,7 @@ package application.view.compte.crudGroupe;
 import application.model.client.Groupe;
 import application.view.ViewController;
 import application.view.compte.CompteView;
+import application.view.compte.gestionGroupe.GestionGroupeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -45,8 +46,12 @@ public class CrudGroupeViewController extends ViewController {
     public void valider() {
         if (nomTextField.getText() != null) {
             String nom = nomTextField.getText();
-
-            getView().getController().creerGroupe(nom);
+            if (getView().getController().getGroupe() == null){
+                getView().getController().creerGroupe(nom);
+            }
+            else {
+                getView().getController().modifierGroupe(nom);
+            }
             close();
         }
     }
@@ -55,8 +60,8 @@ public class CrudGroupeViewController extends ViewController {
      * Méthode qui redirige vers la page de visualisation des comptes
      */
     public void close() {
-        CompteView compteView = new CompteView();
-        getView().changerPage((Stage) crudGroupeView.getScene().getWindow(), compteView);
+        GestionGroupeView gestionGroupeView = new GestionGroupeView();
+        getView().changerPage((Stage) crudGroupeView.getScene().getWindow(), gestionGroupeView);
     }
 
     public CrudGroupeViewController() {
@@ -65,5 +70,13 @@ public class CrudGroupeViewController extends ViewController {
     @Override
     public CrudGroupeView getView() {
         return (CrudGroupeView) super.getView();
+    }
+
+    public TextField getNomTextField() {
+        return nomTextField;
+    }
+
+    public void setNomTextField(Groupe groupe) {
+        this.nomTextField.setText(groupe.getNom());
     }
 }

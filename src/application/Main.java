@@ -9,6 +9,7 @@ import application.model.vendable.Type;
 import application.view.View;
 import application.view.compte.ajoutArgentCompte.AjoutArgentCompteView;
 import application.view.compte.crudClient.CrudClientView;
+import application.view.compte.gestionGroupe.GestionGroupeView;
 import application.view.priseCommande.PriseCommandeView;
 
 import java.io.IOException;
@@ -43,6 +44,7 @@ public class Main {
 
         View view;
         view = new PriseCommandeView();
+        //view = new GestionGroupeView();
         view.show();
 
     }

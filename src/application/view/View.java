@@ -94,5 +94,15 @@ public abstract class View extends Application implements Observer {
         }
     }
 
+    public void genererNouvellePage(View pPageDestination){
+        try {
+            Stage stage = new Stage();
+            pPageDestination.start(stage);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 }

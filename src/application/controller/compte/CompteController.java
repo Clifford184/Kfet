@@ -3,6 +3,7 @@ package application.controller.compte;
 import application.controller.Controller;
 import application.model.Commande;
 import application.model.Panier;
+import application.model.client.Client;
 
 public class CompteController extends Controller {
 
@@ -15,6 +16,14 @@ public class CompteController extends Controller {
     @Override
     public void initialize() {
         String[] messages = {"menu", "client"};
+        notifyObservers(messages);
+    }
+
+    public void supprimerClient(Client pClient){
+        pClient.getPromo().removeClient(pClient);
+        Client.getClientListe().remove(pClient);
+
+        String[] messages = {"client"};
         notifyObservers(messages);
     }
 
