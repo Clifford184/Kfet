@@ -85,6 +85,8 @@ public class GestionGroupeViewController extends ViewController {
             CrudGroupeView crudGroupeView = new CrudGroupeView();
             getView().changerPage((Stage) gestionGroupeView.getScene().getWindow(), crudGroupeView);
             crudGroupeView.getController().setGroupe(groupeListView.getSelectionModel().getSelectedItem());
+        } else {
+            genererMessageErreur();
         }
     }
 
@@ -94,25 +96,24 @@ public class GestionGroupeViewController extends ViewController {
             if(!resultat) {
                 AlertView alertView = new AlertView();
                 getView().genererNouvellePage(alertView);
-                String errorMessage = "Impossible de supprimer le groupe "
+                String messageErreurSuppression = "Impossible de supprimer le groupe "
                                      + groupeListView.getSelectionModel().getSelectedItem().getNom()
                                     +" \n car il reste des clients dans le groupe: \n";
                 for (Client client : groupeListView.getSelectionModel().getSelectedItem().getClientListe()){
-                    errorMessage+= client.getPrenom()+" "+client.getNom()+"\n";
+                    messageErreurSuppression+= client.getPrenom()+" "+client.getNom()+"\n";
                 }
-                alertView.getController().setMessage(errorMessage);
+                alertView.getController().setMessage(messageErreurSuppression);
             }
+        } else {
+            genererMessageErreur();
         }
     }
 
-    /**
-     * Methode qui recupere le dernier groupe selectionne
-     * @param pDernierGroupeSelected groupe selectionne en dernier
-     */
-    public void sauvegardeDernierGroupeSelectionner(Groupe pDernierGroupeSelected){
-        if(pDernierGroupeSelected != null) {
-            groupeSelectionne = pDernierGroupeSelected;
-        }
+    public void genererMessageErreur(){
+        AlertView alertView = new AlertView();
+        getView().genererNouvellePage(alertView);
+        String messageErreur = "Veuillez selectionner un groupe";
+        alertView.getController().setMessage(messageErreur);
     }
 
     public GestionGroupeViewController(){}

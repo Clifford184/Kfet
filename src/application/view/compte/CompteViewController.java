@@ -7,6 +7,7 @@ import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
 import application.view.compte.ajoutArgentCompte.AjoutArgentCompteView;
 import application.view.compte.crudClient.CrudClientView;
 import application.view.compte.gestionGroupe.GestionGroupeView;
+import application.view.utile.AlertView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +53,6 @@ public class CompteViewController extends ViewController {
     ImageView gestionGroupeImageView;
 
     Client clientSelectionne;
-
 
     /**
      * methode pour animation du menu
@@ -132,7 +132,7 @@ public class CompteViewController extends ViewController {
         ArrayList<Groupe> listeGroupe = Groupe.getGroupeListe();
 
         for (Groupe promo : listeGroupe) {
-            TableView<Client> tableView = new TableView();
+            TableView<Client> tableView = new TableView<Client>();
             for (String entete : listeEntete) {
                 TableColumn tableColumn = new TableColumn(entete);
                 tableColumn.setCellValueFactory(new PropertyValueFactory(entete));
@@ -152,7 +152,7 @@ public class CompteViewController extends ViewController {
                 });
 
                 ajouterArgentImageView.setOnMouseClicked(event -> {
-                    redirectionAjouterArgent(clientSelectionne);
+                    redirectionAjouterArgent();
                 });
             }
 
@@ -197,6 +197,8 @@ public class CompteViewController extends ViewController {
             CrudClientView crudClientView = new CrudClientView();
             getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
             crudClientView.getController().setClient(clientSelectionne);
+        } else {
+            genererMessageErreur();
         }
     }
 
@@ -206,18 +208,31 @@ public class CompteViewController extends ViewController {
     }
 
     public void supprimerClient() {
-        getView().getController().supprimerClient(clientSelectionne);
+        if (clientSelectionne != null) {
+            getView().getController().supprimerClient(clientSelectionne);
+        } else {
+            genererMessageErreur();
+        }
     }
 
     /**
      * methode pour ajouter de l'argent à un client
      */
-    public void redirectionAjouterArgent(Client pClient) {
-        if (pClient != null) {
+    public void redirectionAjouterArgent() {
+        if (clientSelectionne != null) {
             AjoutArgentCompteView ajoutArgentCompteView = new AjoutArgentCompteView();
             getView().changerPage((Stage) getViewCompte().getScene().getWindow(), ajoutArgentCompteView);
-            ajoutArgentCompteView.getController().setClient(pClient);
+            ajoutArgentCompteView.getController().setClient(clientSelectionne);
+        } else {
+            genererMessageErreur();
         }
+    }
+
+    public void genererMessageErreur(){
+        AlertView alertView = new AlertView();
+        getView().genererNouvellePage(alertView);
+        String messageErreur = "Veuillez selectionner un client";
+        alertView.getController().setMessage(messageErreur);
     }
 
     /**
