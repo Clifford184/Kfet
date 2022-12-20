@@ -39,7 +39,8 @@ public class Offre extends Vendable implements Serializable {
      */
     public Offre(TemplateOffre pTemplateOffre, ArrayList<Produit> pProduits) throws IOException {
         super(pTemplateOffre.getNom(), 0, pTemplateOffre.getPrixVente(),pTemplateOffre.getVenteMembre(), "");
-        produitListe = pProduits;
+        produitListe = new ArrayList<>();
+        produitListe.addAll(pProduits);
         for(Produit p : produitListe){
             prixAchat += p.prixAchat;
         }

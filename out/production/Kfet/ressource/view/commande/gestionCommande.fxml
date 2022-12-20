@@ -62,7 +62,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="validerModifButton" layoutX="214.0" layoutY="394.0" mnemonicParsing="false" text="Valider" />
             <ScrollPane layoutX="14.0" layoutY="117.0" prefHeight="265.0" prefWidth="284.0" style="-fx-border-color: gray;" vbarPolicy="NEVER">
                <content>
                   <VBox fx:id="listeProduitVBox" prefHeight="262.0" prefWidth="244.0" />

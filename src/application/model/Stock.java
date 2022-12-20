@@ -95,9 +95,16 @@ public class Stock implements Serializable {
      */
     public void remplirStock(Produit pProduit, int pNombre){
         Integer nombre = stock.get(pProduit);
+
         if (nombre == null){
             nombre = 0;
         }
+
+        if(pNombre<0 && pNombre*-1>nombre){
+            //erreur
+            return;
+        }
+
         nombre += pNombre;
         stock.put(pProduit, nombre);
     }

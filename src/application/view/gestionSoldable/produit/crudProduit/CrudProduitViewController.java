@@ -53,6 +53,8 @@ public class CrudProduitViewController extends ViewController {
 
     public void initialize(){
 
+        champMarge.setEditable(false);
+
         validerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
         validerImageBtn.onMouseClickedProperty().set(mouseEvent -> valider());
 
