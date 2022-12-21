@@ -52,6 +52,8 @@ public class CrudProduitViewController extends ViewController {
 
     public void initialize(){
 
+        listeType.getItems().setAll(Type.getTypeListe());
+
         champMarge.setEditable(false);
 
         validerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
@@ -166,14 +168,6 @@ public class CrudProduitViewController extends ViewController {
 
     public CrudProduitView getView(){
         return (CrudProduitView) super.getView();
-    }
-
-    public ComboBox<Type> getListeType() {
-        return listeType;
-    }
-
-    public void setListeType(ArrayList<Type> listeType) {
-        this.listeType.getItems().setAll(listeType);
     }
 
     public AnchorPane getViewCrudProduit() {

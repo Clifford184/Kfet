@@ -2,22 +2,31 @@ package application.view.commande;
 
 import application.controller.Observable;
 import application.controller.commande.GestionCommandeController;
-import application.controller.gestionSoldable.produit.StockController;
 import application.view.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
 import javafx.stage.Stage;
 
 public class GestionCommandeView extends View {
+
+    private static GestionCommandeView singleton;
+
     /**
      * constructeur par défaut
      */
-    public GestionCommandeView() {
+    private GestionCommandeView() {
         cheminVue = "/ressource/view/commande/gestionCommande.fxml";
         minWidth = 880;
         minHeight = 490;
         nomFenetre = "Gestion commande";
         setController(null);
+    }
+
+    public static GestionCommandeView creerGestionCommandeView(){
+        if(singleton==null){
+            singleton = new GestionCommandeView();
+        }
+        return singleton;
     }
 
     /**
@@ -45,12 +54,19 @@ public class GestionCommandeView extends View {
         getViewController().setView(this);
 
         initialize();
+        getViewController().afficherCommande();
 
         stage.show();
     }
 
-    public void changerScene() throws Exception {
+    public void stop(){
+        singleton = null;
+    }
 
+    public static void notifierNouvelleCommande(){
+        if(singleton!=null){
+            singleton.getViewController().afficherCommande();
+        }
     }
 
     @Override
@@ -59,19 +75,14 @@ public class GestionCommandeView extends View {
             switch (message) {
                 case "commande_modifiee" -> {
                     // Update du menu en fonctions des soldable existant
-                    getViewController().recharger();
+                    getViewController().afficherCommande();
                 }
             }
         }
     }
 
-    public void changerScene(View view) {
-        try {
-            Stage stage = (Stage) getViewController().getViewGestionCommande().getScene().getWindow();
-            view.start(stage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static boolean dejaOuverte(){
+        return singleton!=null;
     }
 
     @Override

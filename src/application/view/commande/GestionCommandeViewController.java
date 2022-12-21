@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+
 
 public class GestionCommandeViewController extends ViewController {
 
@@ -23,7 +25,6 @@ public class GestionCommandeViewController extends ViewController {
     public Label heureCommandeLabel;
     public Label montantTotalLabel;
     public VBox listeProduitVBox;
-    public Button validerModifButton;
     public Label etatCommandeLabel;
 
     @FXML
@@ -31,7 +32,15 @@ public class GestionCommandeViewController extends ViewController {
 
     public void initialize(){
 
-        for(Commande commande : Commande.getCommandeListe()){
+    }
+
+    public void afficherCommande() {
+        listeCommandeVBox.getChildren().clear();
+        focusCommande(getView().getController().getCommande());
+
+        ArrayList<Commande> commandesTriees = getView().getController().listeCommandesTriees();
+
+        for(Commande commande : commandesTriees){
 
             ControllerEtPane controllerEtPane =
                     SceneLoader.loadPane("/ressource/view/commande/gestionCommandeElement.fxml");
@@ -46,11 +55,6 @@ public class GestionCommandeViewController extends ViewController {
             pane.setStyle("-fx-background-color:"+commande.getEtatActuel().getCouleur());
         }
 
-    }
-
-    public void recharger() {
-        listeCommandeVBox.getChildren().clear();
-        focusCommande(getView().getController().getCommande());
         initialize();
     }
 
@@ -60,6 +64,9 @@ public class GestionCommandeViewController extends ViewController {
      * @param pCommande la commande dont il faut afficher les details
      */
     public void focusCommande(Commande pCommande){
+
+        if(pCommande==null)
+            return;
 
         listeProduitVBox.getChildren().clear();
 

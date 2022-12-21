@@ -333,13 +333,15 @@ public class PriseCommandeViewController extends ViewController {
 
 
     public void afficherGestionCommande(){
-
-       GestionCommandeView gestionCommandeView = new GestionCommandeView();
-        try {
-            gestionCommandeView.start(new Stage());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if(!GestionCommandeView.dejaOuverte()){
+            GestionCommandeView gestionCommandeView = GestionCommandeView.creerGestionCommandeView();
+            try {
+                gestionCommandeView.start(new Stage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
     public void setArticlePanier(Panier pPanier) {

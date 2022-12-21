@@ -16,8 +16,7 @@ public class CrudProduitController extends Controller {
      */
     @Override
     public void initialize() {
-        String[] messages = {"type"};
-        notifyObservers(messages);
+
     }
 
     public void creationProduit(String pNom, float pAchat, float pVente, float pPrixVenteMembre, Type pType, String pchemin){
