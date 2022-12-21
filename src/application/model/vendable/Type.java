@@ -42,6 +42,7 @@ public class Type implements Serializable {
         categorie = pCategorie;
         pCategorie.ajouterType(this);
         typeListe.add(this);
+        produitListe = new ArrayList<>();
 
         if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
             cheminImage = "src/ressource/image/type/imageParDefaut.png";
@@ -68,8 +69,18 @@ public class Type implements Serializable {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return nom;
+    }
+
+
     public String getCheminImage() {
         return cheminImage;
+    }
+
+    public void setCheminImage(String pChemin) {
+        cheminImage = pChemin;
     }
 
     public void ajouterProduit(Produit pProduit){
@@ -78,6 +89,14 @@ public class Type implements Serializable {
 
     public ArrayList<Produit> getProduitListe() {
         return produitListe;
+    }
+
+    public void setCategorie(Categorie pCategorie) {
+        categorie = pCategorie;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
     }
 
     public void setNom(String pNom){
@@ -94,11 +113,6 @@ public class Type implements Serializable {
 
     public static ArrayList<Type> getTypeListe() {
         return typeListe;
-    }
-
-    @Override
-    public String toString() {
-        return nom;
     }
 
 }

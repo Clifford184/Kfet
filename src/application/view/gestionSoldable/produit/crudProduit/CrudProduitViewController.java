@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.function.UnaryOperator;
 
 public class CrudProduitViewController extends ViewController {
@@ -118,17 +117,17 @@ public class CrudProduitViewController extends ViewController {
      * Permet de signifier qu'on est en train de modifier un produit.
      * Va peupler les champs des valeurs du produit et le comportement
      * de la validation aura pour effet de modifier le produit
-     * @param p
+     * @param pProduit
      */
-    public void setContexteModification(Produit p) {
-        getView().getController().setProduit(p);
+    public void setContexteModification(Produit pProduit) {
+        getView().getController().setProduit(pProduit);
         contexteModification = true;
-        nomProduit.setText(p.getNom());
-        listeType.getSelectionModel().select(p.getType());
-        prixAchat.setText(p.getPrixAchat()+"");
-        prixVente.setText(p.getPrixVente()+"");
-        prixMembre.setText(p.getPrixVenteMembre()+"");
-        imageProduit.setImage(new Image(new File(p.getCheminImage()).toURI().toString()));
+        nomProduit.setText(pProduit.getNom());
+        listeType.getSelectionModel().select(pProduit.getType());
+        prixAchat.setText(pProduit.getPrixAchat()+"");
+        prixVente.setText(pProduit.getPrixVente()+"");
+        prixMembre.setText(pProduit.getPrixVenteMembre()+"");
+        imageProduit.setImage(new Image(new File(pProduit.getCheminImage()).toURI().toString()));
         majStatPrix();
     }
 
@@ -152,11 +151,10 @@ public class CrudProduitViewController extends ViewController {
 
             if(contexteModification){
                 getView().getController().modificationProduit(nom, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
-                annuler();
             }else{
                 getView().getController().creationProduit(nom, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
-                annuler();
             }
+            annuler();
 
         }
         catch (Exception e){

@@ -1,12 +1,19 @@
 package application.view.gestionSoldable.type.crudType;
 
 import application.model.vendable.Categorie;
+import application.model.vendable.Produit;
+import application.model.vendable.Type;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.type.GestionTypeView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,6 +23,10 @@ import java.util.ArrayList;
 
 public class CrudTypeViewController extends ViewController {
 
+    public ImageView typeImage;
+    public ImageView annulerImgBtn;
+    public ImageView validerImgBtn;
+    public Button choisirImageBtn;
     @FXML
     private AnchorPane viewCrudType;
     @FXML
@@ -23,14 +34,50 @@ public class CrudTypeViewController extends ViewController {
     @FXML
     private TextField nomType;
 
-    private String image;
+    private String cheminImage;
+    boolean contexteModification = false;
 
-    @FXML
-    public void ChoisirImage() {
-        final FileChooser selecteurDeFichier = new FileChooser();
-        selecteurDeFichier.setTitle("choisir une image");
-        File fichier = selecteurDeFichier.showOpenDialog(null);
-        image = fichier.getPath();
+    public void initialize(){
+
+        listeCategorie.getItems().setAll(Categorie.categorieListe);
+
+        validerImgBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
+        validerImgBtn.onMouseClickedProperty().set(mouseEvent -> valider());
+
+        annulerImgBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/annuler.png").toString()));
+        annulerImgBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
+
+        FileChooser.ExtensionFilter imageFilter
+                = new FileChooser.ExtensionFilter("Image", "*.jpg", "*.png");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(imageFilter);
+        choisirImageBtn.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                File fichierImage = fileChooser.showOpenDialog(new Stage());
+                if (fichierImage == null)
+                    return;
+                cheminImage = fichierImage.getAbsolutePath();
+                typeImage.setImage(new Image(cheminImage));
+            }
+        });
+
+    }
+
+    /**
+     * Permet de signifier qu'on est en train de modifier un produit.
+     * Va peupler les champs des valeurs du produit et le comportement
+     * de la validation aura pour effet de modifier le produit
+     * @param pType le type sujet a la modification
+     */
+    public void setContexteModification(Type pType) {
+        getView().getController().setType(pType);
+        contexteModification = true;
+        nomType.setText(pType.getNom());
+        listeCategorie.getSelectionModel().select(pType.getCategorie());
+        typeImage.setImage(new Image(new File(pType.getCheminImage()).toURI().toString()));
+        cheminImage = pType.getCheminImage();
     }
 
     public void annuler(){
@@ -39,7 +86,12 @@ public class CrudTypeViewController extends ViewController {
     }
 
     public void valider(){
-        getView().getController().creationType(nomType.getText(), listeCategorie.getValue(), image);
+        if(contexteModification){
+            getView().getController().modificationType(nomType.getText(), listeCategorie.getValue(), cheminImage);
+        }else{
+            getView().getController().creationType(nomType.getText(), listeCategorie.getValue(), cheminImage);
+        }
+
         annuler();
     }
 
