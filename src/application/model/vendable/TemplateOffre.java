@@ -120,9 +120,7 @@ public class TemplateOffre implements Serializable {
         return templateOffreListe;
     }
 
-    public static void setTemplateOffreListe(ArrayList<TemplateOffre> templateOffreListe) {
-        TemplateOffre.templateOffreListe = templateOffreListe;
+    public float getPrixVenteMembre() {
+        return prixMembre;
     }
-
-
 }

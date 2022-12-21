@@ -187,7 +187,7 @@ public class PriseCommandeViewController extends ViewController {
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             Pane pane = controllerEtPane.getPane();
             pane.setOnMouseClicked(event -> AffichageTypeOffre(templateOffre) );
-            controller.initialize(templateOffre);
+            controller.initialize(templateOffre, !prixMembreCheckbox.isSelected());
             zoneAffichageType.getChildren().add(pane);
 
         }
@@ -271,7 +271,7 @@ public class PriseCommandeViewController extends ViewController {
                 pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
             }
 
-            controller.initialize(produit);
+            controller.initialize(produit, !prixMembreCheckbox.isSelected());
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(pane);
         }
@@ -293,7 +293,7 @@ public class PriseCommandeViewController extends ViewController {
                 controllerEtPane.getPane().setOnMouseClicked(event -> AjouterProduitMenu(produit));
             }
 
-            controller.initialize(produit);
+            controller.initialize(produit,!prixMembreCheckbox.isSelected());
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(controllerEtPane.getPane());
         }
