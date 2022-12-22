@@ -2,6 +2,7 @@ package application.view.gestionSoldable.produit.crudProduit;
 
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.GestionProduitView;
 import javafx.event.ActionEvent;
@@ -56,10 +57,10 @@ public class CrudProduitViewController extends ViewController {
 
         champMarge.setEditable(false);
 
-        validerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
+        validerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
         validerImageBtn.onMouseClickedProperty().set(mouseEvent -> valider());
 
-        annulerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/annuler.png").toString()));
+        annulerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImageBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
 
         UnaryOperator<TextFormatter.Change> filtrePrix = change -> {

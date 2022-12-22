@@ -44,7 +44,6 @@ public class Offre extends Vendable implements Serializable {
         for(Produit p : produitListe){
             prixAchat += p.prixAchat;
         }
-        image = ImageIO.read(new File(pTemplateOffre.cheminImage));
         id = UUID.randomUUID();
     }
     /**

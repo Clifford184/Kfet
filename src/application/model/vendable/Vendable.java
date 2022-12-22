@@ -1,5 +1,7 @@
 package application.model.vendable;
 
+import application.outils.ImageManager;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,7 +25,6 @@ public abstract class Vendable implements Serializable {
     float prixVente;
     float prixVenteMembre;
     String cheminImage;
-    transient BufferedImage image;
 
     /**
      * Cree un nouvel element vendable
@@ -38,30 +39,16 @@ public abstract class Vendable implements Serializable {
      */
     public Vendable(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, String pCheminImage) throws IOException {
 
+        if(pCheminImage==null)
+            pCheminImage = "";
+
         nom = pNom;
         prixVente = pPrixVente;
         prixVenteMembre = pPrixVenteMembre;
         prixAchat = pPrixAchat;
 
+        cheminImage = ImageManager.genererNouvelleImage(pCheminImage, nom);
 
-        if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
-            cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+"imageParDefaut.png";
-        }else{
-            cheminImage = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+nom+"-"+UUID.randomUUID().toString()+".png";
-
-            image = ImageIO.read(new File(pCheminImage));
-            ImageIO.write(image, "png", new File(cheminImage));
-        }
-
-    }
-
-    /**
-     * Supprime de l'espace de stockage l'image associee a cet objet
-     * @return true si l'image a bien ete supprimee
-     */
-    public boolean supprimerFichierImage(){
-        File f = new File(cheminImage);
-        return f.delete();
     }
 
     @Override
@@ -99,10 +86,6 @@ public abstract class Vendable implements Serializable {
 
     public void setPrixVenteMembre(float prixVenteMembre) {
         this.prixVenteMembre = prixVenteMembre;
-    }
-
-    public BufferedImage getImage() {
-        return image;
     }
 
     public void setCheminImage(String image) {

@@ -2,8 +2,8 @@ package application.view.commande;
 
 import application.model.Commande;
 import application.model.vendable.ProduitCommande;
-import application.view.outils.ControllerEtPane;
-import application.view.outils.SceneLoader;
+import application.outils.ControllerEtPane;
+import application.outils.SceneLoader;
 import application.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

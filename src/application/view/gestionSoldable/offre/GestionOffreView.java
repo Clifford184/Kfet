@@ -2,7 +2,7 @@ package application.view.gestionSoldable.offre;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.offre.GestionOffreController;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
 import javafx.stage.Stage;

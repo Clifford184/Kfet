@@ -1,5 +1,7 @@
 package application.model.vendable;
 
+import application.outils.ImageManager;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,7 +27,6 @@ public class Type implements Serializable {
     ArrayList<Produit> produitListe = new ArrayList<>();
 
     String cheminImage;
-    transient BufferedImage image;
 
     private static ArrayList<Type> typeListe = new ArrayList<>();
 
@@ -44,13 +45,7 @@ public class Type implements Serializable {
         typeListe.add(this);
         produitListe = new ArrayList<>();
 
-        if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
-            cheminImage = "src/ressource/image/type/imageParDefaut.png";
-        }else{
-            cheminImage = "src/ressource/image/type/"+nom+"-"+ UUID.randomUUID().toString()+".png";
-            image = ImageIO.read(new File(pCheminImage));
-            ImageIO.write(image, "png", new File(cheminImage));
-        }
+        cheminImage = ImageManager.genererNouvelleImage(pCheminImage, pNom);
     }
 
     /**

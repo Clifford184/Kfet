@@ -2,7 +2,7 @@ package application.view.compte.DebitArgentCompte;
 
 import application.controller.Observable;
 import application.controller.compte.DebitArgentCompte.DebitArgentCompteController;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
 import javafx.stage.Stage;

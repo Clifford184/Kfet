@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="viewCrudCategorie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieViewController">
+<AnchorPane fx:id="viewCrudCategorie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieViewController">
    <children>
-      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../image/icone/valide.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../image/icone/annuler.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="137.0" layoutY="138.0" text="Catégorie:" />
-      <TextField fx:id="nomCategorie" layoutX="201.0" layoutY="134.0" />
+      <Label layoutX="34.0" layoutY="39.0" text="Nom de la catégorie:" />
+      <TextField fx:id="nomCategorie" layoutX="158.0" layoutY="35.0" />
+      <ImageView fx:id="annulerImageBtn" fitHeight="68.0" fitWidth="68.0" layoutX="351.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="validerImageBtn" fitHeight="68.0" fitWidth="68.0" layoutX="440.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="tousTypeTable" layoutX="45.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nomTousTypeColonne" prefWidth="199.19998931884766" text="Liste des types" />
+        </columns>
+      </TableView>
+      <TableView fx:id="typeCategorieTable" layoutX="284.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nomCatTypeColonne" prefWidth="199.19998168945312" text="Types de cette catégorie" />
+        </columns>
+      </TableView>
+      <Button fx:id="ajouterTypeBtn" layoutX="163.0" layoutY="297.0" mnemonicParsing="false" text="Ajouter type" />
+      <Button fx:id="retirerTypeBtn" layoutX="406.0" layoutY="297.0" mnemonicParsing="false" text="Retirer type" />
    </children>
 </AnchorPane>

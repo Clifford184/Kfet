@@ -5,7 +5,7 @@ import application.controller.compte.crudClient.CrudClientController;
 import application.model.client.Groupe;
 import application.view.View;
 import application.view.ViewController;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import javafx.stage.Stage;
 
 public class CrudClientView extends View {

@@ -4,7 +4,7 @@ import application.controller.Observable;
 import application.controller.compte.crudGroupe.CrudGroupeController;
 import application.view.View;
 import application.view.ViewController;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import javafx.stage.Stage;
 
 public class CrudGroupeView extends View {

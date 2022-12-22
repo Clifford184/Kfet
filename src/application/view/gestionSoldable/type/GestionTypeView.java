@@ -2,8 +2,7 @@ package application.view.gestionSoldable.type;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.GestionTypeController;
-import application.model.vendable.Type;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
 import javafx.stage.Stage;

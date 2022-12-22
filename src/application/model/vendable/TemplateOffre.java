@@ -1,5 +1,7 @@
 package application.model.vendable;
 
+import application.outils.ImageManager;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -61,14 +63,7 @@ public class TemplateOffre implements Serializable {
         blackList = pBlacklist;
         templateOffreListe.add(this);
 
-        if(pCheminImage==null){  //Utilisation de l'image par defaut.
-            cheminImage = "src/ressource/image/offre/imageParDefaut.png";
-        }else{
-            cheminImage = "src/ressource/image/offre/"+nom+"-"+ UUID.randomUUID().toString()+".png";
-
-            image = ImageIO.read(new File(pCheminImage));
-            ImageIO.write(image, "png", new File(cheminImage));
-        }
+        cheminImage = ImageManager.genererNouvelleImage(pCheminImage, pNom);
     }
 
     /**

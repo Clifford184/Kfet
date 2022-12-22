@@ -2,8 +2,7 @@ package application.view.gestionSoldable.produit.crudProduit;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.produit.CrudProduitController;
-import application.model.vendable.Type;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
 import javafx.stage.Stage;

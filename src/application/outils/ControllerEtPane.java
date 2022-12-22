@@ -1,4 +1,4 @@
-package application.view.outils;
+package application.outils;
 
 import application.view.ViewController;
 import javafx.scene.layout.Pane;

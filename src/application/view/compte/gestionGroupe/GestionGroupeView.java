@@ -3,10 +3,9 @@ package application.view.compte.gestionGroupe;
 import application.controller.Observable;
 import application.controller.compte.gestionGroupe.GestionGroupeController;
 import application.model.client.Groupe;
-import application.model.vendable.Type;
 import application.view.View;
 import application.view.ViewController;
-import application.view.outils.SceneLoader;
+import application.outils.SceneLoader;
 import javafx.stage.Stage;
 
 public class GestionGroupeView extends View {
