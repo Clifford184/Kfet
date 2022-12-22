@@ -38,37 +38,6 @@ public class GestionTypeViewController extends ViewController {
     @FXML
     private Label titre;
 
-
-    /**
-     * methode pour animation du menu
-     */
-    public void openMenu(){
-        if(!sliderMenu.isVisible()){
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderMenu);
-
-            slide.setToX(0);
-            slide.play();
-
-            sliderMenu.setTranslateX(-176);
-            sliderMenu.setVisible(true);
-        }
-        else {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sliderMenu);
-
-            slide.setToX(-176);
-            slide.play();
-
-            sliderMenu.setTranslateX(0);
-            slide.setOnFinished((ActionEvent e) -> {
-                sliderMenu.setVisible(false);
-            });
-        }
-    }
-
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;

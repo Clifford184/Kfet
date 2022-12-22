@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="viewCompte" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.CompteViewController">
@@ -27,11 +29,33 @@
       <TabPane fx:id="tablePromo" prefHeight="316.0" prefWidth="430.0" tabClosingPolicy="UNAVAILABLE" />
    </center>
    <right>
-      <AnchorPane prefHeight="316.0" prefWidth="51.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="316.0" prefWidth="34.0">
          <children>
-            <ImageView fx:id="ajouterClientImageView" fitHeight="49.0" fitWidth="25.0" layoutX="13.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="ajouterArgentImageView" fitHeight="33.0" fitWidth="29.0" layoutX="11.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ajouterArgentImageView" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="25.0" top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="ajouterClientImageView" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="modificationClientImageView" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="suppressionClientImageView" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="gestionGroupeImageView" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
          </children>
-      </AnchorPane>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
    </right>
 </BorderPane>
