@@ -53,6 +53,10 @@ public class GestionProduitViewController extends ViewController {
 
         produitTable.getItems().addAll(Produit.produitListe);
 
+        nomColonne.setResizable(false);
+        prixColonne.setResizable(false);
+        prixMColonne.setResizable(false);
+
     }
 
 

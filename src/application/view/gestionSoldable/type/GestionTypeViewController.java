@@ -39,13 +39,6 @@ public class GestionTypeViewController extends ViewController {
 
     @FXML
     private AnchorPane sliderMenu;
-
-    @FXML
-    private ListView<Type> listeType;
-
-    @FXML
-    private ImageView ajouter;
-
     @FXML
     private Label titre;
 
@@ -136,11 +129,4 @@ public class GestionTypeViewController extends ViewController {
         return viewGestionType;
     }
 
-    public ListView<Type> getListeType() {
-        return listeType;
-    }
-
-    public void setListeType(ArrayList<Type> listeType) {
-        this.listeType.getItems().setAll(listeType);
-    }
 }

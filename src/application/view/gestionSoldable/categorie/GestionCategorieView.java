@@ -54,10 +54,6 @@ public class GestionCategorieView extends View {
                         // initialise le menu
                         getViewController().initialisationMenu();
                     }
-                    case "categorie" -> {
-                        // Update du menu en fonctions des soldable existant
-                        getViewController().setListeCategorie(Categorie.categorieListe);
-                    }
                 }
             }
         } catch (Exception e) {
