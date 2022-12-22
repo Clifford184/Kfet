@@ -5,6 +5,7 @@ package application.view.compte.gestionGroupe;
 import application.model.client.Client;
 import application.model.client.Groupe;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.compte.crudGroupe.CrudGroupeView;
@@ -47,16 +48,14 @@ public class GestionGroupeViewController extends ViewController {
     Groupe groupeSelectionne;
 
     public void initialiserView(){
-        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"ajouterGroupe.png");
-        ajouterGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+
+        ajouterGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajouterGroupe.png"));
         ajouterGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionCreationGroupe());
 
-        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"modifierGroupe.png");
-        modifierGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        modifierGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/modifierGroupe.png"));
         modifierGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionModificationGroupe());
 
-        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"supprimerGroupe.png");
-        supprimerGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        supprimerGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/supprimerGroupe.png"));
         supprimerGroupeImageView.setOnMouseClicked(mouseEvent -> supprimerGroupe());
 
     }

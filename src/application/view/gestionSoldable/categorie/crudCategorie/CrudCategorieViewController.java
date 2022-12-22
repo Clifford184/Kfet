@@ -2,6 +2,7 @@ package application.view.gestionSoldable.categorie.crudCategorie;
 
 import application.model.vendable.Categorie;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import javafx.event.EventHandler;
@@ -46,11 +47,11 @@ public class CrudCategorieViewController extends ViewController {
 
         nomCatTypeColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
-        validerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
-        validerImageBtn.onMouseClickedProperty().set(mouseEvent -> valider());
+        annulerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImageBtn.setOnMouseClicked(mouseEvent -> annuler());
 
-        annulerImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/annuler.png").toString()));
-        annulerImageBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
+        validerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImageBtn.setOnMouseClicked(mouseEvent -> valider());
 
         ajouterTypeBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

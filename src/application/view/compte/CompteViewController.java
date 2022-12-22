@@ -1,6 +1,7 @@
 package application.view.compte;
 
 import application.model.client.*;
+import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.compte.DebitArgentCompte.DebitArgentCompteView;
@@ -104,26 +105,20 @@ public class CompteViewController extends ViewController {
      */
     public void initialiserView() {
         //Initialisation ImageView Creation Client
-        File cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutCompte.png");
-        ajouterClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+
+        ajouterClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajoutCompte.png"));
         ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionAjoutCrudClient());
 
-        //Initialisation ImageView modification client
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "modifierClient.png");
-        modificationClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+        modificationClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/modifierClient.png"));
         modificationClientImageView.setOnMouseClicked(mouseEvent -> redirectionModificationCrudClient());
 
-        //Initialisation ImageView suppression client
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "supprimerClient.png");
-        suppressionClientImageView.setImage(new Image(cheminImage.toURI().toString()));
+        suppressionClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/supprimerClient.png"));
         suppressionClientImageView.setOnMouseClicked(mouseEvent -> supprimerClient());
 
-        //Initialisation ImageView Ajout argent client
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "ajoutArgent.png");
-        ajouterArgentImageView.setImage(new Image(cheminImage.toURI().toString()));
+        ajouterArgentImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajoutArgent.png"));
+        ajouterArgentImageView.setOnMouseClicked(mouseEvent -> redirectionAjouterArgent());
 
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "gestionGroupe.png");
-        gestionGroupeImageView.setImage(new Image(cheminImage.toURI().toString()));
+        gestionGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/gestionGroupe.png"));
         gestionGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionGestionGroupe());
 
         //Initailisation du tableau de visualisation des groupes et clients

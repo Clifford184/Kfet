@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class GestionCommandeViewController extends ViewController {
 
     public VBox listeCommandeVBox;
-    public Button menuButton;
     public Button consulterHistoriqueButton;
 
     public Label clientLabel;

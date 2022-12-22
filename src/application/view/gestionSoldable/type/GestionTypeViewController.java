@@ -1,6 +1,7 @@
 package application.view.gestionSoldable.type;
 
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.type.crudType.CrudTypeView;
@@ -45,11 +46,11 @@ public class GestionTypeViewController extends ViewController {
 
     public void initialize(){
 
-        ajouterImage.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
-        ajouterImage.onMouseClickedProperty().set(mouseEvent -> ajouterType());
+        ajouterImage.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
+        ajouterImage.setOnMouseClicked(mouseEvent -> ajouterType());
 
-        modifierImage.setImage(new Image(getClass().getResource("/ressource/image/icone/modifier.png").toString()));
-        modifierImage.onMouseClickedProperty().set(mouseEvent -> modifierType());
+        modifierImage.setImage(ImageManager.genererImage("/ressource/image/icone/modifier.png"));
+        modifierImage.setOnMouseClicked(mouseEvent -> modifierType());
 
         nomTypeColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
         produitTypeColonne.setCellValueFactory(new PropertyValueFactory<>("produitListe"));

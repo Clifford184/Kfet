@@ -2,6 +2,7 @@ package application.view.gestionSoldable.categorie;
 
 import application.model.vendable.Categorie;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
@@ -45,11 +46,12 @@ public class GestionCategorieViewController extends ViewController {
 
 
     public void initialize(){
-        ajouterImage.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
-        ajouterImage.onMouseClickedProperty().set(mouseEvent -> ajouterCategorie());
 
-        modifierImage.setImage(new Image(getClass().getResource("/ressource/image/icone/modifier.png").toString()));
-        modifierImage.onMouseClickedProperty().set(mouseEvent -> modifierCategorie());
+        ajouterImage.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
+        ajouterImage.setOnMouseClicked(mouseEvent -> ajouterCategorie());
+
+        modifierImage.setImage(ImageManager.genererImage("/ressource/image/icone/modifier.png"));
+        modifierImage.setOnMouseClicked(mouseEvent -> modifierCategorie());
 
         nomCategorieColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
         listeTypeColonne.setCellValueFactory(new PropertyValueFactory<>("typeListe"));

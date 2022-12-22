@@ -27,11 +27,7 @@
    <right>
       <AnchorPane prefHeight="316.0" prefWidth="112.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterOffre" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/icone/ajouter.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="ajouterBtn" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true"/>
          </children>
       </AnchorPane>
    </right>

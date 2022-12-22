@@ -2,6 +2,7 @@ package application.view.compte.crudGroupe;
 
 
 import application.model.client.Groupe;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.compte.CompteView;
 import application.view.compte.gestionGroupe.GestionGroupeView;
@@ -31,12 +32,11 @@ public class CrudGroupeViewController extends ViewController {
      * Methode d'initialisation des Imaages View annuler et valider
      */
     public void initialiserView() {
-        File cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "annuler.png");
-        annulerImageView.setImage(new Image(cheminImage.toURI().toString()));
+
+        annulerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImageView.setOnMouseClicked(mouseEvent -> close());
 
-        cheminImage = new File("src" + File.separator + "ressource" + File.separator + "image" + File.separator + "icone" + File.separator + "valide.png");
-        validerImageView.setImage(new Image(cheminImage.toURI().toString()));
+        validerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
         validerImageView.setOnMouseClicked(mouseEvent -> valider());
     }
 

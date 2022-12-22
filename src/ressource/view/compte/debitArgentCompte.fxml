@@ -9,15 +9,9 @@
    <children>
       <Label fx:id="libelleClient" layoutX="216.0" layoutY="124.0" text="Somme à débiter pour " />
       <Label fx:id="somme" layoutX="264.0" layoutY="173.0" text="15€" />
-      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../image/icone/valide.png" />
-         </image>
+      <ImageView fx:id="validerImgBtn" fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../image/icone/annuler.png" />
-         </image>
+      <ImageView fx:id="annulerImgBtn" fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
    </children>
 </AnchorPane>

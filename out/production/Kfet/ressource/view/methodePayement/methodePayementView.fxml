@@ -35,11 +35,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../image/icone/autresPayement.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="autrePayementImage" fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true"/>
                         <TextField fx:id="prenomClientTextField" layoutX="123.0" layoutY="272.0" />
                         <Label layoutX="41.0" layoutY="276.0" text="Prénom client" />
                      </children>
@@ -51,11 +47,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="77.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../image/icone/compte.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="payementCompteImage" fitHeight="150.0" fitWidth="200.0" layoutX="77.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
                </children>

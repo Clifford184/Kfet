@@ -3,6 +3,7 @@ package application.view.gestionSoldable.type.crudType;
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.type.GestionTypeView;
@@ -41,11 +42,11 @@ public class CrudTypeViewController extends ViewController {
 
         listeCategorie.getItems().setAll(Categorie.categorieListe);
 
-        validerImgBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/valide.png").toString()));
-        validerImgBtn.onMouseClickedProperty().set(mouseEvent -> valider());
+        annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());
 
-        annulerImgBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/annuler.png").toString()));
-        annulerImgBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
+        validerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImgBtn.setOnMouseClicked(mouseEvent -> valider());
 
         FileChooser.ExtensionFilter imageFilter
                 = new FileChooser.ExtensionFilter("Image", "*.jpg", "*.png");

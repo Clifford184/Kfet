@@ -2,17 +2,21 @@ package application.view.compte.DebitArgentCompte;
 
 
 import application.model.client.Client;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.compte.CompteView;
 import application.view.gestionSoldable.offre.GestionOffreView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class DebitArgentCompteViewController extends ViewController {
 
+    public ImageView validerImgBtn;
+    public ImageView annulerImgBtn;
     @FXML
     private AnchorPane viewArgentConfimation;
 
@@ -23,6 +27,14 @@ public class DebitArgentCompteViewController extends ViewController {
     private Label somme;
 
     public DebitArgentCompteViewController(){}
+
+    public void initialize(){
+        annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());
+
+        validerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImgBtn.setOnMouseClicked(mouseEvent -> valider());
+    }
 
     /**
      * methode qui annule le debit pour ce client

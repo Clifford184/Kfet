@@ -1,6 +1,7 @@
 package application.view.methodePayement;
 
 import application.model.Commande;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.commande.GestionCommandeView;
 import application.view.compte.CompteView;
@@ -9,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -19,6 +21,8 @@ public class MethodePayementViewController extends ViewController {
     public Button annulerCommandeBtn;
     public Pane autreMethodePaiementPane;
     public TextField prenomClientTextField;
+    public ImageView autrePayementImage;
+    public ImageView payementCompteImage;
     @FXML
     private BorderPane viewModePayement;
 
@@ -26,6 +30,10 @@ public class MethodePayementViewController extends ViewController {
     private Pane payementCompte;
 
     public void initialize(){
+
+        autrePayementImage.setImage(ImageManager.genererImage("/ressource/image/icone/autresPayement.png"));
+        payementCompteImage.setImage(ImageManager.genererImage("/ressource/image/icone/compte.png"));
+
         payementCompte.onMouseClickedProperty().set(mouseEvent -> redirectionPayementCompte());
         autreMethodePaiementPane.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
             @Override
@@ -39,6 +47,10 @@ public class MethodePayementViewController extends ViewController {
                 GestionCommandeView.notifierNouvelleCommande();
             }
         });
+
+        /*
+         * TO DO: faire annulation commande
+         */
     }
 
     /**

@@ -2,6 +2,7 @@ package application.view.compte.ajoutArgentCompte;
 
 
 import application.model.client.Client;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.compte.CompteView;
 import javafx.fxml.FXML;
@@ -33,12 +34,10 @@ public class AjoutArgentCompteViewController extends ViewController {
 
 
     public void initialiserView(){
-        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"annuler.png");
-        annulerImageView.setImage(new Image(cheminImage.toURI().toString()));
+        annulerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImageView.setOnMouseClicked(mouseEvent -> close());
 
-        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"valide.png");
-        validerImageView.setImage(new Image(cheminImage.toURI().toString()));
+        validerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
         validerImageView.setOnMouseClicked(mouseEvent -> valider());
     }
 

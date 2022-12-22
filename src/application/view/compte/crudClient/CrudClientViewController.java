@@ -3,6 +3,7 @@ package application.view.compte.crudClient;
 
 import application.model.client.Client;
 import application.model.client.Groupe;
+import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.compte.CompteView;
 import javafx.fxml.FXML;
@@ -40,12 +41,11 @@ public class CrudClientViewController extends ViewController {
      * Methode d'initialisation des Imaages View annuler et valider
      */
     public void initialiserView(){
-        File cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"annuler.png");
-        annulerBouton.setImage(new Image(cheminImage.toURI().toString()));
+
+        annulerBouton.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerBouton.setOnMouseClicked(mouseEvent -> close());
 
-        cheminImage = new File("src"+File.separator+"ressource"+File.separator+"image"+File.separator+"icone"+File.separator+"valide.png");
-        validerBouton.setImage(new Image(cheminImage.toURI().toString()));
+        validerBouton.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
         validerBouton.setOnMouseClicked(mouseEvent -> valider());
     }
 

@@ -14,6 +14,9 @@ import java.util.UUID;
 public class ImageManager {
 
     public static Image genererImage(String pChemin){
+
+        pChemin = pChemin.replaceAll("//", File.separator);
+
         Image image = null;
         try{
             image = new Image(ImageManager.class.getResource(pChemin).toString());
@@ -24,6 +27,8 @@ public class ImageManager {
     }
 
     public static String genererNouvelleImage(String pCheminImage, String pNom){
+
+        pCheminImage = pCheminImage.replaceAll("//", File.separator);
 
         String nouveauChemin;
 

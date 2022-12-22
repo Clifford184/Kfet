@@ -1,6 +1,7 @@
 package application.view.gestionSoldable.produit;
 
 import application.model.vendable.Produit;
+import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.crudProduit.CrudProduitView;
@@ -41,10 +42,10 @@ public class GestionProduitViewController extends ViewController {
 
     public void initialize(){
 
-        ajouterProduitImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
+        ajouterProduitImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
         ajouterProduitImageBtn.onMouseClickedProperty().set(mouseEvent -> ajouterProduit());
 
-        ModifierProduitImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/modifier.png").toString()));
+        ModifierProduitImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/modifier.png"));
         ModifierProduitImageBtn.onMouseClickedProperty().set(mouseEvent -> modifierProduit());
 
         nomColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
