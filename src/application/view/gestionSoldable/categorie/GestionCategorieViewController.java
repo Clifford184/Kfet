@@ -1,15 +1,20 @@
 package application.view.gestionSoldable.categorie;
 
 import application.model.vendable.Categorie;
+import application.model.vendable.Type;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
+import application.view.gestionSoldable.type.crudType.CrudTypeView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +26,11 @@ import java.util.ArrayList;
 
 public class GestionCategorieViewController extends ViewController {
 
+    public ImageView ajouterImage;
+    public ImageView modifierImage;
+    public TableColumn<Categorie, String> nomCategorieColonne;
+    public TableColumn<Categorie, String> listeTypeColonne;
+    public TableView<Categorie> categorieTable;
     @FXML
     private BorderPane viewGestionCategorie;
 
@@ -32,6 +42,21 @@ public class GestionCategorieViewController extends ViewController {
 
     @FXML
     private Label titre;
+
+
+    public void initialize(){
+        ajouterImage.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
+        ajouterImage.onMouseClickedProperty().set(mouseEvent -> ajouterCategorie());
+
+        modifierImage.setImage(new Image(getClass().getResource("/ressource/image/icone/modifier.png").toString()));
+        modifierImage.onMouseClickedProperty().set(mouseEvent -> modifierCategorie());
+
+        nomCategorieColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        listeTypeColonne.setCellValueFactory(new PropertyValueFactory<>("typeListe"));
+
+        categorieTable.getItems().addAll(Categorie.categorieListe);
+
+    }
 
 
     /**
@@ -78,9 +103,21 @@ public class GestionCategorieViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionCategorie.getScene().getWindow());
     }
 
-    public void ajouterCategorie() throws Exception {
+    public void ajouterCategorie(){
         CrudCategorieView crudCategorieView = new CrudCategorieView();
         getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), crudCategorieView);
+    }
+
+    public void modifierCategorie(){
+
+        Categorie p = categorieTable.getSelectionModel().getSelectedItem();
+        if(p==null)
+            return;
+
+        CrudCategorieView crudTypeView = new CrudCategorieView();
+        getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), crudTypeView);
+        crudTypeView.getViewController().setContexteModification(p);
+
     }
 
     public void redirectionPriseCommande() throws Exception {
@@ -98,11 +135,4 @@ public class GestionCategorieViewController extends ViewController {
         return viewGestionCategorie;
     }
 
-    public ListView<Categorie> getListeCategorie() {
-        return listeCategorie;
-    }
-
-    public void setListeCategorie(ArrayList<Categorie> listeCategorie) {
-        this.listeCategorie.getItems().setAll(listeCategorie);
-    }
 }

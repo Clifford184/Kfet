@@ -25,7 +25,7 @@ public class GestionStockView extends View {
      */
     @Override
     public void initialize() {
-        // Initialization of the controller.
+        // Initialization of the controller
         if (getController() == null) {
             setController(new StockController());
         }

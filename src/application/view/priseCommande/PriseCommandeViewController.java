@@ -187,7 +187,7 @@ public class PriseCommandeViewController extends ViewController {
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             Pane pane = controllerEtPane.getPane();
             pane.setOnMouseClicked(event -> AffichageTypeOffre(templateOffre) );
-            controller.initialize(templateOffre);
+            controller.initialize(templateOffre, !prixMembreCheckbox.isSelected());
             zoneAffichageType.getChildren().add(pane);
 
         }
@@ -271,7 +271,7 @@ public class PriseCommandeViewController extends ViewController {
                 pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
             }
 
-            controller.initialize(produit);
+            controller.initialize(produit, !prixMembreCheckbox.isSelected());
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(pane);
         }
@@ -293,7 +293,7 @@ public class PriseCommandeViewController extends ViewController {
                 controllerEtPane.getPane().setOnMouseClicked(event -> AjouterProduitMenu(produit));
             }
 
-            controller.initialize(produit);
+            controller.initialize(produit,!prixMembreCheckbox.isSelected());
             produitControllerListe.add(controller);
             zoneAffichageType.getChildren().add(controllerEtPane.getPane());
         }
@@ -333,13 +333,15 @@ public class PriseCommandeViewController extends ViewController {
 
 
     public void afficherGestionCommande(){
-
-       GestionCommandeView gestionCommandeView = new GestionCommandeView();
-        try {
-            gestionCommandeView.start(new Stage());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if(!GestionCommandeView.dejaOuverte()){
+            GestionCommandeView gestionCommandeView = GestionCommandeView.creerGestionCommandeView();
+            try {
+                gestionCommandeView.start(new Stage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
     public void setArticlePanier(Panier pPanier) {

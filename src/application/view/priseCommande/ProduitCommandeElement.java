@@ -18,17 +18,21 @@ public class ProduitCommandeElement extends ViewController {
     public Label prixLabel;
 
     Produit produit;
-    Type type;
+    TemplateOffre templateOffre;
 
     /**
      * Initialisation d'une case selectionnable lors
      * de la prise de commande, representant un produit
      * @param pProduit le produit lie
      */
-    public void initialize(Produit pProduit) {
+    public void initialize(Produit pProduit, boolean pPrixNormal) {
         imageView.setImage(new Image(new File(pProduit.getCheminImage()).toURI().toString()));
+        produit = pProduit;
         nomProduitLabel.setText(pProduit.getNom());
-        prixLabel.setText(pProduit.getPrixVente()+"e");
+        if(pPrixNormal)
+            prixLabel.setText(pProduit.getPrixVente()+"e");
+        else
+            prixLabel.setText(pProduit.getPrixVenteMembre()+"e");
         stockLabel.setText("("+ Stock.getInstance().combienEnStock(pProduit)+")");
     }
 
@@ -44,10 +48,14 @@ public class ProduitCommandeElement extends ViewController {
         stockLabel.setText("");
     }
 
-    public void initialize(TemplateOffre pTemplateOffre){
+    public void initialize(TemplateOffre pTemplateOffre, boolean prixNormal){
+        templateOffre = pTemplateOffre;
         imageView.setImage(new Image(new File(pTemplateOffre.getCheminImage()).toURI().toString()));
         nomProduitLabel.setText(pTemplateOffre.getNom());
-        prixLabel.setText("");
+        if(prixNormal)
+            prixLabel.setText(templateOffre.getPrixVente()+"e");
+        else
+            prixLabel.setText(templateOffre.getPrixVenteMembre()+"e");
         stockLabel.setText("");
     }
 
@@ -66,13 +74,20 @@ public class ProduitCommandeElement extends ViewController {
      * Affichage du prix normal du produit
      */
     public void setPrixNormal(){
-        prixLabel.setText(produit.getPrixVente()+"e");
+        if(produit!=null)
+            prixLabel.setText(produit.getPrixVente()+"e");
+        else if(templateOffre!=null)
+            prixLabel.setText(templateOffre.getPrixVente()+"e");
     }
 
     /**
      * Affichage du prix membre du produit
      */
     public void setPrixMembre(){
-        prixLabel.setText(produit.getPrixVenteMembre()+"e");
+        if(produit!=null)
+            prixLabel.setText(produit.getPrixVenteMembre()+"e");
+        else if(templateOffre!=null)
+            prixLabel.setText(templateOffre.getPrixVenteMembre()+"e");
+
     }
 }

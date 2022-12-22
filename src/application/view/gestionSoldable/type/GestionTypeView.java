@@ -54,10 +54,6 @@ public class GestionTypeView extends View {
                         // initialise le menu
                         getViewController().initialisationMenu();
                     }
-                    case "type" -> {
-                        // Update du menu en fonctions des soldable existant
-                        getViewController().setListeType(Type.getTypeListe());
-                    }
                 }
             }
         } catch (Exception e) {

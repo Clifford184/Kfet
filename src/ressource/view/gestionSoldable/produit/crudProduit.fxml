@@ -4,31 +4,26 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="viewCrudProduit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.produit.crudProduit.CrudProduitViewController">
+<AnchorPane fx:id="viewCrudProduit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.produit.crudProduit.CrudProduitViewController">
    <children>
-      <ImageView fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" onMouseClicked="#valider" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../image/icone/valide.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" onMouseClicked="#annuler" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../image/icone/annuler.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="137.0" layoutY="93.0" text="Type:" />
-      <Label layoutX="137.0" layoutY="152.0" text="Nom:" />
-      <Label layoutX="132.0" layoutY="198.0" text="Prix d'achat:" />
-      <Label layoutX="129.0" layoutY="232.0" text="Prix de vente:" />
-      <ComboBox fx:id="listeType" layoutX="201.0" layoutY="98.0" prefWidth="150.0" />
-      <TextField fx:id="nomProduit" layoutX="202.0" layoutY="148.0" />
-      <TextField fx:id="prixAchat" layoutX="212.0" layoutY="194.0" />
-      <TextField fx:id="prixVente" layoutX="212.0" layoutY="228.0" />
-      <Label layoutX="129.0" layoutY="279.0" text="Image:" />
-      <Button layoutX="204.0" layoutY="275.0" mnemonicParsing="false" onMouseClicked="#ChoisirImage" text="Selectionner une image " />
+      <Label layoutX="174.0" layoutY="70.0" text="Type:" />
+      <Label layoutX="174.0" layoutY="29.0" text="Nom:" />
+      <Label layoutX="394.0" layoutY="28.0" text="Prix d'achat:" />
+      <ComboBox fx:id="listeType" layoutX="211.0" layoutY="66.0" prefWidth="150.0" />
+      <TextField fx:id="nomProduit" layoutX="212.0" layoutY="25.0" />
+      <TextField fx:id="prixAchat" layoutX="480.0" layoutY="22.0" prefHeight="26.0" prefWidth="90.0" />
+      <Button fx:id="choisirImageBtn" layoutX="21.0" layoutY="141.0" mnemonicParsing="false" text="Selectionner une image " />
+      <ImageView fx:id="imageProduit" fitHeight="112.0" fitWidth="128.0" layoutX="29.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="prixVente" layoutX="481.0" layoutY="55.0" prefHeight="26.0" prefWidth="90.0" promptText="Prix de vente" />
+      <TextField fx:id="prixMembre" layoutX="481.0" layoutY="91.0" prefHeight="26.0" prefWidth="90.0" promptText="Prix membre" />
+      <TextField fx:id="champMarge" layoutX="481.0" layoutY="126.0" prefHeight="26.0" prefWidth="90.0" />
+      <Label layoutX="394.0" layoutY="132.0" text="Marge" />
+      <Label layoutX="392.0" layoutY="61.0" text="Prix normal" />
+      <Label layoutX="392.0" layoutY="97.0" text="Prix membre" />
+      <ImageView fx:id="validerImageBtn" fitHeight="58.0" fitWidth="54.0" layoutX="520.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="annulerImageBtn" fitHeight="58.0" fitWidth="54.0" layoutX="459.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

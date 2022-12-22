@@ -30,10 +30,10 @@ public class Categorie implements Serializable {
      * Cree une nouvelle categorie
      * @param pNom son nom
      */
-    public Categorie(String pNom){
+    public Categorie(String pNom, ArrayList<Type> pTypeListe){
         id = UUID.randomUUID();
         nom = pNom;
-        typeListe = new ArrayList<>();
+        typeListe = new ArrayList<>(pTypeListe);
         categorieListe.add(this);
     }
 
@@ -93,4 +93,16 @@ public class Categorie implements Serializable {
         return nom;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setTypeListe(ArrayList<Type> pTypeListe) {
+        typeListe.clear();
+        typeListe.addAll(pTypeListe);
+    }
 }

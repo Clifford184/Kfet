@@ -2,6 +2,7 @@ package application.view.methodePayement;
 
 import application.model.Commande;
 import application.view.ViewController;
+import application.view.commande.GestionCommandeView;
 import application.view.compte.CompteView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.event.EventHandler;
@@ -35,6 +36,7 @@ public class MethodePayementViewController extends ViewController {
                 Commande.creerCommande(getView().getController().getPanier(),prenomClient);
                 PriseCommandeView priseCommandeView = new PriseCommandeView();
                 getView().changerPage((Stage) getViewModePayement().getScene().getWindow(), priseCommandeView);
+                GestionCommandeView.notifierNouvelleCommande();
             }
         });
     }

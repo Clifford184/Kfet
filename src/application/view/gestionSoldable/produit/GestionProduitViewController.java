@@ -3,8 +3,6 @@ package application.view.gestionSoldable.produit;
 import application.model.vendable.Produit;
 import application.view.Menu;
 import application.view.ViewController;
-import application.view.gestionSoldable.categorie.crudCategorie.CrudCategorieView;
-import application.view.gestionSoldable.type.crudType.CrudTypeView;
 import application.view.gestionSoldable.produit.crudProduit.CrudProduitView;
 import application.view.priseCommande.PriseCommandeView;
 import javafx.animation.TranslateTransition;
@@ -12,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -20,10 +20,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class GestionProduitViewController extends ViewController {
 
+    public ImageView ajouterProduitImageBtn;
+    public ImageView ModifierProduitImageBtn;
+    public TableColumn<Produit, String> nomColonne;
+    public TableColumn<Produit, String> prixColonne;
+    public TableColumn<Produit, String> prixMColonne;
+    public TableView<Produit> produitTable;
     @FXML
     private BorderPane viewGestionProduit;
 
@@ -31,13 +36,28 @@ public class GestionProduitViewController extends ViewController {
     private AnchorPane sliderMenu;
 
     @FXML
-    private ListView<Produit> listeProduit;
-
-    @FXML
-    private ImageView ajouter;
-
-    @FXML
     private Label titre;
+
+
+    public void initialize(){
+
+        ajouterProduitImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
+        ajouterProduitImageBtn.onMouseClickedProperty().set(mouseEvent -> ajouterProduit());
+
+        ModifierProduitImageBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/modifier.png").toString()));
+        ModifierProduitImageBtn.onMouseClickedProperty().set(mouseEvent -> modifierProduit());
+
+        nomColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prixColonne.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
+        prixMColonne.setCellValueFactory(new PropertyValueFactory<>("prixVenteMembre"));
+
+        produitTable.getItems().addAll(Produit.produitListe);
+
+        nomColonne.setResizable(false);
+        prixColonne.setResizable(false);
+        prixMColonne.setResizable(false);
+
+    }
 
 
     /**
@@ -84,6 +104,17 @@ public class GestionProduitViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionProduit.getScene().getWindow());
     }
 
+    public void modifierProduit(){
+
+        Produit p = produitTable.getSelectionModel().getSelectedItem();
+        if(p==null)
+            return;
+
+        CrudProduitView crudProduitView = new CrudProduitView();
+        getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), crudProduitView);
+        crudProduitView.getViewController().setContexteModification(p);
+    }
+
     public void ajouterProduit() {
         CrudProduitView crudProduitView = new CrudProduitView();
         getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), crudProduitView);
@@ -104,11 +135,5 @@ public class GestionProduitViewController extends ViewController {
         return viewGestionProduit;
     }
 
-    public ListView<Produit> getListeProduit() {
-        return listeProduit;
-    }
 
-    public void setListeProduit(ArrayList<Produit> listeProduit) {
-        this.listeProduit.getItems().setAll(listeProduit);
-    }
 }

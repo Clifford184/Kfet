@@ -105,8 +105,8 @@ public abstract class Vendable implements Serializable {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
+    public void setCheminImage(String image) {
+        cheminImage = image;
     }
 
     public String getCheminImage(){

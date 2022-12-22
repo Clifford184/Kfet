@@ -46,16 +46,7 @@ public class CrudProduitView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "type":
-                        getViewController().setListeType(Type.getTypeListe());
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
