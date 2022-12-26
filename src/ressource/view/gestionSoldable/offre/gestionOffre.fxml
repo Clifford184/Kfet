@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="viewGestionOffre" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.GestionOffreViewController">
+<BorderPane fx:id="viewGestionOffre" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.GestionOffreViewController">
    <top>
       <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>
@@ -27,15 +27,17 @@
    <right>
       <AnchorPane prefHeight="316.0" prefWidth="112.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterOffre" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/icone/ajouter.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="ajouterBtn" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="66.0" onMouseClicked="#ajouterOffre" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="modifierBtn" fitHeight="49.0" fitWidth="62.0" layoutX="32.0" layoutY="151.0" onMouseClicked="#ajouterOffre" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </right>
    <center>
-      <ListView fx:id="listeOffre" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TableView fx:id="offreTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="nomOffreColonne" prefWidth="107.20001524686813" text="Nom offre" />
+          <TableColumn fx:id="catOffreColonne" prefWidth="272.7999725341797" text="Liste de ses catégories" />
+        </columns>
+      </TableView>
    </center>
 </BorderPane>

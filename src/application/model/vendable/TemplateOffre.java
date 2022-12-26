@@ -123,4 +123,32 @@ public class TemplateOffre implements Serializable {
     public float getPrixVenteMembre() {
         return prixMembre;
     }
+
+    public void setCategorieListe(ArrayList<Categorie> categorieListe) {
+        this.categorieListe = categorieListe;
+    }
+
+    public void setPrixVente(float prixVente) {
+        this.prixVente = prixVente;
+    }
+
+    public void setPrixMembre(float prixMembre) {
+        this.prixMembre = prixMembre;
+    }
+
+    public void setBlackList(ArrayList<Produit> blackList) {
+        this.blackList = blackList;
+    }
+
+    public float getPrixMembre() {
+        return prixMembre;
+    }
+
+    public ArrayList<Produit> getBlackList() {
+        return blackList;
+    }
+
+    public void setCheminImage(String cheminImage) {
+        this.cheminImage = cheminImage;
+    }
 }

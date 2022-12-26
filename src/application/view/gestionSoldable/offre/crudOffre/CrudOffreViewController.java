@@ -2,6 +2,7 @@ package application.view.gestionSoldable.offre.crudOffre;
 
 import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
+import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.view.outils.ControllerEtPane;
 import application.view.outils.SceneLoader;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -43,12 +45,16 @@ public class CrudOffreViewController extends ViewController {
     public TextField champRevient;
     public TextField champMarge;
     public TextField champMargeMembre;
+    public Button validerBtn;
+    public Button annulerBtn;
     @FXML
     private AnchorPane viewCrudOffre;
 
     ArrayList<Categorie> categorieListe = new ArrayList<>();
     ArrayList<Produit> blacklist = new ArrayList<>();
     String cheminImage;
+
+    boolean contexteModification = false;
 
     private CrudOffreViewController vue;    //Necessaire pour etre accessible dans l'inner class de l'EventHandler
 
@@ -63,6 +69,9 @@ public class CrudOffreViewController extends ViewController {
      */
     @FXML
     private void initialize() {
+
+        validerBtn.setOnMouseClicked(mouseEvent -> valider());
+        annulerBtn.setOnMouseClicked(mouseEvent -> annuler());
 
         champMarge.setEditable(false);
         champRevient.setEditable(false);
@@ -92,26 +101,9 @@ public class CrudOffreViewController extends ViewController {
         ajouterCategorie.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreCategoriePane.fxml"));
-                    Pane pane = loader.load();
+                Categorie categorie = Categorie.categorieListe.get(listeCategorie.getSelectionModel().getSelectedIndex());
+                ajouterCategorie(categorie);
 
-                    CategorieOffreElementController controller = loader.getController();
-
-                    //Possible de le faire uniquement car les donnees ne sont accessible que depuis cette application
-                    Categorie categorie = Categorie.categorieListe.get(listeCategorie.getSelectionModel().getSelectedIndex());
-
-                    controller.initialize(pane,vue,categorie);
-
-                    tableCategorie.getChildren().add(pane);
-
-                    categorieListe.add(categorie);
-
-                    majStatPrix();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         });
 
@@ -130,6 +122,33 @@ public class CrudOffreViewController extends ViewController {
                 image.setImage(new Image(cheminImage));
             }
         });
+    }
+
+    /**
+     * Ajoute une categorie de la liste des categories composant l'offre
+     * 1 categorie = 1 produit au choix disponible dans l'offre
+     * @param pCategorie la categorie a ajouter
+     */
+    public void ajouterCategorie(Categorie pCategorie){
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/gestionSoldable/offre/crudOffreCategoriePane.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        CategorieOffreElementController controller = loader.getController();
+
+        controller.initialize(pane,vue,pCategorie);
+
+        tableCategorie.getChildren().add(pane);
+
+        categorieListe.add(pCategorie);
+
+        majStatPrix();
+
     }
 
     /**
@@ -230,6 +249,18 @@ public class CrudOffreViewController extends ViewController {
         majStatPrix();
     }
 
+    public void setContexteModification(TemplateOffre pOffre) {
+        contexteModification = true;
+        getView().getController().setTemplateOffre(pOffre);
+
+        blacklist.addAll(pOffre.getBlackList());
+        for(Categorie c: pOffre.getCategorieListe())
+            ajouterCategorie(c);
+
+
+
+    }
+
     public void annuler() {
         GestionOffreView gestionOffreView = new GestionOffreView();
         getView().changerPage((Stage) getViewCrudOffre().getScene().getWindow(), gestionOffreView);
@@ -247,7 +278,13 @@ public class CrudOffreViewController extends ViewController {
         try {
             if(nom.equals("")||prixV==0||prixVM==0||categorieListe.size()==0)
                 return;
-            getView().getController().creerOffreTemplate(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
+
+            if(contexteModification){
+                getView().getController().modificationOffre(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
+
+            }else{
+                getView().getController().creerOffreTemplate(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -261,6 +298,5 @@ public class CrudOffreViewController extends ViewController {
     public AnchorPane getViewCrudOffre() {
         return viewCrudOffre;
     }
-
 
 }

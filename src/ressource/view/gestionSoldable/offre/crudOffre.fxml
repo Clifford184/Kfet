@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="viewCrudOffre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.crudOffre.CrudOffreViewController">
+<AnchorPane fx:id="viewCrudOffre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.offre.crudOffre.CrudOffreViewController">
    <children>
-      <Button layoutX="575.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#valider" prefHeight="32.0" prefWidth="63.0" text="Valider" />
+      <Button fx:id="validerBtn" layoutX="575.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#valider" prefHeight="32.0" prefWidth="63.0" text="Valider" />
       <Button fx:id="ajouterCategorie" layoutX="195.0" layoutY="190.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" text="+" />
       <ComboBox fx:id="listeCategorie" layoutX="38.0" layoutY="190.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="nomMenu" layoutX="163.0" layoutY="25.0" prefHeight="26.0" prefWidth="149.0" promptText="Nom du menu" />
@@ -42,5 +42,6 @@
       <TextField fx:id="champMargeMembre" layoutX="453.0" layoutY="109.0" prefHeight="26.0" prefWidth="90.0" />
       <Label layoutX="349.0" layoutY="7.0" text="Prix normal" />
       <Label layoutX="453.0" layoutY="7.0" text="Prix membre" />
+      <Button fx:id="annulerBtn" layoutX="575.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#valider" prefHeight="32.0" prefWidth="63.0" text="Annuler" />
    </children>
 </AnchorPane>
