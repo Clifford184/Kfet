@@ -5,6 +5,7 @@ import application.model.vendable.Produit;
 import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.outils.ControllerEtPane;
+import application.outils.ImageManager;
 import application.outils.SceneLoader;
 import application.view.ViewController;
 import application.view.gestionSoldable.offre.GestionOffreView;
@@ -257,6 +258,12 @@ public class CrudOffreViewController extends ViewController {
         for(Categorie c: pOffre.getCategorieListe())
             ajouterCategorie(c);
 
+        nomMenu.setText(pOffre.getNom());
+        image.setImage(ImageManager.genererImage(pOffre.getCheminImage()));
+        prixVente.setText(pOffre.getPrixVente()+"");
+        prixMembre.setText(pOffre.getPrixVenteMembre()+"");
+
+        majStatPrix();
 
 
     }
