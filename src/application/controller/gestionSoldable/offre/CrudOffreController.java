@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 public class CrudOffreController extends Controller {
 
+    TemplateOffre templateOffre;
+
     @Override
     public void initialize() {}
 
@@ -34,6 +36,20 @@ public class CrudOffreController extends Controller {
     public void creerOffreTemplate(String pNom, float pPrixVente, float pPrixVenteMembre, ArrayList<Categorie> pCategorieListe,
                                    ArrayList<Produit> pBlacklist, String pCheminImage) throws IOException {
         new TemplateOffre(pNom,pPrixVente,pPrixVenteMembre,pCategorieListe,pBlacklist,pCheminImage);
+    }
+
+    public void modificationOffre(String pNom, float pPrixVente, float pPrixVenteMembre, ArrayList<Categorie> pCategorieListe,
+                                   ArrayList<Produit> pBlacklist, String pCheminImage){
+        templateOffre.setNom(pNom);
+        templateOffre.setPrixVente(pPrixVente);
+        templateOffre.setPrixMembre(pPrixVenteMembre);
+        templateOffre.setCategorieListe(pCategorieListe);
+        templateOffre.setBlackList(pBlacklist);
+        templateOffre.setCheminImage(pCheminImage);
+    }
+
+    public void setTemplateOffre(TemplateOffre pOffre){
+        templateOffre = pOffre;
     }
 
 }
