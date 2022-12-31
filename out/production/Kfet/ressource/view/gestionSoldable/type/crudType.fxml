@@ -9,9 +9,7 @@
 
 <AnchorPane fx:id="viewCrudType" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.type.crudType.CrudTypeViewController">
    <children>
-      <Label layoutX="171.0" layoutY="75.0" text="Catégorie:" />
       <Label layoutX="171.0" layoutY="35.0" text="Nom Type:" />
-      <ComboBox fx:id="listeCategorie" layoutX="235.0" layoutY="71.0" prefWidth="150.0" />
       <TextField fx:id="nomType" layoutX="236.0" layoutY="31.0" />
       <Button fx:id="choisirImageBtn" layoutX="22.0" layoutY="146.0" mnemonicParsing="false" text="Selectionner image " />
       <ImageView fx:id="typeImage" fitHeight="110.0" fitWidth="121.0" layoutX="22.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />

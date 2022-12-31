@@ -23,7 +23,6 @@ public class Type implements Serializable {
 
     UUID id;
     String nom;
-    Categorie categorie;
     ArrayList<Produit> produitListe = new ArrayList<>();
 
     String cheminImage;
@@ -33,15 +32,12 @@ public class Type implements Serializable {
     /**
      * Cree un nouveau type
      * @param pNom son nom
-     * @param pCategorie sa categorie associee
      * @param pCheminImage le chemin de son image
      * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
-    public Type(String pNom, Categorie pCategorie, String pCheminImage) throws IOException {
+    public Type(String pNom, String pCheminImage) throws IOException {
         id = UUID.randomUUID();
         nom = pNom;
-        categorie = pCategorie;
-        pCategorie.ajouterType(this);
         typeListe.add(this);
         produitListe = new ArrayList<>();
 
@@ -84,14 +80,6 @@ public class Type implements Serializable {
 
     public ArrayList<Produit> getProduitListe() {
         return produitListe;
-    }
-
-    public void setCategorie(Categorie pCategorie) {
-        categorie = pCategorie;
-    }
-
-    public Categorie getCategorie() {
-        return categorie;
     }
 
     public void setNom(String pNom){

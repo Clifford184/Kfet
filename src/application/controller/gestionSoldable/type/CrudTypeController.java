@@ -14,18 +14,17 @@ public class CrudTypeController extends Controller {
         notifyObservers(messages);
     }
 
-    public void creationType(String pNewType, Categorie pCategorie, String pChemin){
+    public void creationType(String pNewType, String pChemin){
         try {
-            new Type(pNewType, pCategorie, pChemin);
+            new Type(pNewType, pChemin);
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void modificationType(String nomProduit, Categorie categorie, String chemin) {
+    public void modificationType(String nomProduit,String chemin) {
         type.setNom(nomProduit);
-        type.setCategorie(categorie);
         type.setCheminImage(chemin);
     }
 
