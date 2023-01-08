@@ -38,6 +38,9 @@ public class CrudTypeViewController extends ViewController {
     private String cheminImage;
     boolean contexteModification = false;
 
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         listeCategorie.getItems().setAll(Categorie.categorieListe);
@@ -81,11 +84,17 @@ public class CrudTypeViewController extends ViewController {
         cheminImage = pType.getCheminImage();
     }
 
+    /**
+     * Redirige vers la page de gestion de type
+     */
     public void annuler(){
         GestionTypeView gestionTypeView = new GestionTypeView();
         getView().changerPage((Stage) getViewCrudType().getScene().getWindow(), gestionTypeView);
     }
 
+    /**
+     * creer ou modifie un type en fonction du contexte
+     */
     public void valider(){
         if(contexteModification){
             getView().getController().modificationType(nomType.getText(), listeCategorie.getValue(), cheminImage);

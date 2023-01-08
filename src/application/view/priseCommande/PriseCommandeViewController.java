@@ -55,6 +55,9 @@ public class PriseCommandeViewController extends ViewController {
     int etapeMenu = 0;
     TemplateOffre templateOffreSelectionner;
 
+    /**
+     * Initialise la vue avec les produits et event de clique
+     */
     public void initialize(){
 
         commandeBtn.setOnMouseClicked(mouseEvent -> afficherGestionCommande());
@@ -76,29 +79,29 @@ public class PriseCommandeViewController extends ViewController {
      * methode pour animation du menu
      */
     public void openMenu() {
-//        if (!sliderMenu.isVisible()) {
-//            TranslateTransition slide = new TranslateTransition();
-//            slide.setDuration(Duration.seconds(0.4));
-//            slide.setNode(sliderMenu);
-//
-//            slide.setToX(0);
-//            slide.play();
-//
-//            sliderMenu.setTranslateX(-176);
-//            sliderMenu.setVisible(true);
-//        } else {
-//            TranslateTransition slide = new TranslateTransition();
-//            slide.setDuration(Duration.seconds(0.4));
-//            slide.setNode(sliderMenu);
-//
-//            slide.setToX(-176);
-//            slide.play();
-//
-//            sliderMenu.setTranslateX(0);
-//            slide.setOnFinished((ActionEvent e) -> {
-//                sliderMenu.setVisible(false);
-//            });
-//        }
+        if (!sliderMenu.isVisible()) {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(sliderMenu);
+
+            slide.setToX(0);
+            slide.play();
+
+            sliderMenu.setTranslateX(-176);
+            sliderMenu.setVisible(true);
+        } else {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(sliderMenu);
+
+            slide.setToX(-176);
+            slide.play();
+
+            sliderMenu.setTranslateX(0);
+            slide.setOnFinished((ActionEvent e) -> {
+                sliderMenu.setVisible(false);
+            });
+        }
     }
 
     /**
@@ -175,6 +178,9 @@ public class PriseCommandeViewController extends ViewController {
 
     }
 
+    /**
+     * Affichage les offres disponible
+     */
     public void AffichageOffre(){
         isMenu = true;
         etapeMenu = 0;
@@ -195,6 +201,10 @@ public class PriseCommandeViewController extends ViewController {
         afficherListeHorizontalType();
     }
 
+    /**
+     * Affiche les types de produits de l'offre selectionne
+     * @param pTemplateOffre offre selectionne
+     */
     public void AffichageTypeOffre(TemplateOffre pTemplateOffre){
         templateOffreSelectionner = pTemplateOffre;
         zoneAffichageType.getChildren().clear();
@@ -218,6 +228,9 @@ public class PriseCommandeViewController extends ViewController {
         }
     }
 
+    /**
+     * Renitialise a l'etat initiale l'offre si on quitte l'offre sans la complete
+     */
     public void reinitialiserMenu(){
         isMenu = false;
         etapeMenu = 0;
@@ -225,6 +238,9 @@ public class PriseCommandeViewController extends ViewController {
         getView().getController().AnnulerMenu();
     }
 
+    /**
+     * Affichage des Autres Types possible en liste horizontal à droite
+     */
     public void afficherListeHorizontalType(){
         listeTypeVBox.getChildren().clear();
         for (Type type : Type.getTypeListe()) {
@@ -246,6 +262,10 @@ public class PriseCommandeViewController extends ViewController {
         listeTypeVBox.getChildren().add(pane);
     }
 
+    /**
+     * Affiche tout les produits d'un type selectionne
+     * @param pType le type selectionne
+     */
     public void AffichagePlatType(Type pType) {
 
         if(pType==null)
@@ -279,6 +299,10 @@ public class PriseCommandeViewController extends ViewController {
         afficherListeHorizontalType();
     }
 
+    /**
+     * Affichage de tout les produits d'un type pour un menu
+     * @param pType type selectionne
+     */
     public void AffichagePlatTypeMenu(Type pType) {
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
@@ -301,10 +325,18 @@ public class PriseCommandeViewController extends ViewController {
         afficherListeHorizontalType();
     }
 
+    /**
+     * Ajoute le produit choisi au panier
+     * @param pProduit produit selectionne
+     */
     public void AjouterAuPanier(Produit pProduit) {
         getView().getController().ajouterAuPanier(pProduit);
     }
 
+    /**
+     * Ajoute le produit selectionne au menu
+     * @param pProduit produit selectionne
+     */
     public void AjouterProduitMenu(Produit pProduit) {
         getView().getController().AjoutProduitMenu(pProduit);
     }
@@ -327,11 +359,15 @@ public class PriseCommandeViewController extends ViewController {
         }
 
     }
+
+
     public void rechargerProduit() {
         AffichagePlatType(getView().getController().getType());
     }
 
-
+    /**
+     * Redirige vers la page de gestion des commande
+     */
     public void afficherGestionCommande(){
         if(!GestionCommandeView.dejaOuverte()){
             GestionCommandeView gestionCommandeView = GestionCommandeView.creerGestionCommandeView();
@@ -344,6 +380,10 @@ public class PriseCommandeViewController extends ViewController {
 
     }
 
+    /**
+     * Affichage du panier
+     * @param pPanier panier
+     */
     public void setArticlePanier(Panier pPanier) {
         panierVBox.getChildren().clear();
         for(Vendable v : pPanier.getVendableListe()){

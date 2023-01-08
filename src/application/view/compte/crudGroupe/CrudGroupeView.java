@@ -55,7 +55,7 @@ public class CrudGroupeView extends View {
                         getViewController().initialiserView();
                     }
                     case "groupe" -> {
-                        // Update de la vue pour initialiser les imagesView
+                        // Update du groupe
                         getViewController().setNomTextField(getController().getGroupe());
                     }
                 }

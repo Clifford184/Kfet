@@ -50,7 +50,7 @@ public class CrudClientViewController extends ViewController {
     }
 
     /**
-     * Méthode qui creer un client en fonction des données
+     * Méthode qui creer un client en fonction des données rempli
      */
     public void valider() {
         if(nomTextField.getText() != null && prenomTextField.getText() != null && promoComboBox.getValue() != null){

@@ -45,6 +45,9 @@ public class GestionCategorieViewController extends ViewController {
     private Label titre;
 
 
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         ajouterImage.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
@@ -91,6 +94,9 @@ public class GestionCategorieViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui initialise le menu sur la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -105,11 +111,17 @@ public class GestionCategorieViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionCategorie.getScene().getWindow());
     }
 
+    /**
+     * Methode qui redirige vers la page d'ajout de categorie
+     */
     public void ajouterCategorie(){
         CrudCategorieView crudCategorieView = new CrudCategorieView();
         getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), crudCategorieView);
     }
 
+    /**
+     * Methode qui redirige vers la page de modification de categorie
+     */
     public void modifierCategorie(){
 
         Categorie p = categorieTable.getSelectionModel().getSelectedItem();
@@ -120,11 +132,6 @@ public class GestionCategorieViewController extends ViewController {
         getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), crudTypeView);
         crudTypeView.getViewController().setContexteModification(p);
 
-    }
-
-    public void redirectionPriseCommande() throws Exception {
-        PriseCommandeView priseCommandeView = new PriseCommandeView();
-        getView().changerPage((Stage) getViewGestionCategorie().getScene().getWindow(), priseCommandeView);
     }
 
     public GestionCategorieViewController(){}

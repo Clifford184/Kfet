@@ -47,6 +47,9 @@ public class GestionGroupeViewController extends ViewController {
 
     Groupe groupeSelectionne;
 
+    /**
+     * Initialise les elements graphiques de la vue
+     */
     public void initialiserView(){
 
         ajouterGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajouterGroupe.png"));
@@ -60,6 +63,9 @@ public class GestionGroupeViewController extends ViewController {
 
     }
 
+    /**
+     * Methode qui ajoute le menu a la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -74,11 +80,17 @@ public class GestionGroupeViewController extends ViewController {
         menuController.initialize(this, (Stage) gestionGroupeView.getScene().getWindow());
     }
 
+    /**
+     * Methode qui redirige vers la page de creation d'un nouveau groupe
+     */
     public void redirectionCreationGroupe() {
         CrudGroupeView crudGroupeView = new CrudGroupeView();
         getView().changerPage((Stage) gestionGroupeView.getScene().getWindow(), crudGroupeView);
     }
 
+    /**
+     * Methode qui redirige vers la page de modification d'un groupe
+     */
     public void redirectionModificationGroupe(){
         if(groupeListView.getSelectionModel().getSelectedItem() != null){
             CrudGroupeView crudGroupeView = new CrudGroupeView();
@@ -89,6 +101,9 @@ public class GestionGroupeViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui redirige vers la page de suppression d'un groupe
+     */
     public void supprimerGroupe(){
         if(groupeListView.getSelectionModel().getSelectedItem() != null){
             boolean resultat =  getView().getController().supprimerGroupe(groupeListView.getSelectionModel().getSelectedItem());
@@ -108,6 +123,9 @@ public class GestionGroupeViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui permet de generer un message d'erreur si le groupe n'est pas selectionne
+     */
     public void genererMessageErreur(){
         AlertView alertView = new AlertView();
         getView().genererNouvellePage(alertView);

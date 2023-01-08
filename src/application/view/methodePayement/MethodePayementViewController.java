@@ -29,6 +29,9 @@ public class MethodePayementViewController extends ViewController {
     @FXML
     private Pane payementCompte;
 
+    /**
+     * Initialise les elements graphiques
+     */
     public void initialize(){
 
         autrePayementImage.setImage(ImageManager.genererImage("/ressource/image/icone/autresPayement.png"));
@@ -47,10 +50,6 @@ public class MethodePayementViewController extends ViewController {
                 GestionCommandeView.notifierNouvelleCommande();
             }
         });
-
-        /*
-         * TO DO: faire annulation commande
-         */
     }
 
     /**

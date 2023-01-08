@@ -84,6 +84,9 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode pour ajouter le menu a la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -182,11 +185,17 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    /**
+     * methode de redirection vers la page de  creation client
+     */
     public void redirectionAjoutCrudClient() {
         CrudClientView crudClientView = new CrudClientView();
         getView().changerPage((Stage) getViewCompte().getScene().getWindow(), crudClientView);
     }
 
+    /**
+     * methode de redirection vers la page de modification de client
+     */
     public void redirectionModificationCrudClient() {
         if (clientSelectionne != null) {
             CrudClientView crudClientView = new CrudClientView();
@@ -197,11 +206,17 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    /**
+     * methode de redirection vers la page de gestion des groupes
+     */
     public void redirectionGestionGroupe() {
         GestionGroupeView gestionGroupeView = new GestionGroupeView();
         getView().changerPage((Stage) getViewCompte().getScene().getWindow(), gestionGroupeView);
     }
 
+    /**
+     * methode qui supprime le client selectionne
+     */
     public void supprimerClient() {
         if (clientSelectionne != null) {
             getView().getController().supprimerClient(clientSelectionne);
@@ -211,7 +226,7 @@ public class CompteViewController extends ViewController {
     }
 
     /**
-     * methode pour ajouter de l'argent à un client
+     * methode qui redirige vers la page pour agouter de l'argent a un client
      */
     public void redirectionAjouterArgent() {
         if (clientSelectionne != null) {
@@ -223,6 +238,9 @@ public class CompteViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui permet de generer un msg d'erreur si un client n'est pas selectionne
+     */
     public void genererMessageErreur(){
         AlertView alertView = new AlertView();
         getView().genererNouvellePage(alertView);

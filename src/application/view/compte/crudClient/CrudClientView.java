@@ -60,7 +60,7 @@ public class CrudClientView extends View {
                         getViewController().setPromoComboBox(Groupe.getGroupeListe());
                     }
                     case "client" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update du client
                         getViewController().setClient(getController().getClient());
                     }
                 }

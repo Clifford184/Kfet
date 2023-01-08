@@ -49,11 +49,11 @@ public class AjoutArgentCompteView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "initialiseView" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Charge les elements graphiques de la vue
                         getViewController().initialiserView();
                     }
                     case "client" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Mise a jour du client a qui on ajoute argent
                         getViewController().setClientLabel(getController().getClient());
                     }
                 }

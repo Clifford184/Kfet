@@ -39,7 +39,9 @@ public class CrudCategorieViewController extends ViewController {
 
     boolean contexteModification = false;
 
-
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         nomTousTypeColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -76,12 +78,17 @@ public class CrudCategorieViewController extends ViewController {
 
     }
 
-
+    /**
+     * Redirige vers la page de gestion de categorie
+     */
     public void annuler() {
         GestionCategorieView gestionCategorieView = new GestionCategorieView();
         getView().changerPage((Stage) getViewCrudCategorie().getScene().getWindow(), gestionCategorieView);
     }
 
+    /**
+     * creer ou modifie une categorie ne fonction du contexte avec les donnes rempli
+     */
     public void valider() {
 
         ArrayList<Type> typeListe = new ArrayList<>(typeCategorieTable.getItems());

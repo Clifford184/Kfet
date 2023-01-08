@@ -54,7 +54,7 @@ public class GestionOffreView extends View {
                         getViewController().initialisationMenu();
                     }
                     case "offre" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update de offre
                         //getViewController().setListeCategorie(Categorie.getCategorieListe());
                     }
                 }

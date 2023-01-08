@@ -43,7 +43,9 @@ public class GestionTypeViewController extends ViewController {
     @FXML
     private Label titre;
 
-
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         ajouterImage.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
@@ -89,6 +91,9 @@ public class GestionTypeViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui initialise le menu sur la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -103,11 +108,17 @@ public class GestionTypeViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionType.getScene().getWindow());
     }
 
+    /**
+     * Methode qui redirige vers la page de creation de type
+     */
     public void ajouterType() {
         CrudTypeView crudTypeView = new CrudTypeView();
         getView().changerPage((Stage) getViewGestionType().getScene().getWindow(), crudTypeView);
     }
 
+    /**
+     * Methode qui redirige vers la page de modification de type
+     */
     public void modifierType(){
 
         Type p = typeTable.getSelectionModel().getSelectedItem();

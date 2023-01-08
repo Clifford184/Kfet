@@ -42,6 +42,9 @@ public class GestionOffreViewController extends ViewController {
     private AnchorPane sliderMenu;
 
 
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
         ajouterBtn.setImage(new Image(getClass().getResource("/ressource/image/icone/ajouter.png").toString()));
         ajouterBtn.onMouseClickedProperty().set(mouseEvent -> ajouterOffre());
@@ -87,6 +90,9 @@ public class GestionOffreViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui initialise le menu sur la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -101,11 +107,17 @@ public class GestionOffreViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionOffre.getScene().getWindow());
     }
 
+    /**
+     * Methode qui redirige vers la page de creation offre
+     */
     public void ajouterOffre(){
         CrudOffreView crudOffreView = new CrudOffreView();
         getView().changerPage((Stage) getViewGestionOffre().getScene().getWindow(), crudOffreView);
     }
 
+    /**
+     * Methode qui redirige vers la page de modification offre
+     */
     public void modifierOffre(){
 
         TemplateOffre p = offreTable.getSelectionModel().getSelectedItem();

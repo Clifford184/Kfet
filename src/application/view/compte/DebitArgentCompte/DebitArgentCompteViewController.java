@@ -28,6 +28,9 @@ public class DebitArgentCompteViewController extends ViewController {
 
     public DebitArgentCompteViewController(){}
 
+    /**
+     * Initialise les elements graphiques de la vue
+     */
     public void initialize(){
         annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());

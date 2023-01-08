@@ -49,11 +49,11 @@ public class DebitArgentCompteView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "commande" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update de la commande pour le debit
                         getViewController().setSomme(getController().getSommeAdebiter());
                     }
                     case "client" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update ddu client a debiter
                         getViewController().setLibelleClient(getController().getClient());
                     }
                 }

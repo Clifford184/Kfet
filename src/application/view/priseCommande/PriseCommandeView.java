@@ -70,11 +70,11 @@ public class PriseCommandeView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "sliderMenu" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update du slider menu
                         getViewController().initialisationSliderMenu();
                     }
                     case "type" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update des types affiche
                         getViewController().InitialiserAffichageType();
                     }
                     case "panier" -> {

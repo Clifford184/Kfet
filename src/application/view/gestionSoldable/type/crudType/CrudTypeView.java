@@ -50,7 +50,7 @@ public class CrudTypeView extends View {
             for (String message : messages) {
                 switch (message) {
                     case "categorie" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update de la liste categorie
                         getViewController().setListeCategorie(Categorie.categorieListe);
                     }
                 }

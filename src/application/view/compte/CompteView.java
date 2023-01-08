@@ -53,7 +53,7 @@ public class CompteView extends View {
                         getViewController().initialisationMenu();
                     }
                     case "client" -> {
-                        // Update du menu en fonctions des soldable existant
+                        // Update des elements graphiques et de la liste des clients
                        getViewController().initialiserView();
                     }
                 }

@@ -40,6 +40,9 @@ public class GestionStockViewController extends ViewController {
 
     ArrayList<ProduitStockElementController> controllerProduitAfficheListe = new ArrayList<>();
 
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         for(Type type : Type.getTypeListe()){
@@ -97,6 +100,9 @@ public class GestionStockViewController extends ViewController {
 
     }
 
+    /**
+     * Methode qui initialise le menu sur la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;

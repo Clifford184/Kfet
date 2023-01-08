@@ -39,7 +39,9 @@ public class GestionProduitViewController extends ViewController {
     @FXML
     private Label titre;
 
-
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         ajouterProduitImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
@@ -91,6 +93,9 @@ public class GestionProduitViewController extends ViewController {
         }
     }
 
+    /**
+     * Methode qui initialise le menu sur la vue
+     */
     public void initialisationMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressource/view/menu.fxml"));
         VBox vboxMenu = null;
@@ -105,6 +110,9 @@ public class GestionProduitViewController extends ViewController {
         menuController.initialize(this, (Stage) viewGestionProduit.getScene().getWindow());
     }
 
+    /**
+     * Methode qui redirige vers la page de modification de produit
+     */
     public void modifierProduit(){
 
         Produit p = produitTable.getSelectionModel().getSelectedItem();
@@ -116,6 +124,9 @@ public class GestionProduitViewController extends ViewController {
         crudProduitView.getViewController().setContexteModification(p);
     }
 
+    /**
+     * Methode qui redirige vers la page de creation de produit
+     */
     public void ajouterProduit() {
         CrudProduitView crudProduitView = new CrudProduitView();
         getView().changerPage((Stage) getViewGestionProduit().getScene().getWindow(), crudProduitView);

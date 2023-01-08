@@ -49,8 +49,9 @@ public class CrudProduitViewController extends ViewController {
 
     boolean contexteModification = false;
 
-
-
+    /**
+     * Methode qui initialise les elements graphique de la vue
+     */
     public void initialize(){
 
         listeType.getItems().setAll(Type.getTypeListe());
@@ -134,13 +135,16 @@ public class CrudProduitViewController extends ViewController {
         majStatPrix();
     }
 
+    /**
+     * Redirige vers la page de gestion produit
+     */
     public void annuler(){
         GestionProduitView gestionProduitView = new GestionProduitView();
         getView().changerPage((Stage) getViewCrudProduit().getScene().getWindow() ,gestionProduitView);
     }
 
     /**
-     *
+     * creer ou modifie le produit en fonction du contexte
      */
     public void valider(){
         try {

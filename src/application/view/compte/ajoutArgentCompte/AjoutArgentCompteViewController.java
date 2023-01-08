@@ -32,7 +32,9 @@ public class AjoutArgentCompteViewController extends ViewController {
     private Label clientLabel;
 
 
-
+    /**
+     * methode qui charge les elements graphique de la vue
+     */
     public void initialiserView(){
         annulerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImageView.setOnMouseClicked(mouseEvent -> close());
@@ -42,7 +44,7 @@ public class AjoutArgentCompteViewController extends ViewController {
     }
 
     /**
-     * Méthode qui creer un client en fonction des données
+     * Méthode qui lors de la validation ajoute le somme d argent au client
      */
     public void valider() {
         if(argentAjouterTextField.getText() != null){

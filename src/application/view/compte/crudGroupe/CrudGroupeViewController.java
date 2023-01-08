@@ -41,7 +41,7 @@ public class CrudGroupeViewController extends ViewController {
     }
 
     /**
-     * Méthode qui creer un client en fonction des données
+     * Méthode qui creer un groupe en fonction des données rempli
      */
     public void valider() {
         if (nomTextField.getText() != null) {
@@ -57,7 +57,7 @@ public class CrudGroupeViewController extends ViewController {
     }
 
     /**
-     * Méthode qui redirige vers la page de visualisation des comptes
+     * Méthode qui redirige vers la page de gestion des groupes
      */
     public void close() {
         GestionGroupeView gestionGroupeView = new GestionGroupeView();
