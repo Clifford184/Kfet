@@ -31,8 +31,6 @@ public class CrudTypeViewController extends ViewController {
     @FXML
     private AnchorPane viewCrudType;
     @FXML
-    private ComboBox<Categorie> listeCategorie;
-    @FXML
     private TextField nomType;
 
     private String cheminImage;
@@ -42,8 +40,6 @@ public class CrudTypeViewController extends ViewController {
      * Methode qui initialise les elements graphique de la vue
      */
     public void initialize(){
-
-        listeCategorie.getItems().setAll(Categorie.categorieListe);
 
         annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());
@@ -79,7 +75,6 @@ public class CrudTypeViewController extends ViewController {
         getView().getController().setType(pType);
         contexteModification = true;
         nomType.setText(pType.getNom());
-        listeCategorie.getSelectionModel().select(pType.getCategorie());
         typeImage.setImage(new Image(new File(pType.getCheminImage()).toURI().toString()));
         cheminImage = pType.getCheminImage();
     }
@@ -97,9 +92,9 @@ public class CrudTypeViewController extends ViewController {
      */
     public void valider(){
         if(contexteModification){
-            getView().getController().modificationType(nomType.getText(), listeCategorie.getValue(), cheminImage);
+            getView().getController().modificationType(nomType.getText(), cheminImage);
         }else{
-            getView().getController().creationType(nomType.getText(), listeCategorie.getValue(), cheminImage);
+            getView().getController().creationType(nomType.getText(), cheminImage);
         }
 
         annuler();
@@ -109,14 +104,6 @@ public class CrudTypeViewController extends ViewController {
 
     public CrudTypeView getView(){
         return (CrudTypeView) super.getView();
-    }
-
-    public ComboBox<Categorie> getListeCategorie() {
-        return listeCategorie;
-    }
-
-    public void setListeCategorie(ArrayList<Categorie> listeCategorie) {
-        this.listeCategorie.getItems().setAll(listeCategorie);
     }
 
     public TextField getNomType() {

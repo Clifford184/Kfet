@@ -23,8 +23,9 @@ public class Commande implements Serializable {
     UUID id;
     LocalDateTime date;
     Client client;
-    Panier panier;  //Utiliser pour les fonctionnalitees propres au panier
-    ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>(); //Utiliser pour gerer l'avancement
+    Panier panier;
+    ArrayList<ProduitCommande> produitCommandeListe = new ArrayList<>();
+    //Utiliser pour gerer l'avancement
     //de chaque article pendant la preparation de la commande.
 
     //Si la commande n'est pas relie a un client ayant un compte, on le designe juste par son prenom

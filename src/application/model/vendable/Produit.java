@@ -20,7 +20,6 @@ public class Produit extends Vendable implements Serializable {
 
     UUID id;
     Type type;
-    boolean enStock;
 
     public static ArrayList<Produit> produitListe = new ArrayList<>();
 
@@ -86,15 +85,6 @@ public class Produit extends Vendable implements Serializable {
         return intervalle;
     }
 
-    /**
-     * Permet de determiner si le produit est en stock
-     * Evite d'aller chercher dans Stock a chaque fois
-     * @param pInStock
-     */
-    public void setEnStock(boolean pInStock){
-        enStock = pInStock;
-    }
-
     public Type getType() {
         return type;
     }
@@ -103,7 +93,4 @@ public class Produit extends Vendable implements Serializable {
         this.type = type;
     }
 
-    public boolean estEnStock() {
-        return enStock;
-    }
 }

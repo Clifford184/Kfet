@@ -35,7 +35,6 @@ public class TemplateOffre implements Serializable {
     ArrayList<Produit> blackList;
 
     String cheminImage;
-    transient BufferedImage image;
 
     public static ArrayList<TemplateOffre> templateOffreListe = new ArrayList<>();
 
@@ -52,13 +51,13 @@ public class TemplateOffre implements Serializable {
      * @param pCategorieListe la liste de categorie le constituant
      * @param pBlacklist la liste des produits non compatibles avec cet offre
      * @param pCheminImage le chemin vers l'image
-     * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
     public TemplateOffre(String pNom, float pPrixVente, float pPrixVenteMembre, ArrayList<Categorie> pCategorieListe,
-                         ArrayList<Produit> pBlacklist, String pCheminImage) throws IOException {
+                         ArrayList<Produit> pBlacklist, String pCheminImage) {
         id = UUID.randomUUID();
         nom = pNom;
         prixVente = pPrixVente;
+        prixMembre = pPrixVenteMembre;
         categorieListe = pCategorieListe;
         blackList = pBlacklist;
         templateOffreListe.add(this);

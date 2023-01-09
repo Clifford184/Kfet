@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Decrit le panier d'une commande
+ * Decrit le panier lors d'une prise de commande, puis ensuite associe
+ * a une commande
  */
 public class Panier implements Serializable {
 
