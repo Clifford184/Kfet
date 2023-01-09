@@ -46,18 +46,7 @@ public class CrudTypeView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "categorie" -> {
-                        // Update de la liste categorie
-                        getViewController().setListeCategorie(Categorie.categorieListe);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void close() {
