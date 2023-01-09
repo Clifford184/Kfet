@@ -12,8 +12,6 @@ public class CrudClientView extends View {
 
     public CrudClientView()  {
         cheminVue = "/ressource/view/compte/crudClient.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Nouveau client";
         setController(null);
     }
@@ -35,7 +33,7 @@ public class CrudClientView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
 

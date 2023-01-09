@@ -11,8 +11,6 @@ public class GestionTypeView extends View {
 
     public GestionTypeView()  {
         cheminVue = "/ressource/view/gestionSoldable/type/gestionType.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Gestion type";
         setController(null);
     }
@@ -33,7 +31,7 @@ public class GestionTypeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

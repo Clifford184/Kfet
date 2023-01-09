@@ -11,8 +11,6 @@ public class GestionProduitView extends View {
 
     public GestionProduitView()  {
         cheminVue = "/ressource/view/gestionSoldable/produit/gestionProduit.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Gestion produit";
         setController(null);
     }
@@ -33,7 +31,7 @@ public class GestionProduitView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

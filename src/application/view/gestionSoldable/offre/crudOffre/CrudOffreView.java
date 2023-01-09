@@ -11,8 +11,6 @@ public class CrudOffreView extends View {
 
     public CrudOffreView()  {
         cheminVue = "/ressource/view/gestionSoldable/offre/crudOffre.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Gestion offre";
         setController(null);
     }
@@ -33,7 +31,7 @@ public class CrudOffreView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

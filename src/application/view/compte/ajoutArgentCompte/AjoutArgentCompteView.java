@@ -11,8 +11,6 @@ public class AjoutArgentCompteView extends View {
 
     public AjoutArgentCompteView()  {
         cheminVue = "/ressource/view/compte/ajoutAgentCompte.fxml";
-        minWidth = 440;
-        minHeight = 250;
         nomFenetre = "Ajout argent";
         setController(null);
     }
@@ -33,7 +31,7 @@ public class AjoutArgentCompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

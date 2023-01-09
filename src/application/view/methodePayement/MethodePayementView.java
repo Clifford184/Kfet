@@ -11,8 +11,6 @@ public class MethodePayementView extends View {
 
     public MethodePayementView()  {
         cheminVue = "/ressource/view/methodePayement/methodePayementView.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Choix methode paiement";
         setController(null);
     }
@@ -34,7 +32,7 @@ public class MethodePayementView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

@@ -16,8 +16,6 @@ public class GestionCommandeView extends View {
      */
     private GestionCommandeView() {
         cheminVue = "/ressource/view/commande/gestionCommande.fxml";
-        minWidth = 880;
-        minHeight = 490;
         nomFenetre = "Gestion commande";
         setController(null);
     }
@@ -48,7 +46,7 @@ public class GestionCommandeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

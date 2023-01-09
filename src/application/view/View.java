@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 public abstract class View extends Application implements Observer {
 
     protected String cheminVue;
-    protected int minWidth;
-    protected int minHeight;
     protected String nomFenetre;
 
     /**

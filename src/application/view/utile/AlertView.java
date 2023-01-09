@@ -11,8 +11,6 @@ public class AlertView extends View {
 
     public AlertView()  {
         cheminVue = "/ressource/view/utile/alertView.fxml";
-        minWidth = 400;
-        minHeight = 200;
         nomFenetre = "Alert";
         setController(null);
     }
@@ -33,7 +31,7 @@ public class AlertView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

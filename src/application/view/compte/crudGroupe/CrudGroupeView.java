@@ -11,8 +11,6 @@ public class CrudGroupeView extends View {
 
     public CrudGroupeView()  {
         cheminVue = "/ressource/view/compte/crudGroupe.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Gestion groupe";
         setController(null);
     }
@@ -34,7 +32,7 @@ public class CrudGroupeView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
 

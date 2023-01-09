@@ -14,8 +14,6 @@ public class PriseCommandeView extends View {
      */
     public PriseCommandeView()  {
         cheminVue = "/ressource/view/priseCommande/priseCommandeView.fxml";
-        minWidth = 1084;
-        minHeight = 724;
         nomFenetre = "Prise de commande";
         setController(null);
     }
@@ -48,7 +46,7 @@ public class PriseCommandeView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

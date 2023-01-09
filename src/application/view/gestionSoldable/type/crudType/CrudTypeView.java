@@ -2,7 +2,6 @@ package application.view.gestionSoldable.type.crudType;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.type.CrudTypeController;
-import application.model.vendable.Categorie;
 import application.outils.SceneLoader;
 import application.view.View;
 import application.view.ViewController;
@@ -12,8 +11,6 @@ public class CrudTypeView extends View {
 
     public CrudTypeView()  {
         cheminVue = "/ressource/view/gestionSoldable/type/crudType.fxml";
-        minWidth = 880;
-        minHeight = 580;
         nomFenetre = "Gestion type";
         setController(null);
     }
@@ -34,7 +31,7 @@ public class CrudTypeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre,minWidth,minHeight);
+        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);

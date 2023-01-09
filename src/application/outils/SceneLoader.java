@@ -16,11 +16,9 @@ public class SceneLoader {
      * @param stage le stage a qui il faudra assigner la scene
      * @param pChemin le chemin d'acces au fxml
      * @param pNom le nom de la fenetre
-     * @param pMinWidth la longueur minimum de la fenetre
-     * @param pMinHeight la hauteur minimum de la fenetre
      * @return
      */
-    public static ViewController loadScene(Stage stage, String pChemin, String pNom, float pMinWidth, float pMinHeight){
+    public static ViewController loadScene(Stage stage, String pChemin, String pNom){
 
         pChemin = pChemin.replaceAll("//", File.separator);
 
@@ -38,14 +36,19 @@ public class SceneLoader {
 
         }
         stage.setTitle(pNom);
-        stage.setResizable(true);
-        stage.setMinWidth(pMinWidth);
-        stage.setMinHeight(pMinHeight);
+        stage.setResizable(false);
         stage.setScene(scene);
 
         return fxmlLoader.getController();
     }
 
+    /**
+     * Charge une pane et le controller associe.
+     * Utilise pour charger un petit element fxml qui apparaitra sur une page
+     * (element dynamique d'une liste par exemple)
+     * @param pChemin
+     * @return
+     */
     public static ControllerEtPane loadPane(String pChemin){
         pChemin = pChemin.replaceAll("//", File.separator);
         FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(pChemin));
