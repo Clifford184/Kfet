@@ -1,9 +1,7 @@
 package application.model.vendable;
 
-import java.awt.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -78,6 +76,10 @@ public class Categorie implements Serializable {
         return liste;
     }
 
+    /**
+     * Ajouter un type a la liste des types de la categorie
+     * @param pType le type concerne
+     */
     public void ajouterType(Type pType){
         if(typeListe.contains(pType)==false)
             typeListe.add(pType);

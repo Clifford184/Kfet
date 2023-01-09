@@ -173,6 +173,7 @@ public class CrudOffreViewController extends ViewController {
         tableProduit.getChildren().clear();
 
         for(Type type : pCategorie.getTypeListe()){
+
             ControllerEtPane controllerEtPane =
                     SceneLoader.loadPane("/ressource/view/gestionSoldable/offre/crudOffreTypePane.fxml");
 
@@ -264,7 +265,6 @@ public class CrudOffreViewController extends ViewController {
         prixMembre.setText(pOffre.getPrixVenteMembre()+"");
 
         majStatPrix();
-
 
     }
 

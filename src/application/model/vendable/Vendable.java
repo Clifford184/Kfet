@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.util.UUID;
 
 /**
- * Decrit un element qui est propose a la vente (menu ou produit)
+ * Decrit un element qui est propose a la vente (offre ou produit)
  */
 public abstract class Vendable implements Serializable {
 
@@ -35,9 +35,8 @@ public abstract class Vendable implements Serializable {
      * @param pPrixVente son prix de vente
      * @param pPrixVenteMembre son prix de vente a un membre de l'association
      * @param pCheminImage le chemin de l'image associee
-     * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
-    public Vendable(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, String pCheminImage) throws IOException {
+    public Vendable(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, String pCheminImage) {
 
         if(pCheminImage==null)
             pCheminImage = "";

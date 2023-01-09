@@ -33,9 +33,8 @@ public class Type implements Serializable {
      * Cree un nouveau type
      * @param pNom son nom
      * @param pCheminImage le chemin de son image
-     * @throws IOException si un probleme est rencontre lors de la lecture/ecriture de l'image
      */
-    public Type(String pNom, String pCheminImage) throws IOException {
+    public Type(String pNom, String pCheminImage) {
         id = UUID.randomUUID();
         nom = pNom;
         typeListe.add(this);

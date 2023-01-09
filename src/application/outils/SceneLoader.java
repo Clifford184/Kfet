@@ -53,7 +53,7 @@ public class SceneLoader {
         try {
             pane = loader.load();
         } catch (IOException e) {
-
+            System.out.println("Erreur chargement");
             //affichage fenetre crash, sauvegarder et quitter.
 
         }
