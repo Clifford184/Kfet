@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="viewCompte" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.CompteViewController">
+<BorderPane fx:id="viewCompte" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.CompteViewController">
    <top>
       <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #968A87;" BorderPane.alignment="CENTER">
          <children>

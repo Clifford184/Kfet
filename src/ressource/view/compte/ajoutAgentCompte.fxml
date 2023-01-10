@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="viewArgentConfimation" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.ajoutArgentCompte.AjoutArgentCompteViewController">
+<AnchorPane fx:id="viewArgentConfimation" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.ajoutArgentCompte.AjoutArgentCompteViewController">
    <children>
       <Label layoutX="216.0" layoutY="124.0" text="Somme à ajouter pour " />
       <Label layoutX="310.0" layoutY="173.0" text="€" />

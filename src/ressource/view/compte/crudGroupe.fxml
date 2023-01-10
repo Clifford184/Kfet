@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="crudGroupeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.crudGroupe.CrudGroupeViewController">
+<AnchorPane fx:id="crudGroupeView" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.crudGroupe.CrudGroupeViewController">
    <children>
       <Label layoutX="79.0" layoutY="147.0" text="Nom:" />
       <TextField fx:id="nomTextField" layoutX="161.0" layoutY="143.0" />

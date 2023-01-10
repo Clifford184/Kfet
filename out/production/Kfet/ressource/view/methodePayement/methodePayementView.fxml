@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="viewModePayement" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.methodePayement.MethodePayementViewController">
+<BorderPane fx:id="viewModePayement" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.methodePayement.MethodePayementViewController">
    <top>
       <Label text="Choix du mode de payement" BorderPane.alignment="CENTER">
          <font>

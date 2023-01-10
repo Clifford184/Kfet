@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="viewCrudType" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.type.crudType.CrudTypeViewController">
+<AnchorPane fx:id="viewCrudType" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.type.crudType.CrudTypeViewController">
    <children>
       <Label layoutX="171.0" layoutY="35.0" text="Nom Type:" />
       <TextField fx:id="nomType" layoutX="236.0" layoutY="31.0" />
