@@ -2,6 +2,7 @@ package application.view;
 
 import application.controller.Controller;
 import application.model.Systeme;
+import application.view.utile.AlertView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -88,7 +89,9 @@ public abstract class View extends Application implements Observer {
             pPageDestination.start(stage);
         }
         catch (Exception e){
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            genererNouvellePage(alertView);
+            alertView.getController().setMessage("Echec du changement de page");
         }
     }
 

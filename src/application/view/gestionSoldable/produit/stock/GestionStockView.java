@@ -37,7 +37,7 @@ public class GestionStockView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -49,17 +49,13 @@ public class GestionStockView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "menu" -> {
-                        // initialise le menu
-                        getViewController().initialisationMenu();
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "menu" -> {
+                    // initialise le menu
+                    getViewController().initialisationMenu();
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

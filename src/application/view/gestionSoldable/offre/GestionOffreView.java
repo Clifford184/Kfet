@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class GestionOffreView extends View {
 
-    public GestionOffreView()  {
+    public GestionOffreView() {
         cheminVue = "/ressource/view/gestionSoldable/offre/gestionOffre.fxml";
         nomFenetre = "Gestion offre";
         setController(null);
@@ -31,7 +31,7 @@ public class GestionOffreView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -44,21 +44,17 @@ public class GestionOffreView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "menu" -> {
-                        // initialise le menu
-                        getViewController().initialisationMenu();
-                    }
-                    case "offre" -> {
-                        // Update de offre
-                        //getViewController().setListeCategorie(Categorie.getCategorieListe());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "menu" -> {
+                    // initialise le menu
+                    getViewController().initialisationMenu();
+                }
+                case "offre" -> {
+                    // Update de offre
+                    //getViewController().setListeCategorie(Categorie.getCategorieListe());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

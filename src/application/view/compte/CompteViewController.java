@@ -93,7 +93,9 @@ public class CompteViewController extends ViewController {
         try {
             vboxMenu = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Echec initialisation du menu");
         }
         sliderMenu.getChildren().add(vboxMenu);
 

@@ -4,6 +4,7 @@ import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.*;
 import application.controller.Controller;
+import application.view.utile.AlertView;
 
 import java.util.ArrayList;
 
@@ -64,7 +65,8 @@ public class PriseCommandeController extends Controller {
             notifyObservers(messages);
         }
         catch (Exception e){
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec de ajout de offre au panier");
         }
     }
 

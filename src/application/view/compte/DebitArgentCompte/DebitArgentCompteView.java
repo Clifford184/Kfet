@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class DebitArgentCompteView extends View {
 
-    public DebitArgentCompteView()  {
+    public DebitArgentCompteView() {
         cheminVue = "/ressource/view/compte/debitArgentCompte.fxml";
         nomFenetre = "Debit argent";
         setController(null);
@@ -31,7 +31,7 @@ public class DebitArgentCompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -43,21 +43,17 @@ public class DebitArgentCompteView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "commande" -> {
-                        // Update de la commande pour le debit
-                        getViewController().setSomme(getController().getSommeAdebiter());
-                    }
-                    case "client" -> {
-                        // Update ddu client a debiter
-                        getViewController().setLibelleClient(getController().getClient());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "commande" -> {
+                    // Update de la commande pour le debit
+                    getViewController().setSomme(getController().getSommeAdebiter());
+                }
+                case "client" -> {
+                    // Update ddu client a debiter
+                    getViewController().setLibelleClient(getController().getClient());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

@@ -3,6 +3,7 @@ package application.controller.gestionSoldable.type;
 import application.controller.Controller;
 import application.model.vendable.Categorie;
 import application.model.vendable.Type;
+import application.view.utile.AlertView;
 
 public class CrudTypeController extends Controller {
 
@@ -19,7 +20,8 @@ public class CrudTypeController extends Controller {
             new Type(pNewType, pChemin);
         }
         catch (Exception e){
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec de la création de "+type.getNom());
         }
     }
 

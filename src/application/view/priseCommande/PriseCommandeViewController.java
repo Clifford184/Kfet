@@ -11,6 +11,7 @@ import application.view.commande.GestionCommandeView;
 import application.view.methodePayement.MethodePayementView;
 import application.outils.ControllerEtPane;
 import application.outils.SceneLoader;
+import application.view.utile.AlertView;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -355,7 +356,8 @@ public class PriseCommandeViewController extends ViewController {
             getView().changerPage((Stage) getViewPriseCommande().getScene().getWindow(), methodePayementView);
             methodePayementView.getController().setPanier(getView().getController().getPanier());
         } catch (Exception e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Impossible de changer de page");
         }
 
     }

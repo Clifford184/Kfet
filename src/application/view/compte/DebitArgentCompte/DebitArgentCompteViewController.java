@@ -7,6 +7,7 @@ import application.view.ViewController;
 import application.view.compte.CompteView;
 import application.view.gestionSoldable.offre.GestionOffreView;
 import application.view.priseCommande.PriseCommandeView;
+import application.view.utile.AlertView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -48,7 +49,9 @@ public class DebitArgentCompteViewController extends ViewController {
             getView().changerPage((Stage) getViewArgentConfimation().getScene().getWindow(), compteView);
             compteView.getController().setPanier(getView().getController().getPanier());
         } catch (Exception e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Echec de l'annulation du debit");
         }
     }
 
@@ -62,7 +65,9 @@ public class DebitArgentCompteViewController extends ViewController {
             PriseCommandeView priseCommandeView = new PriseCommandeView();
             getView().changerPage((Stage) getViewArgentConfimation().getScene().getWindow(), priseCommandeView);
         } catch (Exception e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Impossible de debiter le client");
         }
     }
 

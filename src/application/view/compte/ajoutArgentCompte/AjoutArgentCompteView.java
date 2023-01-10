@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class AjoutArgentCompteView extends View {
 
-    public AjoutArgentCompteView()  {
+    public AjoutArgentCompteView() {
         cheminVue = "/ressource/view/compte/ajoutAgentCompte.fxml";
         nomFenetre = "Ajout argent";
         setController(null);
@@ -31,7 +31,7 @@ public class AjoutArgentCompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -43,21 +43,17 @@ public class AjoutArgentCompteView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "initialiseView" -> {
-                        // Charge les elements graphiques de la vue
-                        getViewController().initialiserView();
-                    }
-                    case "client" -> {
-                        // Mise a jour du client a qui on ajoute argent
-                        getViewController().setClientLabel(getController().getClient());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "initialiseView" -> {
+                    // Charge les elements graphiques de la vue
+                    getViewController().initialiserView();
+                }
+                case "client" -> {
+                    // Mise a jour du client a qui on ajoute argent
+                    getViewController().setClientLabel(getController().getClient());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

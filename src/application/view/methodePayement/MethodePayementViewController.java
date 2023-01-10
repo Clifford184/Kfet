@@ -6,6 +6,7 @@ import application.view.ViewController;
 import application.view.commande.GestionCommandeView;
 import application.view.compte.CompteView;
 import application.view.priseCommande.PriseCommandeView;
+import application.view.utile.AlertView;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -64,7 +65,9 @@ public class MethodePayementViewController extends ViewController {
             //Oblige de refaire initialize pour prendre en compte les set fait avant
             compteView.initialize();
         } catch (Exception e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Impossible d'acceder a cette page");
         }
     }
 

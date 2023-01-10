@@ -5,6 +5,7 @@ import application.model.vendable.Type;
 import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.GestionProduitView;
+import application.view.utile.AlertView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -165,7 +166,8 @@ public class CrudProduitViewController extends ViewController {
 
         }
         catch (Exception e){
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec de la creation/modification du produit");
         }
     }
 

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class GestionGroupeView extends View {
 
-    public GestionGroupeView()  {
+    public GestionGroupeView() {
         cheminVue = "/ressource/view/compte/gestionGroupe.fxml";
         nomFenetre = "Gestion groupe";
         setController(null);
@@ -33,7 +33,7 @@ public class GestionGroupeView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
 
@@ -46,25 +46,21 @@ public class GestionGroupeView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "initialiseView" -> {
-                        // Update de la vue pour initialiser les imagesView
-                        getViewController().initialiserView();
-                    }
-                    case "menu" -> {
-                        // initialise le menu
-                        getViewController().initialisationMenu();
-                    }
-                    case "groupe" -> {
-                        // Update de la liste des groupe de la view
-                        getViewController().setGroupeListView(Groupe.getGroupeListe());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "initialiseView" -> {
+                    // Update de la vue pour initialiser les imagesView
+                    getViewController().initialiserView();
+                }
+                case "menu" -> {
+                    // initialise le menu
+                    getViewController().initialisationMenu();
+                }
+                case "groupe" -> {
+                    // Update de la liste des groupe de la view
+                    getViewController().setGroupeListView(Groupe.getGroupeListe());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

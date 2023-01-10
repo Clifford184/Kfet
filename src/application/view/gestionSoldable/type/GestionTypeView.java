@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class GestionTypeView extends View {
 
-    public GestionTypeView()  {
+    public GestionTypeView() {
         cheminVue = "/ressource/view/gestionSoldable/type/gestionType.fxml";
         nomFenetre = "Gestion type";
         setController(null);
@@ -31,7 +31,7 @@ public class GestionTypeView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -44,17 +44,13 @@ public class GestionTypeView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "menu" -> {
-                        // initialise le menu
-                        getViewController().initialisationMenu();
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "menu" -> {
+                    // initialise le menu
+                    getViewController().initialisationMenu();
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

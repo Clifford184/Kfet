@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class CrudGroupeView extends View {
 
-    public CrudGroupeView()  {
+    public CrudGroupeView() {
         cheminVue = "/ressource/view/compte/crudGroupe.fxml";
         nomFenetre = "Gestion groupe";
         setController(null);
@@ -32,7 +32,7 @@ public class CrudGroupeView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
 
@@ -45,21 +45,17 @@ public class CrudGroupeView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "initialiseView" -> {
-                        // Update de la vue pour initialiser les imagesView
-                        getViewController().initialiserView();
-                    }
-                    case "groupe" -> {
-                        // Update du groupe
-                        getViewController().setNomTextField(getController().getGroupe());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "initialiseView" -> {
+                    // Update de la vue pour initialiser les imagesView
+                    getViewController().initialiserView();
+                }
+                case "groupe" -> {
+                    // Update du groupe
+                    getViewController().setNomTextField(getController().getGroupe());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

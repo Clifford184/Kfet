@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class CompteView extends View {
 
-    public CompteView()  {
+    public CompteView() {
         cheminVue = "/ressource/view/compte/compteView.fxml";
         nomFenetre = "Compte";
         setController(null);
@@ -31,7 +31,7 @@ public class CompteView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -43,21 +43,17 @@ public class CompteView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "menu" -> {
-                        // initialise le menu
-                        getViewController().initialisationMenu();
-                    }
-                    case "client" -> {
-                        // Update des elements graphiques et de la liste des clients
-                       getViewController().initialiserView();
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "menu" -> {
+                    // initialise le menu
+                    getViewController().initialisationMenu();
+                }
+                case "client" -> {
+                    // Update des elements graphiques et de la liste des clients
+                    getViewController().initialiserView();
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

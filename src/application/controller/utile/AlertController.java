@@ -4,7 +4,7 @@ import application.controller.Controller;
 
 public class AlertController extends Controller {
 
-    String message;
+    String message = "";
 
     /**
      * methode d'initialisation du controller

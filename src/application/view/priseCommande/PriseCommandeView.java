@@ -12,7 +12,7 @@ public class PriseCommandeView extends View {
     /**
      * constructeur par défaut
      */
-    public PriseCommandeView()  {
+    public PriseCommandeView() {
         cheminVue = "/ressource/view/priseCommande/priseCommandeView.fxml";
         nomFenetre = "Prise de commande";
         setController(null);
@@ -40,13 +40,14 @@ public class PriseCommandeView extends View {
 
     /**
      * methode d'initialisation des paramètres de la vue puis la démarre
+     *
      * @param stage
      * @throws Exception
      */
     @Override
     public void start(Stage stage) throws Exception {
 
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -59,40 +60,38 @@ public class PriseCommandeView extends View {
 
     /**
      * methode de mise à jour des différents éléments de la vue
+     *
      * @param observable The observable that the observer observes.
-     * @param messages Messages sent by the observer to inform the observer of what to do.
+     * @param messages   Messages sent by the observer to inform the observer of what to do.
      */
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "sliderMenu" -> {
-                        // Update du slider menu
-                        getViewController().initialisationSliderMenu();
-                    }
-                    case "type" -> {
-                        // Update des types affiche
-                        getViewController().InitialiserAffichageType();
-                    }
-                    case "panier" -> {
-                        // Update du panier quand on ajoute un produit
-                        getViewController().setArticlePanier(getController().getPanier());
-                        getViewController().rechargerProduit();
-                    }
-                    case "menu" -> {
-                        // Update de affichage du menu apres ajout un produit
-                        getViewController().AffichageTypeOffre(getViewController().templateOffreSelectionner);
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "sliderMenu" -> {
+                    // Update du slider menu
+                    getViewController().initialisationSliderMenu();
+                }
+                case "type" -> {
+                    // Update des types affiche
+                    getViewController().InitialiserAffichageType();
+                }
+                case "panier" -> {
+                    // Update du panier quand on ajoute un produit
+                    getViewController().setArticlePanier(getController().getPanier());
+                    getViewController().rechargerProduit();
+                }
+                case "menu" -> {
+                    // Update de affichage du menu apres ajout un produit
+                    getViewController().AffichageTypeOffre(getViewController().templateOffreSelectionner);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     /**
      * getter du contoller de la vue
+     *
      * @return PriseCommandeController le controller de la vue
      */
     @Override
@@ -102,6 +101,7 @@ public class PriseCommandeView extends View {
 
     /**
      * getter du viewContoller de la vue
+     *
      * @return PriseCommandeViewController le viewContoller de la vue
      */
     @Override

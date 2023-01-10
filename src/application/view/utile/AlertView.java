@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class AlertView extends View {
 
-    public AlertView()  {
+    public AlertView() {
         cheminVue = "/ressource/view/utile/alertView.fxml";
         nomFenetre = "Alert";
         setController(null);
@@ -31,7 +31,7 @@ public class AlertView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
         getViewController().setView(this);
@@ -43,21 +43,17 @@ public class AlertView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "alertMessage" -> {
-                        // initialise le menu
-                        getViewController().setAlertLabel(getController().getMessage());
-                    }
-                    case "initialisationView" -> {
-                        // initialise le menu
-                        getViewController().initialiserView();
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "alertMessage" -> {
+                    // initialise le menu
+                    getViewController().setAlertLabel(getController().getMessage());
+                }
+                case "initialisationView" -> {
+                    // initialise le menu
+                    getViewController().initialiserView();
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

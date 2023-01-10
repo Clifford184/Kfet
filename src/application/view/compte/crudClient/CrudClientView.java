@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class CrudClientView extends View {
 
-    public CrudClientView()  {
+    public CrudClientView() {
         cheminVue = "/ressource/view/compte/crudClient.fxml";
         nomFenetre = "Nouveau client";
         setController(null);
@@ -33,7 +33,7 @@ public class CrudClientView extends View {
     @Override
     public void start(Stage stage) throws Exception {
 
-       ViewController viewController = SceneLoader.loadScene(stage,cheminVue,nomFenetre);
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
         setViewController(viewController);
 
@@ -46,25 +46,21 @@ public class CrudClientView extends View {
 
     @Override
     public void update(Observable observable, String[] messages) {
-        try {
-            for (String message : messages) {
-                switch (message) {
-                    case "initialiseView" -> {
-                        // Update de la vue pour initialiser les imagesView
-                        getViewController().initialiserView();
-                    }
-                    case "promo" -> {
-                        // Update de la comboBox des promo
-                        getViewController().setPromoComboBox(Groupe.getGroupeListe());
-                    }
-                    case "client" -> {
-                        // Update du client
-                        getViewController().setClient(getController().getClient());
-                    }
+        for (String message : messages) {
+            switch (message) {
+                case "initialiseView" -> {
+                    // Update de la vue pour initialiser les imagesView
+                    getViewController().initialiserView();
+                }
+                case "promo" -> {
+                    // Update de la comboBox des promo
+                    getViewController().setPromoComboBox(Groupe.getGroupeListe());
+                }
+                case "client" -> {
+                    // Update du client
+                    getViewController().setClient(getController().getClient());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

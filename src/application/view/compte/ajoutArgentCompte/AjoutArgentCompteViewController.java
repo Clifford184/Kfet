@@ -5,6 +5,7 @@ import application.model.client.Client;
 import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.compte.CompteView;
+import application.view.utile.AlertView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -55,7 +56,9 @@ public class AjoutArgentCompteViewController extends ViewController {
                 close();
             }
             catch(NumberFormatException exception){
-                exception.printStackTrace();
+                AlertView alertView = new AlertView();
+                getView().genererNouvellePage(alertView);
+                alertView.getController().setMessage(" format de la somme a ajouter incorrect");
             }
         }
     }

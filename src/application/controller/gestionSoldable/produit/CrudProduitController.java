@@ -4,6 +4,7 @@ import application.model.vendable.Categorie;
 import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.controller.Controller;
+import application.view.utile.AlertView;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,8 @@ public class CrudProduitController extends Controller {
             new Produit(pNom, pAchat, pVente, pPrixVenteMembre, pType, pchemin);
         }
         catch (Exception e){
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec de la creation du produit "+pNom);
         }
     }
 

@@ -9,6 +9,7 @@ import application.outils.ImageManager;
 import application.outils.SceneLoader;
 import application.view.ViewController;
 import application.view.gestionSoldable.offre.GestionOffreView;
+import application.view.utile.AlertView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -293,7 +294,8 @@ public class CrudOffreViewController extends ViewController {
                 getView().getController().creerOffreTemplate(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec de la creation offre "+nomMenu);
         }
         annuler();
     }

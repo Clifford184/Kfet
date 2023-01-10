@@ -6,6 +6,7 @@ import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.produit.crudProduit.CrudProduitView;
 import application.view.priseCommande.PriseCommandeView;
+import application.view.utile.AlertView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,7 +103,8 @@ public class GestionProduitViewController extends ViewController {
         try {
             vboxMenu = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec initialisation du menu");
         }
         sliderMenu.getChildren().add(vboxMenu);
 

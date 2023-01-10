@@ -6,6 +6,7 @@ import application.view.Menu;
 import application.outils.ControllerEtPane;
 import application.outils.SceneLoader;
 import application.view.ViewController;
+import application.view.utile.AlertView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -109,7 +110,8 @@ public class GestionStockViewController extends ViewController {
         try {
             vboxMenu = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            AlertView alertView = new AlertView();
+            alertView.getController().setMessage("Echec initialisation du menu");
         }
         sliderMenu.getChildren().add(vboxMenu);
 

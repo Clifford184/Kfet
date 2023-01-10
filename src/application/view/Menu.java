@@ -7,6 +7,7 @@ import application.view.gestionSoldable.produit.GestionProduitView;
 import application.view.gestionSoldable.produit.stock.GestionStockView;
 import application.view.gestionSoldable.type.GestionTypeView;
 import application.view.priseCommande.PriseCommandeView;
+import application.view.utile.AlertView;
 import javafx.stage.Stage;
 
 public class Menu extends ViewController{
@@ -28,7 +29,7 @@ public class Menu extends ViewController{
             PriseCommandeView priseCommandeView = new PriseCommandeView();
             viewController.getView().changerPage(stage, priseCommandeView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -40,7 +41,7 @@ public class Menu extends ViewController{
             GestionProduitView gestionProduitView = new GestionProduitView();
             viewController.getView().changerPage(stage, gestionProduitView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -52,7 +53,7 @@ public class Menu extends ViewController{
             GestionTypeView gestionTypeView = new GestionTypeView();
             viewController.getView().changerPage(stage, gestionTypeView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -64,7 +65,7 @@ public class Menu extends ViewController{
             GestionCategorieView gestionCategorieView = new GestionCategorieView();
             viewController.getView().changerPage(stage, gestionCategorieView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -76,7 +77,7 @@ public class Menu extends ViewController{
             GestionOffreView gestionOffreView = new GestionOffreView();
             viewController.getView().changerPage(stage, gestionOffreView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -88,7 +89,7 @@ public class Menu extends ViewController{
             CompteView compteView = new CompteView();
             viewController.getView().changerPage(stage, compteView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
     }
 
@@ -100,7 +101,16 @@ public class Menu extends ViewController{
             GestionStockView stockView = new GestionStockView();
             viewController.getView().changerPage(stage, stockView);
         } catch (Exception e) {
-            e.printStackTrace();
+            messageErreur();
         }
+    }
+
+    /**
+     * creer un message erreur pour les echecs de redirections
+     */
+    public void messageErreur(){
+        AlertView alertView = new AlertView();
+        getView().genererNouvellePage(alertView);
+        alertView.getController().setMessage("Impossible d'acceder à cette page");
     }
 }
