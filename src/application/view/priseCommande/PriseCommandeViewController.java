@@ -26,6 +26,7 @@ import application.view.ViewController;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PriseCommandeViewController extends ViewController {
@@ -224,8 +225,14 @@ public class PriseCommandeViewController extends ViewController {
             etapeMenu++;
         }
         else {
-            getView().getController().ajouterAuPanier(templateOffreSelectionner);
-            reinitialiserMenu();
+            try {
+                getView().getController().ajouterAuPanier(templateOffreSelectionner);
+                reinitialiserMenu();
+            }catch (Exception e){
+                AlertView alertView = new AlertView();
+                getView().genererNouvellePage(alertView);
+                alertView.getController().setMessage("Echec de ajout de offre au panier"+e.getMessage());
+            }
         }
     }
 
@@ -357,7 +364,8 @@ public class PriseCommandeViewController extends ViewController {
             methodePayementView.getController().setPanier(getView().getController().getPanier());
         } catch (Exception e) {
             AlertView alertView = new AlertView();
-            alertView.getController().setMessage("Impossible de changer de page");
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Impossible de changer de page "+e.getMessage());
         }
 
     }

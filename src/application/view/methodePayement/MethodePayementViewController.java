@@ -67,7 +67,7 @@ public class MethodePayementViewController extends ViewController {
         } catch (Exception e) {
             AlertView alertView = new AlertView();
             getView().genererNouvellePage(alertView);
-            alertView.getController().setMessage("Impossible d'acceder a cette page");
+            alertView.getController().setMessage("Impossible d'acceder a cette page\n "+e.getMessage());
         }
     }
 

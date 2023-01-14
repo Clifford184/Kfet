@@ -1,7 +1,6 @@
 package application.outils;
 
 import application.view.ViewController;
-import application.view.utile.AlertView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -30,8 +29,7 @@ public class SceneLoader {
             fxmlLoader = new FXMLLoader(SceneLoader.class.getResource(pChemin));
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
-            AlertView alertView = new AlertView();
-            alertView.getController().setMessage("Erreur chargement fxml");
+            e.printStackTrace();
             //affichage fenetre crash, sauvegarder et quitter.
 
         }

@@ -35,9 +35,8 @@ public class Offre extends Vendable implements Serializable {
      * Cree une nouvelle offre (represente une liste de produits dans le panier)
      * @param pTemplateOffre le template a l'origine de cette offre
      * @param pProduits la liste des produits
-     * @throws IOException
      */
-    public Offre(TemplateOffre pTemplateOffre, ArrayList<Produit> pProduits) throws IOException {
+    public Offre(TemplateOffre pTemplateOffre, ArrayList<Produit> pProduits) {
         super(pTemplateOffre.getNom(), 0, pTemplateOffre.getPrixVente(),pTemplateOffre.getVenteMembre(), "");
         produitListe = new ArrayList<>();
         produitListe.addAll(pProduits);

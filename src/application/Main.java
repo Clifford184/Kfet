@@ -44,7 +44,6 @@ public class Main {
 
         View view;
         view = new PriseCommandeView();
-        //view = new GestionGroupeView();
         view.show();
 
     }

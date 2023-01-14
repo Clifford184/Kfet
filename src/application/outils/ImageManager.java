@@ -27,12 +27,12 @@ public class ImageManager {
     }
 
     public static String genererNouvelleImage(String pCheminImage, String pNom){
-
-        pCheminImage = pCheminImage.replaceAll("//", File.separator);
-
+        if (pCheminImage != null) {
+            pCheminImage = pCheminImage.replaceAll("//", File.separator);
+        }
         String nouveauChemin;
 
-        if(pCheminImage.equals("")){  //Utilisation de l'image par defaut.
+        if(pCheminImage == null || pCheminImage.equals("")){  //Utilisation de l'image par defaut.
             nouveauChemin = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+"imageParDefaut.png";
         }else{
             nouveauChemin = "asset"+File.separator+"image"+File.separator+"vendable"+File.separator+pNom+"-"+ UUID.randomUUID().toString()+".png";

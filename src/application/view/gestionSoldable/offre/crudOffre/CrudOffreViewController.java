@@ -295,6 +295,7 @@ public class CrudOffreViewController extends ViewController {
             }
         } catch (IOException e) {
             AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
             alertView.getController().setMessage("Echec de la creation offre "+nomMenu);
         }
         annuler();

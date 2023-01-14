@@ -7,6 +7,7 @@ import application.outils.ImageManager;
 import application.view.ViewController;
 import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.type.GestionTypeView;
+import application.view.utile.AlertView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,7 +40,7 @@ public class CrudTypeViewController extends ViewController {
     /**
      * Methode qui initialise les elements graphique de la vue
      */
-    public void initialize(){
+    public void initialize() {
 
         annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
         annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());
@@ -69,6 +70,7 @@ public class CrudTypeViewController extends ViewController {
      * Permet de signifier qu'on est en train de modifier un produit.
      * Va peupler les champs des valeurs du produit et le comportement
      * de la validation aura pour effet de modifier le produit
+     *
      * @param pType le type sujet a la modification
      */
     public void setContexteModification(Type pType) {
@@ -82,7 +84,7 @@ public class CrudTypeViewController extends ViewController {
     /**
      * Redirige vers la page de gestion de type
      */
-    public void annuler(){
+    public void annuler() {
         GestionTypeView gestionTypeView = new GestionTypeView();
         getView().changerPage((Stage) getViewCrudType().getScene().getWindow(), gestionTypeView);
     }
@@ -90,19 +92,25 @@ public class CrudTypeViewController extends ViewController {
     /**
      * creer ou modifie un type en fonction du contexte
      */
-    public void valider(){
-        if(contexteModification){
-            getView().getController().modificationType(nomType.getText(), cheminImage);
-        }else{
-            getView().getController().creationType(nomType.getText(), cheminImage);
+    public void valider() {
+        try {
+            if (contexteModification) {
+                getView().getController().modificationType(nomType.getText(), cheminImage);
+            } else {
+                getView().getController().creationType(nomType.getText(), cheminImage);
+            }
+            annuler();
+        } catch (Exception e) {
+            AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
+            alertView.getController().setMessage("Echec de la creation/modification type");
         }
-
-        annuler();
     }
 
-    public CrudTypeViewController(){}
+    public CrudTypeViewController() {
+    }
 
-    public CrudTypeView getView(){
+    public CrudTypeView getView() {
         return (CrudTypeView) super.getView();
     }
 

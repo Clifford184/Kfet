@@ -102,6 +102,7 @@ public class GestionTypeViewController extends ViewController {
             vboxMenu = loader.load();
         } catch (IOException e) {
             AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
             alertView.getController().setMessage("Echec initialisation menu");
         }
         sliderMenu.getChildren().add(vboxMenu);

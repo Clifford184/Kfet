@@ -163,10 +163,10 @@ public class CrudProduitViewController extends ViewController {
                 getView().getController().creationProduit(nom, prixAchatProduit, prixVenteProduit,prixVenteMembre, typeProduit, chemin);
             }
             annuler();
-
         }
         catch (Exception e){
             AlertView alertView = new AlertView();
+            getView().genererNouvellePage(alertView);
             alertView.getController().setMessage("Echec de la creation/modification du produit");
         }
     }

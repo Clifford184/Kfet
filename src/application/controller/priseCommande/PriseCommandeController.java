@@ -4,7 +4,6 @@ import application.model.Panier;
 import application.model.Stock;
 import application.model.vendable.*;
 import application.controller.Controller;
-import application.view.utile.AlertView;
 
 import java.util.ArrayList;
 
@@ -48,7 +47,6 @@ public class PriseCommandeController extends Controller {
     }
 
     public void ajouterAuPanier(TemplateOffre pTemplateOffre){
-        try {
             Offre offre = new Offre(pTemplateOffre, produitMenuSelectionnee);
             panier.ajouterElement(offre);
 
@@ -63,11 +61,6 @@ public class PriseCommandeController extends Controller {
 
             String[] messages = {"panier","type"};
             notifyObservers(messages);
-        }
-        catch (Exception e){
-            AlertView alertView = new AlertView();
-            alertView.getController().setMessage("Echec de ajout de offre au panier");
-        }
     }
 
     public void viderPanier(){
