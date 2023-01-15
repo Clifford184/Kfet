@@ -12,7 +12,8 @@ import java.io.IOException;
 public class SceneLoader {
 
     /**
-     * Charge une scene et l'assigne a un objet Stage
+     * Charge une scene et l'assigne a un objet Stage.
+     * Utilise pour un changement de fenetre
      * @param stage le stage a qui il faudra assigner la scene
      * @param pChemin le chemin d'acces au fxml
      * @param pNom le nom de la fenetre
@@ -44,8 +45,8 @@ public class SceneLoader {
      * Charge une pane et le controller associe.
      * Utilise pour charger un petit element fxml qui apparaitra sur une page
      * (element dynamique d'une liste par exemple)
-     * @param pChemin
-     * @return
+     * @param pChemin le chemin d'acces au fxml
+     * @return ControllerEtPane qui permettra de manipuler la pane et son controller
      */
     public static ControllerEtPane loadPane(String pChemin){
         pChemin = pChemin.replaceAll("//", File.separator);

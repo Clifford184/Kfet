@@ -3,8 +3,6 @@ package application.outils;
 import application.view.ViewController;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-
 public class ControllerEtPane {
 
     private ViewController controller;

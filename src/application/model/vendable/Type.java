@@ -2,10 +2,6 @@ package application.model.vendable;
 
 import application.outils.ImageManager;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +19,7 @@ public class Type implements Serializable {
 
     UUID id;
     String nom;
-    ArrayList<Produit> produitListe = new ArrayList<>();
+    ArrayList<Produit> produitListe;
 
     String cheminImage;
 

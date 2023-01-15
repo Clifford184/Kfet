@@ -1,6 +1,5 @@
 package application.view.compte.crudClient;
 
-
 import application.model.client.Client;
 import application.model.client.Groupe;
 import application.outils.ImageManager;
@@ -9,12 +8,10 @@ import application.view.compte.CompteView;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class CrudClientViewController extends ViewController {

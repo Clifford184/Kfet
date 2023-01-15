@@ -40,12 +40,10 @@ public class PriseCommandeView extends View {
 
     /**
      * methode d'initialisation des paramètres de la vue puis la démarre
-     *
      * @param stage
-     * @throws Exception
      */
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
         ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 

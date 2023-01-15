@@ -2,10 +2,6 @@ package application.model.vendable;
 
 import application.outils.ImageManager;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;

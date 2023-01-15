@@ -85,8 +85,7 @@ public abstract class View extends Application implements Observer {
      */
     public void changerPage(Stage pStage, View pPageDestination) {
         try {
-            Stage stage = pStage;
-            pPageDestination.start(stage);
+            pPageDestination.start(pStage);
         }
         catch (Exception e){
             AlertView alertView = new AlertView();

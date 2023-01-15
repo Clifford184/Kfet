@@ -1,9 +1,7 @@
 package application.model.vendable;
 
 import application.model.Stock;
-import application.model.client.Groupe;
 
-import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,9 +29,8 @@ public class Produit extends Vendable implements Serializable {
      * @param pPrixVente son prix de vente pour un membre
      * @param pType son type
      * @param pCheminImage le chemin de son image
-     * @throws IOException
      */
-    public Produit(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, Type pType, String pCheminImage) throws IOException {
+    public Produit(String pNom, float pPrixAchat, float pPrixVente, float pPrixVenteMembre, Type pType, String pCheminImage) {
         super(pNom, pPrixAchat, pPrixVente, pPrixVenteMembre, pCheminImage);
         id = UUID.randomUUID();
         type = pType;

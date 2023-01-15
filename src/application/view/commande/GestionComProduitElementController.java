@@ -1,8 +1,6 @@
 package application.view.commande;
 
 import application.controller.commande.GestionCommandeController;
-import application.model.Commande;
-import application.model.vendable.Produit;
 import application.model.vendable.ProduitCommande;
 import application.view.ViewController;
 import javafx.beans.value.ChangeListener;

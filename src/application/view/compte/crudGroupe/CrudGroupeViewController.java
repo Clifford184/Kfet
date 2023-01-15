@@ -4,16 +4,13 @@ package application.view.compte.crudGroupe;
 import application.model.client.Groupe;
 import application.outils.ImageManager;
 import application.view.ViewController;
-import application.view.compte.CompteView;
 import application.view.compte.gestionGroupe.GestionGroupeView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 
 public class CrudGroupeViewController extends ViewController {
 

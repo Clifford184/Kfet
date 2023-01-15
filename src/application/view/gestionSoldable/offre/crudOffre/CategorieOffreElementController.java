@@ -1,11 +1,12 @@
 package application.view.gestionSoldable.offre.crudOffre;
 
 import application.model.vendable.Categorie;
+import application.view.ViewController;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class CategorieOffreElementController {
+public class CategorieOffreElementController extends ViewController {
 
     public Label nomCategorie;
     public Button supprimerCategorie;

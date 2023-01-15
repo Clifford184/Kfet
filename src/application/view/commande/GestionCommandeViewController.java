@@ -81,7 +81,7 @@ public class GestionCommandeViewController extends ViewController {
                     SceneLoader.loadPane("/ressource/view/commande/gestionCommandeProduitElement.fxml");
             Pane pane = controllerEtPane.getPane();
 
-            //faire un tri pour afficher en premier les commandes commencée, en cours, et terminée
+            //faire un tri pour afficher en premier les commandes commencée, en cours, et terminee
             GestionComProduitElementController controller = (GestionComProduitElementController) controllerEtPane.getController();
             controller.initialize(p, getView().getController());
 

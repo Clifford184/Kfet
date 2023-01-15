@@ -2,14 +2,18 @@ package application.view.gestionSoldable.categorie.crudCategorie;
 
 import application.controller.Observable;
 import application.controller.gestionSoldable.categorie.CrudCategorieController;
+import application.outils.SceneLoader;
 import application.view.View;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import application.view.ViewController;
 import javafx.stage.Stage;
 
 public class CrudCategorieView extends View {
 
     public CrudCategorieView()  {
+
+        cheminVue = "/ressource/view/gestionSoldable/categorie/crudCategorie.fxml";
+        nomFenetre = "Gestion categorie";
+
         setController(null);
     }
 
@@ -29,25 +33,13 @@ public class CrudCategorieView extends View {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fileName = "/ressource/view/gestionSoldable/categorie/crudCategorie.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(CrudCategorieView.class.getResource(fileName));
+        ViewController viewController = SceneLoader.loadScene(stage, cheminVue, nomFenetre);
 
-        // Creation of the scene.
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("gestionnaire cafétéria");
-        stage.setResizable(true);
-        stage.setMinWidth(880);
-        stage.setMinHeight(580);
-        stage.setScene(scene);
-
-        // Get the controller which controls the elements of the view.
-        setViewController(fxmlLoader.getController());
+        setViewController(viewController);
         getViewController().setView(this);
 
-        // Get the controller of the view.
         initialize();
 
-        // Show the view.
         stage.show();
     }
 

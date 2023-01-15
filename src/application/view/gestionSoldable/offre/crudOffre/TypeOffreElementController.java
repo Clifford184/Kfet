@@ -1,12 +1,8 @@
 package application.view.gestionSoldable.offre.crudOffre;
 
-import application.model.vendable.Categorie;
 import application.model.vendable.Type;
 import application.view.ViewController;
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 
 public class TypeOffreElementController extends ViewController {
 

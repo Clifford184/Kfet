@@ -42,7 +42,7 @@ public class Stock implements Serializable {
      */
     public void ajouterNouveauProduit(Produit pProduit){
         if(stock.get(pProduit)!=null)
-            return; //Gerer l'erreur
+            return;
         stock.put(pProduit,0);
     }
 
@@ -53,7 +53,7 @@ public class Stock implements Serializable {
      */
     public void supprimerProduit(Produit pProduit){
         if(stock.get(pProduit)==null)
-            return; //Gerer l'erreur
+            return;
         stock.remove(pProduit);
     }
 
@@ -63,12 +63,7 @@ public class Stock implements Serializable {
      */
     public void retirerDuStock(ArrayList<Produit> pProduitListe){
         for(Produit p : pProduitListe){
-            Integer nombre = stock.get(p);
-            if(nombre == 0){
-                //ERREURUURUURRUR
-            }
-            nombre--;
-            stock.put(p,nombre);
+            retirerDuStock(p,1);
         }
     }
 

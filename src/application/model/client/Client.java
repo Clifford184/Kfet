@@ -1,7 +1,5 @@
 package application.model.client;
 
-import application.model.vendable.Type;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -100,10 +98,6 @@ public class Client implements Serializable {
 
     public static ArrayList<Client> getClientListe() {
         return clientListe;
-    }
-
-    public static void setClientListe(ArrayList<Client> clientListe) {
-        Client.clientListe = clientListe;
     }
 
     @Override
