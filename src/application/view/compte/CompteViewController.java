@@ -1,6 +1,7 @@
 package application.view.compte;
 
-import application.model.client.*;
+import application.model.client.Client;
+import application.model.client.Groupe;
 import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
@@ -13,9 +14,11 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +26,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -111,19 +113,19 @@ public class CompteViewController extends ViewController {
     public void initialiserView() {
         //Initialisation ImageView Creation Client
 
-        ajouterClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajoutCompte.png"));
+        ajouterClientImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/ajoutCompte.png"));
         ajouterClientImageView.setOnMouseClicked(mouseEvent -> redirectionAjoutCrudClient());
 
-        modificationClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/modifierClient.png"));
+        modificationClientImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/modifierClient.png"));
         modificationClientImageView.setOnMouseClicked(mouseEvent -> redirectionModificationCrudClient());
 
-        suppressionClientImageView.setImage(ImageManager.genererImage("/ressource/image/icone/supprimerClient.png"));
+        suppressionClientImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/supprimerClient.png"));
         suppressionClientImageView.setOnMouseClicked(mouseEvent -> supprimerClient());
 
-        ajouterArgentImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajoutArgent.png"));
+        ajouterArgentImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/ajoutArgent.png"));
         ajouterArgentImageView.setOnMouseClicked(mouseEvent -> redirectionAjouterArgent());
 
-        gestionGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/gestionGroupe.png"));
+        gestionGroupeImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/gestionGroupe.png"));
         gestionGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionGestionGroupe());
 
         //Initailisation du tableau de visualisation des groupes et clients

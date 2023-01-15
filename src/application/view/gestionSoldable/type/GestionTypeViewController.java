@@ -5,28 +5,23 @@ import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
 import application.view.gestionSoldable.type.crudType.CrudTypeView;
-import application.view.priseCommande.PriseCommandeView;
 import application.view.utile.AlertView;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class GestionTypeViewController extends ViewController {
 
@@ -49,10 +44,10 @@ public class GestionTypeViewController extends ViewController {
      */
     public void initialize(){
 
-        ajouterImage.setImage(ImageManager.genererImage("/ressource/image/icone/ajouter.png"));
+        ajouterImage.setImage(ImageManager.chargerImage("/ressource/image/icone/ajouter.png"));
         ajouterImage.setOnMouseClicked(mouseEvent -> ajouterType());
 
-        modifierImage.setImage(ImageManager.genererImage("/ressource/image/icone/modifier.png"));
+        modifierImage.setImage(ImageManager.chargerImage("/ressource/image/icone/modifier.png"));
         modifierImage.setOnMouseClicked(mouseEvent -> modifierType());
 
         nomTypeColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));

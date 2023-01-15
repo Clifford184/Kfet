@@ -20,7 +20,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 
 public class CrudProduitViewController extends ViewController {
@@ -59,10 +58,10 @@ public class CrudProduitViewController extends ViewController {
 
         champMarge.setEditable(false);
 
-        validerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImageBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerImageBtn.onMouseClickedProperty().set(mouseEvent -> valider());
 
-        annulerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImageBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerImageBtn.onMouseClickedProperty().set(mouseEvent -> annuler());
 
         UnaryOperator<TextFormatter.Change> filtrePrix = change -> {
@@ -132,7 +131,7 @@ public class CrudProduitViewController extends ViewController {
         prixAchat.setText(pProduit.getPrixAchat()+"");
         prixVente.setText(pProduit.getPrixVente()+"");
         prixMembre.setText(pProduit.getPrixVenteMembre()+"");
-        imageProduit.setImage(new Image(new File(pProduit.getCheminImage()).toURI().toString()));
+        imageProduit.setImage(ImageManager.chargerImage(pProduit.getCheminImage()));
         majStatPrix();
     }
 

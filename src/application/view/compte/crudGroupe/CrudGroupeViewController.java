@@ -30,10 +30,10 @@ public class CrudGroupeViewController extends ViewController {
      */
     public void initialiserView() {
 
-        annulerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerImageView.setOnMouseClicked(mouseEvent -> close());
 
-        validerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerImageView.setOnMouseClicked(mouseEvent -> valider());
     }
 
