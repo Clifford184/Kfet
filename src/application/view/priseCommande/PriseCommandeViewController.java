@@ -155,7 +155,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * methode de création de case pour chaque type existant
      */
-    public void InitialiserAffichageType() {
+    public void initialiserAffichageType() {
 
         for (Type type : Type.getTypeListe()) {
             ControllerEtPane controllerEtPane =
@@ -163,7 +163,7 @@ public class PriseCommandeViewController extends ViewController {
 
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             Pane pane = controllerEtPane.getPane();
-            pane.setOnMouseClicked(event -> AffichagePlatType(type) );
+            pane.setOnMouseClicked(event -> affichagePlatType(type) );
             controller.initialize(type);
             zoneAffichageType.getChildren().add(pane);
         }
@@ -173,7 +173,7 @@ public class PriseCommandeViewController extends ViewController {
 
         ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
         Pane pane = controllerEtPane.getPane();
-        pane.setOnMouseClicked(event -> AffichageOffre());
+        pane.setOnMouseClicked(event -> affichageOffre());
         controller.initializeOffre();
         zoneAffichageType.getChildren().add(pane);
 
@@ -182,7 +182,7 @@ public class PriseCommandeViewController extends ViewController {
     /**
      * Affichage les offres disponible
      */
-    public void AffichageOffre(){
+    public void affichageOffre(){
         isMenu = true;
         etapeMenu = 0;
         zoneAffichageType.getChildren().clear();
@@ -193,7 +193,7 @@ public class PriseCommandeViewController extends ViewController {
 
             ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
             Pane pane = controllerEtPane.getPane();
-            pane.setOnMouseClicked(event -> AffichageTypeOffre(templateOffre) );
+            pane.setOnMouseClicked(event -> affichageTypeOffre(templateOffre) );
             controller.initialize(templateOffre, !prixMembreCheckbox.isSelected());
             zoneAffichageType.getChildren().add(pane);
 
@@ -206,7 +206,7 @@ public class PriseCommandeViewController extends ViewController {
      * Affiche les types de produits de l'offre selectionne
      * @param pTemplateOffre offre selectionne
      */
-    public void AffichageTypeOffre(TemplateOffre pTemplateOffre){
+    public void affichageTypeOffre(TemplateOffre pTemplateOffre){
         templateOffreSelectionner = pTemplateOffre;
         zoneAffichageType.getChildren().clear();
         if (etapeMenu < pTemplateOffre.getCategorieListe().size()) {
@@ -217,7 +217,7 @@ public class PriseCommandeViewController extends ViewController {
 
                 ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
                 Pane pane = controllerEtPane.getPane();
-                pane.setOnMouseClicked(event -> AffichagePlatTypeMenu(typeMenu));
+                pane.setOnMouseClicked(event -> affichagePlatTypeMenu(typeMenu));
                 controller.initialize(typeMenu);
                 zoneAffichageType.getChildren().add(pane);
             }
@@ -255,7 +255,7 @@ public class PriseCommandeViewController extends ViewController {
             Label label = new Label();
             label.setText(type.getNom());
             pane.getChildren().add(label);
-            pane.setOnMouseClicked(event -> AffichagePlatType(type) );
+            pane.setOnMouseClicked(event -> affichagePlatType(type) );
             pane.setPadding(new Insets(20, 0, 0, 0));
             listeTypeVBox.getChildren().add(pane);
         }
@@ -264,7 +264,7 @@ public class PriseCommandeViewController extends ViewController {
         Label label = new Label();
         label.setText("Menu");
         pane.getChildren().add(label);
-        pane.setOnMouseClicked(event -> AffichageOffre());
+        pane.setOnMouseClicked(event -> affichageOffre());
         pane.setPadding(new Insets(50, 50, 50, 50));
         listeTypeVBox.getChildren().add(pane);
     }
@@ -273,7 +273,7 @@ public class PriseCommandeViewController extends ViewController {
      * Affiche tout les produits d'un type selectionne
      * @param pType le type selectionne
      */
-    public void AffichagePlatType(Type pType) {
+    public void affichagePlatType(Type pType) {
 
         if(pType==null)
             return;
@@ -295,7 +295,7 @@ public class PriseCommandeViewController extends ViewController {
             if(Stock.getInstance().combienEnStock(produit)==0)
                 pane.setStyle("-fx-background-color: #BEBEBE");
             else{
-                pane.setOnMouseClicked(event -> AjouterAuPanier(produit));
+                pane.setOnMouseClicked(event -> ajouterAuPanier(produit));
             }
 
             controller.initialize(produit, !prixMembreCheckbox.isSelected());
@@ -310,7 +310,7 @@ public class PriseCommandeViewController extends ViewController {
      * Affichage de tout les produits d'un type pour un menu
      * @param pType type selectionne
      */
-    public void AffichagePlatTypeMenu(Type pType) {
+    public void affichagePlatTypeMenu(Type pType) {
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
 
@@ -321,7 +321,7 @@ public class PriseCommandeViewController extends ViewController {
             if(Stock.getInstance().combienEnStock(produit)==0)
                 controllerEtPane.getPane().setStyle("-fx-background-color: #BEBEBE");
             else{
-                controllerEtPane.getPane().setOnMouseClicked(event -> AjouterProduitMenu(produit));
+                controllerEtPane.getPane().setOnMouseClicked(event -> ajouterProduitMenu(produit));
             }
 
             controller.initialize(produit,!prixMembreCheckbox.isSelected());
@@ -336,7 +336,7 @@ public class PriseCommandeViewController extends ViewController {
      * Ajoute le produit choisi au panier
      * @param pProduit produit selectionne
      */
-    public void AjouterAuPanier(Produit pProduit) {
+    public void ajouterAuPanier(Produit pProduit) {
         getView().getController().ajouterAuPanier(pProduit);
     }
 
@@ -344,7 +344,7 @@ public class PriseCommandeViewController extends ViewController {
      * Ajoute le produit selectionne au menu
      * @param pProduit produit selectionne
      */
-    public void AjouterProduitMenu(Produit pProduit) {
+    public void ajouterProduitMenu(Produit pProduit) {
         getView().getController().AjoutProduitMenu(pProduit);
     }
 
@@ -371,7 +371,7 @@ public class PriseCommandeViewController extends ViewController {
 
 
     public void rechargerProduit() {
-        AffichagePlatType(getView().getController().getType());
+        affichagePlatType(getView().getController().getType());
     }
 
     /**

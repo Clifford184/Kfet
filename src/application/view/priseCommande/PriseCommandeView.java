@@ -72,7 +72,7 @@ public class PriseCommandeView extends View {
                 }
                 case "type" -> {
                     // Update des types affiche
-                    getViewController().InitialiserAffichageType();
+                    getViewController().initialiserAffichageType();
                 }
                 case "panier" -> {
                     // Update du panier quand on ajoute un produit
@@ -81,7 +81,7 @@ public class PriseCommandeView extends View {
                 }
                 case "menu" -> {
                     // Update de affichage du menu apres ajout un produit
-                    getViewController().AffichageTypeOffre(getViewController().templateOffreSelectionner);
+                    getViewController().affichageTypeOffre(getViewController().templateOffreSelectionner);
                 }
             }
         }
