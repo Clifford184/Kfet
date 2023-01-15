@@ -54,7 +54,6 @@ public class CrudOffreViewController extends ViewController {
     private AnchorPane viewCrudOffre;
 
     ArrayList<Categorie> categorieListe = new ArrayList<>();
-    ArrayList<Produit> blacklist = new ArrayList<>();
     String cheminImage;
 
     boolean contexteModification = false;
@@ -192,7 +191,7 @@ public class CrudOffreViewController extends ViewController {
                     SceneLoader.loadPane("/ressource/view/gestionSoldable/offre/crudOffreProduitPane.fxml");
 
             ProduitOffreElementController controller = (ProduitOffreElementController) controllerEtPane.getController();
-            controller.initialize(!blacklist.contains(produit),vue,produit);
+            controller.initialize(!getView().getController().blacklistContains(produit),vue,produit);
             tableProduit.getChildren().add(controllerEtPane.getPane());
         }
 
@@ -207,7 +206,7 @@ public class CrudOffreViewController extends ViewController {
             return;
 
         HashMap<Integer,Float> coutAchatBorne =
-                getView().getController().intervalleCoutAchat(categorieListe,blacklist);
+                getView().getController().intervalleCoutAchat(categorieListe);
 
         float prixMinRevient, prixMaxRevient,
                 prixMinMarge, prixMinMargeMembre, prixMaxMarge, prixMaxMargeMembre;
@@ -230,10 +229,8 @@ public class CrudOffreViewController extends ViewController {
      * @param pProduit le produit a ajouter
      */
     public void ajouterBlacklist(Produit pProduit){
-        if(!blacklist.contains(pProduit)){
-            blacklist.add(pProduit);
-            majStatPrix();
-        }
+        getView().getController().ajouterBlacklist(pProduit);
+        majStatPrix();
     }
 
     /**
@@ -241,7 +238,7 @@ public class CrudOffreViewController extends ViewController {
      * @param pProduit le produit a retirer
      */
     public void retirerBlacklist(Produit pProduit){
-        blacklist.remove(pProduit);
+        getView().getController().retirerBlacklist(pProduit);
         majStatPrix();
     }
 
@@ -249,12 +246,12 @@ public class CrudOffreViewController extends ViewController {
         contexteModification = true;
         getView().getController().setTemplateOffre(pOffre);
 
-        blacklist.addAll(pOffre.getBlackList());
+        getView().getController().setBlacklist(pOffre.getBlackList());
         for(Categorie c: pOffre.getCategorieListe())
             ajouterCategorie(c);
 
         nomMenu.setText(pOffre.getNom());
-        image.setImage(ImageManager.genererImage(pOffre.getCheminImage()));
+        image.setImage(ImageManager.chargerImage(pOffre.getCheminImage()));
         prixVente.setText(pOffre.getPrixVente()+"");
         prixMembre.setText(pOffre.getPrixVenteMembre()+"");
 
@@ -277,14 +274,18 @@ public class CrudOffreViewController extends ViewController {
         float prixV = Float.parseFloat(prixVente.getText());
         float prixVM = Float.parseFloat(prixMembre.getText());
         try {
-            if(nom.equals("")||prixV==0||prixVM==0||categorieListe.size()==0)
+            if(nom.equals("")||prixV==0||prixVM==0||categorieListe.size()==0){
+                AlertView alertView = new AlertView();
+                getView().genererNouvellePage(alertView);
+                alertView.getController().setMessage("Element manquant: prix ou taille offre");
                 return;
+            }
 
             if(contexteModification){
-                getView().getController().modificationOffre(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
+                getView().getController().modificationOffre(nom, prixV,prixVM,categorieListe,cheminImage);
 
             }else{
-                getView().getController().creerOffreTemplate(nom, prixV,prixVM,categorieListe,blacklist,cheminImage);
+                getView().getController().creerOffreTemplate(nom, prixV,prixVM,categorieListe,cheminImage);
             }
         } catch (IOException e) {
             AlertView alertView = new AlertView();

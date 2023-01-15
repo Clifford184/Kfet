@@ -35,8 +35,8 @@ public class MethodePayementViewController extends ViewController {
      */
     public void initialize(){
 
-        autrePayementImage.setImage(ImageManager.genererImage("/ressource/image/icone/autresPayement.png"));
-        payementCompteImage.setImage(ImageManager.genererImage("/ressource/image/icone/compte.png"));
+        autrePayementImage.setImage(ImageManager.chargerImage("/ressource/image/icone/autresPayement.png"));
+        payementCompteImage.setImage(ImageManager.chargerImage("/ressource/image/icone/compte.png"));
 
         payementCompte.onMouseClickedProperty().set(mouseEvent -> redirectionPayementCompte());
         autreMethodePaiementPane.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {

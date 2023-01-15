@@ -39,10 +39,10 @@ public class CrudClientViewController extends ViewController {
      */
     public void initialiserView(){
 
-        annulerBouton.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerBouton.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerBouton.setOnMouseClicked(mouseEvent -> close());
 
-        validerBouton.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerBouton.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerBouton.setOnMouseClicked(mouseEvent -> valider());
     }
 

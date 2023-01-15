@@ -13,19 +13,39 @@ import java.util.UUID;
  */
 public class ImageManager {
 
-    public static Image genererImage(String pChemin){
+    /**
+     * Charge une image pour affichage
+     * @param pChemin son chemin
+     * @return l'image
+     */
+    public static Image chargerImage(String pChemin){
+        if(pChemin==null)
+            return null;
+        if(pChemin.equals(""))
+            return null;
 
         pChemin = pChemin.replaceAll("//", File.separator);
 
         Image image = null;
         try{
-            image = new Image(ImageManager.class.getResource(pChemin).toString());
-        }catch(Exception e){
+            if(pChemin.startsWith("asset")) {//image dynamique
+                image = new Image("file:"+pChemin);
+            }else{  //image ressource
+                image = new Image(ImageManager.class.getResource(pChemin).toString());
+            }
 
+        }catch(Exception e){
+            image = new Image("file:asset"+File.separator+"image"+File.separator+"probleme.png");
         }
         return image;
     }
 
+    /**
+     * Fait une copie locale d'une image
+     * @param pCheminImage l'image a copier
+     * @param pNom le nom a donner
+     * @return le chemin de la nouvelle image
+     */
     public static String genererNouvelleImage(String pCheminImage, String pNom){
         if (pCheminImage != null) {
             pCheminImage = pCheminImage.replaceAll("//", File.separator);
@@ -41,6 +61,11 @@ public class ImageManager {
         return nouveauChemin;
     }
 
+    /**
+     * Copie une image
+     * @param pACopier le chemin de l'image a copier
+     * @param pNouveauChemin sa destination
+     */
     private static void copierImage(String pACopier, String pNouveauChemin){
         try {
             BufferedImage image = ImageIO.read(new File(pACopier));

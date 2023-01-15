@@ -9,12 +9,12 @@ import application.view.utile.AlertView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.util.function.UnaryOperator;
 
 public class AjoutArgentCompteViewController extends ViewController {
     @FXML
@@ -37,11 +37,21 @@ public class AjoutArgentCompteViewController extends ViewController {
      * methode qui charge les elements graphique de la vue
      */
     public void initialiserView(){
-        annulerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerImageView.setOnMouseClicked(mouseEvent -> close());
 
-        validerImageView.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerImageView.setOnMouseClicked(mouseEvent -> valider());
+
+        UnaryOperator<TextFormatter.Change> filtrePrix = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d{0,3}([.]\\d{0,2})?")) {
+                return change;
+            }
+            return null;
+        };
+
+        argentAjouterTextField.setTextFormatter(new TextFormatter<>(filtrePrix));
     }
 
     /**

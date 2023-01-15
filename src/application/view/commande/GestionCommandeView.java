@@ -55,6 +55,8 @@ public class GestionCommandeView extends View {
         getViewController().afficherCommande();
 
         stage.show();
+
+        stage.setOnCloseRequest(we -> singleton = null);
     }
 
     public void stop(){

@@ -1,18 +1,14 @@
 package application.view.gestionSoldable.type.crudType;
 
-import application.model.vendable.Categorie;
-import application.model.vendable.Produit;
 import application.model.vendable.Type;
 import application.outils.ImageManager;
 import application.view.ViewController;
-import application.view.gestionSoldable.categorie.GestionCategorieView;
 import application.view.gestionSoldable.type.GestionTypeView;
 import application.view.utile.AlertView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +17,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class CrudTypeViewController extends ViewController {
 
@@ -42,10 +37,10 @@ public class CrudTypeViewController extends ViewController {
      */
     public void initialize() {
 
-        annulerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImgBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerImgBtn.setOnMouseClicked(mouseEvent -> annuler());
 
-        validerImgBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImgBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerImgBtn.setOnMouseClicked(mouseEvent -> valider());
 
         FileChooser.ExtensionFilter imageFilter

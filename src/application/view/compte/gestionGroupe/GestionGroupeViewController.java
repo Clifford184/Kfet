@@ -4,7 +4,6 @@ package application.view.compte.gestionGroupe;
 
 import application.model.client.Client;
 import application.model.client.Groupe;
-import application.model.vendable.Type;
 import application.outils.ImageManager;
 import application.view.Menu;
 import application.view.ViewController;
@@ -12,16 +11,13 @@ import application.view.compte.crudGroupe.CrudGroupeView;
 import application.view.utile.AlertView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -52,13 +48,13 @@ public class GestionGroupeViewController extends ViewController {
      */
     public void initialiserView(){
 
-        ajouterGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/ajouterGroupe.png"));
+        ajouterGroupeImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/ajouterGroupe.png"));
         ajouterGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionCreationGroupe());
 
-        modifierGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/modifierGroupe.png"));
+        modifierGroupeImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/modifierGroupe.png"));
         modifierGroupeImageView.setOnMouseClicked(mouseEvent -> redirectionModificationGroupe());
 
-        supprimerGroupeImageView.setImage(ImageManager.genererImage("/ressource/image/icone/supprimerGroupe.png"));
+        supprimerGroupeImageView.setImage(ImageManager.chargerImage("/ressource/image/icone/supprimerGroupe.png"));
         supprimerGroupeImageView.setOnMouseClicked(mouseEvent -> supprimerGroupe());
 
     }

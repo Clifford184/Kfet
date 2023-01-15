@@ -46,10 +46,10 @@ public class CrudCategorieViewController extends ViewController {
 
         nomCatTypeColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
-        annulerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/annuler.png"));
+        annulerImageBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/annuler.png"));
         annulerImageBtn.setOnMouseClicked(mouseEvent -> annuler());
 
-        validerImageBtn.setImage(ImageManager.genererImage("/ressource/image/icone/valide.png"));
+        validerImageBtn.setImage(ImageManager.chargerImage("/ressource/image/icone/valide.png"));
         validerImageBtn.setOnMouseClicked(mouseEvent -> valider());
 
         ajouterTypeBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
