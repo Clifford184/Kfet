@@ -183,6 +183,7 @@ public class PriseCommandeViewController extends ViewController {
      * Affichage les offres disponible
      */
     public void affichageOffre(){
+        produitControllerListe.clear();
         isMenu = true;
         etapeMenu = 0;
         zoneAffichageType.getChildren().clear();
@@ -196,6 +197,8 @@ public class PriseCommandeViewController extends ViewController {
             pane.setOnMouseClicked(event -> affichageTypeOffre(templateOffre) );
             controller.initialize(templateOffre, !prixMembreCheckbox.isSelected());
             zoneAffichageType.getChildren().add(pane);
+
+            produitControllerListe.add(controller);
 
         }
 
