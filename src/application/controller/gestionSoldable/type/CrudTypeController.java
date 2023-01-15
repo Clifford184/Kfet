@@ -2,6 +2,7 @@ package application.controller.gestionSoldable.type;
 
 import application.controller.Controller;
 import application.model.vendable.Type;
+import application.outils.ImageManager;
 
 public class CrudTypeController extends Controller {
 
@@ -17,9 +18,9 @@ public class CrudTypeController extends Controller {
         new Type(pNewType, pChemin);
     }
 
-    public void modificationType(String nomProduit, String chemin) {
-        type.setNom(nomProduit);
-        type.setCheminImage(chemin);
+    public void modificationType(String pNom, String pChemin) {
+        type.setNom(pNom);
+        type.setCheminImage(ImageManager.genererNouvelleImage(pChemin, pNom));
     }
 
     public void setType(Type pType) {
