@@ -284,25 +284,25 @@ public class PriseCommandeViewController extends ViewController {
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
 
-        for(Produit produit : pType.getProduitListe()){
+        for(Produit produit : pType.getProduitListe()) {
+            if (!templateOffreSelectionner.getBlackList().contains(produit)) {
+                ControllerEtPane controllerEtPane =
+                        SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
 
-            ControllerEtPane controllerEtPane =
-                    SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+                ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+                Pane pane = controllerEtPane.getPane();
 
-            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
-            Pane pane = controllerEtPane.getPane();
+                if (Stock.getInstance().combienEnStock(produit) == 0)
+                    pane.setStyle("-fx-background-color: #BEBEBE");
+                else {
+                    pane.setOnMouseClicked(event -> ajouterAuPanier(produit));
+                }
 
-            if(Stock.getInstance().combienEnStock(produit)==0)
-                pane.setStyle("-fx-background-color: #BEBEBE");
-            else{
-                pane.setOnMouseClicked(event -> ajouterAuPanier(produit));
+                controller.initialize(produit, !prixMembreCheckbox.isSelected());
+                produitControllerListe.add(controller);
+                zoneAffichageType.getChildren().add(pane);
             }
-
-            controller.initialize(produit, !prixMembreCheckbox.isSelected());
-            produitControllerListe.add(controller);
-            zoneAffichageType.getChildren().add(pane);
         }
-
         afficherListeHorizontalType();
     }
 
