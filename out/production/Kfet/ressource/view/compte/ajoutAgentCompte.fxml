@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="viewArgentConfimation" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.ajoutArgentCompte.AjoutArgentCompteViewController">
+   <children>
+      <Label layoutX="216.0" layoutY="124.0" text="Somme à ajouter pour " />
+      <Label layoutX="310.0" layoutY="173.0" text="€" />
+      <ImageView fx:id="validerImageView" fitHeight="84.0" fitWidth="99.0" layoutX="490.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="annulerImageView" fitHeight="78.0" fitWidth="78.0" layoutX="372.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="clientLabel" layoutX="339.0" layoutY="125.0" text="Jean" />
+      <TextField fx:id="argentAjouterTextField" layoutX="252.0" layoutY="169.0" prefHeight="25.0" prefWidth="52.0" />
+   </children>
+</AnchorPane>

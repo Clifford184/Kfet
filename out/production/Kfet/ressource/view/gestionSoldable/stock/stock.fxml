@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.gestionSoldable.produit.stock.GestionStockViewController">
+   <center>
+      <AnchorPane fx:id="viewGestionStock" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="624.0">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutX="41.0" layoutY="142.0" prefHeight="323.0" prefWidth="542.0" style="-fx-border-color: gray;">
+               <content>
+                  <VBox fx:id="vboxStock" prefHeight="324.0" prefWidth="528.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane layoutX="41.0" prefHeight="54.0" prefWidth="542.0" style="-fx-border-color: gray;" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="hboxType" prefHeight="39.0" prefWidth="539.0" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="204.0" layoutY="113.0" text="Prix achat" />
+            <Label layoutX="61.0" layoutY="113.0" text="Nom" />
+            <Label layoutX="274.0" layoutY="113.0" text="Prix vente" />
+            <Label layoutX="344.0" layoutY="113.0" text="Prix v. membre" />
+            <Label layoutX="482.0" layoutY="113.0" text="Stock" />
+            <Label layoutX="534.0" layoutY="113.0" text="Ajout" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane fx:id="sliderMenu" prefHeight="408.0" prefWidth="107.0" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <AnchorPane prefHeight="92.0" prefWidth="731.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="buttonMenu" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" text="Menu" />
+            <Label layoutX="284.0" layoutY="30.0" text="Gestion des stocks">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkboxModif" layoutX="578.0" layoutY="22.0" mnemonicParsing="false" text="Activer modification" />
+            <Button fx:id="validerModifButton" layoutX="578.0" layoutY="47.0" mnemonicParsing="false" text="Valider modifications" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

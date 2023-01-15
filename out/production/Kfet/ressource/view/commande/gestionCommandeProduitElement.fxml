@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="38.0" prefWidth="246.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="application.view.commande.GestionComProduitElementController">
+   <children>
+      <Label fx:id="nomProduitLabel" layoutX="7.0" layoutY="11.0" text="nomProduit" />
+      <ComboBox fx:id="etatProduitCombo" layoutX="117.0" layoutY="7.0" prefHeight="25.0" prefWidth="121.0" />
+   </children>
+</Pane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="crudClientView" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.compte.crudClient.CrudClientViewController">
+   <children>
+      <Label layoutX="69.0" layoutY="137.0" text="Nom:" />
+      <Label layoutX="69.0" layoutY="183.0" text="Prénom:" />
+      <ImageView fx:id="annulerBouton" fitHeight="78.0" fitWidth="78.0" layoutX="382.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="validerBouton" fitHeight="84.0" fitWidth="99.0" layoutX="500.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="69.0" layoutY="230.0" text="Promo:" />
+      <TextField fx:id="nomTextField" layoutX="151.0" layoutY="133.0" />
+      <TextField fx:id="prenomTextField" layoutX="151.0" layoutY="179.0" />
+      <ComboBox fx:id="promoComboBox" layoutX="151.0" layoutY="226.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
