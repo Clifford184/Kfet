@@ -116,27 +116,26 @@ public class Commande implements Serializable {
      * en consequence.
      **/
     public void maj() {
+
         boolean fini=true;
-        boolean commencee=true;
+        boolean encours=false;
 
         for(ProduitCommande p : produitCommandeListe){
 
             if(p.getEtat()!=ProduitCommande.Etat.COMMENCE)
-                commencee=false;
+                encours=true;
 
             if(p.getEtat()!= ProduitCommande.Etat.SERVI)
                 fini = false;
-
-            if(p.getEtat()== ProduitCommande.Etat.EN_COURS){
-                etatActuel = Etat.EN_COURS;
-            }
         }
 
+        if(!encours)
+            etatActuel = Etat.COMMENCEE;
+        if(encours)
+            etatActuel = Etat.EN_COURS;
         if(fini){
             etatActuel = Etat.TERMINEE;
         }
-        if(commencee)
-            etatActuel = Etat.COMMENCEE;
 
     }
 

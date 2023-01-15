@@ -10,6 +10,9 @@ import java.util.UUID;
  */
 public class Client implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 233508552158507207L;
+
     UUID id;
     String nom;
     String prenom;

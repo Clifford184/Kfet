@@ -6,11 +6,12 @@ import application.model.vendable.Produit;
 import application.model.vendable.TemplateOffre;
 import application.model.vendable.Type;
 import application.model.vendable.Vendable;
-import application.view.Menu;
-import application.view.commande.GestionCommandeView;
-import application.view.methodePayement.MethodePayementView;
 import application.outils.ControllerEtPane;
 import application.outils.SceneLoader;
+import application.view.Menu;
+import application.view.ViewController;
+import application.view.commande.GestionCommandeView;
+import application.view.methodePayement.MethodePayementView;
 import application.view.utile.AlertView;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
@@ -22,11 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import application.view.ViewController;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PriseCommandeViewController extends ViewController {
