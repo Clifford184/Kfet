@@ -288,7 +288,6 @@ public class PriseCommandeViewController extends ViewController {
         produitControllerListe.clear();
 
         for(Produit produit : pType.getProduitListe()) {
-            if (!templateOffreSelectionner.getBlackList().contains(produit)) {
                 ControllerEtPane controllerEtPane =
                         SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
 
@@ -304,7 +303,6 @@ public class PriseCommandeViewController extends ViewController {
                 controller.initialize(produit, !prixMembreCheckbox.isSelected());
                 produitControllerListe.add(controller);
                 zoneAffichageType.getChildren().add(pane);
-            }
         }
         afficherListeHorizontalType();
     }
@@ -317,19 +315,21 @@ public class PriseCommandeViewController extends ViewController {
         zoneAffichageType.getChildren().clear();
         produitControllerListe.clear();
 
-        for(Produit produit : pType.getProduitListe()){
-            ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
+        for(Produit produit : pType.getProduitListe()) {
+            if (!templateOffreSelectionner.getBlackList().contains(produit)) {
+                ControllerEtPane controllerEtPane = SceneLoader.loadPane("/ressource/view/priseCommande/affichageElement.fxml");
 
-            ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
-            if(Stock.getInstance().combienEnStock(produit)==0)
-                controllerEtPane.getPane().setStyle("-fx-background-color: #BEBEBE");
-            else{
-                controllerEtPane.getPane().setOnMouseClicked(event -> ajouterProduitMenu(produit));
+                ProduitCommandeElement controller = (ProduitCommandeElement) controllerEtPane.getController();
+                if (Stock.getInstance().combienEnStock(produit) == 0)
+                    controllerEtPane.getPane().setStyle("-fx-background-color: #BEBEBE");
+                else {
+                    controllerEtPane.getPane().setOnMouseClicked(event -> ajouterProduitMenu(produit));
+                }
+
+                controller.initialize(produit, !prixMembreCheckbox.isSelected());
+                produitControllerListe.add(controller);
+                zoneAffichageType.getChildren().add(controllerEtPane.getPane());
             }
-
-            controller.initialize(produit,!prixMembreCheckbox.isSelected());
-            produitControllerListe.add(controller);
-            zoneAffichageType.getChildren().add(controllerEtPane.getPane());
         }
 
         afficherListeHorizontalType();
