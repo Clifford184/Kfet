@@ -27,7 +27,13 @@ public class Systeme {
         if(Panier.panierCourant.getTerminePanier()==false)
             Panier.panierCourant.viderPanier();
 
-        String path = "data/Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
+        String path = "data/Type&Produit.txt";   //Type qui stocke Produit
+        try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+            oos.writeObject(Type.getTypeListe());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        path = "data/Categorie.txt";
         try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(Categorie.categorieListe);
         } catch (IOException e) {
@@ -67,7 +73,14 @@ public class Systeme {
     }
 
     public static void loadAll(){
-        String path = "data/Categorie&Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
+        String path = "data/Type&Produit.txt";   //Categorie stocke Type qui stocke Produit
+        try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
+            ArrayList<Type> l = (ArrayList) ois.readObject();
+        } catch (IOException | ClassNotFoundException e1) {
+            e1.printStackTrace();
+        }
+
+        path = "data/Categorie.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
             ArrayList<Categorie> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
@@ -76,7 +89,7 @@ public class Systeme {
 
         path = "data/TemplateOffre.txt";
         try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis);) {
-            ArrayList<Type> l = (ArrayList) ois.readObject();
+            ArrayList<TemplateOffre> l = (ArrayList) ois.readObject();
         } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
